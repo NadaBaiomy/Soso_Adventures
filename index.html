@@ -260,7 +260,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
 .slot.locked svg{width:24px; height:24px}
 
 .p-scroll{flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:14px; padding:4px 2px 10px}
-.p-title{font-size:1.8rem; font-weight:800; text-align:center}
 .p-card{background:#fff; border:3px solid var(--ink); border-radius:24px; padding:14px 16px; box-shadow:var(--card-sh)}
 .p-card h3{margin:0 0 8px; font-size:1.25rem; font-weight:800; color:var(--coral-d)}
 .p-stats{display:flex; gap:10px; flex-wrap:wrap}
@@ -269,7 +268,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
 .p-stat span{font-size:.95rem; font-weight:700; color:var(--ink-soft)}
 .p-chips{display:flex; flex-wrap:wrap; gap:8px}
 .p-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.p-row input, .p-select{flex:1; min-width:150px; font-family:inherit; font-weight:700; font-size:1.05rem; padding:8px 12px; border:3px solid var(--ink); border-radius:16px; outline:none; background:#fff; color:var(--ink)}
 .p-list{margin:0; padding-right:20px; font-weight:700; line-height:1.9; font-size:1rem}
 .p-list li{margin-bottom:4px}
 .btn-danger{background:#F26D6D; color:#fff; font-size:1.15rem}
@@ -278,6 +276,10 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
 .gate-opts{display:flex; gap:16px}
 .gate-opts .btn{font-size:1.9rem; width:86px; height:86px; padding:0}
 .p-note{font-weight:700; color:var(--ink-soft); font-size:.95rem; line-height:1.6}
+.voice-opt{display:flex; align-items:flex-start; gap:10px; padding:10px; border:3px solid var(--line); border-radius:16px; cursor:pointer; margin-bottom:8px}
+.voice-opt.on{border-color:var(--ink); background:#FFF3D2; box-shadow:0 3px 0 rgba(74,52,40,.12)}
+.voice-opt b{display:block; font-size:1.05rem}
+.voice-opt span{font-weight:700; color:var(--ink-soft); font-size:.9rem; line-height:1.5}
 
 .toast-sticker{position:fixed; top:14px; right:50%; transform:translate(50%,-120px); z-index:1001; display:flex; align-items:center; gap:12px; background:#fff; border:3.5px solid var(--ink); border-radius:24px; padding:10px 18px; box-shadow:0 7px 0 rgba(74,52,40,.2); transition:transform .5s var(--pop)}
 .toast-sticker.show{transform:translate(50%,0)}
@@ -295,10 +297,8 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
 </head>
 <body>
 
-<!-- ======= كل رسومات التطبيق (28 كلمة/كائن + عناصر + ستيكرز) ======= -->
 <svg id="assets" aria-hidden="true"><defs>
 
-<!-- حيوانات -->
 <symbol id="an-lion" viewBox="0 0 200 210">
   <ellipse cx="82" cy="197" rx="13" ry="8" fill="#E8A33D"/><ellipse cx="118" cy="197" rx="13" ry="8" fill="#E8A33D"/>
   <path d="M136 148 q26 6 28 -20 q1 -12 -8 -14" fill="none" stroke="#E8A33D" stroke-width="9" stroke-linecap="round"/>
@@ -473,7 +473,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="56" cy="100" rx="8" ry="5.5" fill="#E8A76F" opacity=".9"/><ellipse cx="144" cy="100" rx="8" ry="5.5" fill="#E8A76F" opacity=".9"/>
 </symbol>
 
-<!-- حوت (ح) -->
 <symbol id="an-whale" viewBox="0 0 200 210">
   <g fill="#A5DCF5"><circle cx="52" cy="34" r="8"/><circle cx="68" cy="22" r="6"/><circle cx="40" cy="20" r="5"/></g>
   <path d="M148 118 Q182 96 184 62 Q198 96 174 124 Q164 134 152 128 Z" fill="#7EC8F0"/>
@@ -485,7 +484,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="62" cy="122" rx="7" ry="5" fill="#BDE3F5" opacity=".9"/>
 </symbol>
 
-<!-- خروف (خ) -->
 <symbol id="an-sheep" viewBox="0 0 200 210">
   <rect x="78" y="160" width="13" height="42" rx="6.5" fill="#8A7A88"/>
   <rect x="110" y="160" width="13" height="42" rx="6.5" fill="#8A7A88"/>
@@ -506,7 +504,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="70" cy="96" rx="7" ry="5" fill="#E8B8C8" opacity=".7"/><ellipse cx="130" cy="96" rx="7" ry="5" fill="#E8B8C8" opacity=".7"/>
 </symbol>
 
-<!-- ذرة (ذ) -->
 <symbol id="an-corn" viewBox="0 0 200 210">
   <path d="M68 118 Q36 158 58 196 Q92 168 90 128 Z" fill="#7ED588"/>
   <path d="M132 118 Q164 158 142 196 Q108 168 110 128 Z" fill="#6FBF6F"/>
@@ -524,7 +521,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="72" cy="104" rx="6" ry="4" fill="#FFC197" opacity=".8"/><ellipse cx="128" cy="104" rx="6" ry="4" fill="#FFC197" opacity=".8"/>
 </symbol>
 
-<!-- رمان (ر) -->
 <symbol id="an-pomegranate" viewBox="0 0 200 210">
   <path d="M84 46 L84 20 L96 34 L100 12 L104 34 L116 20 L116 46 Q100 38 84 46 Z" fill="#C25858"/>
   <circle cx="100" cy="128" r="62" fill="#E85D5D"/>
@@ -537,7 +533,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="66" cy="140" rx="8" ry="5.5" fill="#FFADAD" opacity=".8"/><ellipse cx="134" cy="140" rx="8" ry="5.5" fill="#FFADAD" opacity=".8"/>
 </symbol>
 
-<!-- زرافة (ز) -->
 <symbol id="an-giraffe" viewBox="0 0 200 210">
   <rect x="70" y="148" width="13" height="50" rx="6.5" fill="#D9A05B"/>
   <rect x="118" y="148" width="13" height="50" rx="6.5" fill="#D9A05B"/>
@@ -555,7 +550,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="142" cy="14" rx="6" ry="4" fill="#B07A45"/>
 </symbol>
 
-<!-- سمكة (س) -->
 <symbol id="an-fish" viewBox="0 0 200 210">
   <path d="M138 105 L178 64 Q170 105 178 146 Z" fill="#62B6E7"/>
   <path d="M76 66 Q94 38 118 48 Q106 66 84 70 Z" fill="#62B6E7"/>
@@ -568,10 +562,8 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <g fill="#A5DCF5"><circle cx="30" cy="58" r="6"/><circle cx="18" cy="40" r="4.5"/></g>
 </symbol>
 
-<!-- شمس (ش) — نسخة كبيرة -->
 <symbol id="an-sun" viewBox="0 0 120 120"><use href="#w-sun"/></symbol>
 
-<!-- ضفدع (ض) -->
 <symbol id="an-frog" viewBox="0 0 200 210">
   <ellipse cx="52" cy="188" rx="20" ry="12" fill="#6FBF6F"/>
   <ellipse cx="148" cy="188" rx="20" ry="12" fill="#6FBF6F"/>
@@ -588,7 +580,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="78" cy="172" rx="11" ry="7" fill="#6FBF6F"/><ellipse cx="122" cy="172" rx="11" ry="7" fill="#6FBF6F"/>
 </symbol>
 
-<!-- طائرة (ط) -->
 <symbol id="an-plane" viewBox="0 0 200 210">
   <path d="M144 88 L144 32 Q170 36 178 88 Z" fill="#FF8555"/>
   <path d="M150 158 Q180 148 184 118 Q190 156 158 170 Z" fill="#FF8555"/>
@@ -601,7 +592,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="70" cy="126" rx="6.5" ry="4.5" fill="#FFAD66" opacity=".8"/>
 </symbol>
 
-<!-- ظبي (ظ) -->
 <symbol id="an-gazelle" viewBox="0 0 200 210">
   <rect x="74" y="148" width="11" height="50" rx="5.5" fill="#C08A4B"/>
   <rect x="115" y="148" width="11" height="50" rx="5.5" fill="#C08A4B"/>
@@ -617,7 +607,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="82" cy="124" rx="6" ry="4" fill="#B07A45"/>
 </symbol>
 
-<!-- عصفور (ع) -->
 <symbol id="an-bird" viewBox="0 0 200 210">
   <path d="M148 104 L186 84 Q180 106 186 128 Z" fill="#3D8FC4"/>
   <path d="M94 58 Q88 34 66 34 Q78 50 90 62 Z" fill="#3D8FC4"/>
@@ -632,7 +621,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <rect x="112" y="174" width="8" height="30" rx="4" fill="#E8A23A"/>
 </symbol>
 
-<!-- غيمة (غ) -->
 <symbol id="an-cloudy" viewBox="0 0 200 210">
   <g fill="#fff" stroke="#DCE9F5" stroke-width="4">
     <circle cx="58" cy="112" r="28"/><circle cx="100" cy="94" r="38"/><circle cx="146" cy="114" r="26"/>
@@ -643,7 +631,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="70" cy="126" rx="7" ry="5" fill="#D8E9F9"/><ellipse cx="130" cy="126" rx="7" ry="5" fill="#D8E9F9"/>
 </symbol>
 
-<!-- قمر (ق) -->
 <symbol id="an-moon" viewBox="0 0 200 210">
   <path d="M22 46 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#E8A23A"/>
   <path d="M170 150 l3.5 8 8 3.5 -8 3.5 -3.5 8 -3.5 -8 -8 -3.5 8 -3.5 Z" fill="#E8A23A"/>
@@ -654,7 +641,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="68" cy="122" rx="8" ry="5.5" fill="#FFC197" opacity=".8"/><ellipse cx="132" cy="122" rx="8" ry="5.5" fill="#FFC197" opacity=".8"/>
 </symbol>
 
-<!-- ليمون (ل) -->
 <symbol id="an-lemon" viewBox="0 0 200 210">
   <path d="M104 52 Q104 32 120 24" fill="none" stroke="#8A5A33" stroke-width="5" stroke-linecap="round"/>
   <path d="M112 36 Q142 16 164 30 Q148 52 112 44 Z" fill="#7ED588"/>
@@ -669,7 +655,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="62" cy="144" rx="8" ry="5.5" fill="#FFF0B8" opacity=".9"/><ellipse cx="138" cy="144" rx="8" ry="5.5" fill="#FFF0B8" opacity=".9"/>
 </symbol>
 
-<!-- موز (م) -->
 <symbol id="an-banana" viewBox="0 0 200 210">
   <path d="M38 124 Q100 44 168 128" fill="none" stroke="#FFD34E" stroke-width="38" stroke-linecap="round"/>
   <path d="M46 118 Q100 54 160 122" fill="none" stroke="#FFE98A" stroke-width="16" stroke-linecap="round"/>
@@ -680,7 +665,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="70" cy="102" rx="6" ry="4" fill="#FFC197" opacity=".8"/><ellipse cx="130" cy="102" rx="6" ry="4" fill="#FFC197" opacity=".8"/>
 </symbol>
 
-<!-- نجمة (ن) -->
 <symbol id="an-starf" viewBox="0 0 200 210">
   <path d="M100 15 L124 78 L190 81 L138 122 L156 187 L100 150 L44 187 L62 122 L10 81 L76 78 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="5" stroke-linejoin="round"/>
   <circle cx="82" cy="100" r="8" fill="#fff"/><circle cx="118" cy="100" r="8" fill="#fff"/>
@@ -690,7 +674,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="64" cy="112" rx="7" ry="5" fill="#FFAD66" opacity=".8"/><ellipse cx="136" cy="112" rx="7" ry="5" fill="#FFAD66" opacity=".8"/>
 </symbol>
 
-<!-- هدية (هـ) -->
 <symbol id="an-gift" viewBox="0 0 200 210">
   <rect x="44" y="86" width="112" height="100" rx="14" fill="#F9A8C0" stroke="#E885A8" stroke-width="4"/>
   <rect x="34" y="58" width="132" height="36" rx="13" fill="#F285A8" stroke="#E885A8" stroke-width="4"/>
@@ -705,7 +688,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="54" cy="152" rx="7" ry="5" fill="#FFD3E0"/><ellipse cx="146" cy="152" rx="7" ry="5" fill="#FFD3E0"/>
 </symbol>
 
-<!-- وردة (و) -->
 <symbol id="an-flower" viewBox="0 0 200 210">
   <path d="M100 204 V118" stroke="#6FBF6F" stroke-width="9" stroke-linecap="round"/>
   <path d="M100 164 Q68 160 60 140 Q90 136 100 164 Z" fill="#8FD08A"/>
@@ -727,7 +709,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="82" cy="94" rx="5.5" ry="4" fill="#FFAD66" opacity=".8"/><ellipse cx="118" cy="94" rx="5.5" ry="4" fill="#FFAD66" opacity=".8"/>
 </symbol>
 
-<!-- يد (ي) -->
 <symbol id="an-hand" viewBox="0 0 200 210">
   <rect x="50" y="26" width="24" height="62" rx="12" fill="#F2C8A0"/>
   <rect x="80" y="18" width="24" height="70" rx="12" fill="#F2C8A0"/>
@@ -743,7 +724,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <ellipse cx="64" cy="128" rx="6.5" ry="4.5" fill="#FFC197" opacity=".8"/><ellipse cx="136" cy="128" rx="6.5" ry="4.5" fill="#FFC197" opacity=".8"/>
 </symbol>
 
-<!-- عناصر عالم سوسو -->
 <symbol id="w-tree" viewBox="0 0 170 200">
   <ellipse cx="85" cy="192" rx="48" ry="9" fill="#8FD08A"/>
   <rect x="73" y="116" width="24" height="76" rx="10" fill="#A9713C"/>
@@ -830,7 +810,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <path d="M47 26 q-4 -8 -10 -10 M53 26 q4 -8 10 -10" fill="none" stroke="#5A4636" stroke-width="2.5" stroke-linecap="round"/>
 </symbol>
 
-<!-- ستيكرز -->
 <symbol id="st-star" viewBox="0 0 100 100">
   <path d="M50 6 L61 37 L94 37 L67 56 L78 89 L50 68 L22 89 L33 56 L6 37 L39 37 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="4" stroke-linejoin="round"/>
   <circle cx="42" cy="36" r="4.5" fill="#fff" opacity=".8"/>
@@ -860,7 +839,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <circle cx="50" cy="54" r="11" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="4"/>
 </symbol>
 
-<!-- أطعمة -->
 <symbol id="fd-apple" viewBox="0 0 120 120">
   <path d="M60 36 q-4 -14 8 -20" stroke="#8A5A33" stroke-width="5" fill="none" stroke-linecap="round"/>
   <path d="M62 22 q16 -9 23 2 q-13 11 -23 -2 Z" fill="#7ED588"/>
@@ -899,7 +877,6 @@ body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EF
   <path d="M26 71 h68 v6 q0 22 -34 22 q-34 0 -34 -22 Z" fill="#F2CFA0"/>
 </symbol>
 
-<!-- أيقونات -->
 <symbol id="ic-back" viewBox="0 0 32 32"><path d="M12 6 L22 16 L12 26" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="ic-speaker" viewBox="0 0 32 32"><path d="M5 12 h6 l8 -7 v22 l-8 -7 H5 Z" fill="currentColor"/><path d="M23 11 q5 5 0 10 M26 7 q8 9 0 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
 <symbol id="ic-parent" viewBox="0 0 32 32"><circle cx="11" cy="10" r="5" fill="currentColor"/><path d="M3 27 q1 -9 8 -9 q7 0 8 9 Z" fill="currentColor"/><circle cx="23" cy="12" r="4" fill="currentColor"/><path d="M18 27 q0 -7 5 -8 q5 1 5 8 Z" fill="currentColor" opacity=".6"/></symbol>
@@ -926,38 +903,35 @@ const PALETTE=['#FF8552','#FFC94D','#7ED588','#62B6E7','#F9A8C0','#A58CE8'];
 
 /* ============ كل الحروف العربية ٢٨ (٧ مراحل × ٤ حروف) ============ */
 const LETTER_LEVELS=[
-  [ {ch:'أ',word:'أَسَد',thing:'lion'},   {ch:'ب',word:'بَطّة',thing:'duck'},      {ch:'ت',word:'تِمساح',thing:'croc'},    {ch:'ث',word:'ثُعبان',thing:'snake'} ],
-  [ {ch:'ج',word:'جَمَل',thing:'camel'},   {ch:'ح',word:'حوت',thing:'whale'},      {ch:'خ',word:'خَروف',thing:'sheep'},    {ch:'د',word:'دُبّ',thing:'bear'} ],
+  [ {ch:'أ',word:'أَسَد',thing:'lion'},   {ch:'ب',word:'بَطّة',thing:'duck'},      {ch:'ت',word:'تِمْساح',thing:'croc'},    {ch:'ث',word:'ثُعبان',thing:'snake'} ],
+  [ {ch:'ج',word:'جَمَل',thing:'camel'},   {ch:'ح',word:'حُوت',thing:'whale'},      {ch:'خ',word:'خَروف',thing:'sheep'},    {ch:'د',word:'دُبّ',thing:'bear'} ],
   [ {ch:'ذ',word:'ذُرَة',thing:'corn'},    {ch:'ر',word:'رُمّان',thing:'pomegranate'},{ch:'ز',word:'زَرافة',thing:'giraffe'},{ch:'س',word:'سَمَكة',thing:'fish'} ],
   [ {ch:'ش',word:'شَمس',thing:'sun'},      {ch:'ص',word:'صاروخ',thing:'rocket'},   {ch:'ض',word:'ضِفدَع',thing:'frog'},     {ch:'ط',word:'طائرة',thing:'plane'} ],
   [ {ch:'ظ',word:'ظَبي',thing:'gazelle'},  {ch:'ع',word:'عُصفور',thing:'bird'},    {ch:'غ',word:'غَيمة',thing:'cloudy'},   {ch:'ف',word:'فيل',thing:'elephant'} ],
   [ {ch:'ق',word:'قَمَر',thing:'moon'},    {ch:'ك',word:'كَلب',thing:'dog'},       {ch:'ل',word:'لَيمون',thing:'lemon'},   {ch:'م',word:'مَوز',thing:'banana'} ],
   [ {ch:'ن',word:'نَجمة',thing:'starf'},   {ch:'ه',word:'هَديّة',thing:'gift',disp:'هـ'}, {ch:'و',word:'وَردة',thing:'flower'},  {ch:'ي',word:'يَد',thing:'hand'} ],
 ];
-/* أسماء الحروف للنطق الصحيح (ألِف، باء، تاء…) */
-const LETTER_NAMES={'أ':'ألِف','ب':'باء','ت':'تاء','ث':'ثاء','ج':'جيم','ح':'حاء','خ':'خاء','د':'دال','ذ':'ذال','ر':'راء','ز':'زاي','س':'سين','ش':'شين','ص':'صاد','ض':'ضاد','ط':'طاء','ظ':'ظاء','ع':'عين','غ':'غين','ف':'فاء','ق':'قاف','ك':'كاف','ل':'لام','م':'ميم','ن':'نون','ه':'هاء','و':'واو','ي':'ياء'};
+const LETTER_NAMES={'أ':'أَلِف','ب':'باء','ت':'تاء','ث':'ثاء','ج':'جيم','ح':'حاء','خ':'خاء','د':'دال','ذ':'ذال','ر':'راء','ز':'زاي','س':'سين','ش':'شين','ص':'صاد','ض':'ضاد','ط':'طاء','ظ':'ظاء','ع':'عين','غ':'غين','ف':'فاء','ق':'قاف','ك':'كاف','ل':'لام','م':'ميم','ن':'نون','ه':'هاء','و':'واو','ي':'ياء'};
 const LCOLORS=['#E8703A','#3D8FC4','#3FA34D','#8A5FB8','#E8A23A','#5A7AD1','#D6548A','#2E9E8F','#C25858','#7B8A2E','#B05BB5','#4E8AC2','#C87A2E','#4E7A9E'];
 let _gi=0; LETTER_LEVELS.forEach(lv=>lv.forEach(L=>{ L.color=L.color||LCOLORS[_gi++%LCOLORS.length]; }));
-const ALL_LETTERS=LETTER_LEVELS.flat();
-const LMAP={}; ALL_LETTERS.forEach(L=>LMAP[L.ch]=L);
+const LMAP={}; LETTER_LEVELS.flat().forEach(L=>LMAP[L.ch]=L);
 const disp = L => L.disp||L.ch;
 
-/* أسماء كل الكائنات */
 const THINGS={
-  lion:{name:'الأسد'}, duck:{name:'البطة'}, croc:{name:'التمساح'}, snake:{name:'الثعبان'},
-  camel:{name:'الجمل'}, whale:{name:'الحوت'}, sheep:{name:'الخروف'}, bear:{name:'الدُبّ'},
+  lion:{name:'الأسد'}, duck:{name:'البَطّة'}, croc:{name:'التِمْساح'}, snake:{name:'الثُعبان'},
+  camel:{name:'الجَمَل'}, whale:{name:'الحُوت'}, sheep:{name:'الخَروف'}, bear:{name:'الدُبّ'},
   corn:{name:'الذُرَة'}, pomegranate:{name:'الرُمّان'}, giraffe:{name:'الزَرافة'}, fish:{name:'السَمَكة'},
   sun:{name:'الشَمس'}, rocket:{name:'الصاروخ'}, frog:{name:'الضِفدَع'}, plane:{name:'الطائرة'},
   gazelle:{name:'الظَبي'}, bird:{name:'العُصفور'}, cloudy:{name:'الغَيمة'}, elephant:{name:'الفيل'},
   moon:{name:'القَمَر'}, dog:{name:'الكَلب'}, lemon:{name:'اللَيمون'}, banana:{name:'المَوز'},
   starf:{name:'النَجمة'}, gift:{name:'الهَديّة'}, flower:{name:'الوَردة'}, hand:{name:'اليَد'},
 };
-const ANIMALS={ lion:{name:'الأسد',voice:'راااار'}, elephant:{name:'الفيل',voice:'بررر بررر'},
-  cat:{name:'القط',voice:'مياااو'}, cow:{name:'البقرة',voice:'ممووو'}, dog:{name:'الكلب',voice:'هوف هوف'}, duck:{name:'البطة',voice:'كواك كواك'} };
+const ANIMALS={ lion:{name:'الأسد',voice:'رااار'}, elephant:{name:'الفيل',voice:'بررر'},
+  cat:{name:'القِط',voice:'مياااو'}, cow:{name:'البَقَرة',voice:'ممووو'}, dog:{name:'الكَلب',voice:'هوف'}, duck:{name:'البَطّة',voice:'كواك'} };
 const FOODS={ fish:{name:'سَمَكة'}, bone:{name:'عظمة'}, apple:{name:'تفاحة'}, bread:{name:'خبزة'}, grass:{name:'عشب'}, burger:{name:'همبرغر'} };
 const FEED_ROUNDS=[ {animal:'cat',food:'fish'}, {animal:'dog',food:'bone'}, {animal:'elephant',food:'apple'} ];
-const CHEERS=['صح يا {n}!','شاطر يا {n}!','برافو عليك يا {n}!','ممتاز يا {n}!','واااو! عرفت الإجابة يا {n}!','رائع يا {n}!'];
-const TRIES=['قربت يا {n}! جرب تاني.','مش دي يا {n}! نجرب مرة كمان؟','اوك يا {n}! خد بالك وجرب تاني.'];
+const CHEERS=['صَحْ يا {n}!','شاطِر يا {n}!','برافو عَلَيْك يا {n}!','مُمْتاز يا {n}!','واااو! عَرِفْت الإجابَة يا {n}!','رائِع يا {n}!'];
+const TRIES=['قُرِبْت يا {n}! جَرِّبْ تاني.','مِشْ دي يا {n}! نِجَرِّب مَرَّة كَمان؟','اوك يا {n}! خُدْ بالَك وجَرِّبْ تاني.'];
 const STICKERS=[
   {id:'balloon',name:'بالونة',    hint:'خلّص أول مرحلة حروف', cond:()=>S.lettersLevelDone>=1},
   {id:'heart',  name:'قلب',       hint:'خلّص عالم الحيوانات',  cond:()=>S.animalsDone},
@@ -967,21 +941,314 @@ const STICKERS=[
 ];
 
 /* ---------- الحالة ---------- */
-const KEY='soso-adventures-v2';
-const DEFAULTS={name:'سوسو',named:false,stars:0,stickers:[],lettersLearned:[],thingsLearned:[],animalsLearned:[],lettersLevel:0,lettersLevelDone:0,animalsDone:false,playSeconds:0,flags:{},today:{date:'',stars:0,letters:[],animals:[]},muted:false,voiceName:''};
+const KEY='soso-adventures-v3';
+const DEFAULTS={name:'سوسو',named:false,stars:0,stickers:[],lettersLearned:[],thingsLearned:[],animalsLearned:[],lettersLevel:0,lettersLevelDone:0,animalsDone:false,playSeconds:0,flags:{},today:{date:'',stars:0,letters:[],animals:[]},muted:false,voiceMode:'lulu'};
 let S;
 try{ S=Object.assign({},DEFAULTS,JSON.parse(localStorage.getItem(KEY)||'{}')); }catch(e){ S={...DEFAULTS}; }
 S.flags=S.flags||{}; S.thingsLearned=S.thingsLearned||[]; S.today=S.today||{date:'',stars:0,letters:[],animals:[]};
 const save=()=>{ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} };
 function ensureToday(){ const d=new Date().toDateString(); if(S.today.date!==d){ S.today={date:d,stars:0,letters:[],animals:[]}; save(); } }
 
-/* ---------- الصوت المولّد + النطق الطفولي ---------- */
+/* ============================================================
+   محرك صوت لولو الطفولي — Formant Synthesis بالكامل (Web Audio)
+   بديل مضمون لصوت الجهاز: صوت كرتوني صغير السن على أي موبايل
+   ============================================================ */
 const A={ctx:null,
   init(){ if(!this.ctx){ const C=window.AudioContext||window.webkitAudioContext; if(!C) return;
       this.ctx=new C(); this.master=this.ctx.createGain(); this.master.gain.value=.9; this.master.connect(this.ctx.destination); }
     if(this.ctx.state==='suspended') this.ctx.resume(); },
   t(){ return this.ctx?this.ctx.currentTime:0; }
 };
+function ensureVBus(){ if(A.vbus) return; const c=A.ctx;
+  A.vbus=c.createGain(); A.vbus.gain.value=1.1;
+  const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=3400;
+  A.vbus.connect(lp); lp.connect(A.master);
+}
+
+/* حروف العلة: مجموعات فورمانت (مرفوعة قليلاً = حنجرة صغيرة) */
+const VOWS={
+  a:{f:[780,1250,2680], g:[1,.55,.3],   d:.105, dl:.2},
+  i:{f:[360,2200,2960], g:[.85,.5,.32], d:.095, dl:.19},
+  u:{f:[350,880,2450],  g:[.9,.6,.3],   d:.095, dl:.19},
+  o:{f:[440,900,2500],  g:[.9,.6,.3],   d:.105, dl:.2},
+};
+/* السواكن */
+const CONS={
+  b:{t:'stop',f:750,q:1,d:.05,v:1},
+  t:{t:'stop',f:4200,q:.8,d:.045},
+  T:{t:'stop',f:2700,q:.9,d:.055},
+  d:{t:'stop',f:3100,q:.8,d:.04,v:1},
+  D:{t:'stop',f:2100,q:1,d:.055,v:1},
+  k:{t:'stop',f:2400,q:.9,d:.05},
+  q:{t:'stop',f:1300,q:1.2,d:.06},
+  j:{t:'stop',f:2300,q:1,d:.055,v:1},
+  '2':{t:'stop',f:900,q:.6,d:.03},
+  m:{t:'nas',f:[280,1100,2250],d:.075},
+  n:{t:'nas',f:[290,1750,2600],d:.06},
+  l:{t:'nas',f:[380,950,2600],d:.06},
+  r:{t:'trill',d:.06},
+  f:{t:'fric',lo:1400,hi:7500,d:.08,g:.3},
+  th:{t:'fric',lo:3600,hi:7800,d:.08,g:.28},
+  dh:{t:'fric',lo:3400,hi:7200,d:.06,g:.26,v:1},
+  s:{t:'fric',lo:4800,hi:9500,d:.1,g:.42},
+  S:{t:'fric',lo:2300,hi:5200,d:.11,g:.5},
+  z:{t:'fric',lo:4800,hi:9500,d:.07,g:.3,v:1},
+  Z:{t:'fric',lo:2200,hi:5000,d:.08,g:.42,v:1},
+  sh:{t:'fric',lo:2100,hi:4800,d:.1,g:.4},
+  kh:{t:'fric',lo:900,hi:2300,d:.1,g:.4},
+  gh:{t:'fric',lo:900,hi:2300,d:.08,g:.35,v:1},
+  '7':{t:'fric',lo:600,hi:1700,d:.1,g:.32},
+  H:{t:'fric',lo:500,hi:2100,d:.06,g:.14},
+  '3':{t:'fric',lo:500,hi:1500,d:.05,g:.2,v:1},
+  w:{t:'glide',to:'u',d:.045},
+  y:{t:'glide',to:'i',d:.045},
+};
+const AR2PH={'ب':'b','ت':'t','ط':'T','د':'d','ض':'D','ك':'k','ق':'q','ج':'j','ء':'2','أ':'2','إ':'2','آ':'2','ؤ':'2','ئ':'2','م':'m','ن':'n','ل':'l','ر':'r','ف':'f','ث':'th','ذ':'dh','س':'s','ص':'S','ز':'z','ظ':'Z','ش':'sh','خ':'kh','غ':'gh','ح':'7','ه':'H','ع':'3','و':'w','ي':'y'};
+/* قاموس نطق للكلمات العامية/الدخيلة وأسماء الحروف والكائنات (phones مفصولة بمسافة) */
+const WO={
+  'الف':'2 a l i f','باء':'b aa 2','تاء':'t aa 2','ثاء':'th aa 2','جيم':'j ii m','حاء':'7 aa 2',
+  'خاء':'kh aa 2','دال':'d aa l','ذال':'dh aa l','راء':'r aa 2','زاي':'z aa y','سين':'s ii n',
+  'شين':'sh ii n','صاد':'S aa d','ضاد':'D aa d','طاء':'T aa 2','ظاء':'Z aa 2','عين':'3 a y n',
+  'غين':'gh a y n','فاء':'f aa 2','قاف':'q aa f','كاف':'k aa f','لام':'l aa m','ميم':'m ii m',
+  'نون':'n uu n','هاء':'H aa 2','واو':'w aa w','ياء':'y aa 2',
+  'برافو':'b r a f o','واااو':'w aa aa o','اوك':'2 o k','تاني':'t aa n i','اللي':'2 i l l i',
+  'بيقول':'b i 2 u u l','بيحب':'b i 7 i b','اديه':'2 a d ii h','بيكبر':'b i k b u r',
+  'نهارده':'n a h aa r d a','كفاية':'k i f a y a','كويس':'k u w a y s','شويه':'sh u w a y a',
+  'شايفه':'sh aa y f i h','لسه':'l i s a','بيلمع':'b i l a m m i 3','غنوا':'gh a n n uu',
+  'غنينا':'gh a n n a y n a','مين':'m ii n','شكرا':'sh u k r a n','لولو':'l uu l uu',
+  'رااار':'r aa aa r','مياااو':'m i y aa w','بررر':'b r r r','ممووو':'m uu m oo','هوف':'h u f','كواك':'k w a k',
+  'اسد':'2 a s a d','بطه':'b a T a','تمساح':'t i m s aa 7','ثعبان':'th u 3 b aa n','جمل':'j a m a l',
+  'حوت':'7 uu t','خروف':'kh a r uu f','دب':'d u b','ذره':'dh u r a','رمان':'r u m aa n',
+  'زرافه':'z a r aa f a','سمكه':'s a m a k a','شمس':'sh a m s','صاروخ':'S aa r uu kh',
+  'ضفدع':'D i f D i 3','طائره':'T aa 2 i r a','ظبي':'Z a b i','عصفور':'3 u S f uu r',
+  'غيمه':'gh a y m a','فيل':'f ii l','قمر':'q a m a r','كلب':'k a l b','ليمون':'l a y m uu n',
+  'موز':'m uu z','نجمه':'n a j m a','هديه':'H a d i y a','ورده':'w a r d a','يد':'y a d',
+  'قط':'q i T','بقره':'b a q a r a',
+};
+
+/* ---- تحويل النص العربي المتشكل إلى وحدات صوتية ---- */
+const DIACS=new Set(['\u064B','\u064C','\u064D','\u064E','\u064F','\u0650','\u0651','\u0652']);
+const FATHA='\u064E',DAMMA='\u064F',KASRA='\u0650',SUKUN='\u0652',SHADDA='\u0651',
+      TN_F='\u064B',TN_D='\u064C',TN_K='\u064D';
+const SUNL='تثدذرزسشصضطظلن';
+function normWord(w){ return w.replace(/[\u064B-\u0652\u0670]/g,'').replace(/[إأآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/ء/g,''); }
+function woLookup(nw){ return WO[nw]||null; }
+function tokensOf(word){
+  const out=[]; const chars=[...word];
+  for(const ch of chars){
+    if(DIACS.has(ch)){ if(out.length){ if(ch===SHADDA) out[out.length-1].sh=true; else if(out[out.length-1].v==null) out[out.length-1].v=ch; } }
+    else out.push({c:ch,v:null,sh:false});
+  }
+  return out;
+}
+function parseArabic(word){
+  const toks=tokensOf(word); const ph=[];
+  for(let i=0;i<toks.length;i++){
+    const tk=toks[i], c=tk.c, isLast=i===toks.length-1, next=toks[i+1];
+    const prevP=ph[ph.length-1];
+    /* حروف المد والتعامل مع ا/و/ي */
+    if(c==='ا'){
+      if(prevP&&prevP.k==='v'&&prevP.v==='a'&&!prevP.lg){ prevP.lg=true; continue; }
+      if(ph.length===0){ ph.push({k:'c',c:'2'}); ph.push({k:'v',v:'a'}); continue; }
+      ph.push({k:'v',v:'a',lg:true}); continue;
+    }
+    if(c==='و'&&!tk.v){
+      if(prevP&&prevP.k==='v'&&prevP.v==='u'&&!prevP.lg&&!(next&&next.v)){ prevP.lg=true; continue; }
+      if(toks.length===1){ ph.push({k:'c',c:'w'}); ph.push({k:'v',v:'a'}); continue; }
+      ph.push({k:'c',c:'w'}); continue;
+    }
+    if(c==='ي'&&!tk.v){
+      if(prevP&&prevP.k==='v'&&prevP.v==='i'&&!prevP.lg){ prevP.lg=true; continue; }
+      ph.push({k:'c',c:'y'}); continue;
+    }
+    if(c==='ة'){ ph.push({k:'v',v:'a'}); continue; }
+    if(c==='ى'){ if(prevP&&prevP.k==='v'&&prevP.v==='a'){prevP.lg=true;} else ph.push({k:'v',v:'a',lg:true}); continue; }
+    let cc=AR2PH[c]||'H';
+    let v=null, tn=false;
+    if(tk.v===FATHA) v='a'; else if(tk.v===DAMMA) v='u'; else if(tk.v===KASRA) v='i';
+    else if(tk.v===SUKUN) v=null;
+    else if(tk.v===TN_F){v='a';tn=true;} else if(tk.v===TN_D){v='u';tn=true;} else if(tk.v===TN_K){v='i';tn=true;}
+    else if(tk.v==null){
+      if(isLast) v=null;
+      else if(ph.length===0) v=(next&&next.c==='ي')?'i':(next&&next.c==='و')?'u':'a';
+      else v='a';
+    }
+    ph.push({k:'c',c:cc,sh:tk.sh});
+    if(v) ph.push({k:'v',v});
+    if(tn) ph.push({k:'c',c:'n'});
+  }
+  return ph;
+}
+function wordPhones(word){
+  const nw=normWord(word);
+  let s=woLookup(nw);
+  if(s){ return s.split(' ').map(t=>tokenPhone(t)); }
+  let base=word, pre=null;
+  if(nw.length>3&&nw.startsWith('ال')&&word.startsWith('ال')){
+    const third=nw[2]; base=word.slice(2);
+    s=woLookup(normWord(base));
+    pre={sun:SUNL.includes(third)};
+  }
+  if(s){
+    const out=pre?[{k:'c',c:'2'},{k:'v',v:'a'},...(pre.sun?[]:[{k:'c',c:'l'}])]:[];
+    const toks=s.split(' ').map(t=>tokenPhone(t));
+    if(pre&&pre.sun&&toks.length&&toks[0].k==='c') toks[0].sh=true;
+    return [...out,...toks];
+  }
+  const parsed=parseArabic(pre?base:word);
+  if(pre){ const out=[{k:'c',c:'2'},{k:'v',v:'a'},...(pre.sun?[]:[{k:'c',c:'l'}])];
+    if(pre.sun&&parsed.length&&parsed[0].k==='c') parsed[0].sh=true;
+    return [...out,...parsed]; }
+  return parsed;
+}
+function tokenPhone(t){
+  if(t==='a'||t==='i'||t==='u'||t==='o') return {k:'v',v:t};
+  if(t==='aa') return {k:'v',v:'a',lg:true};
+  if(t==='ii') return {k:'v',v:'i',lg:true};
+  if(t==='uu') return {k:'v',v:'u',lg:true};
+  return {k:'c',c:t};
+}
+function textToSeq(text){
+  const clean=text.replace(/[!؟?.,،…:—ـ]/g,' ').replace(/\s+/g,' ').trim();
+  const seq=[];
+  clean.split(' ').forEach(w=>{ if(!w) return;
+    wordPhones(w).forEach(p=>seq.push(p)); seq.push({k:'gap'}); });
+  if(seq.length&&seq[seq.length-1].k==='gap') seq.pop();
+  return seq;
+}
+
+/* ---- جدولة الأصوات ---- */
+let voiceNodes=[], voiceTok=0;
+function trackV(n){ voiceNodes.push(n); try{ n.onended=()=>{ const i=voiceNodes.indexOf(n); if(i>=0) voiceNodes.splice(i,1); }; }catch(e){} return n; }
+function luluCancel(){ voiceTok++; voiceNodes.forEach(n=>{try{n.stop()}catch(e){}}); voiceNodes=[]; }
+function noiseFric(t,dur,vol,lo,hi){
+  const c=A.ctx; if(!c) return;
+  const len=Math.max(1,(c.sampleRate*dur)|0);
+  const buf=c.createBuffer(1,len,c.sampleRate), d=buf.getChannelData(0);
+  for(let i=0;i<len;i++) d[i]=Math.random()*2-1;
+  const src=c.createBufferSource(); src.buffer=buf;
+  const hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=lo;
+  const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=hi;
+  const g=c.createGain();
+  g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(vol,t+.015);
+  g.gain.setValueAtTime(vol,t+dur*.7); g.gain.linearRampToValueAtTime(0,t+dur);
+  src.connect(hp); hp.connect(lp); lp.connect(g); g.connect(A.vbus);
+  src.start(t); src.stop(t+dur+.02); trackV(src);
+}
+function oscTone(t,dur,f0,f1,vol,formants){
+  const c=A.ctx; if(!c) return;
+  const g=c.createGain();
+  g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(vol,t+.015);
+  g.gain.setValueAtTime(vol,t+Math.max(.02,dur-.035)); g.gain.linearRampToValueAtTime(0,t+dur);
+  g.connect(A.vbus);
+  [-6,5].forEach(det=>{
+    const o=c.createOscillator(); o.type='sawtooth';
+    o.frequency.setValueAtTime(f0,t); o.frequency.exponentialRampToValueAtTime(Math.max(40,f1),t+dur);
+    o.detune.value=det;
+    const lfo=c.createOscillator(); lfo.frequency.value=5.2;
+    const lg=c.createGain(); lg.gain.value=f0*.012;
+    lfo.connect(lg); lg.connect(o.frequency);
+    formants.forEach((fr,i)=>{
+      const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=fr; bp.Q.value=8+i*3;
+      const fg=c.createGain(); fg.gain.value=(i===0?1:.6);
+      o.connect(bp); bp.connect(fg); fg.connect(g);
+    });
+    o.start(t); o.stop(t+dur+.02); lfo.start(t); lfo.stop(t+dur+.02);
+    trackV(o); trackV(lfo);
+  });
+}
+function schedVowel(v,t,dur,f0,amp){
+  const F=VOWS[v]||VOWS.a;
+  oscTone(t,dur,f0,f0*.96,amp,F.f);
+  noiseFric(t,dur,.015,2000,7000); /* نَفَس خفيف = نعومة طفولية */
+}
+function schedCons(p,t,f0,rate){
+  const D=CONS[p.c]; if(!D) return .04;
+  const gm=p.sh?1.35:1, gd=p.sh?1.3:1;
+  const c=A.ctx;
+  if(D.t==='stop'){
+    const gap=(p.sh?.055:.035);
+    const bd=D.d*gd;
+    noiseFric(t+gap,bd,(D.v?.34:.48)*gm,D.f*.6,D.f*1.6);
+    return gap+bd+.006;
+  }
+  if(D.t==='fric'){
+    const d=D.d*gd;
+    noiseFric(t,d,D.g*gm,D.lo,D.hi);
+    if(D.v) oscTone(t,d,f0*.95,f0*.9,.07,[400,1400,2400]);
+    return d;
+  }
+  if(D.t==='nas'){
+    const d=D.d*gd;
+    oscTone(t,d,f0,f0*.94,.3,D.f);
+    return d;
+  }
+  if(D.t==='trill'){
+    const d=D.d;
+    /* راء مكررة: مجهور مع تذبذب سريع في المستوى */
+    const g=c.createGain(); g.gain.setValueAtTime(0,t);
+    g.gain.linearRampToValueAtTime(.34,t+.012);
+    g.gain.linearRampToValueAtTime(0,t+d);
+    g.connect(A.vbus);
+    const o=c.createOscillator(); o.type='sawtooth'; o.frequency.setValueAtTime(f0,t);
+    const am=c.createOscillator(); am.type='square'; am.frequency.value=26;
+    const ag=c.createGain(); ag.gain.value=.17;
+    g.gain.setValueAtTime(.3,t);
+    am.connect(ag); ag.connect(g.gain);
+    const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=1100; bp.Q.value=2;
+    o.connect(bp); bp.connect(g);
+    o.start(t); o.stop(t+d+.02); am.start(t); am.stop(t+d+.02);
+    trackV(o); trackV(am);
+    return d;
+  }
+  if(D.t==='glide'){
+    const F=VOWS[D.to];
+    oscTone(t,D.d,f0*1.05,f0,.16,F.f);
+    return D.d;
+  }
+  return .04;
+}
+/* النطق الرئيسي: جملة عربية → صوت لولو الطفولي */
+function luluSpeak(text,mood={}){
+  luluCancel();
+  A.init(); if(!A.ctx) return 0;
+  ensureVBus();
+  const tok=voiceTok;
+  const seq=textToSeq(text); if(!seq.length) return 0;
+  const base=mood.pitch||( /[!]/.test(text)?335: 300 );
+  let t=A.ctx.currentTime+.05;
+  const vows=seq.filter(p=>p.k==='v'); const nV=vows.length; let vi=0;
+  const isQ=/[؟?]/.test(text);
+  for(const p of seq){
+    if(tok!==voiceTok) return 0;
+    if(p.k==='gap'){ t+=.075; continue; }
+    if(p.k==='v'){
+      const F=VOWS[p.v];
+      const dur=p.lg?F.dl:F.d;
+      let f0=base*(1.07-.14*(nV>1?vi/(nV-1):0));
+      if(isQ&&vi>=nV-2) f0*=1.22;
+      if(vi===0) f0*=1.05;
+      schedVowel(p.v,t,dur,f0,p.lg?.5:.42);
+      vi++; t+=dur;
+    }else if(p.k==='c'){
+      t+=schedCons(p,t,base,1);
+    }
+  }
+  return t-A.ctx.currentTime;
+}
+/* ضحكة لولو */
+function luluGiggle(){
+  A.init(); if(!A.ctx||S.muted) return; ensureVBus();
+  luluCancel(); const tok=voiceTok;
+  let t=A.ctx.currentTime+.02;
+  [430,480,530,470].forEach(f=>{
+    if(tok!==voiceTok) return;
+    oscTone(t,.09,f,f*.88,.3,[800,2300,2900]);
+    t+=.11;
+  });
+}
+
+/* ---------- أصوات الحيوانات والمؤثرات ---------- */
 function tone(o){
   if(!A.ctx||S.muted) return;
   const c=A.ctx, t=A.t()+(o.t||0), dur=o.dur||.2;
@@ -1024,7 +1291,6 @@ const SFX={
   beat:()=>tone({f:1000,f2:600,dur:.06,type:'square',vol:.14}),
   sparkle:()=>[1046,1318,1568].forEach((f,i)=>tone({f,t:i*.07,dur:.14,type:'triangle',vol:.22})),
 };
-/* أصوات الحيوانات والكائنات — كلها مولّدة */
 const ANIMAL_SFX={
   cat(){ tone({f:640,f2:880,dur:.28,type:'sine',vol:.42,attack:.05,lp:2500}); tone({f:830,f2:390,t:.3,dur:.5,type:'sine',vol:.42,attack:.04,lp:2200}); },
   lion(){ noise({dur:1.2,f:240,vol:.5}); tone({f:95,f2:70,dur:1.2,type:'sawtooth',vol:.4,lp:280,wob:[7,12]}); tone({f:190,f2:130,dur:1.1,type:'sawtooth',vol:.15,lp:400}); },
@@ -1049,33 +1315,32 @@ function thingSound(thing){
   if(fn) fn(); else SFX.sparkle();
 }
 
-/* ---------- النطق العربي: اختيار صوت طفولي + نبرة عالية + إيقاع أبطأ ---------- */
+/* ---- speak: افتراضيًا صوت لولو المولّد + خيار صوت الجهاز ---- */
 let arVoice=null;
-const FEMALE_HINTS=['zariyah','zariya','hoda','هدى','salma','سالما','laila','ليلى','hala','هالة','maryam','maryam','sana','google','female','انثى'];
+const FEMALE_HINTS=['zariyah','zariya','hoda','هدى','salma','سالما','laila','ليلى','hala','هالة','maryam','sana','google','female','انثى'];
 function pickVoice(){
   try{
     const vs=speechSynthesis.getVoices();
     const ar=vs.filter(v=>/^ar/i.test(v.lang));
     if(!ar.length){ arVoice=null; return; }
-    if(S.voiceName){ const f=ar.find(v=>v.name===S.voiceName); if(f){ arVoice=f; return; } }
     for(const p of FEMALE_HINTS){ const f=ar.find(v=>(v.name||'').toLowerCase().includes(p)); if(f){ arVoice=f; return; } }
     arVoice=ar[0];
   }catch(e){}
 }
-if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged=()=>{ pickVoice(); if($('#pVoice')) fillVoiceSelect(); }; }
-function speak(txt,opts={}){
-  if(S.muted) return;
+if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
+function deviceSpeak(txt){
   try{
     speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(txt);
-    u.lang='ar-SA';
-    if(!arVoice) pickVoice(); if(arVoice) u.voice=arVoice;
-    /* نبرة عالية + كلام أبطأ قليلًا = صوت طفولي ونطق واضح وصح */
-    u.rate=opts.rate||0.88; u.pitch=opts.pitch||1.45; u.volume=1;
-    speechSynthesis.speak(u);
+    u.lang='ar-SA'; if(!arVoice) pickVoice(); if(arVoice) u.voice=arVoice;
+    u.rate=.88; u.pitch=1.5; speechSynthesis.speak(u);
   }catch(e){}
 }
-const hasArabicVoice=()=>{ pickVoice(); return !!arVoice; };
+function speak(txt,opts={}){
+  if(S.muted) return;
+  if(S.voiceMode==='device' && 'speechSynthesis' in window){ deviceSpeak(txt); return; }
+  luluSpeak(txt);
+}
 
 /* ---------- الكونفيتي ---------- */
 const FX={parts:[],
@@ -1163,7 +1428,7 @@ let flow=null, viewToken=0;
 function baseStars(){ return `<div class="stars-pill" id="starsPill">${icon('ic-star')}<b id="starCount">${S.stars}</b></div>`; }
 function replayBtn(){ return `<button class="round-btn" id="btnReplay" aria-label="اسمع تاني">${icon('ic-speaker')}</button>`; }
 function bindReplay(){ const b=$('#btnReplay'); if(b) b.onclick=()=>{ SFX.tap(); speak(lastSay); }; }
-function bindBack(fn){ const b=$('#btnBack'); if(b) b.onclick=()=>{ SFX.tap(); speechSynthesis&&speechSynthesis.cancel(); fn(); }; }
+function bindBack(fn){ const b=$('#btnBack'); if(b) b.onclick=()=>{ SFX.tap(); luluCancel(); speechSynthesis&&speechSynthesis.cancel(); fn(); }; }
 
 /* ====== الترحيب ====== */
 function goWelcome(){
@@ -1185,7 +1450,7 @@ function goWelcome(){
     A.init(); SFX.tap();
     if(!S.named){ const v=$('#nameInput').value.trim(); S.name=v||'سوسو'; S.named=true; }
     save(); goHome();
-    setTimeout(()=>say(`أهلاً يا ${S.name}! أنا لولو، هلعب معاك!`,'wave'),250);
+    setTimeout(()=>say(`أَهْلاً يا ${S.name}! أَنا لولو! هَلْعَبْ مَعاك!`,'wave'),250);
   };
 }
 
@@ -1204,7 +1469,7 @@ function renderHome(){
     <div class="home-lulu">
       ${luluSVG('idle')}
       <div class="replay-row">
-        <div class="bubble"><span id="bubbleText">أهلاً يا ${S.name}! نلعب بالحروف ولا الحيوانات؟</span></div>
+        <div class="bubble"><span id="bubbleText">أَهْلاً يا ${S.name}! نِلْعَبْ مَع الحُرُوف ولا الحَيَوانات؟</span></div>
         ${replayBtn()}
       </div>
     </div>
@@ -1286,9 +1551,9 @@ function correctFX(elm,after){
   SFX.success(); FX.burst(r.left+r.width/2,r.top+r.height/2,32);
   luluAct($('#luluMain'),pick(['jump','clap','dance']));
   if(elm){ elm.classList.remove('winner'); void elm.offsetWidth; elm.classList.add('winner'); }
-  setTimeout(()=>say(nextCheer()),300);
+  setTimeout(()=>{ say(nextCheer()); if(Math.random()<.3) setTimeout(luluGiggle,1000); },350);
   awardStar(r.left+r.width/2,r.top+r.height/2);
-  if(after) setTimeout(after,1700);
+  if(after) setTimeout(after,1800);
 }
 function wrongFX(elm,msg){
   SFX.gentle();
@@ -1316,23 +1581,23 @@ setInterval(()=>{ if(flow && !document.hidden){ S.playSeconds++; if(S.playSecond
 function viewLearnLetter(step,done){
   const tok=++viewToken, L=step.L, pz=playzone();
   const nm=LETTER_NAMES[L.ch];
-  pz.innerHTML=`<div class="game-head">حرف جديد!</div>
+  pz.innerHTML=`<div class="game-head">حَرْف جَديد!</div>
     <div class="learn-card">
       <div class="big-letter" id="bigL" style="color:${L.color}">${disp(L)}</div>
       <div class="learn-word"><b style="color:${L.color}">${L.word[0]}</b>${L.word.slice(1)}</div>
       <div class="learn-animal" id="learnAn">${anSVG(L.thing)}</div>
     </div>
-    <button class="btn btn-sun btn-xl" id="btnNext" style="opacity:0; align-self:center">يلا نكمل!</button>`;
+    <button class="btn btn-sun btn-xl" id="btnNext" style="opacity:0; align-self:center">يِلَّا نِكْمُل!</button>`;
   const bl=$('#bigL'), an=$('#learnAn');
-  bl.onclick=()=>{ SFX.tap(); bl.animate([{transform:'scale(1)'},{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:300}); speak(nm,{rate:.8,pitch:1.5}); };
+  bl.onclick=()=>{ SFX.tap(); bl.animate([{transform:'scale(1)'},{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:300}); speak(nm); };
   an.onclick=()=>{ an.classList.remove('bounce'); void an.offsetWidth; an.classList.add('bounce'); thingSound(L.thing);
-    if(!ANIMAL_SFX[L.thing]) setTimeout(()=>speak(L.word),520); };
-  say(`بص يا ${S.name}! ده حرف ${nm}`,'jump');
+    if(!ANIMAL_SFX[L.thing]) setTimeout(()=>speak(L.word),600); };
+  say(`بُصْ يا ${S.name}! ده حَرْف ${nm}`,'jump');
   (async()=>{
-    await wait(1800); if(tok!==viewToken) return;
-    speak(nm,{rate:.8,pitch:1.5}); bl.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:400});
-    await wait(1600); if(tok!==viewToken) return;
-    say(`${nm}... ${L.word}!`,'wiggle'); an.classList.add('bounce'); thingSound(L.thing);
+    await wait(1900); if(tok!==viewToken) return;
+    speak(nm); bl.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:400});
+    await wait(1700); if(tok!==viewToken) return;
+    say(`${nm}، ${L.word}!`,'wiggle'); an.classList.add('bounce'); thingSound(L.thing);
     await wait(2100); if(tok!==viewToken) return;
     const b=$('#btnNext'); if(b){ b.style.opacity=1; b.classList.add('hint'); }
   })();
@@ -1343,8 +1608,8 @@ function viewLearnLetter(step,done){
     save();
     const r=bl.getBoundingClientRect(); SFX.star();
     awardStar(r.left+r.width/2,r.top+r.height/2);
-    say(`شاطر يا ${S.name}! اتعلمت حرف ${nm}!`,'clap');
-    setTimeout(()=>{ if(tok===viewToken) done(); },1400);
+    say(`شاطِر يا ${S.name}! اِتَّعَلَّمْت حَرْف ${nm}!`,'clap');
+    setTimeout(()=>{ if(tok===viewToken) done(); },1500);
   };
 }
 
@@ -1360,17 +1625,17 @@ function viewPickLetter(step,done){
     const T=rounds[round];
     const others=shuffle(letters.filter(l=>l!==T)).slice(0,2);
     const opts=shuffle([T,...others]);
-    pz.innerHTML=`<div class="game-head">فين حرف <span style="color:${T.color}">${disp(T)}</span> يا ${S.name}؟</div>
+    pz.innerHTML=`<div class="game-head">فين حَرْف <span style="color:${T.color}">${disp(T)}</span> يا ${S.name}؟</div>
       <div class="choices-row">${opts.map(L=>`<div class="tile choice-tile" data-ch="${L.ch}"><div class="big-letter" style="font-size:5.5rem">${disp(L)}</div></div>`).join('')}</div>`;
-    say(`فين حرف ${LETTER_NAMES[T.ch]} يا ${S.name}؟`);
+    say(`فين حَرْف ${LETTER_NAMES[T.ch]} يا ${S.name}؟`);
     $$('.choice-tile').forEach(t=>t.onclick=()=>{
       if(locked||tok!==viewToken) return;
       if(t.dataset.ch===T.ch){
         locked=true; correctFX(t,()=>{ round++; ask(); });
       }else{
         wrongCount++;
-        wrongFX(t,`دي حرف ${LETTER_NAMES[t.dataset.ch]}! دور على حرف ${LETTER_NAMES[T.ch]}.`);
-        if(wrongCount>=2){ $$('.choice-tile').forEach(x=>{ if(x.dataset.ch===T.ch) x.classList.add('hint'); }); say(`بص! حرف ${disp(T)} بيلمع!`); }
+        wrongFX(t,`دي حَرْف ${LETTER_NAMES[t.dataset.ch]}! دُور عَلى حَرْف ${LETTER_NAMES[T.ch]}.`);
+        if(wrongCount>=2){ $$('.choice-tile').forEach(x=>{ if(x.dataset.ch===T.ch) x.classList.add('hint'); }); say(`بُصْ! حَرْف ${disp(T)} بيلَمِّع!`); }
       }
     });
   }
@@ -1388,7 +1653,7 @@ function viewBalloons(step,done){
     const T=rounds[round];
     const pool=[...shuffle(letters).filter(l=>l!==T),pick(letters),pick(letters)];
     const uniq=[T,...new Set(pool)].slice(0,5);
-    pz.innerHTML=`<div class="game-head">فقّع البالونة اللي فيها حرف <span style="color:${T.color}">${disp(T)}</span>!</div>
+    pz.innerHTML=`<div class="game-head">فَقِّع بَالُونَة فيها حَرْف <span style="color:${T.color}">${disp(T)}</span>!</div>
       <div class="balloons-area" id="bArea"></div>
       <div class="game-actions">${replayBtn()}</div>`;
     bindReplay();
@@ -1404,12 +1669,12 @@ function viewBalloons(step,done){
           correctFX(b,()=>{ round++; spawn(); });
         }else{
           b.classList.remove('nope'); void b.offsetWidth; b.classList.add('nope');
-          wrongFX(null,`دي فيها حرف ${LETTER_NAMES[b.dataset.ch]}! دور على حرف ${LETTER_NAMES[T.ch]}.`);
+          wrongFX(null,`دي فيها حَرْف ${LETTER_NAMES[b.dataset.ch]}! دُور عَلى حَرْف ${LETTER_NAMES[T.ch]}.`);
         }
       };
       area.appendChild(b);
     });
-    say(`فقّع البالونة اللي فيها حرف ${LETTER_NAMES[T.ch]} يا ${S.name}!`);
+    say(`فَقِّع بَالُونَة حَرْف ${LETTER_NAMES[T.ch]} يا ${S.name}!`);
   }
   spawn();
 }
@@ -1418,7 +1683,7 @@ function viewBalloons(step,done){
 function viewTrace(step,done){
   const tok=++viewToken, L=step.L, pz=playzone();
   const SZ=360, txt=disp(L);
-  pz.innerHTML=`<div class="game-head">لوّن حرف <span style="color:${L.color}">${txt}</span> بإصبعك يا ${S.name}!</div>
+  pz.innerHTML=`<div class="game-head">لَوِّن حَرْف <span style="color:${L.color}">${txt}</span> بِصَبْعَك يا ${S.name}!</div>
     <div class="trace-wrap">
       <canvas id="traceCv" width="${SZ}" height="${SZ}"></canvas>
       <div class="trace-progress"><i id="traceFill"></i></div>
@@ -1480,12 +1745,12 @@ function viewTrace(step,done){
       pctx.font='700 260px "Baloo Bhaijaan 2", sans-serif'; pctx.textAlign='center'; pctx.textBaseline='middle';
       pctx.fillStyle=L.color; pctx.fillText(txt,SZ/2,SZ/2+10); redraw();
       correctFX(cv,done);
-    }else if(pts.length){ say(`كمّل يا ${S.name}! باقي شوية!`,'wiggle'); }
+    }else if(pts.length){ say(`كَمِّل يا ${S.name}! باقي شُوَيَّة!`,'wiggle'); }
   });
   $('#btnClear').onclick=()=>{ if(finished) return; SFX.tap(); pctx.clearRect(0,0,SZ,SZ); redraw(); const f=$('#traceFill'); if(f) f.style.width='0%'; };
   prepare(); redraw();
   document.fonts&&document.fonts.ready.then(()=>{ if(tok===viewToken){ prepare(); redraw(); } });
-  say(`امسك صباعك ولوّن حرف ${LETTER_NAMES[L.ch]} يا ${S.name}!`);
+  say(`أَمْسِك صَبْعَك ولَوِّن حَرْف ${LETTER_NAMES[L.ch]} يا ${S.name}!`);
 }
 
 /* ================= تعليم حيوان ================= */
@@ -1494,11 +1759,11 @@ function viewLearnAnimal(step,done){
   pz.innerHTML=`<div class="game-head">مين ده يا ${S.name}؟</div>
     <div class="big-animal" id="bAn">${anSVG(a)}</div>
     <div class="animal-name" id="aName" style="visibility:hidden">${info.name}</div>
-    <button class="btn btn-sun btn-xl" id="btnNext" style="opacity:0; align-self:center">يلا نكمل!</button>`;
+    <button class="btn btn-sun btn-xl" id="btnNext" style="opacity:0; align-self:center">يِلَّا نِكْمُل!</button>`;
   const an=$('#bAn');
   const doSound=()=>{ an.classList.remove('bounce'); void an.offsetWidth; an.classList.add('bounce'); ANIMAL_SFX[a](); };
   an.onclick=doSound;
-  say(`مين ده يا ${S.name}؟ اضغط عليه!`,'wiggle');
+  say(`مين ده يا ${S.name}؟ اِضْغُط عَلَيْه!`,'wiggle');
   let met=false;
   an.addEventListener('click',()=>{ if(met||tok!==viewToken) return; met=true;
     setTimeout(()=>{
@@ -1507,7 +1772,7 @@ function viewLearnAnimal(step,done){
       $('#aName').animate([{transform:'scale(.4)'},{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:500,easing:'cubic-bezier(.34,1.56,.64,1)'});
       if(!S.animalsLearned.includes(a)){ S.animalsLearned.push(a); S.today.animals.push(info.name); }
       save();
-      say(`ده ${info.name}! شاطر يا ${S.name}!`,'clap');
+      say(`ده ${info.name}! شاطِر يا ${S.name}!`,'clap');
       const r=an.getBoundingClientRect(); SFX.star(); awardStar(r.left+r.width/2,r.top+r.height/2);
       const b=$('#btnNext'); b.style.opacity=1; b.classList.add('hint');
     },700);
@@ -1526,7 +1791,7 @@ function viewSoundGuess(step,done){
     const target=rounds[round];
     const others=shuffle(Object.keys(ANIMALS).filter(k=>k!==target)).slice(0,2);
     const opts=shuffle([target,...others]);
-    pz.innerHTML=`<div class="game-head">اسمع كويس يا ${S.name}! مين اللي بيتكلم؟</div>
+    pz.innerHTML=`<div class="game-head">اِسْمَع كُوَيِّس يا ${S.name}! مين اللي بِيقُول كده؟</div>
       <div class="game-actions"><button class="round-btn" id="btnListen" style="width:86px;height:86px" aria-label="اسمع">${icon('ic-speaker')}</button></div>
       <div class="choices-row">${opts.map(k=>`<div class="tile choice-tile" data-k="${k}">${anSVG(k)}</div>`).join('')}</div>`;
     const listen=()=>{ if(locked&&tok===viewToken) return; ANIMAL_SFX[target](); luluAct($('#luluMain'),'wiggle'); };
@@ -1539,11 +1804,11 @@ function viewSoundGuess(step,done){
         correctFX(t,()=>{ round++; ask(); });
       }else{
         wrongCount++;
-        wrongFX(t,`مش ده! ${ANIMALS[target].name} هو اللي بيقول ${ANIMALS[target].voice}!`);
+        wrongFX(t,`مِشْ ده! ${ANIMALS[target].name} هو اللي بِيقُول ${ANIMALS[target].voice}!`);
         if(wrongCount>=2){ $$('.choice-tile').forEach(x=>{ if(x.dataset.k===target) x.classList.add('hint'); }); setTimeout(listen,600); }
       }
     });
-    say(`اسمع كويس يا ${S.name}! مين اللي بيقول ${ANIMALS[target].voice}؟`);
+    say(`اِسْمَع كُوَيِّس يا ${S.name}! مين اللي بِيقُول ${ANIMALS[target].voice}؟`);
     setTimeout(listen,1100);
   }
   ask();
@@ -1559,12 +1824,12 @@ function viewFeed(step,done){
     const R=rounds[round];
     const others=shuffle(Object.keys(FOODS).filter(f=>f!==R.food)).slice(0,2);
     const opts=shuffle([R.food,...others]);
-    pz.innerHTML=`<div class="game-head">${ANIMALS[R.animal].name} جعان! اطعمه يا ${S.name}!</div>
+    pz.innerHTML=`<div class="game-head">${ANIMALS[R.animal].name} جَعْآن! اِدِّيه يا ${S.name}!</div>
       <div class="feed-board">
         <div class="feed-animal target" id="feedAn">${anSVG(R.animal)}</div>
         <div class="food-row">${opts.map(f=>`<div class="tile food-tile" data-f="${f}">${foodSVG(f)}</div>`).join('')}</div>
       </div>`;
-    say(`${ANIMALS[R.animal].name} جعان يا ${S.name}! ادّيه ${FOODS[R.food].name}!`);
+    say(`${ANIMALS[R.animal].name} جَعْآن يا ${S.name}! اِدِّيه ${FOODS[R.food].name}!`);
     const animal=$('#feedAn');
     function winFood(tile){
       const r=tile.getBoundingClientRect(), ar=animal.getBoundingClientRect();
@@ -1577,7 +1842,7 @@ function viewFeed(step,done){
       setTimeout(()=>{ g.remove(); tile.classList.add('hidden');
         SFX.munch(); animal.classList.remove('happy'); void animal.offsetWidth; animal.classList.add('happy');
         correctFX(animal,()=>{ round++; ask(); });
-        setTimeout(()=>say(`لذيذ! ${ANIMALS[R.animal].name} بيقول شكراً يا ${S.name}!`,'dance'),1500);
+        setTimeout(()=>say(`لَذيذ! ${ANIMALS[R.animal].name} بِيقُول شُكْرا يا ${S.name}!`,'dance'),1600);
       },500);
     }
     $$('.food-tile').forEach(tile=>{
@@ -1611,13 +1876,13 @@ function viewFeed(step,done){
           setTimeout(()=>{ g.remove(); SFX.munch();
             animal.classList.remove('happy'); void animal.offsetWidth; animal.classList.add('happy');
             correctFX(animal,()=>{ round++; ask(); });
-            setTimeout(()=>say(`لذيذ! شكراً يا ${S.name}!`,'dance'),1500);
+            setTimeout(()=>say(`لَذيذ! شُكْرا يا ${S.name}!`,'dance'),1600);
           },420);
         }else if(!moved&&tile.dataset.f===R.food){
           g.remove(); winFood(tile);
         }else{
-          if(inside) wrongFX(null,`دي ${FOODS[tile.dataset.f].name}! ${ANIMALS[R.animal].name} بيحب ${FOODS[R.food].name}!`);
-          else if(moved) say(`اسحب ${FOODS[R.food].name} لحد ${ANIMALS[R.animal].name} يا ${S.name}!`);
+          if(inside) wrongFX(null,`دي ${FOODS[tile.dataset.f].name}! ${ANIMALS[R.animal].name} بِيحِب ${FOODS[R.food].name}!`);
+          else if(moved) say(`اِسْحَب ${FOODS[R.food].name} لُحْد ${ANIMALS[R.animal].name} يا ${S.name}!`);
           g.style.transition='left .35s var(--pop), top .35s var(--pop), transform .35s var(--pop)';
           g.style.transform='translate(0,0)';
           setTimeout(()=>{ g.remove(); tile.classList.remove('hidden'); },380);
@@ -1629,30 +1894,30 @@ function viewFeed(step,done){
   ask();
 }
 
-/* ================= مين اختفى؟ (من كل كائنات الحروف) ================= */
+/* ================= مين اختفى؟ ================= */
 function viewWhoGone(step,done){
   const tok=++viewToken, pz=playzone();
   const shown=shuffle(Object.keys(THINGS)).slice(0,3);
   const hidden=pick(shown);
-  pz.innerHTML=`<div class="game-head">بص كويس يا ${S.name}! احفظ الكائنات!</div>
+  pz.innerHTML=`<div class="game-head">بُصْ كُوَيِّس يا ${S.name}! اِحْفَظْهُم!</div>
     <div style="position:relative">
       <div class="who-row" id="whoRow">${shown.map(k=>`<div class="tile who-card" data-k="${k}">${anSVG(k)}</div>`).join('')}</div>
     </div>
-    <div class="game-head" id="whoQ" style="visibility:hidden">مين اختفى؟</div>
+    <div class="game-head" id="whoQ" style="visibility:hidden">مين اِخْتَفى؟</div>
     <div class="choices-row" id="whoChoices" style="visibility:hidden">${shuffle([...shown]).map(k=>`<div class="tile choice-tile" data-k="${k}">${anSVG(k)}</div>`).join('')}</div>`;
-  say(`بص كويس يا ${S.name}! احفظهم كويس!`);
+  say(`بُصْ كُوَيِّس يا ${S.name}! اِحْفَظْهُم كُوَيِّس!`);
   (async()=>{
     await wait(2600); if(tok!==viewToken) return;
-    const cover=el(`<div class="cover"><div class="stars-bg">${icon('ic-star')}${icon('ic-star')}${icon('ic-star')}</div><h3>غطّي عينيك!</h3></div>`);
+    const cover=el(`<div class="cover"><div class="stars-bg">${icon('ic-star')}${icon('ic-star')}${icon('ic-star')}</div><h3>غَطِّي عَيْنِيك!</h3></div>`);
     pz.querySelector('div[style]').appendChild(cover);
-    speak('غطّي عينيك!');
+    speak('غَطِّي عَيْنِيك!');
     await wait(1900); if(tok!==viewToken) return;
     cover.remove();
     const slot=pz.querySelector(`.who-card[data-k="${hidden}"]`);
     slot.classList.add('gone-slot'); slot.dataset.k='__gone';
     slot.innerHTML='<div class="qmark">؟</div>';
     $('#whoQ').style.visibility='visible'; $('#whoChoices').style.visibility='visible';
-    say(`مين اختفى يا ${S.name}؟`);
+    say(`مين اِخْتَفى يا ${S.name}؟`);
     $$('#whoChoices .choice-tile').forEach(t=>t.onclick=()=>{
       if(tok!==viewToken||slot.dataset.done) return;
       if(t.dataset.k===hidden){
@@ -1663,7 +1928,7 @@ function viewWhoGone(step,done){
         thingSound(hidden);
         correctFX(t,done);
       }else{
-        wrongFX(t,`دي ${THINGS[t.dataset.k].name}! موجود وشايفه! فين اللي اختفى؟`);
+        wrongFX(t,`دي ${THINGS[t.dataset.k].name}! مَوْجُود وشايْفِه! فين اللي اِخْتَفى؟`);
         const orig=pz.querySelector(`#whoRow .who-card[data-k="${t.dataset.k}"]`);
         if(orig){ orig.classList.remove('bounce'); void orig.offsetWidth; orig.classList.add('bounce'); }
       }
@@ -1680,44 +1945,44 @@ function viewFinale(step,done){
   if(isLetters){
     if(step.levelIdx>=6){
       S.lettersLevel=6; S.lettersLevelDone=7;
-      headline=`برافو يا ${S.name}! عرفت كل الحروف!`; sub='٢٨ حرفًا من ألِف لياء!';
+      headline=`برافو يا ${S.name}! عَرِفْت كُلّ الحُروف!`; sub='٢٨ حَرْفاً مِن أَلِف لِياء!';
     }else{
       S.lettersLevel=step.levelIdx+1; S.lettersLevelDone=Math.max(S.lettersLevelDone,step.levelIdx+1);
-      headline=`برافو يا ${S.name}! خلصت المرحلة ${step.levelIdx+1} من ٧!`;
-      sub=`اتعلمت حروف: ${letters.map(L=>disp(L)).join(' ')}`;
+      headline=`برافو يا ${S.name}! خَلَصْت المَرْحَلَة ${step.levelIdx+1} مِن ٧!`;
+      sub=`اِتَّعَلَّمْت حُروف: ${letters.map(L=>disp(L)).join(' ')}`;
     }
   }else{
     const first=!S.animalsDone; S.animalsDone=true;
-    headline=first?`برافو يا ${S.name}! خلصت مرحلة الحيوانات!`:`برافو يا ${S.name}! لعبت تاني وبطولة!`;
-    sub=`عرفت ${S.animalsLearned.length} حيوانات!`;
+    headline=first?`برافو يا ${S.name}! خَلَصْت مَرْحَلَة الحَيَوانات!`:`برافو يا ${S.name}! لَعِبْت تاني وبُطُولَة!`;
+    sub=`عَرِفْت ${S.animalsLearned.length} حَيَوانات!`;
   }
   save();
   const newStickers=STICKERS.filter(st=>st.cond()&&!S.stickers.includes(st.id));
   newStickers.forEach(st=>S.stickers.push(st.id)); save();
   const st=newStickers[0];
   const news=[];
-  if(isLetters&&!S.flags.tree){ S.flags.tree=1; news.push('شجرة جديدة ظهرت في عالمك!'); }
-  if(isLetters&&step.levelIdx>=2&&!S.flags.bush){ S.flags.bush=1; news.push('شجيرات وردية ظهرت في عالمك!'); }
-  if(!isLetters&&!S.flags.animals){ S.flags.animals=1; news.push('الحيوانات رجعت تعيش في عالمك!'); }
-  if(S.stars>=10&&!S.flags.house){ S.flags.house=1; news.push('بنيت بيت في عالمك!'); }
-  if(S.stars>=5&&!S.flags.bfly){ S.flags.bfly=1; news.push('فراشة ملونة جت تزورك!'); }
-  if(S.lettersLevelDone>=7&&S.animalsDone&&!S.flags.rainbow){ S.flags.rainbow=1; news.push('قوس قزح طلع في عالمك!'); }
+  if(isLetters&&!S.flags.tree){ S.flags.tree=1; news.push('شَجَرة جَديدة ظَهَرَت في عالَمَك!'); }
+  if(isLetters&&step.levelIdx>=2&&!S.flags.bush){ S.flags.bush=1; news.push('شُجَيْرات وَرْدِيَّة ظَهَرَت في عالَمَك!'); }
+  if(!isLetters&&!S.flags.animals){ S.flags.animals=1; news.push('الحَيَوانات رَجِعَت تِعيش في عالَمَك!'); }
+  if(S.stars>=10&&!S.flags.house){ S.flags.house=1; news.push('بَنَيْت بيت في عالَمَك!'); }
+  if(S.stars>=5&&!S.flags.bfly){ S.flags.bfly=1; news.push('فَراشَة مُلَوَّنة جَت تِزُورك!'); }
+  if(S.lettersLevelDone>=7&&S.animalsDone&&!S.flags.rainbow){ S.flags.rainbow=1; news.push('قَوْس قُزَح طَلَع في عالَمَك!'); }
   save();
 
   pz.innerHTML=`<div class="finale">
     <h1>${headline}</h1>
-    <div class="session-stars">${icon('ic-star')}<span>${S.today.stars||0} نجمة النهارده</span></div>
+    <div class="session-stars">${icon('ic-star')}<span>${S.today.stars||0} نَجْمَة النَّهارْده</span></div>
     ${st?`<div class="sticker-reveal">${icon('st-'+st.id)}</div><div class="sub">ستيكر جديد: ${st.name}!</div>`:''}
     ${news.map(n=>`<div class="sub">${n}</div>`).join('')}
-    ${isLetters?`<button class="btn btn-sun" id="btnSong">اسمع أغنية الحروف!</button>`:''}
+    ${isLetters?`<button class="btn btn-sun" id="btnSong">اِسْمَع أُغْنِيَة الحُروف!</button>`:''}
     <div class="finale-actions">
-      <button class="btn btn-primary btn-xl" id="btnWorld">شوف عالمي!</button>
-      <button class="btn btn-xl" id="btnEnd">خلصنا النهارده!</button>
+      <button class="btn btn-primary btn-xl" id="btnWorld">شُوف عالَمي!</button>
+      <button class="btn btn-xl" id="btnEnd">خَلَصْنا النَّهارْده!</button>
     </div>
   </div>`;
-  SFX.fanfare(); FX.rain(90);
+  SFX.fanfare(); FX.rain(90); luluGiggle();
   luluAct($('#luluMain'),'dance');
-  say(`برافو يا ${S.name}! أنت ${isLetters?'بطل الحروف':'صاحب الحيوانات'}!`,'clap');
+  say(`برافو يا ${S.name}! أنت ${isLetters?'بَطَل الحُروف':'صاحِب الحَيَوانات'}!`,'clap');
   if(st) setTimeout(()=>{ const r=$('.sticker-reveal').getBoundingClientRect(); FX.burst(r.left+r.width/2,r.top+r.height/2,26); },800);
   if($('#btnSong')) $('#btnSong').onclick=()=>{ SFX.tap(); letterSong(letters); };
   $('#btnWorld').onclick=()=>{ SFX.tap(); goWorldScene(); };
@@ -1730,9 +1995,9 @@ function letterSong(letters){
     <div class="song-letter" id="sgL"></div>
     <div class="song-word" id="sgW"></div>
     <div class="song-anim" id="sgA"></div>
-    <button class="btn btn-primary" id="btnStop">خلاص!</button>
+    <button class="btn btn-primary" id="btnStop">خَلاص!</button>
   </div>`;
-  say('أغنية الحروف! غنّوا معانا!');
+  say('أُغْنِيَة الحُروف! غَنُّوا مَعانا!');
   letters.forEach((L,i)=>{
     setTimeout(()=>{
       if(tok!==viewToken) return;
@@ -1742,11 +2007,11 @@ function letterSong(letters){
       const a=$('#sgA'); a.classList.remove('bounce'); void a.offsetWidth; a.classList.add('bounce');
       $('#sgL').animate([{transform:'scale(.5)'},{transform:'scale(1.2)'},{transform:'scale(1)'}],{duration:500});
       SFX.beat();
-      speak(`${LETTER_NAMES[L.ch]} ${LETTER_NAMES[L.ch]} ${L.word}`,{rate:.85,pitch:1.4});
-      setTimeout(()=>{ if(tok===viewToken) thingSound(L.thing); },1300);
-    },i*2100);
+      speak(`${LETTER_NAMES[L.ch]} ${LETTER_NAMES[L.ch]} ${L.word}`);
+      setTimeout(()=>{ if(tok===viewToken) thingSound(L.thing); },1400);
+    },i*2300);
   });
-  setTimeout(()=>{ if(tok===viewToken) say('برافو! غنّينا أغنية الحروف!','dance'); },letters.length*2100+500);
+  setTimeout(()=>{ if(tok===viewToken){ say('برافو! غَنِّينا أُغْنِيَة الحُروف!','dance'); luluGiggle(); } },letters.length*2300+500);
   $('#btnStop').onclick=()=>{ if(tok===viewToken){ if(flow) nextStep(); else goHome(); } };
 }
 
@@ -1784,21 +2049,21 @@ function endSession(early){
   const t=S.today;
   app.innerHTML=`<div class="screen" style="align-items:center; justify-content:center; gap:18px; text-align:center">
     <div class="finale">
-      <h1>برافو يا ${S.name}!<br>اتعلمت النهارده حاجات كتير!</h1>
-      <div class="session-stars">${icon('ic-star')}<span>${t.stars||0} نجمة</span></div>
+      <h1>برافو يا ${S.name}!<br>اِتَّعَلَّمْت النَّهارْده حاجات كَتير!</h1>
+      <div class="session-stars">${icon('ic-star')}<span>${t.stars||0} نَجْمَة</span></div>
       <div class="summary-chips">
         ${(t.letters||[]).map(l=>`<span class="chip">${l}</span>`).join('')}
         ${(t.animals||[]).map(a=>`<span class="chip">${a}</span>`).join('')}
-        ${(!t.letters?.length&&!t.animals?.length)?'<span class="chip">لعبنا ومتعتنا!</span>':''}
+        ${(!t.letters?.length&&!t.animals?.length)?'<span class="chip">لَعِبْنا ومَتَّعْنا!</span>':''}
       </div>
-      ${early?'<div class="sub">النهارده لعبنا كفاية — الراحة حلوة كمان!</div>':''}
-      <div class="end-note">نشوفك بكرة يا ${S.name}!</div>
+      ${early?'<div class="sub">النَّهارْده لَعِبْنا كِفاية — الراحة حِلْوة كَمان!</div>':''}
+      <div class="end-note">نِشُوفك بُكْرَة يا ${S.name}!</div>
       <div style="width:130px">${luluSVG('act-wave')}</div>
-      <button class="btn btn-primary btn-xl" id="btnHome">نرجع للبيت</button>
+      <button class="btn btn-primary btn-xl" id="btnHome">نِرْجَع لِلْبيت</button>
     </div>
   </div>`;
-  SFX.fanfare(); FX.rain(70);
-  speak(`برافو يا ${S.name}! اتعلمت النهارده حاجات كتير! نشوفك بكرة!`);
+  SFX.fanfare(); FX.rain(70); luluGiggle();
+  speak(`برافو يا ${S.name}! اِتَّعَلَّمْت النَّهارْده حاجات كَتير! نِشُوفك بُكْرَة!`);
   $('#btnHome').onclick=()=>{ SFX.tap(); goHome(); };
 }
 
@@ -1814,7 +2079,7 @@ function goWorldScene(){
   app.innerHTML=`<div class="screen">
     <div class="wbar">
       <button class="round-btn" id="btnBack" aria-label="رجوع">${icon('ic-back')}</button>
-      <div style="flex:1; text-align:center; font-weight:800; font-size:1.35rem">عالم ${S.name}</div>
+      <div style="flex:1; text-align:center; font-weight:800; font-size:1.35rem">عالَم ${S.name}</div>
       ${baseStars()}
     </div>
     <div class="scene" id="scene">
@@ -1834,11 +2099,11 @@ function goWorldScene(){
       <div class="lulu-scene" id="luluScene">${luluSVG('idle')}</div>
       ${hasBfly?`<svg class="scene-item si-butterfly"><use href="#w-butterfly"/></svg>`:''}
       <div class="flowers">${Array.from({length:nFlowers},(_,i)=>`<svg class="fl" style="color:${flowerColors[i]}"><use href="#w-flower"/></svg>`).join('')}</div>
-      ${(!hasTree&&!worldAnimals.length&&!hasHouse)?`<div class="locked-note">عالمك بيكبر! كل ما تتعلم حرفًا جديدًا أو تجمع نجوم، حاجات جديدة بتظهر</div>`:''}
+      ${(!hasTree&&!worldAnimals.length&&!hasHouse)?`<div class="locked-note">عالَمَك بيكبر! كُلّ ما تِتَعَلَّم حَرْفاً جَديداً أو تِجْمَع نُجُوم، حاجات جَديدة بِتْظَهَر</div>`:''}
     </div>
     <div class="loot">
       <div class="loot-row">
-        <div class="loot-stars">${icon('ic-star')}${icon('ic-star')}<span>${S.stars} نجمة</span></div>
+        <div class="loot-stars">${icon('ic-star')}${icon('ic-star')}<span>${S.stars} نَجْمَة</span></div>
         <div style="flex:1"></div>
         <button class="round-btn" id="btnReplay" style="width:48px;height:48px">${icon('ic-speaker')}</button>
       </div>
@@ -1849,7 +2114,7 @@ function goWorldScene(){
     </div>
   </div>`;
   bindBack(goHome); bindReplay();
-  $('#luluScene').onclick=()=>{ luluAct($('#luluScene .lulu'),'jump'); SFX.tap(); speak('شاطر!'); };
+  $('#luluScene').onclick=()=>{ luluAct($('#luluScene .lulu'),'jump'); SFX.tap(); speak('شاطِر!'); };
   $$('.scene-animal').forEach(a=>a.onclick=()=>{
     const k=a.dataset.k;
     a.classList.remove('bounce'); void a.offsetWidth; a.classList.add('bounce');
@@ -1860,8 +2125,8 @@ function goWorldScene(){
     $('#scene').appendChild(np); setTimeout(()=>np.remove(),1400);
   });
   $$('.scene-item.si-tree, .scene-item.si-house, .scene-item.si-bush, .scene-item.si-bush2').forEach(t=>t.onclick=()=>{ SFX.tap(); t.animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:300}); });
-  $('#btnReplay').onclick=()=>{ SFX.tap(); say(`ده عالمك يا ${S.name}! كل ما تتعلم وتجمع نجوم، العالم ده بيكبر!`); };
-  setTimeout(()=>say(`أهلاً في عالمك يا ${S.name}! اضغط على الحيوانات اسمع صوتها!`),300);
+  $('#btnReplay').onclick=()=>{ SFX.tap(); say(`ده عالَمَك يا ${S.name}! بِيكْبُر مَع كُل نُجُومَة!`); };
+  setTimeout(()=>say(`أَهْلاً في عالَمَك يا ${S.name}! اِضْغُط عَلى الحَيَوانات اِسْمَع صُوتْها!`),300);
 }
 
 /* ---------- قسم الوالدين ---------- */
@@ -1884,20 +2149,13 @@ function goParentGate(){
     else{ SFX.gentle(); bt.classList.add('shake'); setTimeout(()=>bt.classList.remove('shake'),450); }
   });
 }
-function fillVoiceSelect(){
-  const sel=$('#pVoice'); if(!sel) return;
-  const vs=('speechSynthesis' in window)?speechSynthesis.getVoices().filter(v=>/^ar/i.test(v.lang)):[];
-  sel.innerHTML = vs.length
-    ? vs.map(v=>`<option value="${v.name}" ${v.name===S.voiceName?'selected':''}>${v.name}</option>`).join('')
-    : `<option value="">مفيش صوت عربي متاح دلوقتي</option>`;
-}
 function goParent(){
   ensureToday();
   const mins=Math.round(S.playSeconds/60);
   const learnedLetters=S.lettersLearned.filter(ch=>LMAP[ch]);
   const suggestions=[
     `قولوا اسم حاجات في البيت وخلّوا ${S.name} يلاقي أول حرف منها.`,
-    `العبو "مين اللي بيقول صوت الحيوان؟" — ${S.name} بيحبها أوي!`,
+    `العبو «مين اللي بيقول صوت الحيوان؟» — ${S.name} بيحبها أوي!`,
     `ارسموا الحروف بإصبع ${S.name} على عجين أو في الرمل.`,
     `اقروا قصة قصيرة قبل النوم وسمّوا مع بعض الحيوانات اللي فيها.`,
   ];
@@ -1930,18 +2188,25 @@ function goParent(){
         </div>
       </div>
       <div class="p-card"><h3>صوت لولو</h3>
-        <div class="p-note">التطبيق بيختار تلقائيًا أوضح صوت عربي على الجهاز، وبيفضّل الأصوات النسائية/الطفولية (Zariyah، Google العربية، Hoda، Salma…) مع نبرة عالية وإيقاع أبطأ عشان النطق يطلع واضح. تقدرو كمان تختاروا صوت بنفسكم من هنا:</div>
-        <div class="p-row" style="margin-top:10px">
-          <select class="p-select" id="pVoice"></select>
-          <button class="btn btn-sun" id="pTest" style="font-size:1.05rem">جرّب الصوت</button>
+        <div class="p-note">صوت لولو الطفولي بيتولّد <b>جوه التطبيق نفسه</b> — يعني بيشتغل على أي جهاز بنفس الصوت، ومش بيتأثر بأصوات الموبايل. جربوه:</div>
+        <div class="p-row" style="margin:10px 0 6px">
+          <button class="btn btn-sun" id="pTestLulu" style="font-size:1.05rem">جرّب صوت لولو</button>
         </div>
-        ${!hasArabicVoice()?'<div class="p-note" style="margin-top:8px">مفيش صوت عربي على الجهاز ده! ثبّتوا محرك نطق عربي (Google TTS من متجر التطبيقات أو من إعدادات اللغة والإدخال) وبعدين ارجعوا للصفحة دي واختاروه.</div>':''}
-        <div class="p-row" style="margin-top:10px">
+        <div class="voice-opt ${S.voiceMode!=='device'?'on':''}" id="vLulu">
+          <div style="padding-top:2px">${icon('ic-star')}</div>
+          <div><b>صوت لولو الطفولي (موصى بيه)</b><span>صوت كرتوني صغير السن، مولّد جوه التطبيق — ثابت على كل الأجهزة.</span></div>
+        </div>
+        <div class="voice-opt ${S.voiceMode==='device'?'on':''}" id="vDevice">
+          <div style="padding-top:2px">${icon('ic-speaker')}</div>
+          <div><b>صوت الجهاز العربي</b><span>بيستخدم محرك النطق بتاع الموبايل — على أغلب الأجهزة بيطلع صوت رجالي عادي.</span></div>
+        </div>
+        <div class="p-row" style="margin-top:8px">
           <button class="btn ${S.muted?'':'btn-sun'}" id="pMute" style="font-size:1.05rem">${S.muted?'الصوت مقفول — شغّله':'الصوت شغّال — اقفله'}</button>
         </div>
       </div>
       <div class="p-card"><h3>اسم الطفل</h3>
         <div class="p-row"><input id="pName" value="${S.name}" maxlength="12"><button class="btn btn-sun" id="pSave" style="font-size:1.1rem">حفظ</button></div>
+        <div class="p-note" style="margin-top:8px">لولو بينطق الاسم حسب كتابته — لو النطق مش مظبوط، اكتبوه بالحركات (مثال: «أَحْمَد») وجربوه بزر «جرّب صوت لولو».</div>
       </div>
       <div class="p-card"><h3>أنشطة تعملوها مع بعض برّه التطبيق</h3>
         <ol class="p-list">${suggestions.map(s=>`<li>${s}</li>`).join('')}</ol>
@@ -1956,9 +2221,9 @@ function goParent(){
     </div>
   </div>`;
   bindBack(goHome);
-  fillVoiceSelect();
-  $('#pTest').onclick=()=>{ A.init(); speak('أنا لولو! صاحبتك في اللعب! يلا نلعب يا '+S.name+'!'); };
-  $('#pVoice').onchange=e=>{ S.voiceName=e.target.value; save(); pickVoice(); speak('أهلاً! أنا لولو الجديدة!'); };
+  $('#pTestLulu').onclick=()=>{ A.init(); luluSpeak(`أَهْلاً! أَنا لولو! يِلَّا نِلْعَب يا ${S.name}!`); };
+  $('#vLulu').onclick=()=>{ S.voiceMode='lulu'; save(); SFX.tap(); goParent(); };
+  $('#vDevice').onclick=()=>{ S.voiceMode='device'; save(); SFX.tap(); pickVoice(); goParent(); };
   $('#pSave').onclick=()=>{ const v=$('#pName').value.trim(); if(v){ S.name=v; save(); SFX.success(); goParent(); } };
   $('#pMute').onclick=()=>{ S.muted=!S.muted; save(); if(!S.muted){A.init(); SFX.success();} goParent(); };
   $('#pReset').onclick=e=>{
