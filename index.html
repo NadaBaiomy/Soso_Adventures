@@ -7,1427 +7,602 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="مغامرات سوسو">
 <title>مغامرات سوسو</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='34' r='26' fill='%237ED588'/%3E%3Cpath d='M24 12 q4 -8 8 0 Z M36 12 q4 -8 8 0 Z' fill='%23FFB84D'/%3E%3Ccircle cx='24' cy='30' r='7' fill='%23fff'/%3E%3Ccircle cx='42' cy='30' r='7' fill='%23fff'/%3E%3Ccircle cx='25' cy='31' r='3.5' fill='%233A2A1E'/%3E%3Ccircle cx='41' cy='31' r='3.5' fill='%233A2A1E'/%3E%3Cpath d='M25 41 Q33 49 41 41' fill='none' stroke='%234A3428' stroke-width='3.5' stroke-linecap='round'/%3E%3Cellipse cx='16' cy='40' rx='5' ry='3.5' fill='%23F9A8C0'/%3E%3Cellipse cx='50' cy='40' rx='5' ry='3.5' fill='%23F9A8C0'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#FFF6E9; --paper:#FFFDF6; --ink:#4A3428; --ink-soft:#8A6D5B; --line:#E9D9C3;
-  --coral:#FF8552; --sun:#FFC94D; --mint:#7ED588; --mint-d:#3FA34D; --sky:#62B6E7; --sky-d:#3D8FC4;
-  --pink:#F9A8C0; --amber:#E8A23A; --coral-d:#E8703A;
-  --card-sh:0 7px 0 rgba(74,52,40,.14);
-  --pop:cubic-bezier(.34,1.56,.64,1);
-}
-*{box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none}
-html,body{height:100%; margin:0}
-body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EFE0C6; color:var(--ink); overflow:hidden; overscroll-behavior:none; touch-action:manipulation}
-#app{max-width:540px; height:100dvh; margin:0 auto; position:relative; overflow:hidden; background:var(--bg);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Ccircle cx='24' cy='24' r='3.5' fill='%23F4E3C0'/%3E%3Ccircle cx='92' cy='64' r='4.5' fill='%23F6EBD2'/%3E%3Ccircle cx='46' cy='110' r='3' fill='%23F4E3C0'/%3E%3C/svg%3E");
-  box-shadow:0 0 40px rgba(74,52,40,.25);}
-#assets{position:absolute; width:0; height:0; overflow:hidden}
-#fx{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:999}
-.screen{position:absolute; inset:0; display:flex; flex-direction:column; padding:12px 16px calc(16px + env(safe-area-inset-bottom)); animation:screenIn .5s var(--pop)}
-@keyframes screenIn{from{opacity:0; transform:translateY(26px) scale(.97)} to{opacity:1; transform:none}}
-
-.btn{font-family:inherit; font-weight:800; font-size:1.45rem; color:var(--ink); background:#fff; border:3.5px solid var(--ink); border-radius:26px; padding:12px 30px; cursor:pointer; box-shadow:0 7px 0 rgba(74,52,40,.22); transition:transform .12s, box-shadow .12s; touch-action:manipulation}
-.btn:active{transform:translateY(5px); box-shadow:0 2px 0 rgba(74,52,40,.22)}
-.btn-primary{background:var(--coral); color:#fff}
-.btn-sun{background:var(--sun)}
-.btn-xl{font-size:1.7rem; padding:16px 40px; border-radius:32px}
-.round-btn{width:58px; height:58px; border-radius:50%; background:#fff; border:3.5px solid var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex:0 0 auto; box-shadow:0 5px 0 rgba(74,52,40,.2); transition:transform .12s, box-shadow .12s; color:var(--ink)}
-.round-btn:active{transform:translateY(4px); box-shadow:0 1px 0 rgba(74,52,40,.2)}
-.round-btn .ic{width:28px; height:28px}
-.ic{display:block}
-.stars-pill{display:flex; align-items:center; gap:6px; background:#fff; border:3px solid var(--ink); border-radius:20px; padding:4px 14px 4px 10px; font-weight:800; font-size:1.25rem; box-shadow:var(--card-sh)}
-.stars-pill .ic{width:26px; height:26px; color:var(--amber)}
-.stars-pill.bump{animation:bump .5s var(--pop)}
-@keyframes bump{40%{transform:scale(1.25)}}
-
-.lulu{display:block; overflow:visible}
-.lulu .pupil-move{transform:translate(var(--lx,0),var(--ly,0)); transition:transform .18s ease-out}
-.lulu .pupil{animation:blink 4.6s infinite}
-@keyframes blink{0%,93%,100%{transform:scaleY(1)} 96%{transform:scaleY(.12)}}
-.lulu .arm{transform-box:fill-box; transform-origin:center top}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+html,body{height:100%;margin:0}
+body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif;background:#EFE0C6;color:#4A3428;overflow:hidden;overscroll-behavior:none;touch-action:manipulation}
+#app{max-width:540px;height:100dvh;margin:0 auto;position:relative;overflow:hidden;background:#FFF6E9;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Ccircle cx='24' cy='24' r='3.5' fill='%23F4E3C0'/%3E%3Ccircle cx='92' cy='64' r='4.5' fill='%23F6EBD2'/%3E%3Ccircle cx='46' cy='110' r='3' fill='%23F4E3C0'/%3E%3C/svg%3E");box-shadow:0 0 40px rgba(74,52,40,.25)}
+#assets{position:absolute;width:0;height:0;overflow:hidden}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:999}
+.sc{position:absolute;inset:0;display:flex;flex-direction:column;padding:12px 16px calc(16px + env(safe-area-inset-bottom));animation:si .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes si{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.btn{font-family:inherit;font-weight:800;font-size:1.4rem;color:#4A3428;background:#fff;border:3.5px solid #4A3428;border-radius:26px;padding:12px 30px;cursor:pointer;box-shadow:0 7px 0 rgba(74,52,40,.22)}
+.btn:active{transform:translateY(5px)}
+.bpri{background:#FF8552;color:#fff}.bsun{background:#FFC94D}
+.bxl{font-size:1.7rem;padding:16px 40px;border-radius:32px}
+.rb{width:58px;height:58px;border-radius:50%;background:#fff;border:3.5px solid #4A3428;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto;box-shadow:0 5px 0 rgba(74,52,40,.2);color:#4A3428}
+.rb:active{transform:translateY(4px)}
+.ic{width:28px;height:28px;display:block}
+.sp{display:flex;align-items:center;gap:6px;background:#fff;border:3px solid #4A3428;border-radius:20px;padding:4px 14px 4px 10px;font-weight:800;font-size:1.25rem;box-shadow:0 7px 0 rgba(74,52,40,.14)}
+.sp .ic{width:26px;height:26px;color:#E8A23A}
+.sp.bp{animation:bp .5s}
+@keyframes bp{40%{transform:scale(1.25)}}
+.lulu{display:block;overflow:visible}
+.lulu .pm{transform:translate(var(--lx,0),var(--ly,0));transition:transform .18s}
+.lulu .pu{animation:bl 4.6s infinite}
+@keyframes bl{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.12)}}
+.lulu .arm{transform-box:fill-box;transform-origin:center top}
 .lulu.idle{animation:bob 2.6s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-6px)}}
-.lulu.act-jump{animation:ljump .55s var(--pop) 2}
-@keyframes ljump{0%,100%{transform:translateY(0)} 45%{transform:translateY(-26px)}}
-.lulu.act-dance{animation:dance .45s ease-in-out 5}
-@keyframes dance{0%,100%{transform:rotate(0) translateY(0)} 25%{transform:rotate(-7deg) translateY(-8px)} 75%{transform:rotate(7deg) translateY(-8px)}}
-.lulu.act-wiggle{animation:wiggle .4s ease-in-out 4}
-@keyframes wiggle{0%,100%{transform:rotate(0)} 50%{transform:rotate(-6deg)}}
-.lulu.act-clap{animation:clapB .3s ease-in-out 6}
-@keyframes clapB{50%{transform:scale(1.06) translateY(-4px)}}
-.lulu.act-clap .arm-r{animation:armClapR .3s ease-in-out 6}
-.lulu.act-clap .arm-l{animation:armClapL .3s ease-in-out 6}
-@keyframes armClapR{50%{transform:rotate(-52deg)}}
-@keyframes armClapL{50%{transform:rotate(52deg)}}
-.lulu.act-wave .arm-r{animation:wave .4s ease-in-out 7}
-@keyframes wave{50%{transform:rotate(160deg) translateY(-4px)}}
-
-.bubble{position:relative; background:#fff; border:3.5px solid var(--ink); border-radius:24px; padding:10px 18px; font-weight:700; font-size:1.2rem; line-height:1.5; box-shadow:var(--card-sh); min-width:0}
-.bubble:after{content:""; position:absolute; bottom:-16px; right:26px; width:0; height:0; border:10px solid transparent; border-top-color:var(--ink)}
-.bubble:before{content:""; position:absolute; bottom:-11px; right:28px; width:0; height:0; border:8px solid transparent; border-top-color:#fff}
-.bubble.pop{animation:bubblePop .45s var(--pop)}
-@keyframes bubblePop{0%{transform:scale(.85)} 60%{transform:scale(1.05)} 100%{transform:scale(1)}}
-
-.welcome-screen{align-items:center; justify-content:center; gap:22px; text-align:center}
-.logo-mark{width:74px; height:74px}
-.welcome-hero{display:flex; flex-direction:column; align-items:center; gap:10px}
-.logo-title{font-size:2.7rem; font-weight:800; line-height:1.1}
-.logo-title b{color:var(--coral-d)}
-.logo-sub{color:var(--ink-soft); font-weight:700; font-size:1.05rem}
-.lulu-hero{width:190px; height:200px}
-.name-box{display:flex; flex-direction:column; gap:6px; width:min(320px,100%)}
-.name-box label{font-weight:800; font-size:1.2rem}
-.name-box input{font-family:inherit; font-weight:800; font-size:1.5rem; text-align:center; padding:10px; border:3.5px solid var(--ink); border-radius:22px; background:#fff; color:var(--ink); outline:none; width:100%}
-.name-box input:focus{box-shadow:0 0 0 5px rgba(255,197,77,.55)}
-
-.topbar{display:flex; align-items:center; gap:10px; padding-bottom:10px}
-.brand{display:flex; align-items:center; gap:8px; flex:1; min-width:0}
-.brand .logo-mark{width:46px; height:46px}
-.brand-name{font-weight:800; font-size:1.25rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.brand-name b{color:var(--coral-d)}
-.home-lulu{display:flex; align-items:flex-end; gap:10px; padding:2px 4px 14px}
-.home-lulu .lulu{width:112px; height:118px; flex:0 0 auto}
-.home-lulu .bubble{flex:1; margin-bottom:14px}
-.replay-row{display:flex; align-items:center; gap:10px; flex:1}
-.world-cards{display:flex; flex-direction:column; gap:14px; flex:1; justify-content:center; padding-bottom:6px}
-.world-card{position:relative; display:flex; align-items:center; gap:14px; background:#fff; border:3.5px solid var(--ink); border-radius:30px; padding:14px 18px; min-height:118px; cursor:pointer; box-shadow:var(--card-sh); transition:transform .15s var(--pop), box-shadow .15s; overflow:hidden; text-align:right}
-.world-card:active{transform:translateY(5px) scale(.99); box-shadow:0 2px 0 rgba(74,52,40,.14)}
-.world-card .wc-art{width:104px; height:104px; flex:0 0 auto; display:flex; align-items:center; justify-content:center}
-.world-card .wc-body{flex:1; min-width:0}
-.world-card h2{margin:0; font-size:1.7rem; font-weight:800}
-.world-card p{margin:2px 0 0; color:var(--ink-soft); font-weight:700; font-size:1.02rem}
-.world-card .wc-badge{position:absolute; top:-12px; left:-8px; background:var(--sun); border:3px solid var(--ink); border-radius:16px; font-weight:800; font-size:.95rem; padding:2px 12px; transform:rotate(-6deg)}
-.wc-letters{background:#FFF3D2}
-.wc-letters .mini-letters{display:flex; gap:4px}
-.wc-letters .mini-letters b{width:27px; height:34px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; border:2.5px solid var(--ink); border-radius:10px; color:#fff}
-.wc-animals{background:#EAF7E4}
-.wc-animals .head-row{display:flex; margin-top:-34px}
-.wc-animals .head-row svg{width:64px; height:64px; margin:0 -7px; filter:drop-shadow(0 2px 0 rgba(74,52,40,.15))}
-.wc-soso{background:#EAF4FD}
-.wc-soso .mini-scene{position:relative; width:104px; height:104px}
-.wc-soso .mini-scene svg{position:absolute}
-
-.wbar{display:flex; align-items:center; gap:10px; padding-bottom:8px}
-.wbar .dots{flex:1; display:flex; justify-content:center; gap:6px; flex-wrap:wrap}
-.dots span{width:13px; height:13px; border-radius:50%; background:#fff; border:2.5px solid var(--ink); opacity:.55}
-.dots span.done{background:var(--mint); opacity:1}
-.dots span.now{background:var(--sun); opacity:1; animation:pulse 1s infinite}
-@keyframes pulse{50%{transform:scale(1.35)}}
-.stage{flex:1; display:flex; flex-direction:column; min-height:0}
-.stage-lulu{display:flex; align-items:flex-end; gap:10px; padding-bottom:12px}
-.stage-lulu .lulu{width:96px; height:101px; flex:0 0 auto}
-.replay-row .bubble{flex:1; margin-bottom:12px}
-.playzone{flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; display:flex; flex-direction:column; gap:14px; padding:4px 2px 10px}
-.game-head{font-weight:800; font-size:1.6rem; text-align:center; line-height:1.3}
-
-.tile{background:#fff; border:3.5px solid var(--ink); border-radius:28px; box-shadow:var(--card-sh); cursor:pointer; display:flex; align-items:center; justify-content:center; position:relative; transition:transform .18s var(--pop), background .2s; touch-action:manipulation}
+.lulu.aj{animation:lj .55s cubic-bezier(.34,1.56,.64,1) 2}
+@keyframes lj{45%{transform:translateY(-26px)}}
+.lulu.ad{animation:dan .45s ease-in-out 5}
+@keyframes dan{25%{transform:rotate(-7deg) translateY(-8px)}75%{transform:rotate(7deg) translateY(-8px)}}
+.lulu.aw{animation:wig .4s ease-in-out 4}
+@keyframes wig{50%{transform:rotate(-6deg)}}
+.lulu.ac{animation:cb .3s ease-in-out 6}
+@keyframes cb{50%{transform:scale(1.06) translateY(-4px)}}
+.lulu.ac .ar{animation:arm .3s ease-in-out 6}
+@keyframes arm{50%{transform:rotate(50deg)}}
+.lulu.av .arr{animation:wv .4s ease-in-out 7}
+@keyframes wv{50%{transform:rotate(160deg)}}
+.bub{position:relative;background:#fff;border:3.5px solid #4A3428;border-radius:24px;padding:10px 18px;font-weight:700;font-size:1.2rem;line-height:1.5;box-shadow:0 7px 0 rgba(74,52,40,.14);min-width:0}
+.bub:after{content:"";position:absolute;bottom:-16px;right:26px;border:10px solid transparent;border-top-color:#4A3428}
+.bub:before{content:"";position:absolute;bottom:-11px;right:28px;border:8px solid transparent;border-top-color:#fff}
+.bub.pp{animation:bpo .45s cubic-bezier(.34,1.56,.64,1)}
+@keyframes bpo{60%{transform:scale(1.05)}}
+.wel{align-items:center;justify-content:center;gap:22px;text-align:center}
+.lmk{width:74px;height:74px}
+.wh{display:flex;flex-direction:column;align-items:center;gap:10px}
+.lt{font-size:2.6rem;font-weight:800;line-height:1.1}
+.lt b{color:#E8703A}
+.ls{color:#8A6D5B;font-weight:700}
+.nm{display:flex;flex-direction:column;gap:6px;width:min(320px,100%)}
+.nm label{font-weight:800;font-size:1.2rem}
+.nm input{font-family:inherit;font-weight:800;font-size:1.5rem;text-align:center;padding:10px;border:3.5px solid #4A3428;border-radius:22px;background:#fff;color:#4A3428;outline:none;width:100%}
+.tb{display:flex;align-items:center;gap:10px;padding-bottom:10px}
+.br{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+.br .lmk{width:46px;height:46px}
+.bn{font-weight:800;font-size:1.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bn b{color:#E8703A}
+.hl{display:flex;align-items:flex-end;gap:10px;padding:2px 4px 14px}
+.hl .lulu{width:112px;height:118px;flex:0 0 auto}
+.hl .bub{flex:1;margin-bottom:14px}
+.rr{display:flex;align-items:center;gap:10px;flex:1}
+.wcs{display:flex;flex-direction:column;gap:14px;flex:1;justify-content:center;padding-bottom:6px}
+.wc{position:relative;display:flex;align-items:center;gap:14px;background:#fff;border:3.5px solid #4A3428;border-radius:30px;padding:14px 18px;min-height:118px;cursor:pointer;box-shadow:0 7px 0 rgba(74,52,40,.14);overflow:hidden;text-align:right}
+.wc:active{transform:translateY(5px)}
+.wc .wa{width:104px;height:104px;flex:0 0 auto;display:flex;align-items:center;justify-content:center}
+.wc .wb{flex:1;min-width:0}
+.wc h2{margin:0;font-size:1.7rem}
+.wc p{margin:2px 0 0;color:#8A6D5B;font-weight:700;font-size:1rem}
+.wcb{position:absolute;top:-12px;left:-8px;background:#FFC94D;border:3px solid #4A3428;border-radius:16px;font-weight:800;font-size:.95rem;padding:2px 12px;transform:rotate(-6deg)}
+.c1{background:#FFF3D2}.c2{background:#EAF7E4}.c3{background:#EAF4FD}
+.ml{display:flex;gap:4px}
+.ml b{width:27px;height:34px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;border:2.5px solid #4A3428;border-radius:10px;color:#fff}
+.hr{display:flex;margin-top:-34px}
+.hr svg{width:64px;height:64px;margin:0 -7px;filter:drop-shadow(0 2px 0 rgba(74,52,40,.15))}
+.ms{position:relative;width:104px;height:104px}
+.ms svg{position:absolute}
+.wb2{display:flex;align-items:center;gap:10px;padding-bottom:8px}
+.dt{flex:1;display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+.dt span{width:13px;height:13px;border-radius:50%;background:#fff;border:2.5px solid #4A3428;opacity:.55}
+.dt span.d{background:#7ED588;opacity:1}
+.dt span.n{background:#FFC94D;opacity:1;animation:pls 1s infinite}
+@keyframes pls{50%{transform:scale(1.35)}}
+.st{flex:1;display:flex;flex-direction:column;min-height:0}
+.sl{display:flex;align-items:flex-end;gap:10px;padding-bottom:12px}
+.sl .lulu{width:96px;height:101px;flex:0 0 auto}
+.rr .bub{flex:1;margin-bottom:12px}
+.pz{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:14px;padding:4px 2px 10px}
+.gh{font-weight:800;font-size:1.55rem;text-align:center;line-height:1.3}
+.tile{background:#fff;border:3.5px solid #4A3428;border-radius:28px;box-shadow:0 7px 0 rgba(74,52,40,.14);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .18s}
 .tile:active{transform:scale(.95)}
-.tile.shake{animation:shake .45s}
-@keyframes shake{15%,45%,75%{transform:translateX(-9px)} 30%,60%{transform:translateX(9px)}}
-.tile.winner{background:#E4F8E6; animation:winPulse .7s var(--pop)}
-@keyframes winPulse{45%{transform:scale(1.09)}}
-.tile.hint{animation:hintPulse 1s ease-in-out infinite; background:#FFF3D2}
-@keyframes hintPulse{50%{transform:scale(1.07); box-shadow:0 7px 0 var(--amber)}}
-.choices-row{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-.choice-tile{aspect-ratio:1/1; padding:8px}
-.choice-tile svg{width:100%; height:100%}
-.big-animal{width:min(68vw,280px); margin:0 auto; cursor:pointer}
-.big-animal svg{width:100%; height:auto; filter:drop-shadow(0 6px 0 rgba(74,52,40,.12))}
-.big-animal.bounce svg{animation:animalBounce .8s var(--pop)}
-@keyframes animalBounce{35%{transform:translateY(-24px) rotate(-5deg)} 70%{transform:translateY(0) rotate(4deg)}}
-.animal-name{text-align:center; font-weight:800; font-size:2.2rem}
-.game-actions{display:flex; justify-content:center; gap:14px}
-
-.learn-card{background:#fff; border:3.5px solid var(--ink); border-radius:32px; box-shadow:var(--card-sh); padding:16px; text-align:center}
-.big-letter{font-size:8rem; font-weight:800; line-height:1; cursor:pointer; transition:transform .15s var(--pop)}
-.big-letter:active{transform:scale(1.12)}
-.learn-word{font-weight:800; font-size:2.3rem; margin-top:2px}
-.learn-word b{font-weight:800}
-.learn-animal{width:min(60vw,250px); margin:6px auto 0; cursor:pointer}
-.learn-animal svg{width:100%; height:auto}
-.learn-animal.bounce svg{animation:animalBounce .8s var(--pop)}
-
-.balloons-area{position:relative; flex:1; min-height:340px; border:3.5px dashed var(--line); border-radius:28px; overflow:hidden; background:#fff}
-.balloon{position:absolute; width:88px; cursor:pointer; animation:floaty var(--dur,4s) ease-in-out var(--delay,0s) infinite alternate; transform:translateY(var(--off,0)); transition:filter .2s}
-.balloon:hover{filter:brightness(1.05)}
-@keyframes floaty{from{transform:translateY(0) rotate(-3deg)} to{transform:translateY(calc(var(--off,0px) - 34px)) rotate(4deg)}}
-.balloon svg{width:100%; display:block; filter:drop-shadow(0 4px 0 rgba(74,52,40,.12))}
-.balloon .bl{position:absolute; top:26px; left:0; right:0; text-align:center; font-weight:800; font-size:2.6rem; color:var(--ink); pointer-events:none}
-.balloon.popped{animation:popOut .38s forwards}
-@keyframes popOut{35%{transform:scale(1.3)} 100%{transform:scale(0); opacity:0}}
-.balloon.nope{animation:nopeWig .5s}
-@keyframes nopeWig{25%{transform:translateX(-12px) rotate(-8deg)} 75%{transform:translateX(12px) rotate(8deg)}}
-
-.trace-wrap{display:flex; flex-direction:column; align-items:center; gap:10px}
-#traceCv{width:min(86vw,360px); height:min(86vw,360px); border:3.5px solid var(--ink); border-radius:30px; background:#fff; box-shadow:var(--card-sh); touch-action:none}
-.trace-progress{width:min(86vw,360px); height:18px; border:3px solid var(--ink); border-radius:12px; background:#fff; overflow:hidden}
-.trace-progress i{display:block; height:100%; width:0%; background:var(--mint); transition:width .25s; border-radius:6px}
-
-.feed-board{display:flex; flex-direction:column; align-items:center; gap:10px}
-.feed-animal{width:min(56vw,230px); border-radius:32px; border:3.5px dashed var(--ink); padding:8px 14px 4px; background:#FFFDF6; transition:background .2s, transform .2s}
-.feed-animal.target{background:#FFF3D2; border-style:solid; animation:hintPulse 1.2s infinite}
-.feed-animal.happy{animation:animalBounce .8s var(--pop)}
-.feed-animal svg{width:100%; height:auto}
-.food-row{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; padding-top:4px}
-.food-tile{aspect-ratio:1/1; background:#fff}
-.food-tile svg{width:78%; height:78%}
-.ghost-food{position:fixed; z-index:900; pointer-events:none; width:96px; height:96px; transition:transform .45s var(--pop); display:flex; align-items:center; justify-content:center; background:#fff; border:3.5px solid var(--ink); border-radius:26px; box-shadow:var(--card-sh)}
-.ghost-food svg{width:74%; height:74%}
-.food-tile.hidden{visibility:hidden}
-
-.who-row{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
-.who-card{aspect-ratio:1/1.05; padding:6px}
-.who-card svg{width:100%; height:100%}
-.who-card.gone-slot{background:#FFF3D2; border-style:dashed; cursor:default}
-.who-card.gone-slot .qmark{font-size:3.4rem; font-weight:800; color:var(--coral-d)}
-.cover{position:absolute; inset:0; z-index:20; background:rgba(74,52,40,.92); border-radius:28px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; animation:coverIn .4s var(--pop)}
-@keyframes coverIn{from{opacity:0}}
-.cover .stars-bg{display:flex; gap:10px}
-.cover .stars-bg .ic{width:30px; height:30px; color:var(--sun); animation:twinkle 1s infinite alternate}
-.cover .stars-bg .ic:nth-child(2){animation-delay:.2s} .cover .stars-bg .ic:nth-child(3){animation-delay:.4s}
-@keyframes twinkle{from{transform:scale(.7); opacity:.5} to{transform:scale(1.2); opacity:1}}
-.cover h3{color:#fff; margin:0; font-size:1.8rem; font-weight:800}
-
-.finale{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center}
-.finale h1{margin:0; font-size:2.3rem; font-weight:800; color:var(--coral-d); animation:winPulse .8s var(--pop)}
-.sticker-reveal{width:150px; height:150px; background:#fff; border:4px solid var(--ink); border-radius:36px; box-shadow:var(--card-sh); display:flex; align-items:center; justify-content:center; animation:revealIn .8s var(--pop)}
-@keyframes revealIn{0%{transform:scale(0) rotate(-30deg)} 70%{transform:scale(1.15) rotate(6deg)} 100%{transform:scale(1)}}
-.sticker-reveal svg{width:100px; height:110px}
-.finale .sub{font-weight:800; font-size:1.25rem; color:var(--ink-soft)}
-.session-stars{display:flex; align-items:center; gap:6px; font-size:1.5rem; font-weight:800}
-.session-stars .ic{width:34px; height:34px; color:var(--amber)}
-.finale-actions{display:flex; flex-direction:column; gap:12px; width:min(340px,100%)}
-.summary-chips{display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
-.chip{background:#fff; border:2.5px solid var(--ink); border-radius:14px; padding:4px 14px; font-weight:800; font-size:1.1rem; box-shadow:0 3px 0 rgba(74,52,40,.12)}
-.end-note{font-size:1.5rem; font-weight:800; color:var(--coral-d)}
-
-.song-view{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center}
-.song-letter{font-size:6.5rem; font-weight:800; line-height:1}
-.song-word{font-size:2rem; font-weight:800}
-.song-anim{width:min(52vw,210px)} .song-anim svg{width:100%; height:auto}
-.song-anim.bounce svg{animation:animalBounce .8s var(--pop)}
-
-.scene{position:relative; flex:1; min-height:300px; border:3.5px solid var(--ink); border-radius:30px; overflow:hidden; background:#D9EEF9; box-shadow:var(--card-sh)}
-.scene .sun{position:absolute; top:4%; left:4%; width:74px; height:74px; animation:sunFloat 5s ease-in-out infinite}
-@keyframes sunFloat{50%{transform:translateY(-7px)}}
-.scene .sun .sun-rays{transform-box:view-box; transform-origin:center; animation:spin 26s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.scene .cloud{position:absolute; width:95px; opacity:.95}
-.scene .cloud.c1{top:10%; right:8%; animation:drift 9s ease-in-out infinite alternate}
-.scene .cloud.c2{top:24%; left:14%; width:70px; animation:drift 11s ease-in-out infinite alternate-reverse}
-@keyframes drift{to{transform:translateX(-26px)}}
-.scene .hills{position:absolute; bottom:0; left:0; right:0; width:100%; height:52%}
-.scene-item{position:absolute; cursor:pointer; transition:transform .2s var(--pop)}
-.scene-item:active{transform:scale(1.06)}
-.si-tree{right:3%; bottom:34%; width:112px}
-.si-bush{right:22%; bottom:31%; width:72px}
-.si-bush2{left:24%; bottom:33%; width:56px}
-.si-house{left:3%; bottom:36%; width:112px}
-.si-sprout{right:14%; bottom:35%; width:54px}
-.si-rainbow{left:50%; transform:translateX(-50%); bottom:40%; width:min(70%,270px); z-index:0}
-.scene-animals{position:absolute; bottom:4%; left:50%; transform:translateX(-50%); display:flex; gap:4px; z-index:3; max-width:94%; overflow-x:auto; padding:4px 2px; scrollbar-width:none}
-.scene-animals::-webkit-scrollbar{display:none}
-.scene-animal{width:62px; height:64px; flex:0 0 auto; background:#fff; border:3px solid var(--ink); border-radius:18px; padding:3px; cursor:pointer; animation:bob 3s ease-in-out infinite; box-shadow:0 4px 0 rgba(74,52,40,.14)}
-.scene-animal svg{width:100%; height:100%}
-.scene-animal.bounce{animation:animalBounce .8s var(--pop)}
-.lulu-scene{position:absolute; bottom:12%; right:50%; transform:translateX(50%); width:104px; height:110px; z-index:2; cursor:pointer}
-.lulu-scene .lulu{width:100%; height:100%}
-.name-pop{position:absolute; background:#fff; border:2.5px solid var(--ink); border-radius:14px; padding:2px 12px; font-weight:800; pointer-events:none; animation:namePop 1.4s forwards; z-index:10; white-space:nowrap; transform:translateX(-50%)}
-@keyframes namePop{0%{opacity:0; margin-top:8px} 20%{opacity:1} 80%{opacity:1} 100%{opacity:0; margin-top:-12px}}
-.flowers{position:absolute; bottom:1%; left:0; right:0; display:flex; justify-content:center; gap:14px; z-index:2}
-.flowers .fl{width:38px; height:48px}
-.si-butterfly{top:18%; left:12%; width:52px; z-index:2; animation:flyPath 12s ease-in-out infinite alternate}
-@keyframes flyPath{0%{transform:translate(0,0)} 30%{transform:translate(50px,-16px)} 60%{transform:translate(120px,10px)} 100%{transform:translate(190px,-12px)}}
-.bfly-wing{transform-box:view-box; transform-origin:50px 46px}
-.bfly-l{animation:flapL .7s ease-in-out infinite alternate}
-.bfly-r{animation:flapR .7s ease-in-out infinite alternate}
-@keyframes flapL{to{transform:scaleX(.55)}}
-@keyframes flapR{to{transform:scaleX(.55)}}
-.locked-note{position:absolute; bottom:6px; left:12px; right:12px; text-align:center; color:var(--ink-soft); font-weight:700; font-size:.95rem; z-index:1}
+.tile.sk{animation:shk .45s}
+@keyframes shk{15%,45%,75%{transform:translateX(-9px)}30%,60%{transform:translateX(9px)}}
+.tile.wn{background:#E4F8E6;animation:wnp .7s}
+@keyframes wnp{45%{transform:scale(1.09)}}
+.tile.hn{animation:hnp 1s infinite;background:#FFF3D2}
+@keyframes hnp{50%{transform:scale(1.07)}}
+.cr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ct{aspect-ratio:1/1;padding:8px}
+.ct svg{width:100%;height:100%}
+.ba{width:min(68vw,280px);margin:0 auto;cursor:pointer}
+.ba svg,.la svg,.fa svg{width:100%;height:auto}
+.ba.bo svg,.la.bo svg,.fa.ha svg{animation:anb .8s cubic-bezier(.34,1.56,.64,1)}
+@keyframes anb{35%{transform:translateY(-24px) rotate(-5deg)}70%{transform:translateY(0) rotate(4deg)}}
+.anm{text-align:center;font-weight:800;font-size:2.2rem}
+.ga{display:flex;justify-content:center;gap:14px}
+.lc{background:#fff;border:3.5px solid #4A3428;border-radius:32px;box-shadow:0 7px 0 rgba(74,52,40,.14);padding:16px;text-align:center}
+.bl2{font-size:8rem;font-weight:800;line-height:1;cursor:pointer}
+.bl2:active{transform:scale(1.12)}
+.lw{font-weight:800;font-size:2.3rem;margin-top:2px}
+.la{width:min(60vw,250px);margin:6px auto 0;cursor:pointer}
+.baz{position:relative;flex:1;min-height:340px;border:3.5px dashed #E9D9C3;border-radius:28px;overflow:hidden;background:#fff}
+.bal{position:absolute;width:88px;cursor:pointer;animation:fly var(--d,4s) ease-in-out var(--dl,0s) infinite alternate}
+@keyframes fly{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-34px) rotate(4deg)}}
+.bal svg{width:100%;display:block;filter:drop-shadow(0 4px 0 rgba(74,52,40,.12))}
+.bal .bt{position:absolute;top:26px;left:0;right:0;text-align:center;font-weight:800;font-size:2.6rem;color:#4A3428;pointer-events:none}
+.bal.po{animation:po .38s forwards}
+@keyframes po{35%{transform:scale(1.3)}100%{transform:scale(0);opacity:0}}
+.bal.no{animation:nw .5s}
+@keyframes nw{25%{transform:translateX(-12px) rotate(-8deg)}75%{transform:translateX(12px) rotate(8deg)}}
+.tw{display:flex;flex-direction:column;align-items:center;gap:10px}
+#tcv{width:min(86vw,360px);height:min(86vw,360px);border:3.5px solid #4A3428;border-radius:30px;background:#fff;box-shadow:0 7px 0 rgba(74,52,40,.14);touch-action:none}
+.tp{width:min(86vw,360px);height:18px;border:3px solid #4A3428;border-radius:12px;background:#fff;overflow:hidden}
+.tp i{display:block;height:100%;width:0%;background:#7ED588}
+.fdb{display:flex;flex-direction:column;align-items:center;gap:10px}
+.fa{width:min(56vw,230px);border-radius:32px;border:3.5px dashed #4A3428;padding:8px 14px 4px;background:#FFFDF6}
+.fa.tg{background:#FFF3D2;border-style:solid;animation:hnp 1.2s infinite}
+.fr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-top:4px}
+.ft{aspect-ratio:1/1;background:#fff}
+.ft svg{width:78%;height:78%}
+.ft.hd{visibility:hidden}
+.ghf{position:fixed;z-index:900;pointer-events:none;width:96px;height:96px;transition:transform .45s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:center;justify-content:center;background:#fff;border:3.5px solid #4A3428;border-radius:26px;box-shadow:0 7px 0 rgba(74,52,40,.14)}
+.ghf svg{width:74%;height:74%}
+.wr{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.wcc{aspect-ratio:1/1.05;padding:6px}
+.wcc svg{width:100%;height:100%}
+.wcc.gs{background:#FFF3D2;border-style:dashed;cursor:default}
+.wcc .qm{font-size:3.4rem;font-weight:800;color:#E8703A}
+.cov{position:absolute;inset:0;z-index:20;background:rgba(74,52,40,.92);border-radius:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.cov .sb{display:flex;gap:10px}
+.cov .sb .ic{width:30px;height:30px;color:#FFC94D;animation:tw2 1s infinite alternate}
+.cov .sb .ic:nth-child(2){animation-delay:.2s}
+.cov .sb .ic:nth-child(3){animation-delay:.4s}
+@keyframes tw2{from{transform:scale(.7);opacity:.5}to{transform:scale(1.2);opacity:1}}
+.cov h3{color:#fff;margin:0;font-size:1.8rem}
+.fin{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+.fin h1{margin:0;font-size:2.2rem;color:#E8703A;animation:wnp .8s}
+.srv{width:150px;height:150px;background:#fff;border:4px solid #4A3428;border-radius:36px;display:flex;align-items:center;justify-content:center;animation:rvi .8s cubic-bezier(.34,1.56,.64,1)}
+@keyframes rvi{0%{transform:scale(0) rotate(-30deg)}70%{transform:scale(1.15) rotate(6deg)}}
+.srv svg{width:100px;height:110px}
+.fin .sub{font-weight:800;font-size:1.2rem;color:#8A6D5B}
+.sst{display:flex;align-items:center;gap:6px;font-size:1.5rem;font-weight:800}
+.sst .ic{width:34px;height:34px;color:#E8A23A}
+.fa2{display:flex;flex-direction:column;gap:12px;width:min(340px,100%)}
+.chp{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chip{background:#fff;border:2.5px solid #4A3428;border-radius:14px;padding:4px 14px;font-weight:800;font-size:1.1rem}
+.en{font-size:1.5rem;font-weight:800;color:#E8703A}
+.sgv{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center}
+.sgl{font-size:6.5rem;font-weight:800;line-height:1}
+.sgw{font-size:2rem;font-weight:800}
+.sga{width:min(52vw,210px)}
+.sga svg{width:100%;height:auto}
+.sga.bo svg{animation:anb .8s cubic-bezier(.34,1.56,.64,1)}
+.sce{position:relative;flex:1;min-height:300px;border:3.5px solid #4A3428;border-radius:30px;overflow:hidden;background:#D9EEF9;box-shadow:0 7px 0 rgba(74,52,40,.14)}
+.sce .sun{position:absolute;top:4%;left:4%;width:74px;height:74px}
+.sce .cld{position:absolute;width:95px;opacity:.95}
+.sce .cld.a{top:10%;right:8%;animation:dr 9s ease-in-out infinite alternate}
+.sce .cld.b{top:24%;left:14%;width:70px;animation:dr 11s ease-in-out infinite alternate-reverse}
+@keyframes dr{to{transform:translateX(-26px)}}
+.sce .hls{position:absolute;bottom:0;left:0;right:0;width:100%;height:52%}
+.sit{position:absolute;cursor:pointer}
+.tre{right:3%;bottom:34%;width:112px}
+.bsh{right:22%;bottom:31%;width:72px}
+.bsh2{left:24%;bottom:33%;width:56px}
+.hse{left:3%;bottom:36%;width:112px}
+.spr{right:14%;bottom:35%;width:54px}
+.rbw{left:50%;transform:translateX(-50%);bottom:40%;width:min(70%,270px);z-index:0}
+.san{position:absolute;bottom:4%;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:3;max-width:94%;overflow-x:auto;padding:4px 2px;scrollbar-width:none}
+.san::-webkit-scrollbar{display:none}
+.sa{width:62px;height:64px;flex:0 0 auto;background:#fff;border:3px solid #4A3428;border-radius:18px;padding:3px;cursor:pointer;animation:bob 3s ease-in-out infinite;box-shadow:0 4px 0 rgba(74,52,40,.14)}
+.sa svg{width:100%;height:100%}
+.sa.bo{animation:anb .8s cubic-bezier(.34,1.56,.64,1)}
+.lsc{position:absolute;bottom:12%;right:50%;transform:translateX(50%);width:104px;height:110px;z-index:2;cursor:pointer}
+.lsc .lulu{width:100%;height:100%}
+.npop{position:absolute;background:#fff;border:2.5px solid #4A3428;border-radius:14px;padding:2px 12px;font-weight:800;pointer-events:none;animation:npp 1.4s forwards;z-index:10;white-space:nowrap;transform:translateX(-50%)}
+@keyframes npp{0%{opacity:0;margin-top:8px}20%{opacity:1}80%{opacity:1}100%{opacity:0;margin-top:-12px}}
+.flw{position:absolute;bottom:1%;left:0;right:0;display:flex;justify-content:center;gap:14px;z-index:2}
+.flw .f{width:38px;height:48px}
+.bfl{top:18%;left:12%;width:52px;z-index:2;animation:flp 12s ease-in-out infinite alternate}
+@keyframes flp{30%{transform:translate(50px,-16px)}60%{transform:translate(120px,10px)}100%{transform:translate(190px,-12px)}}
+.bwg{transform-box:view-box;transform-origin:50px 46px;animation:fll .7s ease-in-out infinite alternate}
+@keyframes fll{to{transform:scaleX(.55)}}
+.lk{position:absolute;bottom:6px;left:12px;right:12px;text-align:center;color:#8A6D5B;font-weight:700;font-size:.95rem;z-index:1}
 .loot{padding-top:12px}
-.loot-row{display:flex; align-items:center; gap:12px}
-.loot-stars{display:flex; align-items:center; gap:6px; font-weight:800; font-size:1.4rem}
-.loot-stars .ic{width:32px; height:32px; color:var(--amber)}
-.loot-stars .ic:nth-child(2){animation:twinkle 1.4s infinite alternate}
-.album{display:flex; gap:10px; flex:1; justify-content:flex-start; overflow-x:auto; padding:8px 2px; scrollbar-width:none}
-.album::-webkit-scrollbar{display:none}
-.slot{width:62px; height:62px; flex:0 0 auto; border:3px solid var(--ink); border-radius:20px; background:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 0 rgba(74,52,40,.12)}
-.slot svg{width:40px; height:44px}
-.slot.locked{opacity:.4; background:#F4EBDD}
-.slot.locked svg{width:24px; height:24px}
-
-.p-scroll{flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:14px; padding:4px 2px 10px}
-.p-card{background:#fff; border:3px solid var(--ink); border-radius:24px; padding:14px 16px; box-shadow:var(--card-sh)}
-.p-card h3{margin:0 0 8px; font-size:1.25rem; font-weight:800; color:var(--coral-d)}
-.p-stats{display:flex; gap:10px; flex-wrap:wrap}
-.p-stat{flex:1; min-width:90px; background:#FFF6E9; border:2.5px solid var(--ink); border-radius:16px; text-align:center; padding:6px 4px}
-.p-stat b{display:block; font-size:1.6rem; font-weight:800}
-.p-stat span{font-size:.95rem; font-weight:700; color:var(--ink-soft)}
-.p-chips{display:flex; flex-wrap:wrap; gap:8px}
-.p-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.p-list{margin:0; padding-right:20px; font-weight:700; line-height:1.9; font-size:1rem}
-.p-list li{margin-bottom:4px}
-.btn-danger{background:#F26D6D; color:#fff; font-size:1.15rem}
-.gate-box{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; text-align:center}
-.gate-box .gq{font-size:1.5rem; font-weight:800}
-.gate-opts{display:flex; gap:16px}
-.gate-opts .btn{font-size:1.9rem; width:86px; height:86px; padding:0}
-.p-note{font-weight:700; color:var(--ink-soft); font-size:.95rem; line-height:1.6}
-.voice-opt{display:flex; align-items:flex-start; gap:10px; padding:10px; border:3px solid var(--line); border-radius:16px; cursor:pointer; margin-bottom:8px}
-.voice-opt.on{border-color:var(--ink); background:#FFF3D2; box-shadow:0 3px 0 rgba(74,52,40,.12)}
-.voice-opt b{display:block; font-size:1.05rem}
-.voice-opt span{font-weight:700; color:var(--ink-soft); font-size:.9rem; line-height:1.5}
-
-.toast-sticker{position:fixed; top:14px; right:50%; transform:translate(50%,-120px); z-index:1001; display:flex; align-items:center; gap:12px; background:#fff; border:3.5px solid var(--ink); border-radius:24px; padding:10px 18px; box-shadow:0 7px 0 rgba(74,52,40,.2); transition:transform .5s var(--pop)}
-.toast-sticker.show{transform:translate(50%,0)}
-.toast-sticker svg{width:44px; height:48px}
-.toast-sticker b{display:block; font-size:1.1rem; color:var(--coral-d)}
-.toast-sticker span{font-weight:700}
-.fly-star{position:fixed; z-index:1000; pointer-events:none; width:40px; height:40px; transition:transform .8s cubic-bezier(.5,-.25,.65,1)}
-.fly-star svg{width:100%; height:100%}
-
-@media (max-height:640px){
-  .big-letter{font-size:6rem} .lulu-hero{width:150px; height:158px}
-  .world-card{min-height:100px} .stage-lulu .lulu{width:80px; height:84px}
-}
+.ltr{display:flex;align-items:center;gap:12px}
+.lts{display:flex;align-items:center;gap:6px;font-weight:800;font-size:1.4rem}
+.lts .ic{width:32px;height:32px;color:#E8A23A}
+.alb{display:flex;gap:10px;flex:1;overflow-x:auto;padding:8px 2px;scrollbar-width:none}
+.alb::-webkit-scrollbar{display:none}
+.slot{width:62px;height:62px;flex:0 0 auto;border:3px solid #4A3428;border-radius:20px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 rgba(74,52,40,.12)}
+.slot svg{width:40px;height:44px}
+.slot.lk2{opacity:.4;background:#F4EBDD}
+.slot.lk2 svg{width:24px;height:24px}
+.psc{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:14px;padding:4px 2px 10px}
+.pc{background:#fff;border:3px solid #4A3428;border-radius:24px;padding:14px 16px;box-shadow:0 7px 0 rgba(74,52,40,.14)}
+.pc h3{margin:0 0 8px;font-size:1.25rem;color:#E8703A}
+.pst{display:flex;gap:10px;flex-wrap:wrap}
+.psi{flex:1;min-width:90px;background:#FFF6E9;border:2.5px solid #4A3428;border-radius:16px;text-align:center;padding:6px 4px}
+.psi b{display:block;font-size:1.6rem}
+.psi span{font-size:.95rem;font-weight:700;color:#8A6D5B}
+.pcs{display:flex;flex-wrap:wrap;gap:8px}
+.prw{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pls{margin:0;padding-right:20px;font-weight:700;line-height:1.9}
+.pn{font-weight:700;color:#8A6D5B;font-size:.95rem;line-height:1.6}
+.vo{display:flex;align-items:flex-start;gap:10px;padding:10px;border:3px solid #E9D9C3;border-radius:16px;cursor:pointer;margin-bottom:8px}
+.vo.on{border-color:#4A3428;background:#FFF3D2}
+.vo b{display:block;font-size:1.05rem}
+.vo span{font-weight:700;color:#8A6D5B;font-size:.9rem}
+.gtb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center}
+.gq{font-size:1.5rem;font-weight:800}
+.go{display:flex;gap:16px}
+.go .btn{font-size:1.9rem;width:86px;height:86px;padding:0}
+.tst{position:fixed;top:14px;right:50%;transform:translate(50%,-120px);z-index:1001;display:flex;align-items:center;gap:12px;background:#fff;border:3.5px solid #4A3428;border-radius:24px;padding:10px 18px;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.tst.sh{transform:translate(50%,0)}
+.tst svg{width:44px;height:48px}
+.tst b{display:block;font-size:1.1rem;color:#E8703A}
+.fst{position:fixed;z-index:1000;pointer-events:none;width:40px;height:40px;transition:transform .8s cubic-bezier(.5,-.25,.65,1)}
+.fst svg{width:100%;height:100%}
+@media (max-height:640px){.bl2{font-size:6rem}.wh .lulu{width:150px}.wc{min-height:100px}.sl .lulu{width:80px;height:84px}}
 </style>
 </head>
 <body>
-
-<svg id="assets" aria-hidden="true"><defs>
-
-<symbol id="an-lion" viewBox="0 0 200 210">
-  <ellipse cx="82" cy="197" rx="13" ry="8" fill="#E8A33D"/><ellipse cx="118" cy="197" rx="13" ry="8" fill="#E8A33D"/>
-  <path d="M136 148 q26 6 28 -20 q1 -12 -8 -14" fill="none" stroke="#E8A33D" stroke-width="9" stroke-linecap="round"/>
-  <circle cx="156" cy="112" r="8" fill="#B96A2E"/>
-  <ellipse cx="100" cy="152" rx="46" ry="42" fill="#FFC94D"/>
-  <g fill="#E8853D">
-    <circle cx="156" cy="80" r="16"/><circle cx="148.5" cy="108" r="16"/><circle cx="132" cy="128.5" r="16"/>
-    <circle cx="100" cy="136" r="16"/><circle cx="68" cy="128.5" r="16"/><circle cx="51.5" cy="108" r="16"/>
-    <circle cx="44" cy="80" r="16"/><circle cx="51.5" cy="52" r="16"/><circle cx="68" cy="31.5" r="16"/>
-    <circle cx="100" cy="24" r="16"/><circle cx="132" cy="31.5" r="16"/><circle cx="148.5" cy="52" r="16"/>
-    <circle cx="100" cy="80" r="58"/>
-  </g>
-  <circle cx="100" cy="80" r="46" fill="#FFC94D"/>
-  <ellipse cx="100" cy="99" rx="25" ry="17" fill="#FFE9B8"/>
-  <circle cx="78" cy="74" r="11" fill="#fff"/><circle cx="122" cy="74" r="11" fill="#fff"/>
-  <circle cx="80" cy="76" r="5.5" fill="#3A2A1E"/><circle cx="120" cy="76" r="5.5" fill="#3A2A1E"/>
-  <circle cx="82" cy="73.5" r="2" fill="#fff"/><circle cx="122" cy="73.5" r="2" fill="#fff"/>
-  <path d="M93 92 q7 -6 14 0 q-3 10 -7 10 q-4 0 -7 -10" fill="#7A4E2B"/>
-  <path d="M100 102 v6 M100 108 q-8 7 -14 1 M100 108 q8 7 14 1" fill="none" stroke="#7A4E2B" stroke-width="2.5" stroke-linecap="round"/>
-  <ellipse cx="58" cy="95" rx="8" ry="5.5" fill="#FFAD66" opacity=".85"/><ellipse cx="142" cy="95" rx="8" ry="5.5" fill="#FFAD66" opacity=".85"/>
-</symbol>
-
-<symbol id="an-elephant" viewBox="0 0 200 210">
-  <path d="M138 150 q22 0 24 -26" fill="none" stroke="#8FA9C9" stroke-width="7" stroke-linecap="round"/>
-  <ellipse cx="74" cy="197" rx="13" ry="8" fill="#8FA9C9"/><ellipse cx="126" cy="197" rx="13" ry="8" fill="#8FA9C9"/>
-  <ellipse cx="100" cy="150" rx="47" ry="44" fill="#9BB8D3"/>
-  <ellipse cx="38" cy="84" rx="27" ry="36" fill="#7E9EC4"/><ellipse cx="38" cy="88" rx="16" ry="24" fill="#CBDCEE"/>
-  <ellipse cx="162" cy="84" rx="27" ry="36" fill="#7E9EC4"/><ellipse cx="162" cy="88" rx="16" ry="24" fill="#CBDCEE"/>
-  <circle cx="100" cy="84" r="52" fill="#9BB8D3"/>
-  <path d="M100 110 C102 138 98 160 84 172 C76 179 80 190 92 190" fill="none" stroke="#9BB8D3" stroke-width="24" stroke-linecap="round"/>
-  <ellipse cx="92" cy="187" rx="8" ry="6" fill="#7E9EC4"/>
-  <ellipse cx="80" cy="124" rx="6" ry="10" fill="#FFF7EA" transform="rotate(18 80 124)"/>
-  <ellipse cx="120" cy="124" rx="6" ry="10" fill="#FFF7EA" transform="rotate(-18 120 124)"/>
-  <circle cx="79" cy="76" r="10" fill="#fff"/><circle cx="121" cy="76" r="10" fill="#fff"/>
-  <circle cx="81" cy="78" r="5" fill="#3A2A1E"/><circle cx="119" cy="78" r="5" fill="#3A2A1E"/>
-  <circle cx="83" cy="75.5" r="1.8" fill="#fff"/><circle cx="121" cy="75.5" r="1.8" fill="#fff"/>
-  <path d="M96 40 q4 -12 12 -16 M104 40 q6 -10 14 -12" fill="none" stroke="#6E8CB0" stroke-width="3.5" stroke-linecap="round"/>
-  <ellipse cx="56" cy="100" rx="8" ry="5.5" fill="#B7CBE3" opacity=".9"/><ellipse cx="144" cy="100" rx="8" ry="5.5" fill="#B7CBE3" opacity=".9"/>
-</symbol>
-
-<symbol id="an-cat" viewBox="0 0 200 210">
-  <path d="M134 160 q24 -4 22 -34 q-1 -10 -8 -12" fill="none" stroke="#F6A75C" stroke-width="10" stroke-linecap="round"/>
-  <circle cx="147" cy="111" r="9" fill="#E07B39"/>
-  <ellipse cx="80" cy="197" rx="12" ry="8" fill="#E07B39"/><ellipse cx="120" cy="197" rx="12" ry="8" fill="#E07B39"/>
-  <ellipse cx="100" cy="155" rx="42" ry="38" fill="#F6A75C"/>
-  <path d="M58 50 Q46 8 82 24 Q94 30 88 46 Z" fill="#F6A75C"/>
-  <path d="M66 44 Q60 22 80 30 Q86 36 82 44 Z" fill="#F9C0A8"/>
-  <path d="M142 50 Q154 8 118 24 Q106 30 112 46 Z" fill="#F6A75C"/>
-  <path d="M134 44 Q140 22 120 30 Q114 36 118 44 Z" fill="#F9C0A8"/>
-  <circle cx="100" cy="86" r="48" fill="#F6A75C"/>
-  <path d="M92 42 v12 M100 40 v14 M108 42 v12" stroke="#E07B39" stroke-width="5" stroke-linecap="round"/>
-  <circle cx="79" cy="80" r="10.5" fill="#fff"/><circle cx="121" cy="80" r="10.5" fill="#fff"/>
-  <circle cx="81" cy="82" r="5" fill="#3A2A1E"/><circle cx="119" cy="82" r="5" fill="#3A2A1E"/>
-  <circle cx="83" cy="79.5" r="1.8" fill="#fff"/><circle cx="121" cy="79.5" r="1.8" fill="#fff"/>
-  <path d="M95 96 q5 -4 10 0 q-2 8 -5 8 q-3 0 -5 -8" fill="#F27B9E"/>
-  <path d="M100 104 v5 M100 109 q-8 6 -13 1 M100 109 q8 6 13 1" fill="none" stroke="#7A4E2B" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M52 92 L30 86 M52 100 L32 104 M148 92 L170 86 M148 100 L168 104" stroke="#C68B54" stroke-width="2.2" stroke-linecap="round"/>
-  <ellipse cx="62" cy="100" rx="8" ry="5.5" fill="#FFC197" opacity=".9"/><ellipse cx="138" cy="100" rx="8" ry="5.5" fill="#FFC197" opacity=".9"/>
-</symbol>
-
-<symbol id="an-duck" viewBox="0 0 200 210">
-  <path d="M52 116 Q22 100 30 122 Q38 138 56 130 Z" fill="#F2B722"/>
-  <ellipse cx="78" cy="198" rx="12" ry="7" fill="#F2B722"/><ellipse cx="122" cy="198" rx="12" ry="7" fill="#F2B722"/>
-  <ellipse cx="100" cy="142" rx="52" ry="42" fill="#FFD34E"/>
-  <ellipse cx="74" cy="146" rx="20" ry="27" fill="#F2B722" transform="rotate(-18 74 146)"/>
-  <circle cx="100" cy="64" r="37" fill="#FFD34E"/>
-  <path d="M92 28 q-2 -12 6 -16 M100 27 q0 -14 8 -18" fill="none" stroke="#F2B722" stroke-width="4" stroke-linecap="round"/>
-  <ellipse cx="100" cy="86" rx="18" ry="10" fill="#F28A2E"/>
-  <path d="M86 86 q14 8 28 0" fill="none" stroke="#D9721F" stroke-width="2.5" stroke-linecap="round"/>
-  <circle cx="85" cy="56" r="9.5" fill="#fff"/><circle cx="115" cy="56" r="9.5" fill="#fff"/>
-  <circle cx="86" cy="57" r="4.5" fill="#3A2A1E"/><circle cx="114" cy="57" r="4.5" fill="#3A2A1E"/>
-  <circle cx="87.5" cy="55" r="1.6" fill="#fff"/><circle cx="115.5" cy="55" r="1.6" fill="#fff"/>
-  <ellipse cx="68" cy="72" rx="7" ry="5" fill="#FFAD66" opacity=".8"/><ellipse cx="132" cy="72" rx="7" ry="5" fill="#FFAD66" opacity=".8"/>
-</symbol>
-
-<symbol id="an-dog" viewBox="0 0 200 210">
-  <path d="M134 150 q20 -12 14 -36" fill="none" stroke="#C98E4E" stroke-width="9" stroke-linecap="round"/>
-  <ellipse cx="76" cy="198" rx="12" ry="8" fill="#A9713C"/><ellipse cx="124" cy="198" rx="12" ry="8" fill="#A9713C"/>
-  <ellipse cx="100" cy="154" rx="43" ry="38" fill="#C98E4E"/>
-  <path d="M64 36 Q40 28 38 66 Q38 96 58 98 Q70 96 72 62 Z" fill="#8C5A2B"/>
-  <path d="M136 36 Q160 28 162 66 Q162 96 142 98 Q130 96 128 62 Z" fill="#8C5A2B"/>
-  <circle cx="100" cy="86" r="49" fill="#C98E4E"/>
-  <circle cx="121" cy="74" r="17" fill="#8C5A2B"/>
-  <ellipse cx="100" cy="112" rx="25" ry="16" fill="#F5E3C3"/>
-  <ellipse cx="100" cy="104" rx="8.5" ry="6.5" fill="#4A3428"/>
-  <path d="M100 110 v4 M100 114 q-8 7 -14 2 M100 114 q8 7 14 2" fill="none" stroke="#7A4E2B" stroke-width="2.4" stroke-linecap="round"/>
-  <ellipse cx="110" cy="122" rx="5.5" ry="7.5" fill="#F27B9E"/>
-  <circle cx="80" cy="76" r="10.5" fill="#fff"/><circle cx="121" cy="74" r="10.5" fill="#fff"/>
-  <circle cx="82" cy="78" r="5" fill="#3A2A1E"/><circle cx="119" cy="76" r="5" fill="#3A2A1E"/>
-  <circle cx="84" cy="75.5" r="1.8" fill="#fff"/><circle cx="121" cy="73.5" r="1.8" fill="#fff"/>
-  <ellipse cx="56" cy="100" rx="8" ry="5.5" fill="#E8B87E" opacity=".9"/><ellipse cx="144" cy="100" rx="8" ry="5.5" fill="#E8B87E" opacity=".9"/>
-</symbol>
-
-<symbol id="an-cow" viewBox="0 0 200 210">
-  <path d="M144 152 q20 2 20 -22" fill="none" stroke="#E9E2D4" stroke-width="7" stroke-linecap="round"/>
-  <circle cx="164" cy="127" r="7" fill="#5A4636"/>
-  <ellipse cx="76" cy="198" rx="12" ry="8" fill="#E9E2D4"/><ellipse cx="124" cy="198" rx="12" ry="8" fill="#E9E2D4"/>
-  <ellipse cx="100" cy="154" rx="44" ry="38" fill="#F8F4EC"/>
-  <path d="M76 132 q-14 10 -8 26 q10 6 18 -4 q4 -12 -10 -22 Z" fill="#5A4636"/>
-  <path d="M124 146 q14 2 16 16 q-4 10 -16 6 q-8 -10 0 -22 Z" fill="#5A4636"/>
-  <ellipse cx="48" cy="58" rx="17" ry="10" fill="#E9E2D4" transform="rotate(-20 48 58)"/>
-  <ellipse cx="152" cy="58" rx="17" ry="10" fill="#E9E2D4" transform="rotate(20 152 58)"/>
-  <path d="M70 44 Q64 22 78 26" fill="none" stroke="#D9B36B" stroke-width="7" stroke-linecap="round"/>
-  <path d="M130 44 Q136 22 122 26" fill="none" stroke="#D9B36B" stroke-width="7" stroke-linecap="round"/>
-  <circle cx="100" cy="86" r="48" fill="#F8F4EC"/>
-  <path d="M126 52 q16 -6 20 10 q2 14 -12 16 q-12 -2 -8 -26 Z" fill="#5A4636"/>
-  <ellipse cx="100" cy="110" rx="28" ry="18" fill="#F4A7B9"/>
-  <ellipse cx="89" cy="110" rx="4.5" ry="6.5" fill="#C9628C"/><ellipse cx="111" cy="110" rx="4.5" ry="6.5" fill="#C9628C"/>
-  <circle cx="78" cy="78" r="10" fill="#fff"/><circle cx="122" cy="78" r="10" fill="#fff"/>
-  <circle cx="80" cy="80" r="5" fill="#3A2A1E"/><circle cx="120" cy="80" r="5" fill="#3A2A1E"/>
-  <circle cx="82" cy="77.5" r="1.8" fill="#fff"/><circle cx="122" cy="77.5" r="1.8" fill="#fff"/>
-  <ellipse cx="58" cy="96" rx="8" ry="5.5" fill="#F2B8C6"/><ellipse cx="142" cy="96" rx="8" ry="5.5" fill="#F2B8C6"/>
-</symbol>
-
-<symbol id="an-croc" viewBox="0 0 200 210">
-  <path d="M52 158 Q16 148 24 128 Q32 118 44 126 Q56 136 62 148 Z" fill="#77C043"/>
-  <ellipse cx="84" cy="196" rx="11" ry="7" fill="#6AB03A"/><ellipse cx="116" cy="196" rx="11" ry="7" fill="#6AB03A"/>
-  <ellipse cx="104" cy="160" rx="44" ry="32" fill="#77C043"/>
-  <ellipse cx="104" cy="164" rx="26" ry="20" fill="#C8E8A0"/>
-  <circle cx="76" cy="52" r="14" fill="#77C043"/><circle cx="124" cy="52" r="14" fill="#77C043"/>
-  <ellipse cx="100" cy="84" rx="48" ry="22" fill="#77C043"/>
-  <ellipse cx="100" cy="88" rx="36" ry="11" fill="#3E5B22"/>
-  <ellipse cx="100" cy="108" rx="38" ry="13" fill="#6AB03A"/>
-  <path d="M70 88 l5 8 l5 -8 Z M85 90 l5 8 l5 -8 Z M100 90 l5 8 l5 -8 Z M115 88 l5 8 l5 -8 Z" fill="#FFF7EC"/>
-  <path d="M79 104 l5 -7 l5 7 Z M94 106 l5 -7 l5 7 Z M108 104 l5 -7 l5 7 Z" fill="#FFF7EC"/>
-  <ellipse cx="88" cy="72" rx="3" ry="2.4" fill="#3E5B22"/><ellipse cx="112" cy="72" rx="3" ry="2.4" fill="#3E5B22"/>
-  <circle cx="72" cy="50" r="8" fill="#fff"/><circle cx="126" cy="50" r="8" fill="#fff"/>
-  <circle cx="73" cy="51" r="4" fill="#2C3E14"/><circle cx="125" cy="51" r="4" fill="#2C3E14"/>
-  <circle cx="74.5" cy="48.5" r="1.4" fill="#fff"/><circle cx="126.5" cy="48.5" r="1.4" fill="#fff"/>
-</symbol>
-
-<symbol id="an-snake" viewBox="0 0 200 210">
-  <path d="M34 158 Q64 116 100 150 Q136 184 162 142" fill="none" stroke="#6FBF6F" stroke-width="27" stroke-linecap="round"/>
-  <path d="M42 158 Q68 126 102 152 Q136 180 156 146" fill="none" stroke="#C8E8A0" stroke-width="10" stroke-linecap="round"/>
-  <circle cx="162" cy="138" r="22" fill="#6FBF6F"/>
-  <circle cx="156" cy="130" r="6.5" fill="#fff"/><circle cx="172" cy="128" r="6.5" fill="#fff"/>
-  <circle cx="157" cy="131" r="3.2" fill="#3A2A1E"/><circle cx="171" cy="129" r="3.2" fill="#3A2A1E"/>
-  <circle cx="158" cy="129" r="1.2" fill="#fff"/><circle cx="172.5" cy="127" r="1.2" fill="#fff"/>
-  <path d="M180 144 q12 0 14 -6 M180 144 q12 4 12 12" fill="none" stroke="#E85D5D" stroke-width="2.6" stroke-linecap="round"/>
-  <path d="M150 150 q5 4 10 0" fill="none" stroke="#4A8A56" stroke-width="2.5" stroke-linecap="round"/>
-</symbol>
-
-<symbol id="an-camel" viewBox="0 0 200 210">
-  <rect x="70" y="160" width="12" height="40" rx="6" fill="#C08A4B"/>
-  <rect x="112" y="160" width="12" height="40" rx="6" fill="#C08A4B"/>
-  <rect x="86" y="164" width="12" height="36" rx="6" fill="#D9A05B"/>
-  <path d="M58 124 q-14 -4 -14 -20" fill="none" stroke="#C08A4B" stroke-width="6" stroke-linecap="round"/>
-  <ellipse cx="98" cy="128" rx="42" ry="27" fill="#D9A05B"/>
-  <ellipse cx="98" cy="100" rx="25" ry="20" fill="#D9A05B"/>
-  <path d="M128 116 Q140 96 140 70" fill="none" stroke="#D9A05B" stroke-width="19" stroke-linecap="round"/>
-  <ellipse cx="143" cy="58" rx="21" ry="15" fill="#D9A05B"/>
-  <ellipse cx="152" cy="63" rx="10" ry="6.5" fill="#C08A4B"/>
-  <ellipse cx="130" cy="42" rx="5" ry="8" fill="#C08A4B" transform="rotate(-14 130 42)"/>
-  <circle cx="138" cy="52" r="5.5" fill="#fff"/><circle cx="139.5" cy="53" r="2.7" fill="#3A2A1E"/>
-  <path d="M148 68 q4 3 8 1" fill="none" stroke="#8A5A33" stroke-width="2.2" stroke-linecap="round"/>
-  <path d="M92 92 q6 -6 12 0 M104 90 q6 -6 12 0" fill="none" stroke="#C08A4B" stroke-width="3.5" stroke-linecap="round"/>
-</symbol>
-
-<symbol id="an-bear" viewBox="0 0 200 210">
-  <ellipse cx="78" cy="198" rx="13" ry="8" fill="#8A5A3B"/><ellipse cx="122" cy="198" rx="13" ry="8" fill="#8A5A3B"/>
-  <path d="M60 150 q-18 -6 -16 -26" fill="none" stroke="#8A5A3B" stroke-width="8" stroke-linecap="round"/>
-  <ellipse cx="100" cy="152" rx="45" ry="40" fill="#9A6945"/>
-  <circle cx="62" cy="42" r="15" fill="#9A6945"/><circle cx="62" cy="42" r="8" fill="#C69069"/>
-  <circle cx="138" cy="42" r="15" fill="#9A6945"/><circle cx="138" cy="42" r="8" fill="#C69069"/>
-  <circle cx="100" cy="88" r="49" fill="#9A6945"/>
-  <ellipse cx="100" cy="110" rx="24" ry="17" fill="#E8CBA8"/>
-  <ellipse cx="100" cy="102" rx="9" ry="7" fill="#4A3428"/>
-  <path d="M100 109 v4 M100 113 q-8 6 -13 1 M100 113 q8 6 13 1" fill="none" stroke="#7A4E2B" stroke-width="2.4" stroke-linecap="round"/>
-  <circle cx="78" cy="78" r="10.5" fill="#fff"/><circle cx="122" cy="78" r="10.5" fill="#fff"/>
-  <circle cx="80" cy="80" r="5" fill="#3A2A1E"/><circle cx="120" cy="80" r="5" fill="#3A2A1E"/>
-  <circle cx="82" cy="77.5" r="1.8" fill="#fff"/><circle cx="122" cy="77.5" r="1.8" fill="#fff"/>
-  <ellipse cx="56" cy="100" rx="8" ry="5.5" fill="#E8A76F" opacity=".9"/><ellipse cx="144" cy="100" rx="8" ry="5.5" fill="#E8A76F" opacity=".9"/>
-</symbol>
-
-<symbol id="an-whale" viewBox="0 0 200 210">
-  <g fill="#A5DCF5"><circle cx="52" cy="34" r="8"/><circle cx="68" cy="22" r="6"/><circle cx="40" cy="20" r="5"/></g>
-  <path d="M148 118 Q182 96 184 62 Q198 96 174 124 Q164 134 152 128 Z" fill="#7EC8F0"/>
-  <ellipse cx="88" cy="132" rx="66" ry="50" fill="#7EC8F0"/>
-  <path d="M26 148 Q88 192 150 146 Q144 174 88 184 Q36 174 26 148 Z" fill="#DFF3FC"/>
-  <path d="M64 178 Q72 202 94 204 Q88 186 84 174 Z" fill="#5BB2DE"/>
-  <circle cx="50" cy="106" r="10" fill="#fff"/><circle cx="52" cy="108" r="5" fill="#3A2A1E"/><circle cx="54" cy="105" r="2" fill="#fff"/>
-  <path d="M30 128 Q48 142 72 136" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round"/>
-  <ellipse cx="62" cy="122" rx="7" ry="5" fill="#BDE3F5" opacity=".9"/>
-</symbol>
-
-<symbol id="an-sheep" viewBox="0 0 200 210">
-  <rect x="78" y="160" width="13" height="42" rx="6.5" fill="#8A7A88"/>
-  <rect x="110" y="160" width="13" height="42" rx="6.5" fill="#8A7A88"/>
-  <g fill="#F6F1E7">
-    <circle cx="66" cy="146" r="26"/><circle cx="134" cy="146" r="26"/>
-    <circle cx="100" cy="140" r="38"/><circle cx="84" cy="118" r="24"/><circle cx="116" cy="118" r="24"/>
-    <circle cx="100" cy="162" r="28"/>
-  </g>
-  <ellipse cx="100" cy="84" rx="34" ry="31" fill="#9C8D9C"/>
-  <ellipse cx="60" cy="82" rx="17" ry="10" fill="#8A7A88" transform="rotate(-16 60 82)"/>
-  <ellipse cx="140" cy="82" rx="17" ry="10" fill="#8A7A88" transform="rotate(16 140 82)"/>
-  <circle cx="100" cy="50" r="12" fill="#F6F1E7"/><circle cx="84" cy="56" r="9" fill="#F6F1E7"/><circle cx="116" cy="56" r="9" fill="#F6F1E7"/>
-  <circle cx="88" cy="82" r="9.5" fill="#fff"/><circle cx="112" cy="82" r="9.5" fill="#fff"/>
-  <circle cx="90" cy="84" r="4.7" fill="#3A2A1E"/><circle cx="110" cy="84" r="4.7" fill="#3A2A1E"/>
-  <circle cx="92" cy="81.5" r="1.7" fill="#fff"/><circle cx="112" cy="81.5" r="1.7" fill="#fff"/>
-  <ellipse cx="100" cy="100" rx="5" ry="3.5" fill="#6B5D6B"/>
-  <path d="M100 104 v4 M100 108 q-7 6 -12 1 M100 108 q7 6 12 1" fill="none" stroke="#6B5D6B" stroke-width="2.2" stroke-linecap="round"/>
-  <ellipse cx="70" cy="96" rx="7" ry="5" fill="#E8B8C8" opacity=".7"/><ellipse cx="130" cy="96" rx="7" ry="5" fill="#E8B8C8" opacity=".7"/>
-</symbol>
-
-<symbol id="an-corn" viewBox="0 0 200 210">
-  <path d="M68 118 Q36 158 58 196 Q92 168 90 128 Z" fill="#7ED588"/>
-  <path d="M132 118 Q164 158 142 196 Q108 168 110 128 Z" fill="#6FBF6F"/>
-  <ellipse cx="100" cy="118" rx="38" ry="74" fill="#FFD34E"/>
-  <g fill="#F2B722">
-    <circle cx="100" cy="56" r="9"/><circle cx="82" cy="76" r="9"/><circle cx="118" cy="76" r="9"/>
-    <circle cx="100" cy="96" r="9"/><circle cx="80" cy="118" r="9"/><circle cx="120" cy="118" r="9"/>
-    <circle cx="100" cy="140" r="9"/><circle cx="84" cy="162" r="9"/><circle cx="116" cy="162" r="9"/>
-    <circle cx="100" cy="182" r="9"/>
-  </g>
-  <path d="M92 46 Q86 24 74 18 M100 44 Q100 20 96 8 M108 46 Q114 24 126 18" fill="none" stroke="#C9955C" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="86" cy="92" r="7" fill="#fff"/><circle cx="114" cy="92" r="7" fill="#fff"/>
-  <circle cx="88" cy="93" r="3.4" fill="#3A2A1E"/><circle cx="112" cy="93" r="3.4" fill="#3A2A1E"/>
-  <path d="M92 108 q8 7 16 0" fill="none" stroke="#B07A2E" stroke-width="2.6" stroke-linecap="round"/>
-  <ellipse cx="72" cy="104" rx="6" ry="4" fill="#FFC197" opacity=".8"/><ellipse cx="128" cy="104" rx="6" ry="4" fill="#FFC197" opacity=".8"/>
-</symbol>
-
-<symbol id="an-pomegranate" viewBox="0 0 200 210">
-  <path d="M84 46 L84 20 L96 34 L100 12 L104 34 L116 20 L116 46 Q100 38 84 46 Z" fill="#C25858"/>
-  <circle cx="100" cy="128" r="62" fill="#E85D5D"/>
-  <path d="M84 46 Q100 38 116 46 L112 60 Q100 54 88 60 Z" fill="#C25858"/>
-  <ellipse cx="72" cy="104" rx="14" ry="20" fill="#F28585" opacity=".8" transform="rotate(-20 72 104)"/>
-  <circle cx="82" cy="122" r="9.5" fill="#fff"/><circle cx="118" cy="122" r="9.5" fill="#fff"/>
-  <circle cx="84" cy="124" r="4.7" fill="#3A2A1E"/><circle cx="116" cy="124" r="4.7" fill="#3A2A1E"/>
-  <circle cx="86" cy="121.5" r="1.7" fill="#fff"/><circle cx="118" cy="121.5" r="1.7" fill="#fff"/>
-  <path d="M92 142 q8 8 16 0" fill="none" stroke="#A63A3A" stroke-width="3" stroke-linecap="round"/>
-  <ellipse cx="66" cy="140" rx="8" ry="5.5" fill="#FFADAD" opacity=".8"/><ellipse cx="134" cy="140" rx="8" ry="5.5" fill="#FFADAD" opacity=".8"/>
-</symbol>
-
-<symbol id="an-giraffe" viewBox="0 0 200 210">
-  <rect x="70" y="148" width="13" height="50" rx="6.5" fill="#D9A05B"/>
-  <rect x="118" y="148" width="13" height="50" rx="6.5" fill="#D9A05B"/>
-  <rect x="92" y="150" width="12" height="48" rx="6" fill="#F2C879"/>
-  <path d="M62 128 q-18 -2 -16 -24" fill="none" stroke="#D9A05B" stroke-width="6" stroke-linecap="round"/>
-  <ellipse cx="96" cy="130" rx="44" ry="28" fill="#F2C879"/>
-  <g fill="#B07A45"><circle cx="82" cy="122" r="7"/><circle cx="108" cy="136" r="8"/><circle cx="98" cy="116" r="6"/><circle cx="118" cy="122" r="6"/></g>
-  <path d="M116 114 Q128 64 122 32 L146 28 Q154 70 142 116 Z" fill="#F2C879"/>
-  <g fill="#B07A45"><circle cx="132" cy="66" r="6"/><circle cx="138" cy="92" r="5"/></g>
-  <ellipse cx="136" cy="26" rx="20" ry="14" fill="#F2C879"/>
-  <path d="M122 18 Q114 4 122 2 M148 18 Q156 4 148 2" fill="none" stroke="#B07A45" stroke-width="4" stroke-linecap="round"/>
-  <ellipse cx="118" cy="24" rx="7" ry="9" fill="#D9A05B"/>
-  <circle cx="130" cy="22" r="5.5" fill="#fff"/><circle cx="131" cy="23" r="2.8" fill="#3A2A1E"/><circle cx="132.5" cy="21" r="1" fill="#fff"/>
-  <path d="M140 30 q7 4 12 0" fill="none" stroke="#8A5A33" stroke-width="2.2" stroke-linecap="round"/>
-  <ellipse cx="142" cy="14" rx="6" ry="4" fill="#B07A45"/>
-</symbol>
-
-<symbol id="an-fish" viewBox="0 0 200 210">
-  <path d="M138 105 L178 64 Q170 105 178 146 Z" fill="#62B6E7"/>
-  <path d="M76 66 Q94 38 118 48 Q106 66 84 70 Z" fill="#62B6E7"/>
-  <ellipse cx="94" cy="105" rx="62" ry="48" fill="#7EC8F0"/>
-  <ellipse cx="100" cy="128" rx="18" ry="11" fill="#62B6E7" transform="rotate(-20 100 128)"/>
-  <g fill="#BDE3F5"><circle cx="68" cy="102" r="9"/><circle cx="92" cy="120" r="8"/><circle cx="92" cy="88" r="8"/></g>
-  <circle cx="58" cy="94" r="10" fill="#fff"/><circle cx="60" cy="96" r="5" fill="#3A2A1E"/><circle cx="62" cy="93" r="2" fill="#fff"/>
-  <path d="M34 120 Q50 132 70 128" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round"/>
-  <ellipse cx="70" cy="112" rx="7" ry="5" fill="#BDE3F5" opacity=".9"/>
-  <g fill="#A5DCF5"><circle cx="30" cy="58" r="6"/><circle cx="18" cy="40" r="4.5"/></g>
-</symbol>
-
-<symbol id="an-sun" viewBox="0 0 120 120"><use href="#w-sun"/></symbol>
-
-<symbol id="an-frog" viewBox="0 0 200 210">
-  <ellipse cx="52" cy="188" rx="20" ry="12" fill="#6FBF6F"/>
-  <ellipse cx="148" cy="188" rx="20" ry="12" fill="#6FBF6F"/>
-  <ellipse cx="100" cy="148" rx="66" ry="48" fill="#7ED588"/>
-  <ellipse cx="100" cy="164" rx="40" ry="26" fill="#E4F8D2"/>
-  <circle cx="62" cy="72" r="19" fill="#7ED588"/>
-  <circle cx="138" cy="72" r="19" fill="#7ED588"/>
-  <circle cx="62" cy="70" r="12" fill="#fff"/><circle cx="138" cy="70" r="12" fill="#fff"/>
-  <circle cx="62" cy="72" r="5.5" fill="#3A2A1E"/><circle cx="138" cy="72" r="5.5" fill="#3A2A1E"/>
-  <circle cx="64" cy="69" r="2" fill="#fff"/><circle cx="140" cy="69" r="2" fill="#fff"/>
-  <path d="M58 122 Q100 154 142 122" fill="none" stroke="#4A8A56" stroke-width="4" stroke-linecap="round"/>
-  <ellipse cx="92" cy="104" rx="2.6" ry="2" fill="#4A8A56"/><ellipse cx="108" cy="104" rx="2.6" ry="2" fill="#4A8A56"/>
-  <ellipse cx="56" cy="128" rx="9" ry="6" fill="#FFC1C8" opacity=".85"/><ellipse cx="144" cy="128" rx="9" ry="6" fill="#FFC1C8" opacity=".85"/>
-  <ellipse cx="78" cy="172" rx="11" ry="7" fill="#6FBF6F"/><ellipse cx="122" cy="172" rx="11" ry="7" fill="#6FBF6F"/>
-</symbol>
-
-<symbol id="an-plane" viewBox="0 0 200 210">
-  <path d="M144 88 L144 32 Q170 36 178 88 Z" fill="#FF8555"/>
-  <path d="M150 158 Q180 148 184 118 Q190 156 158 170 Z" fill="#FF8555"/>
-  <rect x="20" y="84" width="152" height="56" rx="28" fill="#FFF7EC" stroke="#E3CBA0" stroke-width="3.5"/>
-  <ellipse cx="98" cy="140" rx="44" ry="15" fill="#FFC94D" transform="rotate(4 98 140)"/>
-  <circle cx="92" cy="100" r="7" fill="#BDE3F5"/><circle cx="114" cy="100" r="7" fill="#BDE3F5"/><circle cx="136" cy="100" r="7" fill="#BDE3F5"/>
-  <circle cx="50" cy="110" r="15" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="3.5"/>
-  <circle cx="46" cy="108" r="4.5" fill="#3A2A1E"/><circle cx="47.5" cy="106" r="1.6" fill="#fff"/>
-  <path d="M42 122 q8 7 15 3" fill="none" stroke="#7A4E2B" stroke-width="2.6" stroke-linecap="round"/>
-  <ellipse cx="70" cy="126" rx="6.5" ry="4.5" fill="#FFAD66" opacity=".8"/>
-</symbol>
-
-<symbol id="an-gazelle" viewBox="0 0 200 210">
-  <rect x="74" y="148" width="11" height="50" rx="5.5" fill="#C08A4B"/>
-  <rect x="115" y="148" width="11" height="50" rx="5.5" fill="#C08A4B"/>
-  <path d="M58 134 q-16 -2 -14 -22" fill="none" stroke="#C08A4B" stroke-width="5" stroke-linecap="round"/>
-  <ellipse cx="96" cy="132" rx="42" ry="26" fill="#D9A05B"/>
-  <ellipse cx="100" cy="138" rx="26" ry="15" fill="#F5E3C3"/>
-  <path d="M116 120 Q130 76 126 42 L146 38 Q154 80 142 122 Z" fill="#D9A05B"/>
-  <ellipse cx="138" cy="32" rx="19" ry="14" fill="#D9A05B"/>
-  <path d="M128 24 Q120 6 128 4 M146 22 Q152 4 162 6" fill="none" stroke="#8A5A33" stroke-width="4" stroke-linecap="round"/>
-  <ellipse cx="122" cy="30" rx="6" ry="9" fill="#C08A4B"/>
-  <circle cx="132" cy="28" r="5.5" fill="#fff"/><circle cx="133" cy="29" r="2.8" fill="#3A2A1E"/><circle cx="134.5" cy="27" r="1" fill="#fff"/>
-  <path d="M136 38 q6 4 11 1" fill="none" stroke="#8A5A33" stroke-width="2.2" stroke-linecap="round"/>
-  <ellipse cx="82" cy="124" rx="6" ry="4" fill="#B07A45"/>
-</symbol>
-
-<symbol id="an-bird" viewBox="0 0 200 210">
-  <path d="M148 104 L186 84 Q180 106 186 128 Z" fill="#3D8FC4"/>
-  <path d="M94 58 Q88 34 66 34 Q78 50 90 62 Z" fill="#3D8FC4"/>
-  <circle cx="100" cy="112" r="54" fill="#62B6E7"/>
-  <ellipse cx="100" cy="130" rx="34" ry="28" fill="#BDE3F5"/>
-  <ellipse cx="120" cy="122" rx="20" ry="26" fill="#3D8FC4" transform="rotate(14 120 122)"/>
-  <path d="M48 112 Q28 104 30 96 Q44 94 52 102 Q56 108 48 112 Z" fill="#F28A2E"/>
-  <circle cx="64" cy="96" r="9" fill="#fff"/><circle cx="62" cy="97" r="4.5" fill="#3A2A1E"/><circle cx="60" cy="95" r="1.6" fill="#fff"/>
-  <path d="M64 118 q6 6 12 3" fill="none" stroke="#2C5F86" stroke-width="2.4" stroke-linecap="round"/>
-  <ellipse cx="78" cy="114" rx="6" ry="4" fill="#A5D8F0" opacity=".9"/>
-  <rect x="82" y="174" width="8" height="30" rx="4" fill="#E8A23A"/>
-  <rect x="112" y="174" width="8" height="30" rx="4" fill="#E8A23A"/>
-</symbol>
-
-<symbol id="an-cloudy" viewBox="0 0 200 210">
-  <g fill="#fff" stroke="#DCE9F5" stroke-width="4">
-    <circle cx="58" cy="112" r="28"/><circle cx="100" cy="94" r="38"/><circle cx="146" cy="114" r="26"/>
-    <ellipse cx="100" cy="134" rx="60" ry="34"/>
-  </g>
-  <path d="M78 108 q7 9 14 0 M108 108 q7 9 14 0" fill="none" stroke="#7A96B5" stroke-width="3.4" stroke-linecap="round"/>
-  <path d="M90 128 q10 9 20 0" fill="none" stroke="#7A96B5" stroke-width="3.4" stroke-linecap="round"/>
-  <ellipse cx="70" cy="126" rx="7" ry="5" fill="#D8E9F9"/><ellipse cx="130" cy="126" rx="7" ry="5" fill="#D8E9F9"/>
-</symbol>
-
-<symbol id="an-moon" viewBox="0 0 200 210">
-  <path d="M22 46 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#E8A23A"/>
-  <path d="M170 150 l3.5 8 8 3.5 -8 3.5 -3.5 8 -3.5 -8 -8 -3.5 8 -3.5 Z" fill="#E8A23A"/>
-  <circle cx="100" cy="110" r="66" fill="#FFD97A" stroke="#E8B722" stroke-width="4"/>
-  <circle cx="62" cy="76" r="10" fill="#F2C94E"/><circle cx="140" cy="146" r="8" fill="#F2C94E"/><circle cx="126" cy="72" r="6" fill="#F2C94E"/>
-  <path d="M76 100 q7 9 14 0 M110 100 q7 9 14 0" fill="none" stroke="#B08A2E" stroke-width="3.4" stroke-linecap="round"/>
-  <path d="M90 124 q10 10 20 0" fill="none" stroke="#B08A2E" stroke-width="3.4" stroke-linecap="round"/>
-  <ellipse cx="68" cy="122" rx="8" ry="5.5" fill="#FFC197" opacity=".8"/><ellipse cx="132" cy="122" rx="8" ry="5.5" fill="#FFC197" opacity=".8"/>
-</symbol>
-
-<symbol id="an-lemon" viewBox="0 0 200 210">
-  <path d="M104 52 Q104 32 120 24" fill="none" stroke="#8A5A33" stroke-width="5" stroke-linecap="round"/>
-  <path d="M112 36 Q142 16 164 30 Q148 52 112 44 Z" fill="#7ED588"/>
-  <ellipse cx="100" cy="130" rx="64" ry="52" fill="#FFDE5C"/>
-  <ellipse cx="166" cy="130" rx="11" ry="8" fill="#FFDE5C"/>
-  <ellipse cx="34" cy="130" rx="11" ry="8" fill="#FFDE5C"/>
-  <ellipse cx="66" cy="104" rx="13" ry="18" fill="#FFEB99" opacity=".9" transform="rotate(-18 66 104)"/>
-  <circle cx="80" cy="128" r="9.5" fill="#fff"/><circle cx="120" cy="128" r="9.5" fill="#fff"/>
-  <circle cx="82" cy="130" r="4.7" fill="#3A2A1E"/><circle cx="118" cy="130" r="4.7" fill="#3A2A1E"/>
-  <circle cx="84" cy="127.5" r="1.7" fill="#fff"/><circle cx="120" cy="127.5" r="1.7" fill="#fff"/>
-  <path d="M90 148 q10 9 20 0" fill="none" stroke="#C2A02E" stroke-width="3" stroke-linecap="round"/>
-  <ellipse cx="62" cy="144" rx="8" ry="5.5" fill="#FFF0B8" opacity=".9"/><ellipse cx="138" cy="144" rx="8" ry="5.5" fill="#FFF0B8" opacity=".9"/>
-</symbol>
-
-<symbol id="an-banana" viewBox="0 0 200 210">
-  <path d="M38 124 Q100 44 168 128" fill="none" stroke="#FFD34E" stroke-width="38" stroke-linecap="round"/>
-  <path d="M46 118 Q100 54 160 122" fill="none" stroke="#FFE98A" stroke-width="16" stroke-linecap="round"/>
-  <circle cx="36" cy="126" r="9" fill="#B07A45"/><circle cx="170" cy="126" r="9" fill="#B07A45"/>
-  <circle cx="86" cy="94" r="8" fill="#fff"/><circle cx="114" cy="94" r="8" fill="#fff"/>
-  <circle cx="88" cy="95" r="4" fill="#3A2A1E"/><circle cx="112" cy="95" r="4" fill="#3A2A1E"/>
-  <path d="M92 108 q8 8 16 0" fill="none" stroke="#B07A2E" stroke-width="2.8" stroke-linecap="round"/>
-  <ellipse cx="70" cy="102" rx="6" ry="4" fill="#FFC197" opacity=".8"/><ellipse cx="130" cy="102" rx="6" ry="4" fill="#FFC197" opacity=".8"/>
-</symbol>
-
-<symbol id="an-starf" viewBox="0 0 200 210">
-  <path d="M100 15 L124 78 L190 81 L138 122 L156 187 L100 150 L44 187 L62 122 L10 81 L76 78 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="5" stroke-linejoin="round"/>
-  <circle cx="82" cy="100" r="8" fill="#fff"/><circle cx="118" cy="100" r="8" fill="#fff"/>
-  <circle cx="84" cy="101" r="4" fill="#3A2A1E"/><circle cx="116" cy="101" r="4" fill="#3A2A1E"/>
-  <circle cx="85.5" cy="99" r="1.5" fill="#fff"/><circle cx="117.5" cy="99" r="1.5" fill="#fff"/>
-  <path d="M90 116 q10 9 20 0" fill="none" stroke="#B07A2E" stroke-width="3" stroke-linecap="round"/>
-  <ellipse cx="64" cy="112" rx="7" ry="5" fill="#FFAD66" opacity=".8"/><ellipse cx="136" cy="112" rx="7" ry="5" fill="#FFAD66" opacity=".8"/>
-</symbol>
-
-<symbol id="an-gift" viewBox="0 0 200 210">
-  <rect x="44" y="86" width="112" height="100" rx="14" fill="#F9A8C0" stroke="#E885A8" stroke-width="4"/>
-  <rect x="34" y="58" width="132" height="36" rx="13" fill="#F285A8" stroke="#E885A8" stroke-width="4"/>
-  <rect x="90" y="58" width="20" height="128" fill="#FFC94D"/>
-  <path d="M100 56 Q64 22 56 44 Q70 62 98 54 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="3"/>
-  <path d="M100 56 Q136 22 144 44 Q130 62 102 54 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="3"/>
-  <circle cx="100" cy="55" r="9" fill="#E8A23A"/>
-  <circle cx="72" cy="140" r="9" fill="#fff"/><circle cx="128" cy="140" r="9" fill="#fff"/>
-  <circle cx="74" cy="142" r="4.5" fill="#3A2A1E"/><circle cx="126" cy="142" r="4.5" fill="#3A2A1E"/>
-  <circle cx="75.5" cy="140" r="1.6" fill="#fff"/><circle cx="127.5" cy="140" r="1.6" fill="#fff"/>
-  <path d="M88 158 q12 10 24 0" fill="none" stroke="#A63A5A" stroke-width="3" stroke-linecap="round"/>
-  <ellipse cx="54" cy="152" rx="7" ry="5" fill="#FFD3E0"/><ellipse cx="146" cy="152" rx="7" ry="5" fill="#FFD3E0"/>
-</symbol>
-
-<symbol id="an-flower" viewBox="0 0 200 210">
-  <path d="M100 204 V118" stroke="#6FBF6F" stroke-width="9" stroke-linecap="round"/>
-  <path d="M100 164 Q68 160 60 140 Q90 136 100 164 Z" fill="#8FD08A"/>
-  <path d="M100 164 Q132 160 140 140 Q110 136 100 164 Z" fill="#6FBF6F"/>
-  <g fill="#F9A8C0" transform="translate(100,88)">
-    <ellipse cx="0" cy="-36" rx="17" ry="25"/>
-    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(45)"/>
-    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(90)"/>
-    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(135)"/>
-    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(180)"/>
-    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(225)"/>
-    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(270)"/>
-    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(315)"/>
-  </g>
-  <circle cx="100" cy="88" r="26" fill="#FFC94D"/>
-  <circle cx="92" cy="84" r="5.5" fill="#3A2A1E"/><circle cx="108" cy="84" r="5.5" fill="#3A2A1E"/>
-  <circle cx="93.5" cy="82" r="1.8" fill="#fff"/><circle cx="109.5" cy="82" r="1.8" fill="#fff"/>
-  <path d="M93 96 q7 7 14 0" fill="none" stroke="#B07A2E" stroke-width="2.8" stroke-linecap="round"/>
-  <ellipse cx="82" cy="94" rx="5.5" ry="4" fill="#FFAD66" opacity=".8"/><ellipse cx="118" cy="94" rx="5.5" ry="4" fill="#FFAD66" opacity=".8"/>
-</symbol>
-
-<symbol id="an-hand" viewBox="0 0 200 210">
-  <rect x="50" y="26" width="24" height="62" rx="12" fill="#F2C8A0"/>
-  <rect x="80" y="18" width="24" height="70" rx="12" fill="#F2C8A0"/>
-  <rect x="110" y="22" width="24" height="66" rx="12" fill="#F2C8A0"/>
-  <rect x="138" y="38" width="24" height="52" rx="12" fill="#F2C8A0"/>
-  <ellipse cx="154" cy="118" rx="14" ry="26" fill="#F2C8A0" transform="rotate(28 154 118)"/>
-  <rect x="44" y="76" width="122" height="82" rx="34" fill="#F2C8A0"/>
-  <rect x="40" y="150" width="130" height="30" rx="15" fill="#62B6E7"/>
-  <circle cx="78" cy="114" r="8.5" fill="#fff"/><circle cx="122" cy="114" r="8.5" fill="#fff"/>
-  <circle cx="80" cy="115" r="4.2" fill="#3A2A1E"/><circle cx="120" cy="115" r="4.2" fill="#3A2A1E"/>
-  <circle cx="81.5" cy="113" r="1.5" fill="#fff"/><circle cx="121.5" cy="113" r="1.5" fill="#fff"/>
-  <path d="M92 130 q8 8 16 0" fill="none" stroke="#B07A2E" stroke-width="2.8" stroke-linecap="round"/>
-  <ellipse cx="64" cy="128" rx="6.5" ry="4.5" fill="#FFC197" opacity=".8"/><ellipse cx="136" cy="128" rx="6.5" ry="4.5" fill="#FFC197" opacity=".8"/>
-</symbol>
-
-<symbol id="w-tree" viewBox="0 0 170 200">
-  <ellipse cx="85" cy="192" rx="48" ry="9" fill="#8FD08A"/>
-  <rect x="73" y="116" width="24" height="76" rx="10" fill="#A9713C"/>
-  <circle cx="48" cy="98" r="28" fill="#8FD08A"/><circle cx="122" cy="98" r="28" fill="#8FD08A"/>
-  <circle cx="85" cy="72" r="40" fill="#6FBF6F"/>
-  <circle cx="72" cy="62" r="14" fill="#8FD08A"/>
-  <circle cx="62" cy="88" r="8" fill="#F26D6D"/><circle cx="108" cy="60" r="8" fill="#F26D6D"/>
-  <circle cx="122" cy="102" r="8" fill="#F26D6D"/><circle cx="90" cy="94" r="8" fill="#F26D6D"/>
-</symbol>
-<symbol id="w-bush" viewBox="0 0 120 84">
-  <circle cx="34" cy="52" r="26" fill="#8FD08A"/><circle cx="86" cy="52" r="26" fill="#8FD08A"/>
-  <circle cx="60" cy="36" r="30" fill="#6FBF6F"/>
-  <circle cx="52" cy="30" r="8" fill="#F26D6D"/><circle cx="78" cy="42" r="8" fill="#F26D6D"/>
-  <ellipse cx="60" cy="76" rx="42" ry="7" fill="#7EC97E"/>
-</symbol>
-<symbol id="w-house" viewBox="0 0 200 190">
-  <ellipse cx="100" cy="182" rx="72" ry="9" fill="#8FD08A"/>
-  <rect x="128" y="34" width="16" height="26" rx="5" fill="#E8853D"/>
-  <rect x="50" y="78" width="100" height="96" rx="10" fill="#FFF3D6" stroke="#E3CBA0" stroke-width="3"/>
-  <path d="M26 86 Q100 20 174 86 Q100 64 26 86 Z" fill="#FF8555"/>
-  <rect x="82" y="114" width="36" height="60" rx="16" fill="#B07A45"/>
-  <circle cx="108" cy="146" r="3.6" fill="#4A3428"/>
-  <circle cx="66" cy="112" r="13" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="3.5"/>
-  <path d="M53 112 h26 M66 99 v26" stroke="#E3CBA0" stroke-width="2.5"/>
-  <circle cx="134" cy="112" r="13" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="3.5"/>
-  <path d="M121 112 h26 M134 99 v26" stroke="#E3CBA0" stroke-width="2.5"/>
-  <circle cx="28" cy="172" r="12" fill="#6FBF6F"/><circle cx="44" cy="178" r="9" fill="#8FD08A"/>
-</symbol>
-<symbol id="w-rainbow" viewBox="0 0 240 130">
-  <g fill="none" stroke-linecap="round">
-    <path d="M22 120 A98 98 0 0 1 218 120" stroke="#FF8552" stroke-width="15"/>
-    <path d="M38 120 A82 82 0 0 1 202 120" stroke="#FFC94D" stroke-width="15"/>
-    <path d="M54 120 A66 66 0 0 1 186 120" stroke="#7ED588" stroke-width="15"/>
-    <path d="M70 120 A50 50 0 0 1 170 120" stroke="#62B6E7" stroke-width="15"/>
-    <path d="M86 120 A34 34 0 0 1 154 120" stroke="#F9A8C0" stroke-width="15"/>
-  </g>
-  <g fill="#fff">
-    <ellipse cx="26" cy="118" rx="24" ry="13"/><circle cx="46" cy="110" r="12"/><circle cx="12" cy="108" r="10"/>
-    <ellipse cx="214" cy="118" rx="24" ry="13"/><circle cx="230" cy="108" r="10"/><circle cx="196" cy="110" r="12"/>
-  </g>
-</symbol>
-<symbol id="w-sun" viewBox="0 0 120 120">
-  <g class="sun-rays" stroke="#F2B722" stroke-width="8" stroke-linecap="round">
-    <path d="M60 6 v14 M60 100 v14 M6 60 h14 M100 60 h14 M22 22 l10 10 M88 88 l10 10 M98 22 l-10 10 M32 88 l-10 10"/>
-  </g>
-  <circle cx="60" cy="60" r="30" fill="#FFC94D"/>
-  <circle cx="51" cy="55" r="3.5" fill="#4A3428"/><circle cx="69" cy="55" r="3.5" fill="#4A3428"/>
-  <path d="M50 66 Q60 74 70 66" fill="none" stroke="#4A3428" stroke-width="3.5" stroke-linecap="round"/>
-</symbol>
-<symbol id="w-cloud" viewBox="0 0 140 70">
-  <g fill="#FFFFFF">
-    <ellipse cx="42" cy="46" rx="30" ry="18"/><circle cx="72" cy="36" r="22"/>
-    <circle cx="100" cy="46" r="18"/><rect x="40" y="42" width="66" height="22" rx="11"/>
-  </g>
-</symbol>
-<symbol id="w-sprout" viewBox="0 0 80 92">
-  <path d="M40 84 V46" stroke="#6FBF6F" stroke-width="7" stroke-linecap="round"/>
-  <path d="M40 52 Q18 48 14 30 Q36 28 40 52 Z" fill="#8FD08A"/>
-  <path d="M40 60 Q62 56 66 38 Q44 36 40 60 Z" fill="#6FBF6F"/>
-  <ellipse cx="40" cy="84" rx="16" ry="5" fill="#8FD08A"/>
-</symbol>
-<symbol id="w-flower" viewBox="0 0 80 100">
-  <path d="M40 96 V52" stroke="#6FBF6F" stroke-width="6" stroke-linecap="round"/>
-  <path d="M40 74 Q22 70 18 56 Q36 54 40 74 Z" fill="#8FD08A"/>
-  <g fill="currentColor" transform="translate(40,40)">
-    <ellipse cx="0" cy="-18" rx="9" ry="14"/>
-    <ellipse cx="0" cy="-18" rx="9" ry="14" transform="rotate(72)"/>
-    <ellipse cx="0" cy="-18" rx="9" ry="14" transform="rotate(144)"/>
-    <ellipse cx="0" cy="-18" rx="9" ry="14" transform="rotate(216)"/>
-    <ellipse cx="0" cy="-18" rx="9" ry="14" transform="rotate(288)"/>
-  </g>
-  <circle cx="40" cy="40" r="10" fill="#FFC94D"/>
-</symbol>
-<symbol id="w-butterfly" viewBox="0 0 100 90">
-  <g class="bfly-wing bfly-l" fill="#F9A8C0">
-    <ellipse cx="26" cy="30" rx="16" ry="20" transform="rotate(-20 26 30)"/>
-    <ellipse cx="30" cy="62" rx="12" ry="14" transform="rotate(15 30 62)"/>
-  </g>
-  <g class="bfly-wing bfly-r" fill="#62B6E7">
-    <ellipse cx="74" cy="30" rx="16" ry="20" transform="rotate(20 74 30)"/>
-    <ellipse cx="70" cy="62" rx="12" ry="14" transform="rotate(-15 70 62)"/>
-  </g>
-  <ellipse cx="50" cy="46" rx="6" ry="22" fill="#5A4636"/>
-  <path d="M47 26 q-4 -8 -10 -10 M53 26 q4 -8 10 -10" fill="none" stroke="#5A4636" stroke-width="2.5" stroke-linecap="round"/>
-</symbol>
-
-<symbol id="st-star" viewBox="0 0 100 100">
-  <path d="M50 6 L61 37 L94 37 L67 56 L78 89 L50 68 L22 89 L33 56 L6 37 L39 37 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="4" stroke-linejoin="round"/>
-  <circle cx="42" cy="36" r="4.5" fill="#fff" opacity=".8"/>
-</symbol>
-<symbol id="st-heart" viewBox="0 0 100 100">
-  <path d="M50 88 C22 64 10 44 22 28 C32 15 48 22 50 34 C52 22 68 15 78 28 C90 44 78 64 50 88 Z" fill="#F26D6D" stroke="#D94F4F" stroke-width="4"/>
-</symbol>
-<symbol id="st-balloon" viewBox="0 0 100 130">
-  <path d="M50 76 q-6 18 4 30 q8 10 -2 20" fill="none" stroke="#8A6D5B" stroke-width="3"/>
-  <path d="M43 76 h14 l-7 9 Z" fill="currentColor"/>
-  <ellipse cx="50" cy="42" rx="31" ry="37" fill="currentColor" stroke="rgba(74,52,40,.25)" stroke-width="3"/>
-  <ellipse cx="38" cy="26" rx="8" ry="13" fill="#fff" opacity=".5"/>
-</symbol>
-<symbol id="st-cupcake" viewBox="0 0 100 100">
-  <path d="M27 54 L35 92 H65 L73 54 Z" fill="#E8853D"/>
-  <path d="M37 58 L41 88 M50 58 V92 M63 58 L59 88" stroke="#C96A2E" stroke-width="3"/>
-  <circle cx="38" cy="42" r="13" fill="#FFF7EC"/><circle cx="62" cy="40" r="14" fill="#FFF7EC"/><circle cx="50" cy="30" r="13" fill="#FFF7EC"/>
-  <path d="M27 52 h46" stroke="#E8B87E" stroke-width="3"/>
-  <circle cx="50" cy="16" r="7" fill="#F26D6D"/>
-</symbol>
-<symbol id="st-rocket" viewBox="0 0 100 120">
-  <path d="M44 84 Q50 106 56 84 Q50 92 44 84 Z" fill="#F2B722"/>
-  <path d="M30 60 Q12 70 16 90 L30 78 Z" fill="#FFC94D"/>
-  <path d="M70 60 Q88 70 84 90 L70 78 Z" fill="#FFC94D"/>
-  <path d="M50 4 Q68 28 68 62 H32 Q32 28 50 4 Z" fill="#FFF7EC" stroke="#E3CBA0" stroke-width="2.5"/>
-  <path d="M50 4 Q62 22 64 42 H36 Q38 22 50 4 Z" fill="#FF8555"/>
-  <circle cx="50" cy="54" r="11" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="4"/>
-</symbol>
-
-<symbol id="fd-apple" viewBox="0 0 120 120">
-  <path d="M60 36 q-4 -14 8 -20" stroke="#8A5A33" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M62 22 q16 -9 23 2 q-13 11 -23 -2 Z" fill="#7ED588"/>
-  <circle cx="45" cy="68" r="26" fill="#F26D6D"/><circle cx="75" cy="68" r="26" fill="#F26D6D"/>
-  <rect x="42" y="62" width="36" height="32" fill="#F26D6D" rx="8"/>
-  <ellipse cx="48" cy="58" rx="7" ry="11" fill="#FF9E9E" opacity=".85"/>
-</symbol>
-<symbol id="fd-fish" viewBox="0 0 120 120">
-  <path d="M88 60 L112 40 Q108 60 112 80 Z" fill="#62B6E7"/>
-  <path d="M20 44 Q66 22 86 60 Q66 98 20 76 Q32 60 20 44 Z" fill="#7EC8F0"/>
-  <circle cx="40" cy="54" r="6" fill="#fff"/><circle cx="41" cy="55" r="3" fill="#2C5F86"/>
-</symbol>
-<symbol id="fd-bone" viewBox="0 0 120 120">
-  <g fill="#FFF7EC" stroke="#E3CBA0" stroke-width="3">
-    <rect x="30" y="52" width="60" height="16" rx="8"/>
-    <circle cx="30" cy="46" r="12"/><circle cx="30" cy="74" r="12"/>
-    <circle cx="90" cy="46" r="12"/><circle cx="90" cy="74" r="12"/>
-  </g>
-</symbol>
-<symbol id="fd-bread" viewBox="0 0 120 120">
-  <ellipse cx="60" cy="64" rx="44" ry="28" fill="#E8B87E"/>
-  <ellipse cx="60" cy="58" rx="44" ry="26" fill="#F2CFA0"/>
-  <path d="M40 48 q4 12 0 18 M56 44 q4 14 0 20 M72 48 q4 12 0 18" fill="none" stroke="#D9A05B" stroke-width="4.5" stroke-linecap="round"/>
-</symbol>
-<symbol id="fd-grass" viewBox="0 0 120 120">
-  <path d="M60 106 V64" stroke="#6FBF6F" stroke-width="6" stroke-linecap="round"/>
-  <path d="M60 78 Q36 74 30 54 Q52 54 60 78 Z" fill="#8FD08A"/>
-  <path d="M60 88 Q86 84 92 64 Q70 64 60 88 Z" fill="#6FBF6F"/>
-  <ellipse cx="60" cy="52" rx="8" ry="7" fill="#A8D88A"/><ellipse cx="60" cy="40" rx="7" ry="6" fill="#A8D88A"/><ellipse cx="60" cy="30" rx="6" ry="5" fill="#A8D88A"/>
-</symbol>
-<symbol id="fd-burger" viewBox="0 0 120 120">
-  <path d="M26 52 Q26 22 60 22 Q94 22 94 52 Z" fill="#F2CFA0"/>
-  <circle cx="46" cy="38" r="2.6" fill="#E8B87E"/><circle cx="60" cy="32" r="2.6" fill="#E8B87E"/><circle cx="74" cy="38" r="2.6" fill="#E8B87E"/>
-  <path d="M24 50 Q31 62 38 51 Q45 63 52 51 Q59 63 66 51 Q73 63 80 51 Q87 63 96 50 Z" fill="#7ED588"/>
-  <rect x="26" y="56" width="68" height="15" rx="7.5" fill="#8A5A33"/>
-  <path d="M26 71 h68 v6 q0 22 -34 22 q-34 0 -34 -22 Z" fill="#F2CFA0"/>
-</symbol>
-
-<symbol id="ic-back" viewBox="0 0 32 32"><path d="M12 6 L22 16 L12 26" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-<symbol id="ic-speaker" viewBox="0 0 32 32"><path d="M5 12 h6 l8 -7 v22 l-8 -7 H5 Z" fill="currentColor"/><path d="M23 11 q5 5 0 10 M26 7 q8 9 0 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
-<symbol id="ic-parent" viewBox="0 0 32 32"><circle cx="11" cy="10" r="5" fill="currentColor"/><path d="M3 27 q1 -9 8 -9 q7 0 8 9 Z" fill="currentColor"/><circle cx="23" cy="12" r="4" fill="currentColor"/><path d="M18 27 q0 -7 5 -8 q5 1 5 8 Z" fill="currentColor" opacity=".6"/></symbol>
-<symbol id="ic-star" viewBox="0 0 32 32"><path d="M16 2 L20 11 L30 11 L22.5 17.5 L25.5 28 L16 22 L6.5 28 L9.5 17.5 L2 11 L12 11 Z" fill="currentColor"/></symbol>
-<symbol id="ic-lock" viewBox="0 0 32 32"><rect x="7" y="14" width="18" height="14" rx="4" fill="currentColor"/><path d="M11 14 V10 a5 5 0 0 1 10 0 v4" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
-<symbol id="ic-refresh" viewBox="0 0 32 32"><path d="M26 16 a10 10 0 1 1 -3.5 -7.6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M26 4 v6.5 h-6.5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-</defs></svg>
-
+<svg id="assets" aria-hidden="true"><defs id="dfs"></defs></svg>
 <div id="app"></div>
 <canvas id="fx"></canvas>
-
 <script>
 'use strict';
-const $  = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
-const el = h => { const t=document.createElement('template'); t.innerHTML=h.trim(); return t.content.firstElementChild; };
-const wait = ms => new Promise(r=>setTimeout(r,ms));
-const rnd  = n => Math.floor(Math.random()*n);
-const pick = a => a[rnd(a.length)];
-const shuffle = a => { a=[...a]; for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]];} return a; };
-const icon = id => `<svg class="ic"><use href="#${id}"/></svg>`;
+function $(s){return document.querySelector(s)}
+function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+function el(h){var t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstElementChild}
+function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+function rnd(n){return Math.floor(Math.random()*n)}
+function pick(a){return a[rnd(a.length)]}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=rnd(i+1);var t=a[i];a[i]=a[j];a[j]=t}return a}
+function icon(id){return '<svg class="ic"><use href="#'+id+'"/></svg>'}
+var PAL=['#FF8552','#FFC94D','#7ED588','#62B6E7','#F9A8C0','#A58CE8'];
 
-const PALETTE=['#FF8552','#FFC94D','#7ED588','#62B6E7','#F9A8C0','#A58CE8'];
+/* ============ الرسومات (مولّدة بالكود) ============ */
+var DFS=document.getElementById('dfs');
+function sym(id,vb,body){DFS.insertAdjacentHTML('beforeend','<symbol id="'+id+'" viewBox="'+vb+'">'+body+'</symbol>')}
+function face(x,y,s){s=s||1;return '<g transform="translate('+x+','+y+') scale('+s+')"><circle cx="-20" cy="0" r="10" fill="#fff"/><circle cx="20" cy="0" r="10" fill="#fff"/><circle cx="-17" cy="2" r="5" fill="#3A2A1E"/><circle cx="17" cy="2" r="5" fill="#3A2A1E"/><circle cx="-15" cy="-1.5" r="1.8" fill="#fff"/><circle cx="19" cy="-1.5" r="1.8" fill="#fff"/><ellipse cx="-36" cy="16" rx="8" ry="5" fill="#FFAD66" opacity=".8"/><ellipse cx="36" cy="16" rx="8" ry="5" fill="#FFAD66" opacity=".8"/><path d="M-12 16 q12 10 24 0" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round"/></g>'}
+function petals(n,d,rx,ry){var s='',k;for(k=0;k<n;k++)s+='<ellipse cx="0" cy="'+(-d)+'" rx="'+rx+'" ry="'+ry+'" transform="rotate('+(k*360/n)+')"/>';return s}
+var mane='',ang;for(ang=0;ang<360;ang+=30){mane+='<circle cx="'+(100+56*Math.cos(ang*Math.PI/180)).toFixed(1)+'" cy="'+(80+56*Math.sin(ang*Math.PI/180)).toFixed(1)+'" r="16" fill="#E8853D"/>'}
+sym('an-lion','0 0 200 210','<ellipse cx="82" cy="197" rx="13" ry="8" fill="#E8A33D"/><ellipse cx="118" cy="197" rx="13" ry="8" fill="#E8A33D"/><path d="M136 148 q26 6 28 -20" fill="none" stroke="#E8A33D" stroke-width="9" stroke-linecap="round"/><ellipse cx="100" cy="152" rx="46" ry="42" fill="#FFC94D"/><circle cx="100" cy="80" r="58" fill="#E8853D"/>'+mane+'<circle cx="100" cy="80" r="46" fill="#FFC94D"/>'+face(100,74));
+sym('an-elephant','0 0 200 210','<path d="M138 150 q22 0 24 -26" fill="none" stroke="#8FA9C9" stroke-width="7" stroke-linecap="round"/><ellipse cx="74" cy="197" rx="13" ry="8" fill="#8FA9C9"/><ellipse cx="126" cy="197" rx="13" ry="8" fill="#8FA9C9"/><ellipse cx="100" cy="150" rx="47" ry="44" fill="#9BB8D3"/><ellipse cx="38" cy="84" rx="27" ry="36" fill="#7E9EC4"/><ellipse cx="38" cy="88" rx="16" ry="24" fill="#CBDCEE"/><ellipse cx="162" cy="84" rx="27" ry="36" fill="#7E9EC4"/><ellipse cx="162" cy="88" rx="16" ry="24" fill="#CBDCEE"/><circle cx="100" cy="84" r="52" fill="#9BB8D3"/><path d="M100 112 C102 138 98 160 84 172 C76 179 80 190 92 190" fill="none" stroke="#9BB8D3" stroke-width="24" stroke-linecap="round"/>'+face(100,62));
+sym('an-cat','0 0 200 210','<path d="M134 160 q24 -4 22 -34" fill="none" stroke="#F6A75C" stroke-width="10" stroke-linecap="round"/><ellipse cx="80" cy="197" rx="12" ry="8" fill="#E07B39"/><ellipse cx="120" cy="197" rx="12" ry="8" fill="#E07B39"/><ellipse cx="100" cy="155" rx="42" ry="38" fill="#F6A75C"/><path d="M58 50 Q46 8 82 24 Q94 30 88 46 Z" fill="#F6A75C"/><path d="M66 44 Q60 22 80 30 Q86 36 82 44 Z" fill="#F9C0A8"/><path d="M142 50 Q154 8 118 24 Q106 30 112 46 Z" fill="#F6A75C"/><path d="M134 44 Q140 22 120 30 Q114 36 118 44 Z" fill="#F9C0A8"/><circle cx="100" cy="86" r="48" fill="#F6A75C"/><path d="M92 42 v12 M100 40 v14 M108 42 v12" stroke="#E07B39" stroke-width="5" stroke-linecap="round"/><path d="M95 100 q5 -4 10 0 q-2 8 -5 8 q-3 0 -5 -8" fill="#F27B9E"/>'+face(100,68));
+sym('an-duck','0 0 200 210','<path d="M52 116 Q22 100 30 122 Q38 138 56 130 Z" fill="#F2B722"/><ellipse cx="78" cy="198" rx="12" ry="7" fill="#F2B722"/><ellipse cx="122" cy="198" rx="12" ry="7" fill="#F2B722"/><ellipse cx="100" cy="142" rx="52" ry="42" fill="#FFD34E"/><ellipse cx="74" cy="146" rx="20" ry="27" fill="#F2B722" transform="rotate(-18 74 146)"/><circle cx="100" cy="64" r="37" fill="#FFD34E"/><path d="M92 28 q-2 -12 6 -16 M100 27 q0 -14 8 -18" fill="none" stroke="#F2B722" stroke-width="4" stroke-linecap="round"/><ellipse cx="100" cy="92" rx="18" ry="10" fill="#F28A2E"/>'+face(100,54));
+sym('an-dog','0 0 200 210','<path d="M134 150 q20 -12 14 -36" fill="none" stroke="#C98E4E" stroke-width="9" stroke-linecap="round"/><ellipse cx="76" cy="198" rx="12" ry="8" fill="#A9713C"/><ellipse cx="124" cy="198" rx="12" ry="8" fill="#A9713C"/><ellipse cx="100" cy="154" rx="43" ry="38" fill="#C98E4E"/><path d="M64 36 Q40 28 38 66 Q38 96 58 98 Q70 96 72 62 Z" fill="#8C5A2B"/><path d="M136 36 Q160 28 162 66 Q162 96 142 98 Q130 96 128 62 Z" fill="#8C5A2B"/><circle cx="100" cy="86" r="49" fill="#C98E4E"/><circle cx="121" cy="72" r="16" fill="#8C5A2B"/>'+face(100,74));
+sym('an-cow','0 0 200 210','<ellipse cx="76" cy="198" rx="12" ry="8" fill="#E9E2D4"/><ellipse cx="124" cy="198" rx="12" ry="8" fill="#E9E2D4"/><ellipse cx="100" cy="154" rx="44" ry="38" fill="#F8F4EC"/><ellipse cx="48" cy="58" rx="17" ry="10" fill="#E9E2D4" transform="rotate(-20 48 58)"/><ellipse cx="152" cy="58" rx="17" ry="10" fill="#E9E2D4" transform="rotate(20 152 58)"/><path d="M70 44 Q64 22 78 26" fill="none" stroke="#D9B36B" stroke-width="7" stroke-linecap="round"/><path d="M130 44 Q136 22 122 26" fill="none" stroke="#D9B36B" stroke-width="7" stroke-linecap="round"/><circle cx="100" cy="86" r="48" fill="#F8F4EC"/><path d="M126 52 q16 -6 20 10 q2 14 -12 16 q-12 -2 -8 -26 Z" fill="#5A4636"/><ellipse cx="100" cy="114" rx="28" ry="18" fill="#F4A7B9"/><ellipse cx="89" cy="114" rx="4.5" ry="6.5" fill="#C9628C"/><ellipse cx="111" cy="114" rx="4.5" ry="6.5" fill="#C9628C"/>'+face(100,70));
+sym('an-croc','0 0 200 210','<path d="M52 158 Q16 148 24 128 Q32 118 44 126 Q56 136 62 148 Z" fill="#77C043"/><ellipse cx="84" cy="196" rx="11" ry="7" fill="#6AB03A"/><ellipse cx="116" cy="196" rx="11" ry="7" fill="#6AB03A"/><ellipse cx="104" cy="160" rx="44" ry="32" fill="#77C043"/><ellipse cx="104" cy="164" rx="26" ry="20" fill="#C8E8A0"/><circle cx="76" cy="52" r="14" fill="#77C043"/><circle cx="124" cy="52" r="14" fill="#77C043"/><ellipse cx="100" cy="84" rx="48" ry="22" fill="#77C043"/><ellipse cx="100" cy="88" rx="36" ry="11" fill="#3E5B22"/><ellipse cx="100" cy="108" rx="38" ry="13" fill="#6AB03A"/><path d="M70 88 l5 8 l5 -8 Z M85 90 l5 8 l5 -8 Z M100 90 l5 8 l5 -8 Z M115 88 l5 8 l5 -8 Z M79 104 l5 -7 l5 7 Z M94 106 l5 -7 l5 7 Z M108 104 l5 -7 l5 7 Z" fill="#FFF7EC"/><circle cx="76" cy="50" r="8" fill="#fff"/><circle cx="124" cy="50" r="8" fill="#fff"/><circle cx="77" cy="51" r="4" fill="#2C3E14"/><circle cx="123" cy="51" r="4" fill="#2C3E14"/>');
+sym('an-snake','0 0 200 210','<path d="M34 158 Q64 116 100 150 Q136 184 162 142" fill="none" stroke="#6FBF6F" stroke-width="27" stroke-linecap="round"/><path d="M42 158 Q68 126 102 152 Q136 180 156 146" fill="none" stroke="#C8E8A0" stroke-width="10" stroke-linecap="round"/><circle cx="162" cy="138" r="22" fill="#6FBF6F"/><path d="M180 144 q12 0 14 -6 M180 144 q12 4 12 12" fill="none" stroke="#E85D5D" stroke-width="2.6" stroke-linecap="round"/>'+face(160,128,.7));
+sym('an-camel','0 0 200 210','<rect x="70" y="160" width="12" height="40" rx="6" fill="#C08A4B"/><rect x="112" y="160" width="12" height="40" rx="6" fill="#C08A4B"/><rect x="86" y="164" width="12" height="36" rx="6" fill="#D9A05B"/><ellipse cx="98" cy="128" rx="42" ry="27" fill="#D9A05B"/><ellipse cx="98" cy="100" rx="25" ry="20" fill="#D9A05B"/><path d="M128 116 Q140 96 140 70" fill="none" stroke="#D9A05B" stroke-width="19" stroke-linecap="round"/><ellipse cx="143" cy="58" rx="21" ry="15" fill="#D9A05B"/><ellipse cx="152" cy="63" rx="10" ry="6.5" fill="#C08A4B"/><ellipse cx="130" cy="42" rx="5" ry="8" fill="#C08A4B" transform="rotate(-14 130 42)"/>'+face(138,52,.6));
+sym('an-bear','0 0 200 210','<ellipse cx="78" cy="198" rx="13" ry="8" fill="#8A5A3B"/><ellipse cx="122" cy="198" rx="13" ry="8" fill="#8A5A3B"/><ellipse cx="100" cy="152" rx="45" ry="40" fill="#9A6945"/><circle cx="62" cy="42" r="15" fill="#9A6945"/><circle cx="62" cy="42" r="8" fill="#C69069"/><circle cx="138" cy="42" r="15" fill="#9A6945"/><circle cx="138" cy="42" r="8" fill="#C69069"/><circle cx="100" cy="88" r="49" fill="#9A6945"/><ellipse cx="100" cy="114" rx="24" ry="17" fill="#E8CBA8"/><ellipse cx="100" cy="104" rx="9" ry="7" fill="#4A3428"/>'+face(100,74));
+sym('an-whale','0 0 200 210','<g fill="#A5DCF5"><circle cx="52" cy="34" r="8"/><circle cx="68" cy="22" r="6"/><circle cx="40" cy="20" r="5"/></g><path d="M148 118 Q182 96 184 62 Q198 96 174 124 Q164 134 152 128 Z" fill="#7EC8F0"/><ellipse cx="88" cy="132" rx="66" ry="50" fill="#7EC8F0"/><path d="M26 148 Q88 192 150 146 Q144 174 88 184 Q36 174 26 148 Z" fill="#DFF3FC"/>'+face(58,106,.8));
+sym('an-sheep','0 0 200 210','<rect x="78" y="160" width="13" height="42" rx="6.5" fill="#8A7A88"/><rect x="110" y="160" width="13" height="42" rx="6.5" fill="#8A7A88"/><g fill="#F6F1E7"><circle cx="66" cy="146" r="26"/><circle cx="134" cy="146" r="26"/><circle cx="100" cy="140" r="38"/><circle cx="84" cy="118" r="24"/><circle cx="116" cy="118" r="24"/><circle cx="100" cy="162" r="28"/></g><ellipse cx="100" cy="84" rx="34" ry="31" fill="#9C8D9C"/><ellipse cx="60" cy="82" rx="17" ry="10" fill="#8A7A88" transform="rotate(-16 60 82)"/><ellipse cx="140" cy="82" rx="17" ry="10" fill="#8A7A88" transform="rotate(16 140 82)"/><circle cx="100" cy="50" r="12" fill="#F6F1E7"/>'+face(100,80,.85));
+sym('an-corn','0 0 200 210','<path d="M68 118 Q36 158 58 196 Q92 168 90 128 Z" fill="#7ED588"/><path d="M132 118 Q164 158 142 196 Q108 168 110 128 Z" fill="#6FBF6F"/><ellipse cx="100" cy="118" rx="38" ry="74" fill="#FFD34E"/><g fill="#F2B722"><circle cx="100" cy="56" r="9"/><circle cx="82" cy="76" r="9"/><circle cx="118" cy="76" r="9"/><circle cx="100" cy="150" r="9"/><circle cx="80" cy="118" r="9"/><circle cx="120" cy="118" r="9"/><circle cx="100" cy="182" r="9"/><circle cx="84" cy="162" r="9"/><circle cx="116" cy="162" r="9"/></g><path d="M92 46 Q86 24 74 18 M100 44 Q100 20 96 8 M108 46 Q114 24 126 18" fill="none" stroke="#C9955C" stroke-width="4" stroke-linecap="round"/>'+face(100,96,.6));
+sym('an-pomegranate','0 0 200 210','<path d="M84 46 L84 20 L96 34 L100 12 L104 34 L116 20 L116 46 Q100 38 84 46 Z" fill="#C25858"/><circle cx="100" cy="128" r="62" fill="#E85D5D"/><ellipse cx="72" cy="104" rx="14" ry="20" fill="#F28585" opacity=".8" transform="rotate(-20 72 104)"/>'+face(100,122));
+sym('an-giraffe','0 0 200 210','<rect x="70" y="148" width="13" height="50" rx="6.5" fill="#D9A05B"/><rect x="118" y="148" width="13" height="50" rx="6.5" fill="#D9A05B"/><rect x="92" y="150" width="12" height="48" rx="6" fill="#F2C879"/><ellipse cx="96" cy="130" rx="44" ry="28" fill="#F2C879"/><g fill="#B07A45"><circle cx="82" cy="122" r="7"/><circle cx="108" cy="136" r="8"/><circle cx="118" cy="122" r="6"/></g><path d="M116 114 Q128 64 122 32 L146 28 Q154 70 142 116 Z" fill="#F2C879"/><g fill="#B07A45"><circle cx="132" cy="66" r="6"/><circle cx="138" cy="92" r="5"/></g><ellipse cx="136" cy="26" rx="20" ry="14" fill="#F2C879"/><path d="M122 18 Q114 4 122 2 M148 18 Q156 4 148 2" fill="none" stroke="#B07A45" stroke-width="4" stroke-linecap="round"/>'+face(133,20,.55));
+sym('an-fish','0 0 200 210','<path d="M138 105 L178 64 Q170 105 178 146 Z" fill="#62B6E7"/><path d="M76 66 Q94 38 118 48 Q106 66 84 70 Z" fill="#62B6E7"/><ellipse cx="94" cy="105" rx="62" ry="48" fill="#7EC8F0"/><ellipse cx="100" cy="128" rx="18" ry="11" fill="#62B6E7" transform="rotate(-20 100 128)"/><g fill="#BDE3F5"><circle cx="68" cy="102" r="9"/><circle cx="92" cy="120" r="8"/></g><g fill="#A5DCF5"><circle cx="30" cy="58" r="6"/><circle cx="18" cy="40" r="4.5"/></g>'+face(62,96,.8));
+sym('an-frog','0 0 200 210','<ellipse cx="52" cy="188" rx="20" ry="12" fill="#6FBF6F"/><ellipse cx="148" cy="188" rx="20" ry="12" fill="#6FBF6F"/><ellipse cx="100" cy="148" rx="66" ry="48" fill="#7ED588"/><ellipse cx="100" cy="164" rx="40" ry="26" fill="#E4F8D2"/><circle cx="62" cy="72" r="19" fill="#7ED588"/><circle cx="138" cy="72" r="19" fill="#7ED588"/><circle cx="62" cy="70" r="12" fill="#fff"/><circle cx="138" cy="70" r="12" fill="#fff"/><circle cx="62" cy="72" r="5.5" fill="#3A2A1E"/><circle cx="138" cy="72" r="5.5" fill="#3A2A1E"/><circle cx="64" cy="69" r="2" fill="#fff"/><circle cx="140" cy="69" r="2" fill="#fff"/><path d="M58 122 Q100 154 142 122" fill="none" stroke="#4A8A56" stroke-width="4" stroke-linecap="round"/>');
+sym('an-plane','0 0 200 210','<path d="M144 88 L144 32 Q170 36 178 88 Z" fill="#FF8555"/><path d="M150 158 Q180 148 184 118 Q190 156 158 170 Z" fill="#FF8555"/><rect x="20" y="84" width="152" height="56" rx="28" fill="#FFF7EC" stroke="#E3CBA0" stroke-width="3.5"/><ellipse cx="98" cy="140" rx="44" ry="15" fill="#FFC94D" transform="rotate(4 98 140)"/><circle cx="92" cy="100" r="7" fill="#BDE3F5"/><circle cx="114" cy="100" r="7" fill="#BDE3F5"/><circle cx="136" cy="100" r="7" fill="#BDE3F5"/><circle cx="50" cy="110" r="15" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="3.5"/>'+face(48,104,.4));
+sym('an-gazelle','0 0 200 210','<rect x="74" y="148" width="11" height="50" rx="5.5" fill="#C08A4B"/><rect x="115" y="148" width="11" height="50" rx="5.5" fill="#C08A4B"/><ellipse cx="96" cy="132" rx="42" ry="26" fill="#D9A05B"/><path d="M116 120 Q130 76 126 42 L146 38 Q154 80 142 122 Z" fill="#D9A05B"/><ellipse cx="138" cy="32" rx="19" ry="14" fill="#D9A05B"/><path d="M128 24 Q120 6 128 4 M146 22 Q152 4 162 6" fill="none" stroke="#8A5A33" stroke-width="4" stroke-linecap="round"/>'+face(134,26,.5));
+sym('an-bird','0 0 200 210','<path d="M148 104 L186 84 Q180 106 186 128 Z" fill="#3D8FC4"/><path d="M94 58 Q88 34 66 34 Q78 50 90 62 Z" fill="#3D8FC4"/><circle cx="100" cy="112" r="54" fill="#62B6E7"/><ellipse cx="100" cy="130" rx="34" ry="28" fill="#BDE3F5"/><ellipse cx="120" cy="122" rx="20" ry="26" fill="#3D8FC4" transform="rotate(14 120 122)"/><path d="M48 112 Q28 104 30 96 Q44 94 52 102 Q56 108 48 112 Z" fill="#F28A2E"/><rect x="82" y="174" width="8" height="30" rx="4" fill="#E8A23A"/><rect x="112" y="174" width="8" height="30" rx="4" fill="#E8A23A"/>'+face(88,98,.7));
+sym('an-cloudy','0 0 200 210','<g fill="#fff" stroke="#DCE9F5" stroke-width="4"><circle cx="58" cy="112" r="28"/><circle cx="100" cy="94" r="38"/><circle cx="146" cy="114" r="26"/><ellipse cx="100" cy="134" rx="60" ry="34"/></g><g stroke="#7A96B5" stroke-width="3.4" stroke-linecap="round" fill="none"><path d="M78 108 q7 9 14 0 M108 108 q7 9 14 0"/><path d="M90 128 q10 9 20 0"/></g>');
+sym('an-moon','0 0 200 210','<circle cx="100" cy="110" r="66" fill="#FFD97A" stroke="#E8B722" stroke-width="4"/><circle cx="62" cy="76" r="10" fill="#F2C94E"/><circle cx="140" cy="146" r="8" fill="#F2C94E"/><path d="M22 46 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#E8A23A"/><g stroke="#B08A2E" stroke-width="3.4" fill="none" stroke-linecap="round"><path d="M76 100 q7 9 14 0 M110 100 q7 9 14 0"/><path d="M90 124 q10 10 20 0"/></g>');
+sym('an-lemon','0 0 200 210','<path d="M104 52 Q104 32 120 24" fill="none" stroke="#8A5A33" stroke-width="5" stroke-linecap="round"/><path d="M112 36 Q142 16 164 30 Q148 52 112 44 Z" fill="#7ED588"/><ellipse cx="100" cy="130" rx="64" ry="52" fill="#FFDE5C"/><ellipse cx="66" cy="104" rx="13" ry="18" fill="#FFEB99" opacity=".9" transform="rotate(-18 66 104)"/>'+face(100,124));
+sym('an-banana','0 0 200 210','<path d="M38 124 Q100 44 168 128" fill="none" stroke="#FFD34E" stroke-width="38" stroke-linecap="round"/><path d="M46 118 Q100 54 160 122" fill="none" stroke="#FFE98A" stroke-width="16" stroke-linecap="round"/><circle cx="36" cy="126" r="9" fill="#B07A45"/><circle cx="170" cy="126" r="9" fill="#B07A45"/>'+face(100,90,.7));
+sym('an-starf','0 0 200 210','<path d="M100 15 L124 78 L190 81 L138 122 L156 187 L100 150 L44 187 L62 122 L10 81 L76 78 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="5" stroke-linejoin="round"/>'+face(100,96,.75));
+sym('an-gift','0 0 200 210','<rect x="44" y="86" width="112" height="100" rx="14" fill="#F9A8C0" stroke="#E885A8" stroke-width="4"/><rect x="34" y="58" width="132" height="36" rx="13" fill="#F285A8" stroke="#E885A8" stroke-width="4"/><rect x="90" y="58" width="20" height="128" fill="#FFC94D"/><path d="M100 56 Q64 22 56 44 Q70 62 98 54 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="3"/><path d="M100 56 Q136 22 144 44 Q130 62 102 54 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="3"/><circle cx="100" cy="55" r="9" fill="#E8A23A"/>'+face(100,140));
+sym('an-flower','0 0 200 210','<path d="M100 204 V118" stroke="#6FBF6F" stroke-width="9" stroke-linecap="round"/><path d="M100 164 Q68 160 60 140 Q90 136 100 164 Z" fill="#8FD08A"/><path d="M100 164 Q132 160 140 140 Q110 136 100 164 Z" fill="#6FBF6F"/><g fill="#F9A8C0" transform="translate(100,88)">'+petals(8,36,17,25)+'</g><circle cx="100" cy="88" r="26" fill="#FFC94D"/>'+face(100,84,.55));
+sym('an-hand','0 0 200 210','<rect x="50" y="26" width="24" height="62" rx="12" fill="#F2C8A0"/><rect x="80" y="18" width="24" height="70" rx="12" fill="#F2C8A0"/><rect x="110" y="22" width="24" height="66" rx="12" fill="#F2C8A0"/><rect x="138" y="38" width="24" height="52" rx="12" fill="#F2C8A0"/><ellipse cx="154" cy="118" rx="14" ry="26" fill="#F2C8A0" transform="rotate(28 154 118)"/><rect x="44" y="76" width="122" height="82" rx="34" fill="#F2C8A0"/><rect x="40" y="150" width="130" height="30" rx="15" fill="#62B6E7"/>'+face(100,112));
+sym('w-tree','0 0 170 200','<ellipse cx="85" cy="192" rx="48" ry="9" fill="#8FD08A"/><rect x="73" y="116" width="24" height="76" rx="10" fill="#A9713C"/><circle cx="48" cy="98" r="28" fill="#8FD08A"/><circle cx="122" cy="98" r="28" fill="#8FD08A"/><circle cx="85" cy="72" r="40" fill="#6FBF6F"/><g fill="#F26D6D"><circle cx="62" cy="88" r="8"/><circle cx="108" cy="60" r="8"/><circle cx="122" cy="102" r="8"/><circle cx="90" cy="94" r="8"/></g>');
+sym('w-bush','0 0 120 84','<circle cx="34" cy="52" r="26" fill="#8FD08A"/><circle cx="86" cy="52" r="26" fill="#8FD08A"/><circle cx="60" cy="36" r="30" fill="#6FBF6F"/><circle cx="52" cy="30" r="8" fill="#F26D6D"/><circle cx="78" cy="42" r="8" fill="#F26D6D"/>');
+sym('w-house','0 0 200 190','<rect x="50" y="78" width="100" height="96" rx="10" fill="#FFF3D6" stroke="#E3CBA0" stroke-width="3"/><path d="M26 86 Q100 20 174 86 Q100 64 26 86 Z" fill="#FF8555"/><rect x="82" y="114" width="36" height="60" rx="16" fill="#B07A45"/><circle cx="66" cy="112" r="13" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="3.5"/><circle cx="134" cy="112" r="13" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="3.5"/><rect x="128" y="34" width="16" height="26" rx="5" fill="#E8853D"/>');
+sym('w-rainbow','0 0 240 130','<g fill="none" stroke-linecap="round"><path d="M22 120 A98 98 0 0 1 218 120" stroke="#FF8552" stroke-width="15"/><path d="M38 120 A82 82 0 0 1 202 120" stroke="#FFC94D" stroke-width="15"/><path d="M54 120 A66 66 0 0 1 186 120" stroke="#7ED588" stroke-width="15"/><path d="M70 120 A50 50 0 0 1 170 120" stroke="#62B6E7" stroke-width="15"/><path d="M86 120 A34 34 0 0 1 154 120" stroke="#F9A8C0" stroke-width="15"/></g><g fill="#fff"><ellipse cx="26" cy="118" rx="24" ry="13"/><ellipse cx="214" cy="118" rx="24" ry="13"/></g>');
+sym('w-sun','0 0 120 120','<g class="sry" stroke="#F2B722" stroke-width="8" stroke-linecap="round"><path d="M60 6 v14 M60 100 v14 M6 60 h14 M100 60 h14 M22 22 l10 10 M88 88 l10 10 M98 22 l-10 10 M32 88 l-10 10"/></g><circle cx="60" cy="60" r="30" fill="#FFC94D"/>'+face(60,56,.55));
+sym('an-sun','0 0 120 120','<use href="#w-sun"/>');
+sym('w-cloud','0 0 140 70','<g fill="#fff"><ellipse cx="42" cy="46" rx="30" ry="18"/><circle cx="72" cy="36" r="22"/><circle cx="100" cy="46" r="18"/><rect x="40" y="42" width="66" height="22" rx="11"/></g>');
+sym('w-sprout','0 0 80 92','<path d="M40 84 V46" stroke="#6FBF6F" stroke-width="7" stroke-linecap="round"/><path d="M40 52 Q18 48 14 30 Q36 28 40 52 Z" fill="#8FD08A"/><path d="M40 60 Q62 56 66 38 Q44 36 40 60 Z" fill="#6FBF6F"/>');
+sym('w-flower','0 0 80 100','<path d="M40 96 V52" stroke="#6FBF6F" stroke-width="6" stroke-linecap="round"/><g fill="currentColor" transform="translate(40,40)">'+petals(5,18,9,14)+'</g><circle cx="40" cy="40" r="10" fill="#FFC94D"/>');
+sym('w-butterfly','0 0 100 90','<g class="bwg" fill="#F9A8C0"><ellipse cx="26" cy="30" rx="16" ry="20" transform="rotate(-20 26 30)"/><ellipse cx="30" cy="62" rx="12" ry="14"/></g><g class="bwg" fill="#62B6E7"><ellipse cx="74" cy="30" rx="16" ry="20" transform="rotate(20 74 30)"/><ellipse cx="70" cy="62" rx="12" ry="14"/></g><ellipse cx="50" cy="46" rx="6" ry="22" fill="#5A4636"/>');
+sym('st-star','0 0 100 100','<path d="M50 6 L61 37 L94 37 L67 56 L78 89 L50 68 L22 89 L33 56 L6 37 L39 37 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="4" stroke-linejoin="round"/>');
+sym('st-heart','0 0 100 100','<path d="M50 88 C22 64 10 44 22 28 C32 15 48 22 50 34 C52 22 68 15 78 28 C90 44 78 64 50 88 Z" fill="#F26D6D" stroke="#D94F4F" stroke-width="4"/>');
+sym('st-balloon','0 0 100 130','<path d="M50 76 q-6 18 4 30 q8 10 -2 20" fill="none" stroke="#8A6D5B" stroke-width="3"/><path d="M43 76 h14 l-7 9 Z" fill="currentColor"/><ellipse cx="50" cy="42" rx="31" ry="37" fill="currentColor" stroke="rgba(74,52,40,.25)" stroke-width="3"/><ellipse cx="38" cy="26" rx="8" ry="13" fill="#fff" opacity=".5"/>');
+sym('st-cupcake','0 0 100 100','<path d="M27 54 L35 92 H65 L73 54 Z" fill="#E8853D"/><circle cx="38" cy="42" r="13" fill="#FFF7EC"/><circle cx="62" cy="40" r="14" fill="#FFF7EC"/><circle cx="50" cy="30" r="13" fill="#FFF7EC"/><circle cx="50" cy="16" r="7" fill="#F26D6D"/>');
+sym('st-rocket','0 0 100 120','<path d="M44 84 Q50 106 56 84 Z" fill="#F2B722"/><path d="M30 60 Q12 70 16 90 L30 78 Z" fill="#FFC94D"/><path d="M70 60 Q88 70 84 90 L70 78 Z" fill="#FFC94D"/><path d="M50 4 Q68 28 68 62 H32 Q32 28 50 4 Z" fill="#FFF7EC" stroke="#E3CBA0" stroke-width="2.5"/><path d="M50 4 Q62 22 64 42 H36 Q38 22 50 4 Z" fill="#FF8555"/><circle cx="50" cy="54" r="11" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="4"/>');
+sym('fd-apple','0 0 120 120','<path d="M60 36 q-4 -14 8 -20" stroke="#8A5A33" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M62 22 q16 -9 23 2 q-13 11 -23 -2 Z" fill="#7ED588"/><circle cx="45" cy="68" r="26" fill="#F26D6D"/><circle cx="75" cy="68" r="26" fill="#F26D6D"/><rect x="42" y="62" width="36" height="32" fill="#F26D6D" rx="8"/>');
+sym('fd-fish','0 0 120 120','<path d="M88 60 L112 40 Q108 60 112 80 Z" fill="#62B6E7"/><path d="M20 44 Q66 22 86 60 Q66 98 20 76 Q32 60 20 44 Z" fill="#7EC8F0"/><circle cx="40" cy="54" r="6" fill="#fff"/><circle cx="41" cy="55" r="3" fill="#2C5F86"/>');
+sym('fd-bone','0 0 120 120','<g fill="#FFF7EC" stroke="#E3CBA0" stroke-width="3"><rect x="30" y="52" width="60" height="16" rx="8"/><circle cx="30" cy="46" r="12"/><circle cx="30" cy="74" r="12"/><circle cx="90" cy="46" r="12"/><circle cx="90" cy="74" r="12"/></g>');
+sym('fd-bread','0 0 120 120','<ellipse cx="60" cy="64" rx="44" ry="28" fill="#E8B87E"/><ellipse cx="60" cy="58" rx="44" ry="26" fill="#F2CFA0"/><path d="M40 48 q4 12 0 18 M56 44 q4 14 0 20 M72 48 q4 12 0 18" fill="none" stroke="#D9A05B" stroke-width="4.5" stroke-linecap="round"/>');
+sym('fd-grass','0 0 120 120','<path d="M60 106 V64" stroke="#6FBF6F" stroke-width="6" stroke-linecap="round"/><path d="M60 78 Q36 74 30 54 Q52 54 60 78 Z" fill="#8FD08A"/><path d="M60 88 Q86 84 92 64 Q70 64 60 88 Z" fill="#6FBF6F"/><g fill="#A8D88A"><ellipse cx="60" cy="52" rx="8" ry="7"/><ellipse cx="60" cy="40" rx="7" ry="6"/><ellipse cx="60" cy="30" rx="6" ry="5"/></g>');
+sym('fd-burger','0 0 120 120','<path d="M26 52 Q26 22 60 22 Q94 22 94 52 Z" fill="#F2CFA0"/><path d="M24 50 Q31 62 38 51 Q45 63 52 51 Q59 63 66 51 Q73 63 80 51 Q87 63 96 50 Z" fill="#7ED588"/><rect x="26" y="56" width="68" height="15" rx="7.5" fill="#8A5A33"/><path d="M26 71 h68 v6 q0 22 -34 22 q-34 0 -34 -22 Z" fill="#F2CFA0"/>');
+sym('ic-back','0 0 32 32','<path d="M12 6 L22 16 L12 26" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>');
+sym('ic-speaker','0 0 32 32','<path d="M5 12 h6 l8 -7 v22 l-8 -7 H5 Z" fill="currentColor"/><path d="M23 11 q5 5 0 10 M26 7 q8 9 0 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>');
+sym('ic-parent','0 0 32 32','<circle cx="11" cy="10" r="5" fill="currentColor"/><path d="M3 27 q1 -9 8 -9 q7 0 8 9 Z" fill="currentColor"/><circle cx="23" cy="12" r="4" fill="currentColor"/><path d="M18 27 q0 -7 5 -8 q5 1 5 8 Z" fill="currentColor" opacity=".6"/>');
+sym('ic-star','0 0 32 32','<path d="M16 2 L20 11 L30 11 L22.5 17.5 L25.5 28 L16 22 L6.5 28 L9.5 17.5 L2 11 L12 11 Z" fill="currentColor"/>');
+sym('ic-lock','0 0 32 32','<rect x="7" y="14" width="18" height="14" rx="4" fill="currentColor"/><path d="M11 14 V10 a5 5 0 0 1 10 0 v4" fill="none" stroke="currentColor" stroke-width="3.5"/>');
+sym('ic-refresh','0 0 32 32','<path d="M26 16 a10 10 0 1 1 -3.5 -7.6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M26 4 v6.5 h-6.5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>');
 
-/* ============ كل الحروف العربية ٢٨ (٧ مراحل × ٤ حروف) ============ */
-const LETTER_LEVELS=[
-  [ {ch:'أ',word:'أَسَد',thing:'lion'},   {ch:'ب',word:'بَطّة',thing:'duck'},      {ch:'ت',word:'تِمْساح',thing:'croc'},    {ch:'ث',word:'ثُعبان',thing:'snake'} ],
-  [ {ch:'ج',word:'جَمَل',thing:'camel'},   {ch:'ح',word:'حُوت',thing:'whale'},      {ch:'خ',word:'خَروف',thing:'sheep'},    {ch:'د',word:'دُبّ',thing:'bear'} ],
-  [ {ch:'ذ',word:'ذُرَة',thing:'corn'},    {ch:'ر',word:'رُمّان',thing:'pomegranate'},{ch:'ز',word:'زَرافة',thing:'giraffe'},{ch:'س',word:'سَمَكة',thing:'fish'} ],
-  [ {ch:'ش',word:'شَمس',thing:'sun'},      {ch:'ص',word:'صاروخ',thing:'rocket'},   {ch:'ض',word:'ضِفدَع',thing:'frog'},     {ch:'ط',word:'طائرة',thing:'plane'} ],
-  [ {ch:'ظ',word:'ظَبي',thing:'gazelle'},  {ch:'ع',word:'عُصفور',thing:'bird'},    {ch:'غ',word:'غَيمة',thing:'cloudy'},   {ch:'ف',word:'فيل',thing:'elephant'} ],
-  [ {ch:'ق',word:'قَمَر',thing:'moon'},    {ch:'ك',word:'كَلب',thing:'dog'},       {ch:'ل',word:'لَيمون',thing:'lemon'},   {ch:'م',word:'مَوز',thing:'banana'} ],
-  [ {ch:'ن',word:'نَجمة',thing:'starf'},   {ch:'ه',word:'هَديّة',thing:'gift',disp:'هـ'}, {ch:'و',word:'وَردة',thing:'flower'},  {ch:'ي',word:'يَد',thing:'hand'} ],
-];
-const LETTER_NAMES={'أ':'أَلِف','ب':'باء','ت':'تاء','ث':'ثاء','ج':'جيم','ح':'حاء','خ':'خاء','د':'دال','ذ':'ذال','ر':'راء','ز':'زاي','س':'سين','ش':'شين','ص':'صاد','ض':'ضاد','ط':'طاء','ظ':'ظاء','ع':'عين','غ':'غين','ف':'فاء','ق':'قاف','ك':'كاف','ل':'لام','م':'ميم','ن':'نون','ه':'هاء','و':'واو','ي':'ياء'};
-const LCOLORS=['#E8703A','#3D8FC4','#3FA34D','#8A5FB8','#E8A23A','#5A7AD1','#D6548A','#2E9E8F','#C25858','#7B8A2E','#B05BB5','#4E8AC2','#C87A2E','#4E7A9E'];
-let _gi=0; LETTER_LEVELS.forEach(lv=>lv.forEach(L=>{ L.color=L.color||LCOLORS[_gi++%LCOLORS.length]; }));
-const LMAP={}; LETTER_LEVELS.flat().forEach(L=>LMAP[L.ch]=L);
-const disp = L => L.disp||L.ch;
-const bare = w => w.replace(/^ال/,'');
+/* ============ البيانات: ٢٨ حرف في ٧ مراحل ============ */
+var LL=[
+[{ch:'أ',word:'أَسَد',thing:'lion'},{ch:'ب',word:'بَطّة',thing:'duck'},{ch:'ت',word:'تِمْساح',thing:'croc'},{ch:'ث',word:'ثُعبان',thing:'snake'}],
+[{ch:'ج',word:'جَمَل',thing:'camel'},{ch:'ح',word:'حُوت',thing:'whale'},{ch:'خ',word:'خَروف',thing:'sheep'},{ch:'د',word:'دُبّ',thing:'bear'}],
+[{ch:'ذ',word:'ذُرَة',thing:'corn'},{ch:'ر',word:'رُمّان',thing:'pomegranate'},{ch:'ز',word:'زَرافة',thing:'giraffe'},{ch:'س',word:'سَمَكة',thing:'fish'}],
+[{ch:'ش',word:'شَمس',thing:'sun'},{ch:'ص',word:'صاروخ',thing:'rocket'},{ch:'ض',word:'ضِفدَع',thing:'frog'},{ch:'ط',word:'طائرة',thing:'plane'}],
+[{ch:'ظ',word:'ظَبي',thing:'gazelle'},{ch:'ع',word:'عُصفور',thing:'bird'},{ch:'غ',word:'غَيمة',thing:'cloudy'},{ch:'ف',word:'فيل',thing:'elephant'}],
+[{ch:'ق',word:'قَمَر',thing:'moon'},{ch:'ك',word:'كَلب',thing:'dog'},{ch:'ل',word:'لَيمون',thing:'lemon'},{ch:'م',word:'مَوز',thing:'banana'}],
+[{ch:'ن',word:'نَجمة',thing:'starf'},{ch:'ه',word:'هَديّة',thing:'gift',disp:'هـ'},{ch:'و',word:'وَردة',thing:'flower'},{ch:'ي',word:'يَد',thing:'hand'}]];
+var LN={'أ':'أَلِف','ب':'باء','ت':'تاء','ث':'ثاء','ج':'جيم','ح':'حاء','خ':'خاء','د':'دال','ذ':'ذال','ر':'راء','ز':'زاي','س':'سين','ش':'شين','ص':'صاد','ض':'ضاد','ط':'طاء','ظ':'ظاء','ع':'عين','غ':'غين','ف':'فاء','ق':'قاف','ك':'كاف','ل':'لام','م':'ميم','ن':'نون','ه':'هاء','و':'واو','ي':'ياء'};
+var LC=['#E8703A','#3D8FC4','#3FA34D','#8A5FB8','#E8A23A','#5A7AD1','#D6548A','#2E9E8F','#C25858','#7B8A2E','#B05BB5','#4E8AC2','#C87A2E','#4E7A9E'];
+var gi=0;LL.forEach(function(lv){lv.forEach(function(L){L.color=L.color||LC[gi++%LC.length]})});
+var LMAP={};LL.forEach(function(lv){lv.forEach(function(L){LMAP[L.ch]=L})});
+function disp(L){return L.disp||L.ch}
+var TH={lion:'الأسد',duck:'البَطّة',croc:'التِمْساح',snake:'الثُعبان',camel:'الجَمَل',whale:'الحُوت',sheep:'الخَروف',bear:'الدُبّ',corn:'الذُرَة',pomegranate:'الرُمّان',giraffe:'الزَرافة',fish:'السَمَكة',sun:'الشَمس',rocket:'الصاروخ',frog:'الضِفدَع',plane:'الطائرة',gazelle:'الظَبي',bird:'العُصفور',cloudy:'الغَيمة',elephant:'الفيل',moon:'القَمَر',dog:'الكَلب',lemon:'اللَيمون',banana:'المَوز',starf:'النَجمة',gift:'الهَديّة',flower:'الوَردة',hand:'اليَد'};
+var AN={lion:'الأسد',elephant:'الفيل',cat:'القِط',cow:'البَقَرة',dog:'الكَلب',duck:'البَطّة'};
+var FD={fish:'سَمَكة',bone:'عظمة',apple:'تفاحة',bread:'خبزة',grass:'عشب',burger:'همبرغر'};
+var FEED=[{a:'cat',f:'fish'},{a:'dog',f:'bone'},{a:'elephant',f:'apple'}];
+var CHEERS=['شاطِر يا {ن}!','شاطِر يا {ن}!','شاطِر يا {ن}!','صح يا {ن}!'];
+var TRYV='جَرِّبْ تاني!';
+var STK=[{id:'balloon',name:'بالونة',cond:function(){return S.lettersLevelDone>=1}},{id:'heart',name:'قلب',cond:function(){return S.animalsDone}},{id:'star',name:'نجمة ذهبية',cond:function(){return S.stars>=15}},{id:'cupcake',name:'كوب كيك',cond:function(){return S.stars>=30}},{id:'rocket',name:'صاروخ',cond:function(){return S.stars>=50}}];
 
-const THINGS={
-  lion:{name:'الأسد'}, duck:{name:'البَطّة'}, croc:{name:'التِمْساح'}, snake:{name:'الثُعبان'},
-  camel:{name:'الجَمَل'}, whale:{name:'الحُوت'}, sheep:{name:'الخَروف'}, bear:{name:'الدُبّ'},
-  corn:{name:'الذُرَة'}, pomegranate:{name:'الرُمّان'}, giraffe:{name:'الزَرافة'}, fish:{name:'السَمَكة'},
-  sun:{name:'الشَمس'}, rocket:{name:'الصاروخ'}, frog:{name:'الضِفدَع'}, plane:{name:'الطائرة'},
-  gazelle:{name:'الظَبي'}, bird:{name:'العُصفور'}, cloudy:{name:'الغَيمة'}, elephant:{name:'الفيل'},
-  moon:{name:'القَمَر'}, dog:{name:'الكَلب'}, lemon:{name:'اللَيمون'}, banana:{name:'المَوز'},
-  starf:{name:'النَجمة'}, gift:{name:'الهَديّة'}, flower:{name:'الوَردة'}, hand:{name:'اليَد'},
-};
-const ANIMALS={ lion:{name:'الأسد',voice:'رااار'}, elephant:{name:'الفيل',voice:'بررر'},
-  cat:{name:'القِط',voice:'مياااو'}, cow:{name:'البَقَرة',voice:'ممووو'}, dog:{name:'الكَلب',voice:'هوف'}, duck:{name:'البَطّة',voice:'كواك'} };
-const FOODS={ fish:{name:'سَمَكة'}, bone:{name:'عظمة'}, apple:{name:'تفاحة'}, bread:{name:'خبزة'}, grass:{name:'عشب'}, burger:{name:'همبرغر'} };
-const FEED_ROUNDS=[ {animal:'cat',food:'fish'}, {animal:'dog',food:'bone'}, {animal:'elephant',food:'apple'} ];
-/* التشجيع: «شاطر يا سوسو» هي الأساسية + تنويع بسيط */
-const CHEERS=['شاطِر يا {n}!','شاطِر يا {n}!','شاطِر يا {n}!','صح يا {n}!'];
-const TRY_PHRASE='جَرِّبْ تاني!';
-const STICKERS=[
-  {id:'balloon',name:'بالونة',    hint:'خلّص أول مرحلة حروف', cond:()=>S.lettersLevelDone>=1},
-  {id:'heart',  name:'قلب',       hint:'خلّص عالم الحيوانات',  cond:()=>S.animalsDone},
-  {id:'star',   name:'نجمة ذهبية', hint:'اجمع 15 نجمة',       cond:()=>S.stars>=15},
-  {id:'cupcake',name:'كوب كيك',   hint:'اجمع 30 نجمة',        cond:()=>S.stars>=30},
-  {id:'rocket', name:'صاروخ',     hint:'اجمع 50 نجمة',        cond:()=>S.stars>=50},
-];
+/* ============ الحالة ============ */
+var KEY='soso-final';
+var DEF={name:'سوسو',named:false,stars:0,stickers:[],lettersLearned:[],thingsLearned:[],animalsLearned:[],lettersLevel:0,lettersLevelDone:0,animalsDone:false,playSeconds:0,flags:{},today:{date:'',stars:0,letters:[],animals:[]},muted:false,voiceMode:'lulu'};
+var S;
+try{S=Object.assign({},DEF,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){S=Object.assign({},DEF)}
+if(!S.flags)S.flags={};
+if(!S.thingsLearned)S.thingsLearned=[];
+if(!S.today)S.today={date:'',stars:0,letters:[],animals:[]};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function ensureToday(){var d=new Date().toDateString();if(S.today.date!==d){S.today={date:d,stars:0,letters:[],animals:[]};save()}}
 
-/* ---------- الحالة ---------- */
-const KEY='soso-adventures-v4';
-const DEFAULTS={name:'سوسو',named:false,stars:0,stickers:[],lettersLearned:[],thingsLearned:[],animalsLearned:[],lettersLevel:0,lettersLevelDone:0,animalsDone:false,playSeconds:0,flags:{},today:{date:'',stars:0,letters:[],animals:[]},muted:false,voiceMode:'lulu'};
-let S;
-try{ S=Object.assign({},DEFAULTS,JSON.parse(localStorage.getItem(KEY)||'{}')); }catch(e){ S={...DEFAULTS}; }
-S.flags=S.flags||{}; S.thingsLearned=S.thingsLearned||[]; S.today=S.today||{date:'',stars:0,letters:[],animals:[]};
-const save=()=>{ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} };
-function ensureToday(){ const d=new Date().toDateString(); if(S.today.date!==d){ S.today={date:d,stars:0,letters:[],animals:[]}; save(); } }
+/* ============ صوت لولو الطفولي ============ */
+var AC=null,VB=null,vN=[],vT=0;
+function initA(){if(!AC){var C=window.AudioContext||window.webkitAudioContext;if(!C)return;AC=new C();AC.g=AC.createGain();AC.g.gain.value=.9;AC.g.connect(AC.destination)}if(AC.state==='suspended')AC.resume()}
+function ensureVB(){if(VB||!AC)return;VB=AC.createGain();VB.gain.value=1.15;var lp=AC.createBiquadFilter();lp.type='lowpass';lp.frequency.value=3600;VB.connect(lp);lp.connect(AC.g)}
+function trk(n){vN.push(n);return n}
+function vCancel(){vT++;vN.forEach(function(n){try{n.stop()}catch(e){}});vN=[]}
+var PRON={'الف':'2a-lif','باء':'baa2','تاء':'taa2','ثاء':'thaa2','جيم':'jiim','حاء':'7aa2','خاء':'khaa2','دال':'daal','ذال':'dhaal','راء':'raa2','زاي':'zaay','سين':'siin','شين':'shiin','صاد':'Saad','ضاد':'Daad','طاء':'Taa2','ظاء':'Zaa2','عين':'3ayn','غين':'ghayn','فاء':'faa2','قاف':'qaaf','كاف':'kaaf','لام':'laam','ميم':'miim','نون':'nuun','هاء':'Haa2','واو':'waaw','ياء':'yaa2','اسد':'2a-sad','بطه':'ba-TTa','تمساح':'tim-saa7','ثعبان':'thu3-baan','جمل':'ja-mal','حوت':'7uut','خروف':'kha-ruuf','دب':'dub','ذره':'dhur-ra','رمان':'rum-maan','زرافه':'za-raa-fa','سمكه':'sa-ma-ka','شمس':'shams','صاروخ':'Saa-ruukh','ضفدع':'Dif-Di3','طائره':'Taa-2i-ra','ظبي':'Za-biy','عصفور':'3uS-fuur','غيمه':'ghay-ma','فيل':'fiil','قمر':'qa-mar','كلب':'kalb','ليمون':'lay-muun','موز':'muuz','نجمه':'naj-ma','هديه':'ha-di-yaa','ورده':'war-da','يد':'yad','قط':'qiT','بقره':'ba-qa-ra','عظمه':'3aZ-ma','تفاحه':'ta-faa-7a','شاطر':'shaa-Tir','صح':'Sa7','برافو':'ba-raa-fo','جرب':'jar-rib','تاني':'taa-ni','مين':'miin','ده':'dah','اسمع':'is-ma3','يلا':'ya-llaa','يا':'yaa','بص':'buS','كمّل':'ka-mil','غطي':'ghaT-Tii','عينيك':'3ay-niik','لولو':'luu-luu','سوسو':'su-su'};
+var CT=['sh','th','dh','kh','gh','T','D','S','Z','7','H','3','2','b','t','d','k','q','j','m','n','l','r','f','s','z','w','y'];
+function tokC(s){var o=[],i=0;while(i<s.length){var t=s.slice(i,i+2);if(CT.indexOf(t)>=0){o.push(t);i+=2}else{o.push(s[i]);i++}}return o}
+function parseSyl(s){return s.split('-').map(function(seg){var c=seg.split(''),vi=-1,vl=0,vv=null,i,t;for(i=0;i<c.length;i++){t=c[i]+(c[i+1]||'');if(t==='aa'||t==='ii'||t==='uu'){vi=i;vl=2;vv=t;break}if('aioue'.indexOf(c[i])>=0){vi=i;vl=1;vv=c[i];break}}if(vi<0)return{ons:tokC(seg),vow:null,coda:[]};return{ons:tokC(c.slice(0,vi).join('')),vow:{v:vv[0],lg:vl===2},coda:tokC(c.slice(vi+vl).join(''))}}).filter(function(x){return x.ons.length||x.vow})}
+function normW(w){return w.replace(/[\u064B-\u0652\u0670]/g,'').replace(/[إأآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/ء/g,'')}
+function arPhones(word){var w=word,nw=normW(word);if(nw.length>3&&nw.indexOf('ال')===0&&word.indexOf('ال')===0)w=word.slice(2);var tk=[],i;for(i=0;i<w.length;i++){tk.push({c:w[i],v:null})}var ph=[],P={};var map={'ب':'b','ت':'t','ط':'T','د':'d','ض':'D','ك':'k','ق':'q','ج':'j','ء':'2','أ':'2','إ':'2','آ':'2','م':'m','ن':'n','ل':'l','ر':'r','ف':'f','ث':'th','ذ':'dh','س':'s','ص':'S','ز':'z','ظ':'Z','ش':'sh','خ':'kh','غ':'gh','ح':'7','ه':'H','ع':'3','و':'w','ي':'y'};
+ for(i=0;i<tk.length;i++){var t=tk[i],c=t.c,pp=ph[ph.length-1];
+  if(c==='ا'){if(pp&&pp.k==='v'&&pp.v==='a'&&!pp.lg){pp.lg=true;continue}if(!ph.length){ph.push({k:'c',c:'2'},{k:'v',v:'a'});continue}ph.push({k:'v',v:'a',lg:true});continue}
+  if(c==='و'){if(pp&&pp.k==='v'&&pp.v==='u'&&!pp.lg){pp.lg=true;continue}ph.push({k:'c',c:'w'});continue}
+  if(c==='ي'){if(pp&&pp.k==='v'&&pp.v==='i'&&!pp.lg){pp.lg=true;continue}ph.push({k:'c',c:'y'});continue}
+  if(c==='ة'){ph.push({k:'v',v:'a'});continue}
+  if(c==='ى'){if(pp&&pp.k==='v'&&pp.v==='a')pp.lg=true;else ph.push({k:'v',v:'a',lg:true});continue}
+  var cc=map[c]||'H';ph.push({k:'c',c:cc});if(i<tk.length-1)ph.push({k:'v',v:'a'})}
+ return ph}
+function ph2syl(ph){var syl=[],cur={ons:[],vow:null,coda:[]};function fl(){if(cur.vow)syl.push(cur);else if(cur.ons.length&&syl.length)syl[syl.length-1].coda=syl[syl.length-1].coda.concat(cur.ons);cur={ons:[],vow:null,coda:[]}}
+ ph.forEach(function(p){if(p.k==='v'){if(cur.vow)fl();cur.vow={v:p.v,lg:!!p.lg}}else{if(cur.vow){if(!cur.coda.length)cur.coda.push(p.c);else{fl();cur.ons.push(p.c)}}else cur.ons.push(p.c)}});fl();return syl}
+function wordSyls(w){var nw=normW(w);var p=PRON[nw]||PRON[nw.replace(/^ال/,'')];return p?parseSyl(p):ph2syl(arPhones(w))}
+var VF={a:{F:[760,1240,2650],d:.12,dl:.24},i:{F:[340,2150,2950],d:.11,dl:.22},u:{F:[330,880,2450],d:.11,dl:.22},o:{F:[420,900,2500],d:.12,dl:.24},e:{F:[480,1900,2600],d:.11,dl:.2}};
+var CP={b:{t:'stop',f:750,v:1},t:{t:'stop',f:3800},T:{t:'stop',f:2600},d:{t:'stop',f:3200,v:1},D:{t:'stop',f:2000,v:1},k:{t:'stop',f:2200},q:{t:'stop',f:1100},j:{t:'stop',f:2500,v:1},m:{t:'nas',F:[260,1050,2300]},n:{t:'nas',F:[260,1650,2600]},l:{t:'nas',F:[360,950,2500]},r:{t:'r'},f:{t:'fric',lo:1800,hi:6500,g:.09,d:.08},th:{t:'fric',lo:4000,hi:7500,g:.08,d:.07},dh:{t:'fric',lo:3800,hi:7000,g:.07,d:.06,v:1},s:{t:'fric',lo:5500,hi:9500,g:.13,d:.09},S:{t:'fric',lo:2800,hi:5600,g:.14,d:.1},z:{t:'fric',lo:5500,hi:9500,g:.08,d:.06,v:1},Z:{t:'fric',lo:2600,hi:5200,g:.1,d:.07,v:1},sh:{t:'fric',lo:2400,hi:4800,g:.11,d:.09},kh:{t:'fric',lo:1000,hi:2400,g:.1,d:.09},gh:{t:'fric',lo:1000,hi:2400,g:.08,d:.07,v:1},'7':{t:'fric',lo:700,hi:1600,g:.08,d:.09},H:{t:'fric',lo:500,hi:1500,g:.05,d:.05},'3':{t:'fric',lo:600,hi:1400,g:.06,d:.05,v:1},w:{t:'glide',to:'u'},y:{t:'glide',to:'i'}};
+function mkN(t,dur){if(!AC)return null;var len=Math.max(1,AC.sampleRate*dur|0),buf=AC.createBuffer(1,len,AC.sampleRate),d=buf.getChannelData(0),i;for(i=0;i<len;i++)d[i]=Math.random()*2-1;var src=AC.createBufferSource();src.buffer=buf;src.start(t);src.stop(t+dur+.02);trk(src);return src}
+function bN(t,dur,fr,vol){if(!AC)return;var src=mkN(t,dur);if(!src)return;var bp=AC.createBiquadFilter();bp.type='bandpass';bp.frequency.value=fr;bp.Q.value=1.1;var g=AC.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+dur);src.connect(bp);bp.connect(g);g.connect(VB)}
+function fN(t,dur,vol,lo,hi){if(!AC)return;var src=mkN(t,dur);if(!src)return;var hp=AC.createBiquadFilter();hp.type='highpass';hp.frequency.value=lo;var lp=AC.createBiquadFilter();lp.type='lowpass';lp.frequency.value=hi;var g=AC.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.014);g.gain.setValueAtTime(vol,t+dur*.75);g.gain.linearRampToValueAtTime(.0001,t+dur);src.connect(hp);hp.connect(lp);lp.connect(g);g.connect(VB)}
+function mr(t,dur,f0,F,amp){if(!AC)return;var g=AC.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(amp,t+.015);g.gain.setValueAtTime(amp,t+dur-.02);g.gain.linearRampToValueAtTime(.0001,t+dur);g.connect(VB);var o=AC.createOscillator();o.type='sawtooth';o.frequency.setValueAtTime(f0*1.02,t);o.frequency.linearRampToValueAtTime(f0,t+dur);F.forEach(function(fr,i){var bp=AC.createBiquadFilter();bp.type='bandpass';bp.frequency.value=fr;bp.Q.value=[5,7,8][i];var fg=AC.createGain();fg.gain.value=[1,.5,.22][i];o.connect(bp);bp.connect(fg);fg.connect(g)});o.start(t);o.stop(t+dur+.02);trk(o)}
+function singV(v,t,dur,f0,amp,prevF,plain){if(!AC)return;var Fv=VF[v]||VF.a;var out=AC.createGain();var a=Math.min(amp,.5);out.gain.setValueAtTime(0,t);out.gain.linearRampToValueAtTime(a,t+(plain?.01:.022));out.gain.setValueAtTime(a*.93,t+Math.max(.03,dur-.05));out.gain.linearRampToValueAtTime(.0001,t+dur);out.connect(VB);
+ var o=AC.createOscillator();o.type='sawtooth';o.frequency.setValueAtTime(f0*1.04,t);o.frequency.exponentialRampToValueAtTime(f0,t+Math.min(.1,dur*.5));o.frequency.linearRampToValueAtTime(f0*.97,t+dur);
+ var lfo=AC.createOscillator();lfo.frequency.value=5.4;var lg=AC.createGain();lg.gain.setValueAtTime(0,t);lg.gain.linearRampToValueAtTime(f0*.012,t+Math.min(.14,dur*.6));lfo.connect(lg);lg.connect(o.frequency);
+ Fv.F.forEach(function(fr,i){var bp=AC.createBiquadFilter();bp.type='bandpass';var pf=(prevF&&prevF[i])?prevF[i]:fr;bp.frequency.setValueAtTime(pf,t);bp.frequency.linearRampToValueAtTime(fr,t+.045);bp.Q.value=[5,8,9][i];var fg=AC.createGain();fg.gain.value=[1,.62,.26][i];o.connect(bp);bp.connect(fg);fg.connect(out)});
+ var s=AC.createOscillator();s.type='sine';s.frequency.setValueAtTime(f0*1.04,t);s.frequency.linearRampToValueAtTime(f0,t+dur);var slp=AC.createBiquadFilter();slp.type='lowpass';slp.frequency.value=800;var sg=AC.createGain();sg.gain.value=.26;s.connect(slp);slp.connect(sg);sg.connect(out);
+ var en=t+dur+.02;o.start(t);o.stop(en);s.start(t);s.stop(en);lfo.start(t);lfo.stop(en);trk(o);trk(s);trk(lfo)}
+function schedC(cc,t,f0,pos,gem){var P=CP[cc];if(!P)return .03;var coda=pos==='coda',gm=gem?1.5:1;
+ if(cc==='2'){bN(t+.045,.012,600,.05);return .055}
+ if(P.t==='stop'){var gap=(coda?.05:.04)*gm;bN(t+gap,.02,P.f,(P.v?.13:.17)*(gem?1.3:1));if(P.v)mr(t+.012,Math.max(.02,gap-.014),f0,[220,800,2000],.07);return gap+.024}
+ if(P.t==='fric'){var d=(P.d||.08)*gm*(coda?.65:1);fN(t,d,(P.g||.1)*(gem?1.25:1),P.lo,P.hi);if(P.v)mr(t,d*.7,f0,[300,1000,2200],.05);return d+.008}
+ if(P.t==='nas'){var d2=(cc==='l'?.06:.07)*gm;mr(t,d2,f0,P.F,.3);return d2+.005}
+ if(P.t==='r'){var d3=(coda?.05:.06)*(gem?1.4:1);var g=AC.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.3,t+.01);g.gain.linearRampToValueAtTime(.0001,t+d3);g.connect(VB);var o=AC.createOscillator();o.type='sawtooth';o.frequency.setValueAtTime(f0,t);var bp=AC.createBiquadFilter();bp.type='bandpass';bp.frequency.value=1200;bp.Q.value=1.5;var am=AC.createOscillator();am.type='sine';am.frequency.value=26;var ag=AC.createGain();ag.gain.value=.16;am.connect(ag);ag.connect(g.gain);o.connect(bp);bp.connect(g);o.start(t);o.stop(t+d3+.02);am.start(t);am.stop(t+d3+.02);trk(o);trk(am);return d3+.005}
+ if(P.t==='glide'){singV(P.to,t,.05,f0,.2,null,true);return .05}
+ return .04}
+function mel(n){return n===1?[0]:n===2?[4,0]:n===3?[4,1,0]:[5,3,1,0]}
+function luluSpeak(text){vCancel();initA();if(!AC||S.muted)return 0;ensureVB();
+ var clean=String(text).replace(/[!؟?.,،…:—ـ]/g,' ').replace(/\s+/g,' ').trim();if(!clean)return 0;
+ var words=clean.split(' ').filter(Boolean);var syls=words.map(wordSyls).filter(function(a){return a.length});if(!syls.length)return 0;
+ var base=/[!]/.test(text)?345:318,isQ=/[؟?]/.test(text);
+ var t=AC.currentTime+.06,prevF=[500,1500,2500];
+ syls.forEach(function(word,wi){var dec=Math.pow(2,-(wi*.6)/12),pat=mel(word.length);
+  word.forEach(function(sy,si){var ons=[],k;for(k=0;k<sy.ons.length;k++){if(sy.ons[k]===sy.ons[k+1]){ons.push({c:sy.ons[k],g:true});k++}else ons.push({c:sy.ons[k],g:false})}
+   ons.forEach(function(o){t+=schedC(o.c,t,base*dec,'onset',o.g)});
+   if(sy.vow){var Fv=VF[sy.vow.v];var dur=sy.vow.lg?Fv.dl:Fv.d;var f0=base*dec*Math.pow(2,(pat[Math.min(si,pat.length-1)]||0)/12);
+    if(wi===syls.length-1&&si===word.length-1&&isQ)f0*=Math.pow(2,4/12);
+    singV(sy.vow.v,t,dur,f0,sy.vow.lg?.5:.44,prevF);prevF=Fv.F;t+=dur}
+   sy.coda.forEach(function(cc){t+=schedC(cc,t,base*dec,'coda')})});
+  t+=.13});
+ return t-AC.currentTime}
+function giggle(){initA();if(!AC||S.muted)return;ensureVB();vCancel();var tk=vT,t=AC.currentTime+.02;[430,480,530,470].forEach(function(f){if(tk===vT){singV('i',t,.09,f,.34,null,true);t+=.11}})}
 
-/* ============================================================
-   صوت لولو الطفولي v2 — نطق مقطعي غنائي (Formant Synthesis)
-   كل كلمة = نغمة صغيرة بمقام لطيف + قاموس نطق مضبوط يدويًا
-   ============================================================ */
-const A={ctx:null,
-  init(){ if(!this.ctx){ const C=window.AudioContext||window.webkitAudioContext; if(!C) return;
-      this.ctx=new C(); this.master=this.ctx.createGain(); this.master.gain.value=.9; this.master.connect(this.ctx.destination); }
-    if(this.ctx.state==='suspended') this.ctx.resume(); },
-  t(){ return this.ctx?this.ctx.currentTime:0; }
-};
-function ensureVBus(){ if(A.vbus) return; const c=A.ctx;
-  A.vbus=c.createGain(); A.vbus.gain.value=1.15;
-  const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=3600;
-  const comp=c.createDynamicsCompressor?c.createDynamicsCompressor():null;
-  A.vbus.connect(lp);
-  if(comp){ lp.connect(comp); comp.connect(A.master); } else lp.connect(A.master);
-}
-let voiceNodes=[], voiceTok=0;
-function trackV(n){ voiceNodes.push(n); try{ n.onended=()=>{ const i=voiceNodes.indexOf(n); if(i>=0) voiceNodes.splice(i,1); }; }catch(e){} return n; }
-function luluCancel(){ voiceTok++; voiceNodes.forEach(n=>{try{n.stop()}catch(e){}}); voiceNodes=[]; }
+/* أصوات الحيوانات والمؤثرات */
+function tone(o){if(!AC||S.muted)return;var t=AC.currentTime+(o.t||0),dur=o.dur||.2;var osc=AC.createOscillator();osc.type=o.type||'sine';osc.frequency.setValueAtTime(o.f,t);if(o.f2)osc.frequency.exponentialRampToValueAtTime(Math.max(30,o.f2),t+dur);if(o.wob){var l=AC.createOscillator(),lg=AC.createGain();l.frequency.value=o.wob[0];lg.gain.value=o.wob[1];l.connect(lg);lg.connect(osc.frequency);l.start(t);l.stop(t+dur+.05)}var g=AC.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(o.vol||.3,t+(o.attack||.02));g.gain.exponentialRampToValueAtTime(.001,t+dur);var n=osc;if(o.lp){var fl=AC.createBiquadFilter();fl.type='lowpass';fl.frequency.value=o.lp;osc.connect(fl);n=fl}n.connect(g);g.connect(AC.g);osc.start(t);osc.stop(t+dur+.1)}
+function noiseS(o){if(!AC||S.muted)return;var t=AC.currentTime+(o.t||0),dur=o.dur||.2;var len=Math.max(1,AC.sampleRate*dur|0),buf=AC.createBuffer(1,len,AC.sampleRate),d=buf.getChannelData(0),i;for(i=0;i<len;i++)d[i]=Math.random()*2-1;var src=AC.createBufferSource();src.buffer=buf;var fl=AC.createBiquadFilter();fl.type=o.type||'lowpass';fl.frequency.value=o.f||1000;if(o.f2)fl.frequency.exponentialRampToValueAtTime(o.f2,t+dur);var g=AC.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(o.vol||.3,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+dur);src.connect(fl);fl.connect(g);g.connect(AC.g);src.start(t)}
+var SFX={tap:function(){tone({f:620,f2:920,dur:.08,type:'triangle',vol:.22})},pop:function(){noiseS({dur:.1,f:2200,f2:300,vol:.5});tone({f:420,f2:70,dur:.14,type:'square',vol:.25})},star:function(){tone({f:880,dur:.14,type:'triangle',vol:.3});tone({f:1318,t:.1,dur:.2,type:'triangle',vol:.26})},success:function(){[523,659,784,1046].forEach(function(f,i){tone({f:f,t:i*.09,dur:.17,type:'triangle',vol:.3})})},fanfare:function(){[392,523,659,784,1046].forEach(function(f,i){tone({f:f,t:i*.12,dur:.28,type:'triangle',vol:.32})});noiseS({t:.1,dur:.5,f:5000,type:'highpass',vol:.08})},gentle:function(){tone({f:392,f2:330,dur:.32,vol:.24});tone({f:330,f2:294,t:.28,dur:.34,vol:.2})},munch:function(){noiseS({dur:.12,f:420,vol:.4});noiseS({t:.16,dur:.12,f:360,vol:.35})},beat:function(){tone({f:1000,f2:600,dur:.06,type:'square',vol:.14})},sparkle:function(){[1046,1318,1568].forEach(function(f,i){tone({f:f,t:i*.07,dur:.14,type:'triangle',vol:.22})})}};
+var ASFX={cat:function(){tone({f:640,f2:880,dur:.28,vol:.42,attack:.05,lp:2500});tone({f:830,f2:390,t:.3,dur:.5,vol:.42,attack:.04,lp:2200})},lion:function(){noiseS({dur:1.2,f:240,vol:.5});tone({f:95,f2:70,dur:1.2,type:'sawtooth',vol:.4,lp:280,wob:[7,12]});tone({f:190,f2:130,dur:1.1,type:'sawtooth',vol:.15,lp:400})},elephant:function(){tone({f:230,f2:400,dur:.35,type:'sawtooth',vol:.4,lp:1100,wob:[16,25]});tone({f:380,f2:180,t:.36,dur:.55,type:'sawtooth',vol:.38,lp:900,wob:[14,30]})},duck:function(){[0,.22,.44].forEach(function(d,i){tone({f:300-i*18,f2:230,dur:.16,t:d,type:'sawtooth',vol:.4,lp:1100})})},dog:function(){[0,.28].forEach(function(d){tone({f:200,f2:90,dur:.16,t:d,type:'sawtooth',vol:.45,lp:700});noiseS({dur:.14,t:d,f:900,f2:300,vol:.3})})},cow:function(){tone({f:130,f2:170,dur:.4,type:'sawtooth',vol:.42,lp:320,attack:.1});tone({f:160,f2:75,t:.4,dur:.8,type:'sawtooth',vol:.42,lp:280})},snake:function(){noiseS({dur:.7,f:4000,f2:7000,type:'bandpass',vol:.16})},camel:function(){tone({f:160,f2:120,dur:.5,type:'sawtooth',vol:.3,lp:600,wob:[5,8]})},bear:function(){tone({f:110,f2:80,dur:.5,type:'sawtooth',vol:.38,lp:350,wob:[6,10]})},sheep:function(){tone({f:230,f2:180,dur:.55,type:'sawtooth',vol:.32,lp:900,wob:[9,12],attack:.08})},whale:function(){tone({f:75,f2:130,dur:.7,vol:.4,lp:400,attack:.12});tone({f:130,f2:60,t:.7,dur:.8,vol:.35,lp:400});noiseS({t:.05,dur:.5,f:1200,f2:3000,type:'bandpass',vol:.1})},frog:function(){[0,.3].forEach(function(t){tone({f:120,f2:85,dur:.14,t:t,type:'square',vol:.28,lp:500})})},bird:function(){[0,.18,.36].forEach(function(t,i){tone({f:1500+i*100,f2:1900,dur:.1,t:t,vol:.24})})},fish:function(){[0,.22].forEach(function(t){tone({f:300,f2:120,dur:.12,t:t,vol:.3})})},plane:function(){noiseS({dur:1.4,f:400,f2:1600,type:'bandpass',vol:.28})},rocket:function(){noiseS({dur:1.2,f:300,f2:2500,type:'bandpass',vol:.3});tone({f:120,f2:380,dur:1.2,type:'sawtooth',vol:.14,lp:800})},croc:function(){noiseS({dur:.5,f:500,f2:900,type:'bandpass',vol:.15})}};
+function thingSound(th){if(ASFX[th])ASFX[th]();else SFX.sparkle()}
+function speak(txt){if(S.muted)return;luluSpeak(txt)}
 
-/* ---- قاموس النطق: كل كلمة = مقاطع مفصولة بـ "-" ----
-   كل مقطع: ساكن(اختياري) + حرف علة (a aa i ii u uu o e) + ساكن نهائي(اختياري)
-   b t T ط d D ض k q j 2=همزة m n l r f th dh s S ص z Z ظ sh kh gh 7=ح 3=ع H=ه w y  */
-const PRON={
-  'الف':'2a-lif','باء':'baa2','تاء':'taa2','ثاء':'thaa2','جيم':'jiim','حاء':'7aa2','خاء':'khaa2',
-  'دال':'daal','ذال':'dhaal','راء':'raa2','زاي':'zaay','سين':'siin','شين':'shiin','صاد':'Saad',
-  'ضاد':'Daad','طاء':'Taa2','ظاء':'Zaa2','عين':'3ayn','غين':'ghayn','فاء':'faa2','قاف':'qaaf',
-  'كاف':'kaaf','لام':'laam','ميم':'miim','نون':'nuun','هاء':'Haa2','واو':'waaw','ياء':'yaa2',
-  'اسد':'2a-sad','بطه':'ba-TTa','تمساح':'tim-saa7','ثعبان':'thu3-baan','جمل':'ja-mal','حوت':'7uut',
-  'خروف':'kha-ruuf','دب':'dub','ذره':'dhur-ra','رمان':'rum-maan','زرافه':'za-raa-fa','سمكه':'sa-ma-ka',
-  'شمس':'shams','صاروخ':'Saa-ruukh','ضفدع':'Dif-Di3','طائره':'Taa-2i-ra','ظبي':'Za-biy','عصفور':'3uS-fuur',
-  'غيمه':'ghay-ma','فيل':'fiil','قمر':'qa-mar','كلب':'kalb','ليمون':'lay-muun','موز':'muuz',
-  'نجمه':'naj-ma','هديه':'ha-di-yaa','ورده':'war-da','يد':'yad',
-  'قط':'qiT','بقره':'ba-qa-ra','عظمه':'3aZ-ma','تفاحه':'ta-faa-7a',
-  'شاطر':'shaa-Tir','صح':'Sa7','برافو':'ba-raa-fo','جرب':'jar-rib','تاني':'taa-ni',
-  'مين':'miin','ده':'dah','اسمع':'is-ma3','يلا':'ya-llaa','يا':'yaa','بص':'buS','كمّل':'ka-mil',
-  'غطي':'ghaT-Tii','عينيك':'3ay-niik','لذيذ':'la-dhiidh','لولو':'luu-luu','سوسو':'su-su',
-};
-const CONS_TOK=['sh','th','dh','kh','gh','T','D','S','Z','7','H','3','2','b','t','d','k','q','j','m','n','l','r','f','s','z','w','y'];
-function tokCons(str){
-  const out=[]; let i=0;
-  while(i<str.length){ const t=str.slice(i,i+2);
-    if(CONS_TOK.includes(t)){out.push(t);i+=2;} else {out.push(str[i]);i++;} }
-  return out;
-}
-function parseSylStr(s){
-  return s.split('-').map(seg=>{
-    const chars=[...seg];
-    let vi=-1,vlen=0,vv=null;
-    for(let i=0;i<chars.length;i++){
-      const two=chars[i]+(chars[i+1]||'');
-      if(two==='aa'||two==='ii'||two==='uu'){vi=i;vlen=2;vv=two;break;}
-      if('aioue'.includes(chars[i])){vi=i;vlen=1;vv=chars[i];break;}
-    }
-    if(vi<0) return {ons:tokCons(seg),vow:null,coda:[]};
-    return {ons:tokCons(chars.slice(0,vi).join('')),vow:{v:vv[0],lg:vlen===2},coda:tokCons(chars.slice(vi+vlen).join(''))};
-  }).filter(sy=>sy.ons.length||sy.vow);
-}
-/* ---- محلل عربي احتياطي (للاسم أو أي كلمة جديدة) ---- */
-const DIACS=new Set(['\u064B','\u064C','\u064D','\u064E','\u064F','\u0650','\u0651','\u0652']);
-const FATHA='\u064E',DAMMA='\u064F',KASRA='\u0650',SUKUN='\u0652',SHADDA='\u0651';
-const AR2PH={'ب':'b','ت':'t','ط':'T','د':'d','ض':'D','ك':'k','ق':'q','ج':'j','ء':'2','أ':'2','إ':'2','آ':'2','م':'m','ن':'n','ل':'l','ر':'r','ف':'f','ث':'th','ذ':'dh','س':'s','ص':'S','ز':'z','ظ':'Z','ش':'sh','خ':'kh','غ':'gh','ح':'7','ه':'H','ع':'3','و':'w','ي':'y'};
-function normWord(w){ return w.replace(/[\u064B-\u0652\u0670]/g,'').replace(/[إأآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/ء/g,''); }
-function parseArabicPhones(word){
-  let w=word; const nw=normWord(word);
-  if(nw.length>3&&nw.startsWith('ال')&&word.startsWith('ال')) w=word.slice(2);
-  const toks=[]; const chars=[...w];
-  for(const ch of chars){
-    if(DIACS.has(ch)){ if(toks.length){ if(ch===SHADDA) toks[toks.length-1].sh=true; else if(toks[toks.length-1].v==null) toks[toks.length-1].v=ch; } }
-    else toks.push({c:ch,v:null,sh:false});
-  }
-  const ph=[];
-  for(let i=0;i<toks.length;i++){
-    const tk=toks[i], c=tk.c, isLast=i===toks.length-1, next=toks[i+1];
-    const prevP=ph[ph.length-1];
-    if(c==='ا'){ if(prevP&&prevP.k==='v'&&prevP.v==='a'&&!prevP.lg){prevP.lg=true;continue;}
-      if(ph.length===0){ph.push({k:'c',c:'2'});ph.push({k:'v',v:'a'});continue;}
-      ph.push({k:'v',v:'a',lg:true});continue; }
-    if(c==='و'&&!tk.v){ if(prevP&&prevP.k==='v'&&prevP.v==='u'&&!prevP.lg){prevP.lg=true;continue;} ph.push({k:'c',c:'w'});continue; }
-    if(c==='ي'&&!tk.v){ if(prevP&&prevP.k==='v'&&prevP.v==='i'&&!prevP.lg){prevP.lg=true;continue;} ph.push({k:'c',c:'y'});continue; }
-    if(c==='ة'){ ph.push({k:'v',v:'a'}); continue; }
-    if(c==='ى'){ if(prevP&&prevP.k==='v'&&prevP.v==='a'){prevP.lg=true;} else ph.push({k:'v',v:'a',lg:true}); continue; }
-    const cc=AR2PH[c]||'H';
-    let v=null;
-    if(tk.v===FATHA)v='a'; else if(tk.v===DAMMA)v='u'; else if(tk.v===KASRA)v='i'; else if(tk.v===SUKUN)v=null;
-    else { if(isLast) v=null; else if(ph.length===0) v=(next&&next.c==='ي')?'i':(next&&next.c==='و')?'u':'a'; else v='a'; }
-    ph.push({k:'c',c:cc}); if(v) ph.push({k:'v',v,lg:false});
-  }
-  return ph;
-}
-function phonesToSyls(ph){
-  const syls=[]; let cur={ons:[],vow:null,coda:[]};
-  const flush=()=>{ if(cur.vow) syls.push(cur); else if(cur.ons.length&&syls.length) syls[syls.length-1].coda.push(...cur.ons); cur={ons:[],vow:null,coda:[]}; };
-  for(const p of ph){
-    if(p.k==='v'){ if(cur.vow) flush(); cur.vow={v:p.v,lg:!!p.lg}; }
-    else { if(cur.vow){ if(!cur.coda.length) cur.coda.push(p.c); else { flush(); cur.ons.push(p.c); } } else cur.ons.push(p.c); }
-  }
-  flush();
-  return syls;
-}
-function wordSyls(w){
-  const nw=normWord(w);
-  let p=PRON[nw]||PRON[nw.replace(/^ال/,'')];
-  if(p) return parseSylStr(p);
-  return phonesToSyls(parseArabicPhones(w));
-}
+/* الكونفيتي */
+var FX={parts:[],init:function(){this.cv=$('#fx');this.x=this.cv.getContext('2d');var self=this;var rs=function(){var d=devicePixelRatio||1;self.cv.width=innerWidth*d;self.cv.height=innerHeight*d;self.x.setTransform(d,0,0,d,0,0)};rs();addEventListener('resize',rs);this.last=performance.now();requestAnimationFrame(function(t){self.loop(t)})},burst:function(x,y,n){n=n||30;for(var i=0;i<n;i++)this.parts.push({x:x,y:y,vx:(Math.random()-.5)*10,vy:-(2+Math.random()*7),g:.24,rot:Math.random()*6.3,vr:(Math.random()-.5)*.3,s:5+Math.random()*8,sh:pick(['c','s','t']),col:pick(PAL),life:1,dec:.008+Math.random()*.007})},rain:function(n){n=n||80;for(var i=0;i<n;i++)this.parts.push({x:Math.random()*innerWidth,y:-30-Math.random()*innerHeight*.6,vx:(Math.random()-.5)*2,vy:1.5+Math.random()*2.5,g:.05,rot:Math.random()*6.3,vr:(Math.random()-.5)*.2,s:6+Math.random()*9,sh:pick(['c','s','t']),col:pick(PAL),life:1,dec:.0035})},loop:function(t){var self=this;requestAnimationFrame(function(tt){self.loop(tt)});var dt=Math.min(34,t-this.last)/16.7;this.last=t;this.x.clearRect(0,0,innerWidth,innerHeight);if(!this.parts.length)return;this.parts=this.parts.filter(function(p){if(p.life<=0||p.y>innerHeight+60)return false;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=p.g*dt;p.rot+=p.vr*dt;p.life-=p.dec*dt;var c=self.x;c.save();c.globalAlpha=Math.max(0,Math.min(1,p.life*1.4));c.fillStyle=p.col;c.translate(p.x,p.y);c.rotate(p.rot);if(p.sh==='c'){c.beginPath();c.arc(0,0,p.s*.6,0,6.3);c.fill()}else if(p.sh==='s'){c.beginPath();for(var k=0;k<10;k++){var a=k*Math.PI/5,rr=k%2?p.s*.3:p.s*.7;c.lineTo(Math.cos(a)*rr,Math.sin(a)*rr)}c.closePath();c.fill()}else{c.beginPath();c.moveTo(0,-p.s*.7);c.lineTo(p.s*.6,p.s*.5);c.lineTo(-p.s*.6,p.s*.5);c.closePath();c.fill()}c.restore();return true})}};
 
-/* ---- تعريف الأصوات ---- */
-const VF={
-  a:{F:[760,1240,2650],d:.12,dl:.24},
-  i:{F:[340,2150,2950],d:.11,dl:.22},
-  u:{F:[330,880,2450],d:.11,dl:.22},
-  o:{F:[420,900,2500],d:.12,dl:.24},
-  e:{F:[480,1900,2600],d:.11,dl:.2},
-};
-const CP={
-  b:{t:'stop',f:750,v:1},  t:{t:'stop',f:3800}, T:{t:'stop',f:2600},
-  d:{t:'stop',f:3200,v:1}, D:{t:'stop',f:2000,v:1}, k:{t:'stop',f:2200},
-  q:{t:'stop',f:1100}, j:{t:'stop',f:2500,v:1},
-  m:{t:'nas',F:[260,1050,2300]}, n:{t:'nas',F:[260,1650,2600]}, l:{t:'nas',F:[360,950,2500]},
-  r:{t:'r'},
-  f:{t:'fric',lo:1800,hi:6500,g:.09,d:.08}, th:{t:'fric',lo:4000,hi:7500,g:.08,d:.07},
-  dh:{t:'fric',lo:3800,hi:7000,g:.07,d:.06,v:1},
-  s:{t:'fric',lo:5500,hi:9500,g:.13,d:.09}, S:{t:'fric',lo:2800,hi:5600,g:.14,d:.1},
-  z:{t:'fric',lo:5500,hi:9500,g:.08,d:.06,v:1}, Z:{t:'fric',lo:2600,hi:5200,g:.1,d:.07,v:1},
-  sh:{t:'fric',lo:2400,hi:4800,g:.11,d:.09}, kh:{t:'fric',lo:1000,hi:2400,g:.1,d:.09},
-  gh:{t:'fric',lo:1000,hi:2400,g:.08,d:.07,v:1}, 7:{t:'fric',lo:700,hi:1600,g:.08,d:.09},
-  H:{t:'fric',lo:500,hi:1500,g:.05,d:.05}, 3:{t:'fric',lo:600,hi:1400,g:.06,d:.05,v:1},
-  w:{t:'glide',to:'u'}, y:{t:'glide',to:'i'},
-};
-function mkNoise(t,dur){
-  const c=A.ctx;
-  const len=Math.max(1,(c.sampleRate*dur)|0);
-  const buf=c.createBuffer(1,len,c.sampleRate), d=buf.getChannelData(0);
-  for(let i=0;i<len;i++) d[i]=Math.random()*2-1;
-  const src=c.createBufferSource(); src.buffer=buf;
-  src.start(t); src.stop(t+dur+.02); trackV(src);
-  return src;
-}
-function burstN(t,dur,freq,vol){
-  const c=A.ctx, src=mkNoise(t,dur);
-  const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=freq; bp.Q.value=1.1;
-  const g=c.createGain();
-  g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(vol,t+.004);
-  g.gain.exponentialRampToValueAtTime(.0001,t+dur);
-  src.connect(bp); bp.connect(g); g.connect(A.vbus);
-}
-function fricN(t,dur,vol,lo,hi){
-  const c=A.ctx, src=mkNoise(t,dur);
-  const hp=c.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=lo;
-  const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=hi;
-  const g=c.createGain();
-  g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(vol,t+.014);
-  g.gain.setValueAtTime(vol,t+dur*.75); g.gain.linearRampToValueAtTime(.0001,t+dur);
-  src.connect(hp); hp.connect(lp); lp.connect(g); g.connect(A.vbus);
-}
-function mur(t,dur,f0,F,amp){
-  const c=A.ctx;
-  const g=c.createGain();
-  g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(amp,t+.015);
-  g.gain.setValueAtTime(amp,t+dur-.02); g.gain.linearRampToValueAtTime(.0001,t+dur);
-  g.connect(A.vbus);
-  const o=c.createOscillator(); o.type='sawtooth';
-  o.frequency.setValueAtTime(f0*1.02,t); o.frequency.linearRampToValueAtTime(f0,t+dur);
-  F.forEach((fr,i)=>{ const bp=c.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=fr; bp.Q.value=[5,7,8][i];
-    const fg=c.createGain(); fg.gain.value=[1,.5,.22][i];
-    o.connect(bp); bp.connect(fg); fg.connect(g); });
-  o.start(t); o.stop(t+dur+.02); trackV(o);
-}
-/* نغمة المقطع: الفورمانت بتنزلق من حركة للحركة اللي قبلها (coarticulation) */
-function singVow(v,t,dur,f0,amp,prevF,plain){
-  const c=A.ctx, F=VF[v]||VF.a;
-  const out=c.createGain();
-  const a=Math.min(amp,.5);
-  out.gain.setValueAtTime(0,t);
-  out.gain.linearRampToValueAtTime(a,t+(plain?.01:.022));
-  out.gain.setValueAtTime(a*.93,t+Math.max(.03,dur-.05));
-  out.gain.linearRampToValueAtTime(.0001,t+dur);
-  out.connect(A.vbus);
-  const o=c.createOscillator(); o.type='sawtooth';
-  o.frequency.setValueAtTime(f0*1.04,t);
-  o.frequency.exponentialRampToValueAtTime(f0,t+Math.min(.1,dur*.5));
-  o.frequency.linearRampToValueAtTime(f0*.97,t+dur);
-  /* فيبراتو متأخر = صوت حي */
-  const lfo=c.createOscillator(); lfo.frequency.value=5.4;
-  const lg=c.createGain(); lg.gain.setValueAtTime(0,t);
-  lg.gain.linearRampToValueAtTime(f0*.012,t+Math.min(.14,dur*.6));
-  lfo.connect(lg); lg.connect(o.frequency);
-  F.F.forEach((fr,i)=>{
-    const bp=c.createBiquadFilter(); bp.type='bandpass';
-    const pf=(prevF&&prevF[i])?prevF[i]:fr;
-    bp.frequency.setValueAtTime(pf,t);
-    bp.frequency.linearRampToValueAtTime(fr,t+.045);
-    bp.Q.value=[5,8,9][i];
-    const fg=c.createGain(); fg.gain.value=[1,.62,.26][i];
-    o.connect(bp); bp.connect(fg); fg.connect(out);
-  });
-  /* مسار الدفء: الأساسي ساين خفيف */
-  const s=c.createOscillator(); s.type='sine';
-  s.frequency.setValueAtTime(f0*1.04,t); s.frequency.linearRampToValueAtTime(f0,t+dur);
-  const slp=c.createBiquadFilter(); slp.type='lowpass'; slp.frequency.value=800;
-  const sg=c.createGain(); sg.gain.value=.26;
-  s.connect(slp); slp.connect(sg); sg.connect(out);
-  const en=t+dur+.02;
-  o.start(t); o.stop(en); s.start(t); s.stop(en); lfo.start(t); lfo.stop(en);
-  trackV(o); trackV(s); trackV(lfo);
-}
-function schedCons2(cc,t,f0,pos,gem){
-  const D=CP[cc]; if(!D) return .03;
-  const coda=pos==='coda', gm=gem?1.5:1;
-  if(cc==='2'){ burstN(t+.045,.012,600,.05); return .055; }
-  if(D.t==='stop'){
-    const gap=(coda?.05:.04)*gm;
-    burstN(t+gap,.02,D.f,(D.v?.13:.17)*(gem?1.3:1));
-    if(D.v) mur(t+.012,Math.max(.02,gap-.014),f0,[220,800,2000],.07);
-    return gap+.024;
-  }
-  if(D.t==='fric'){
-    const d=(D.d||.08)*gm*(coda?.65:1);
-    fricN(t,d,(D.g||.1)*(gem?1.25:1),D.lo,D.hi);
-    if(D.v) mur(t,d*.7,f0,[300,1000,2200],.05);
-    return d+.008;
-  }
-  if(D.t==='nas'){
-    const d=(cc==='l'?.06:.07)*gm;
-    mur(t,d,f0,D.F,.3);
-    return d+.005;
-  }
-  if(D.t==='r'){
-    const d=(coda?.05:.06)*(gem?1.4:1);
-    const g=A.ctx.createGain();
-    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.3,t+.01);
-    g.gain.linearRampToValueAtTime(.0001,t+d);
-    g.connect(A.vbus);
-    const o=A.ctx.createOscillator(); o.type='sawtooth'; o.frequency.setValueAtTime(f0,t);
-    const bp=A.ctx.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=1200; bp.Q.value=1.5;
-    const am=A.ctx.createOscillator(); am.type='sine'; am.frequency.value=26;
-    const ag=A.ctx.createGain(); ag.gain.value=.16;
-    am.connect(ag); ag.connect(g.gain);
-    o.connect(bp); bp.connect(g);
-    o.start(t); o.stop(t+d+.02); am.start(t); am.stop(t+d+.02);
-    trackV(o); trackV(am);
-    return d+.005;
-  }
-  if(D.t==='glide'){ singVow(D.to,t,.05,f0,.2,null,true); return .05; }
-  return .04;
-}
-/* لحن الكلمة: مقطع أول أعلى ثم ينزل = نغمة طفولية */
-function melodyFor(n){ return n===1?[0]:n===2?[4,0]:n===3?[4,1,0]:[5,3,1,0]; }
-/* النطق الرئيسي */
-function luluSpeak(text,mood={}){
-  luluCancel();
-  A.init(); if(!A.ctx) return 0;
-  ensureVBus();
-  const clean=String(text).replace(/[!؟?.,،…:—ـ]/g,' ').replace(/\s+/g,' ').trim();
-  if(!clean) return 0;
-  const words=clean.split(' ').filter(Boolean);
-  const syls=words.map(w=>wordSyls(w)).filter(a=>a.length);
-  if(!syls.length) return 0;
-  const base=mood.pitch||( /[!]/.test(text)?345:318 );
-  const isQ=/[؟?]/.test(text);
-  let t=A.ctx.currentTime+.06;
-  let prevF=[500,1500,2500];
-  syls.forEach((word,wi)=>{
-    const dec=Math.pow(2,-(wi*.6)/12);
-    const pat=melodyFor(word.length);
-    /* دمج الساكن المكرر (شدّة) */
-    const flat=[];
-    for(let i=0;i<word.length;i++){
-      const sy=word[i];
-      const ons=[];
-      for(let k=0;k<sy.ons.length;k++){
-        if(sy.ons[k]===sy.ons[k+1]){ ons.push({c:sy.ons[k],gem:true}); k++; }
-        else ons.push({c:sy.ons[k],gem:false});
-      }
-      flat.push({...sy,ons2:ons});
-    }
-    flat.forEach((sy,si)=>{
-      sy.ons2.forEach(o=>{ t+=schedCons2(o.c,t,base*dec,'onset',o.gem); });
-      if(sy.vow){
-        const F=VF[sy.vow.v];
-        const dur=sy.vow.lg?F.dl:F.d;
-        let f0=base*dec*Math.pow(2,(pat[Math.min(si,pat.length-1)]||0)/12);
-        const lastWord=(wi===syls.length-1), lastSyl=(si===word.length-1);
-        if(lastWord&&lastSyl&&isQ) f0*=Math.pow(2,4/12);
-        singVow(sy.vow.v,t,dur,f0,sy.vow.lg?.5:.44,prevF);
-        prevF=F.F;
-        t+=dur;
-      }
-      sy.coda.forEach(cc=>{ t+=schedCons2(cc,t,base*dec,'coda'); });
-    });
-    t+=.13;
-  });
-  return t-A.ctx.currentTime;
-}
-/* ضحكة لولو */
-function luluGiggle(){
-  A.init(); if(!A.ctx||S.muted) return; ensureVBus();
-  luluCancel(); const tok=voiceTok;
-  let t=A.ctx.currentTime+.02;
-  [430,480,530,470].forEach(f=>{
-    if(tok!==voiceTok) return;
-    singVow('i',t,.09,f,.34,null,true);
-    t+=.11;
-  });
-}
+/* لولو */
+function luluSVG(cls){return '<svg class="lulu '+(cls||'')+'" viewBox="0 0 220 230"><path d="M42 188 Q12 180 18 150 Q30 158 46 162 Z" fill="#6BC177"/><ellipse cx="86" cy="215" rx="15" ry="9" fill="#6BC177"/><ellipse cx="134" cy="215" rx="15" ry="9" fill="#6BC177"/><ellipse cx="110" cy="162" rx="56" ry="50" fill="#7ED588"/><ellipse cx="110" cy="178" rx="34" ry="27" fill="#FFF3D6"/><path d="M64 128 l-10 -15 l19 3 Z" fill="#FFB84D"/><path d="M156 128 l10 -15 l-19 3 Z" fill="#FFB84D"/><g class="arm"><ellipse cx="57" cy="152" rx="10" ry="18" fill="#6BC177"/></g><g class="arm arr"><ellipse cx="163" cy="152" rx="10" ry="18" fill="#6BC177"/></g><path d="M94 36 q6 -15 13 0 Z" fill="#FFB84D"/><path d="M114 36 q6 -15 13 0 Z" fill="#FFB84D"/><circle cx="110" cy="86" r="54" fill="#7ED588"/><circle cx="90" cy="78" r="16" fill="#fff"/><circle cx="130" cy="78" r="16" fill="#fff"/><g class="pm"><circle class="pu" cx="92" cy="80" r="8" fill="#3A2A1E"/></g><g class="pm"><circle class="pu" cx="132" cy="80" r="8" fill="#3A2A1E"/></g><circle cx="95" cy="76" r="3" fill="#fff"/><circle cx="135" cy="76" r="3" fill="#fff"/><ellipse cx="70" cy="106" rx="11" ry="7.5" fill="#F9A8C0" opacity=".9"/><ellipse cx="150" cy="106" rx="11" ry="7.5" fill="#F9A8C0" opacity=".9"/><path d="M94 108 Q110 128 126 108 Q110 118 94 108 Z" fill="#8A5A33"/></svg>'}
+var LM='<svg viewBox="0 0 64 64" class="lmk"><circle cx="32" cy="34" r="26" fill="#7ED588"/><path d="M24 12 q4 -8 8 0 Z M36 12 q4 -8 8 0 Z" fill="#FFB84D"/><circle cx="24" cy="30" r="7" fill="#fff"/><circle cx="42" cy="30" r="7" fill="#fff"/><circle cx="25" cy="31" r="3.5" fill="#3A2A1E"/><circle cx="41" cy="31" r="3.5" fill="#3A2A1E"/><path d="M25 41 Q33 49 41 41" fill="none" stroke="#4A3428" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="16" cy="40" rx="5" ry="3.5" fill="#F9A8C0"/><ellipse cx="50" cy="40" rx="5" ry="3.5" fill="#F9A8C0"/></svg>';
+var eyeR=false;
+document.addEventListener('pointermove',function(e){if(eyeR)return;eyeR=true;requestAnimationFrame(function(){eyeR=false;$$('.lulu').forEach(function(l){var r=l.getBoundingClientRect();var dx=Math.max(-1,Math.min(1,(e.clientX-r.left-r.width/2)/200)),dy=Math.max(-1,Math.min(1,(e.clientY-r.top-r.height*.34)/200));l.style.setProperty('--lx',dx*5.5+'px');l.style.setProperty('--ly',dy*4+'px')})})},{passive:true});
+var lastCheer=-1;
+function nextCheer(){var i;do{i=rnd(CHEERS.length)}while(i===lastCheer);lastCheer=i;return CHEERS[i].replace('{ن}',S.name)}
+var lastVoice='';
+function say(display,voice,act){lastVoice=(voice!=null&&voice!=='')?voice:display;var b=$('#bubbleText');if(b){b.textContent=display;var bb=b.closest('.bub');if(bb){bb.classList.remove('pp');void bb.offsetWidth;bb.classList.add('pp')}}var l=$('#luluMain');if(l&&act)luluAct(l,act);speak(lastVoice)}
+function luluAct(l,act){if(!l)return;l.classList.remove('aj','ac','ad','aw','av');void l.offsetWidth;l.classList.add(act)}
+function anSVG(id){return '<svg><use href="#an-'+id+'"/></svg>'}
+function fdSVG(id){return '<svg><use href="#fd-'+id+'"/></svg>'}
+function balSVG(col){return '<svg viewBox="0 0 90 124"><ellipse cx="45" cy="42" rx="33" ry="39" fill="'+col+'"/><ellipse cx="33" cy="28" rx="9" ry="15" fill="#fff" opacity=".45"/><path d="M40 80 h10 l-5 9 Z" fill="'+col+'"/><path d="M45 88 q-6 15 2 30" fill="none" stroke="#B0987E" stroke-width="2.5"/></svg>'}
 
-/* ---------- أصوات الحيوانات والمؤثرات ---------- */
-function tone(o){
-  if(!A.ctx||S.muted) return;
-  const c=A.ctx, t=A.t()+(o.t||0), dur=o.dur||.2;
-  const osc=c.createOscillator(); osc.type=o.type||'sine';
-  osc.frequency.setValueAtTime(o.f,t);
-  if(o.f2) osc.frequency.exponentialRampToValueAtTime(Math.max(30,o.f2),t+dur);
-  if(o.wob){ const l=c.createOscillator(),lg=c.createGain(); l.frequency.value=o.wob[0]; lg.gain.value=o.wob[1];
-    l.connect(lg); lg.connect(osc.frequency); l.start(t); l.stop(t+dur+.05); }
-  const g=c.createGain(); g.gain.setValueAtTime(0,t);
-  g.gain.linearRampToValueAtTime(o.vol||.3,t+(o.attack||.02));
-  g.gain.exponentialRampToValueAtTime(.001,t+dur);
-  let node=osc;
-  if(o.lp){ const fl=c.createBiquadFilter(); fl.type='lowpass'; fl.frequency.value=o.lp; osc.connect(fl); node=fl; }
-  node.connect(g); g.connect(A.master);
-  osc.start(t); osc.stop(t+dur+.1);
-}
-function noise(o){
-  if(!A.ctx||S.muted) return;
-  const c=A.ctx, t=A.t()+(o.t||0), dur=o.dur||.2;
-  const buf=c.createBuffer(1,Math.max(1,c.sampleRate*dur|0),c.sampleRate), d=buf.getChannelData(0);
-  for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
-  const src=c.createBufferSource(); src.buffer=buf;
-  const fl=c.createBiquadFilter(); fl.type=o.type||'lowpass'; fl.frequency.value=o.f||1000;
-  if(o.f2) fl.frequency.exponentialRampToValueAtTime(o.f2,t+dur);
-  const g=c.createGain(); g.gain.setValueAtTime(0,t);
-  g.gain.linearRampToValueAtTime(o.vol||.3,t+.02);
-  g.gain.exponentialRampToValueAtTime(.001,t+dur);
-  src.connect(fl); fl.connect(g); g.connect(A.master);
-  src.start(t);
-}
-const SFX={
-  tap:()=>tone({f:620,f2:920,dur:.08,type:'triangle',vol:.22}),
-  pop:()=>{ noise({dur:.1,f:2200,f2:300,vol:.5}); tone({f:420,f2:70,dur:.14,type:'square',vol:.25}); },
-  star:()=>{ tone({f:880,dur:.14,type:'triangle',vol:.3}); tone({f:1318,t:.1,dur:.2,type:'triangle',vol:.26}); },
-  success:()=>[523,659,784,1046].forEach((f,i)=>tone({f,t:i*.09,dur:.17,type:'triangle',vol:.3})),
-  fanfare:()=>{ [392,523,659,784,1046].forEach((f,i)=>tone({f,t:i*.12,dur:.28,type:'triangle',vol:.32}));
-    noise({t:.1,dur:.5,f:5000,type:'highpass',vol:.08}); },
-  gentle:()=>{ tone({f:392,f2:330,dur:.32,type:'sine',vol:.24}); tone({f:330,f2:294,t:.28,dur:.34,type:'sine',vol:.2}); },
-  munch:()=>{ noise({dur:.12,f:420,vol:.4}); noise({t:.16,dur:.12,f:360,vol:.35}); },
-  beat:()=>tone({f:1000,f2:600,dur:.06,type:'square',vol:.14}),
-  sparkle:()=>[1046,1318,1568].forEach((f,i)=>tone({f,t:i*.07,dur:.14,type:'triangle',vol:.22})),
-};
-const ANIMAL_SFX={
-  cat(){ tone({f:640,f2:880,dur:.28,type:'sine',vol:.42,attack:.05,lp:2500}); tone({f:830,f2:390,t:.3,dur:.5,type:'sine',vol:.42,attack:.04,lp:2200}); },
-  lion(){ noise({dur:1.2,f:240,vol:.5}); tone({f:95,f2:70,dur:1.2,type:'sawtooth',vol:.4,lp:280,wob:[7,12]}); tone({f:190,f2:130,dur:1.1,type:'sawtooth',vol:.15,lp:400}); },
-  elephant(){ tone({f:230,f2:400,dur:.35,type:'sawtooth',vol:.4,lp:1100,wob:[16,25]}); tone({f:380,f2:180,t:.36,dur:.55,type:'sawtooth',vol:.38,lp:900,wob:[14,30]}); },
-  duck(){ [0,.22,.44].forEach((d,i)=>tone({f:300-(i*18),f2:230,dur:.16,t:d,type:'sawtooth',vol:.4,lp:1100})); },
-  dog(){ [0,.28].forEach(d=>{ tone({f:200,f2:90,dur:.16,t:d,type:'sawtooth',vol:.45,lp:700}); noise({dur:.14,t:d,f:900,f2:300,vol:.3}); }); },
-  cow(){ tone({f:130,f2:170,dur:.4,type:'sawtooth',vol:.42,lp:320,attack:.1}); tone({f:160,f2:75,t:.4,dur:.8,type:'sawtooth',vol:.42,lp:280}); },
-  snake(){ noise({dur:.7,f:4000,f2:7000,type:'bandpass',vol:.16}); },
-  camel(){ tone({f:160,f2:120,dur:.5,type:'sawtooth',vol:.3,lp:600,wob:[5,8]}); },
-  bear(){ tone({f:110,f2:80,dur:.5,type:'sawtooth',vol:.38,lp:350,wob:[6,10]}); },
-  sheep(){ tone({f:230,f2:180,dur:.55,type:'sawtooth',vol:.32,lp:900,wob:[9,12],attack:.08}); },
-  whale(){ tone({f:75,f2:130,dur:.7,type:'sine',vol:.4,lp:400,attack:.12}); tone({f:130,f2:60,t:.7,dur:.8,type:'sine',vol:.35,lp:400}); noise({t:.05,dur:.5,f:1200,f2:3000,type:'bandpass',vol:.1}); },
-  frog(){ [0,.3].forEach(t=>tone({f:120,f2:85,dur:.14,t,type:'square',vol:.28,lp:500})); },
-  bird(){ [0,.18,.36].forEach((t,i)=>tone({f:1500+(i*100),f2:1900,dur:.1,t,type:'sine',vol:.24})); },
-  fish(){ [0,.22].forEach(t=>tone({f:300,f2:120,dur:.12,t,type:'sine',vol:.3})); },
-  plane(){ noise({dur:1.4,f:400,f2:1600,type:'bandpass',vol:.28}); },
-  rocket(){ noise({dur:1.2,f:300,f2:2500,type:'bandpass',vol:.3}); tone({f:120,f2:380,dur:1.2,type:'sawtooth',vol:.14,lp:800}); },
-  croc(){ noise({dur:.5,f:500,f2:900,type:'bandpass',vol:.15}); },
-};
-function thingSound(thing){
-  const fn=ANIMAL_SFX[thing];
-  if(fn) fn(); else SFX.sparkle();
-}
+/* الشاشات */
+var app=$('#app'),flow=null,vt=0;
+function baseStars(){return '<div class="sp" id="spill">'+icon('ic-star')+'<b id="scount">'+S.stars+'</b></div>'}
+function replayBtn(){return '<button class="rb" id="btnReplay">'+icon('ic-speaker')+'</button>'}
+function bindReplay(){var b=$('#btnReplay');if(b)b.onclick=function(){SFX.tap();speak(lastVoice)}}
+function bindBack(fn){var b=$('#btnBack');if(b)b.onclick=function(){SFX.tap();vCancel();fn()}}
+function goWelcome(){flow=null;app.innerHTML='<div class="sc wel"><div class="wh">'+LM+'<div class="lt">مغامرات <b>سوسو</b></div><div class="ls">كل الحروف العربية والحيوانات — لعب وتعلّم للصغار</div>'+luluSVG('lulu-hero idle')+'</div>'+(S.named?'':'<div class="nm"><label>إيه اسم البطل الصغير؟</label><input id="nameInput" maxlength="12" placeholder="سوسو"></div>')+'<button class="btn bpri bxl" id="btnStart">'+(S.named?'يلا نلعب تاني!':'يلا نلعب!')+'</button></div>';
+ $('#btnStart').onclick=function(){initA();SFX.tap();if(!S.named){var v=$('#nameInput').value.trim();S.name=v||'سوسو';S.named=true}save();goHome();setTimeout(function(){say('أَهْلاً يا '+S.name+'!',S.name+'!','av')},250);setTimeout(function(){speak('يِلَّا!');giggle()},1400)}}
+function renderHome(){flow=null;ensureToday();var lv=LL[Math.min(S.lettersLevel,6)],ad=S.lettersLevelDone>=7,nA=S.animalsLearned.length;
+ app.innerHTML='<div class="sc"><div class="tb"><div class="br">'+LM+'<div class="bn">مغامرات <b>سوسو</b></div></div>'+baseStars()+'<button class="rb" id="btnParent">'+icon('ic-parent')+'</button></div>'
+ +'<div class="hl">'+luluSVG('idle')+'<div class="rr"><div class="bub"><span id="bubbleText">أَهْلاً يا '+S.name+'! نِلْعَب مَع الحُرُوف ولا الحَيَوانات؟</span></div>'+replayBtn()+'</div></div>'
+ +'<div class="wcs">'
+ +'<div class="wc c1" id="goLetters"><div class="wa"><div class="ml">'+lv.map(function(L){return '<b style="background:'+L.color+'">'+disp(L)+'</b>'}).join('')+'</div></div><div class="wb"><h2>عالم الحروف</h2><p>'+(ad?'برافو! عرفت كل الـ٢٨ حرف! نراجعهم؟':'المرحلة '+(Math.min(S.lettersLevel,6)+1)+' من ٧ — نتعلّم: '+lv.map(disp).join(' · '))+'</p></div>'+(ad?'<span class="wcb">بطل الحروف!</span>':(S.lettersLevelDone>0?'<span class="wcb">'+S.lettersLevelDone+'/٧ مراحل</span>':''))+'</div>'
+ +'<div class="wc c2" id="goAnimals"><div class="wa"><div class="hr">'+anSVG('lion')+anSVG('elephant')+anSVG('cat')+'</div></div><div class="wb"><h2>عالم الحيوانات</h2><p>'+(nA?'عرفت '+nA+' حيوانات!':'نتعرّف على الحيوانات وأصواتها')+'</p></div>'+(S.animalsDone?'<span class="wcb">بطل الحيوانات!</span>':'')+'</div>'
+ +'<div class="wc c3" id="goWorld"><div class="wa"><div class="ms"><svg style="width:56px;top:0;left:8px;position:absolute"><use href="#w-cloud"/></svg><svg style="width:64px;bottom:0;left:0;position:absolute"><use href="#w-tree"/></svg>'+(S.stars>=10?'<svg style="width:60px;bottom:2px;right:0;position:absolute"><use href="#w-house"/></svg>':'<svg style="width:30px;bottom:14px;right:6px;position:absolute"><use href="#w-sprout"/></svg>')+'</div></div><div class="wb"><h2>عالم '+S.name+'</h2><p>نجومك ومكافآتك — وعالمك بيكبر!</p></div></div>'
+ +'</div></div>';
+ $('#btnParent').onclick=function(){SFX.tap();goGate()};
+ $('#goLetters').onclick=function(){SFX.tap();startLetters()};
+ $('#goAnimals').onclick=function(){SFX.tap();startAnimals()};
+ $('#goWorld').onclick=function(){SFX.tap();goWorld()};
+ bindReplay()}
+function goHome(){renderHome();setTimeout(function(){var ns=STK.filter(function(x){return x.cond()&&S.stickers.indexOf(x.id)<0});if(ns.length){ns.forEach(function(x){S.stickers.push(x.id)});save();toastSticker(ns[0])}},600)}
+function worldShell(){app.innerHTML='<div class="sc"><div class="wb2"><button class="rb" id="btnBack">'+icon('ic-back')+'</button><div class="dt" id="dots"></div>'+baseStars()+'</div><div class="st"><div class="sl"><div>'+luluSVG('idle')+'</div><div class="rr"><div class="bub"><span id="bubbleText"></span></div>'+replayBtn()+'</div></div><div class="pz" id="playzone"></div></div></div>';var l=app.querySelector('.lulu');l.id='luluMain';bindBack(goHome);bindReplay()}
+function pz(){return $('#playzone')}
+function dots(i,t){var d=$('#dots');if(d)d.innerHTML='';var k;for(k=0;k<t;k++){if(!d)break;var sp=document.createElement('span');if(k<i)sp.className='d';else if(k===i)sp.className='n';d.appendChild(sp)}}
+function awardStar(x,y){S.stars++;S.today.stars=(S.today.stars||0)+1;save();var st=el('<div class="fst">'+icon('st-star')+'</div>');st.style.left=x-20+'px';st.style.top=y-20+'px';document.body.appendChild(st);var pill=$('#spill');requestAnimationFrame(function(){requestAnimationFrame(function(){if(!pill)return;var pr=pill.getBoundingClientRect();st.style.transform='translate('+(pr.left+pr.width/2-x+20)+'px,'+(pr.top+pr.height/2-y+20)+'px) scale(.5)'})});setTimeout(function(){st.remove();var c=$('#scount');if(c)c.textContent=S.stars;if(pill){pill.classList.remove('bp');void pill.offsetWidth;pill.classList.add('bp')}SFX.star()},830)}
+function correctFX(elm,after){var r=elm?elm.getBoundingClientRect():{left:innerWidth/2,top:innerHeight/2,width:0,height:0};SFX.success();FX.burst(r.left+r.width/2,r.top+r.height/2,32);luluAct($('#luluMain'),pick(['aj','ac','ad']));if(elm){elm.classList.remove('wn');void elm.offsetWidth;elm.classList.add('wn')}var c=nextCheer();setTimeout(function(){say(c,c);if(Math.random()<.3)setTimeout(giggle,1100)},350);awardStar(r.left+r.width/2,r.top+r.height/2);if(after)setTimeout(after,1950)}
+function wrongFX(elm,msg){SFX.gentle();if(elm){elm.classList.remove('sk');void elm.offsetWidth;elm.classList.add('sk')}say(msg||TRYV,TRYV,'aw')}
+var MAXS=10*60*1000;
+function runSteps(steps){flow={steps:steps,i:0,start:Date.now()};worldShell();nextStep()}
+function nextStep(){if(!flow)return;if(Date.now()-flow.start>MAXS){endSession(true);return}if(flow.i>=flow.steps.length){endSession(false);return}var s=flow.steps[flow.i],idx=flow.i;flow.i++;dots(idx,flow.steps.length);VIEWS[s.type](s,nextStep)}
+setInterval(function(){if(flow&&!document.hidden){S.playSeconds++;if(S.playSeconds%10===0)save()}},1000);
 
-/* ---- speak ---- */
-let arVoice=null;
-const FEMALE_HINTS=['zariyah','zariya','hoda','هدى','salma','سالما','laila','ليلى','hala','هالة','maryam','sana','google','female','انثى'];
-function pickVoice(){
-  try{
-    const vs=speechSynthesis.getVoices();
-    const ar=vs.filter(v=>/^ar/i.test(v.lang));
-    if(!ar.length){ arVoice=null; return; }
-    for(const p of FEMALE_HINTS){ const f=ar.find(v=>(v.name||'').toLowerCase().includes(p)); if(f){ arVoice=f; return; } }
-    arVoice=ar[0];
-  }catch(e){}
-}
-if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
-function deviceSpeak(txt){
-  try{
-    speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(txt);
-    u.lang='ar-SA'; if(!arVoice) pickVoice(); if(arVoice) u.voice=arVoice;
-    u.rate=.88; u.pitch=1.5; speechSynthesis.speak(u);
-  }catch(e){}
-}
-function speak(txt,opts={}){
-  if(S.muted) return;
-  if(S.voiceMode==='device' && 'speechSynthesis' in window){ deviceSpeak(txt); return; }
-  luluSpeak(txt,opts);
-}
-
-/* ---------- الكونفيتي ---------- */
-const FX={parts:[],
-  init(){ this.cv=$('#fx'); this.x=this.cv.getContext('2d');
-    const rs=()=>{ const d=devicePixelRatio||1; this.cv.width=innerWidth*d; this.cv.height=innerHeight*d; this.x.setTransform(d,0,0,d,0,0); };
-    rs(); addEventListener('resize',rs); this.last=performance.now(); requestAnimationFrame(t=>this.loop(t)); },
-  burst(x,y,n=30){ for(let i=0;i<n;i++) this.parts.push({x,y,vx:(Math.random()-.5)*10,vy:-(2+Math.random()*7),g:.24,
-    rot:Math.random()*6.3,vr:(Math.random()-.5)*.3,s:5+Math.random()*8,sh:pick(['c','s','t']),col:pick(PALETTE),life:1,dec:.008+Math.random()*.007}); },
-  rain(n=80){ for(let i=0;i<n;i++) this.parts.push({x:Math.random()*innerWidth,y:-30-Math.random()*innerHeight*.6,vx:(Math.random()-.5)*2,vy:1.5+Math.random()*2.5,g:.05,
-    rot:Math.random()*6.3,vr:(Math.random()-.5)*.2,s:6+Math.random()*9,sh:pick(['c','s','t']),col:pick(PALETTE),life:1,dec:.0035}); },
-  star(c,x,y,r,rot){ c.beginPath(); for(let k=0;k<10;k++){ const a=rot+k*Math.PI/5, rr=k%2?r*.45:r; c.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr); } c.closePath(); c.fill(); },
-  loop(t){ requestAnimationFrame(tt=>this.loop(tt)); const dt=Math.min(34,t-this.last)/16.7; this.last=t;
-    this.x.clearRect(0,0,innerWidth,innerHeight);
-    if(!this.parts.length) return;
-    this.parts=this.parts.filter(p=>{ if(p.life<=0||p.y>innerHeight+60) return false;
-      p.x+=p.vx*dt; p.y+=p.vy*dt; p.vy+=p.g*dt; p.rot+=p.vr*dt; p.life-=p.dec*dt;
-      this.x.save(); this.x.globalAlpha=Math.max(0,Math.min(1,p.life*1.4)); this.x.fillStyle=p.col; this.x.translate(p.x,p.y); this.x.rotate(p.rot);
-      if(p.sh==='c'){ this.x.beginPath(); this.x.arc(0,0,p.s*.6,0,6.3); this.x.fill(); }
-      else if(p.sh==='s') this.star(this.x,0,0,p.s*.7,0);
-      else { this.x.beginPath(); this.x.moveTo(0,-p.s*.7); this.x.lineTo(p.s*.6,p.s*.5); this.x.lineTo(-p.s*.6,p.s*.5); this.x.closePath(); this.x.fill(); }
-      this.x.restore(); return true; }); }
-};
-
-/* ---------- لولو ---------- */
-function luluSVG(cls=''){ return `<svg class="lulu ${cls}" viewBox="0 0 220 230">
-  <path d="M42 188 Q12 180 18 150 Q30 158 46 162 Z" fill="#6BC177"/>
-  <ellipse cx="86" cy="215" rx="15" ry="9" fill="#6BC177"/><ellipse cx="134" cy="215" rx="15" ry="9" fill="#6BC177"/>
-  <ellipse cx="110" cy="162" rx="56" ry="50" fill="#7ED588"/>
-  <ellipse cx="110" cy="178" rx="34" ry="27" fill="#FFF3D6"/>
-  <path d="M64 128 l-10 -15 l19 3 Z" fill="#FFB84D"/><path d="M156 128 l10 -15 l-19 3 Z" fill="#FFB84D"/>
-  <g class="arm arm-l"><ellipse cx="57" cy="152" rx="10" ry="18" fill="#6BC177"/></g>
-  <g class="arm arm-r"><ellipse cx="163" cy="152" rx="10" ry="18" fill="#6BC177"/></g>
-  <path d="M94 36 q6 -15 13 0 Z" fill="#FFB84D"/><path d="M114 36 q6 -15 13 0 Z" fill="#FFB84D"/>
-  <circle cx="110" cy="86" r="54" fill="#7ED588"/>
-  <circle cx="90" cy="78" r="16" fill="#fff"/><circle cx="130" cy="78" r="16" fill="#fff"/>
-  <g class="pupil-move"><circle class="pupil" cx="92" cy="80" r="8" fill="#3A2A1E"/></g>
-  <g class="pupil-move"><circle class="pupil" cx="132" cy="80" r="8" fill="#3A2A1E"/></g>
-  <circle cx="95" cy="76" r="3" fill="#fff"/><circle cx="135" cy="76" r="3" fill="#fff"/>
-  <ellipse cx="70" cy="106" rx="11" ry="7.5" fill="#F9A8C0" opacity=".9"/><ellipse cx="150" cy="106" rx="11" ry="7.5" fill="#F9A8C0" opacity=".9"/>
-  <path d="M94 108 Q110 128 126 108 Q110 118 94 108 Z" fill="#8A5A33"/>
-  <ellipse cx="110" cy="114" rx="7" ry="3.5" fill="#F9A8C0"/>
-  <ellipse cx="103" cy="96" rx="3" ry="2.2" fill="#57A863"/><ellipse cx="117" cy="96" rx="3" ry="2.2" fill="#57A863"/>
-</svg>`; }
-const logoMark=`<svg viewBox="0 0 64 64" class="logo-mark">
-  <circle cx="32" cy="34" r="26" fill="#7ED588"/>
-  <path d="M24 12 q4 -8 8 0 Z M36 12 q4 -8 8 0 Z" fill="#FFB84D"/>
-  <circle cx="24" cy="30" r="7" fill="#fff"/><circle cx="42" cy="30" r="7" fill="#fff"/>
-  <circle cx="25" cy="31" r="3.5" fill="#3A2A1E"/><circle cx="41" cy="31" r="3.5" fill="#3A2A1E"/>
-  <path d="M25 41 Q33 49 41 41" fill="none" stroke="#4A3428" stroke-width="3.5" stroke-linecap="round"/>
-  <ellipse cx="16" cy="40" rx="5" ry="3.5" fill="#F9A8C0"/><ellipse cx="50" cy="40" rx="5" ry="3.5" fill="#F9A8C0"/>
-</svg>`;
-let _eyeRaf=false;
-document.addEventListener('pointermove',e=>{ if(_eyeRaf) return; _eyeRaf=true;
-  requestAnimationFrame(()=>{ _eyeRaf=false;
-    $$('.lulu').forEach(l=>{ const r=l.getBoundingClientRect();
-      const cx=r.left+r.width/2, cy=r.top+r.height*.34;
-      const dx=Math.max(-1,Math.min(1,(e.clientX-cx)/200)), dy=Math.max(-1,Math.min(1,(e.clientY-cy)/200));
-      l.style.setProperty('--lx',(dx*5.5)+'px'); l.style.setProperty('--ly',(dy*4)+'px'); });
-  });},{passive:true});
-let lastCheer=-1;
-function nextCheer(){ let i; do{ i=rnd(CHEERS.length); }while(i===lastCheer); lastCheer=i; return CHEERS[i].replaceAll('{n}',S.name); }
-/* الفقاعة تعرض النص الكامل — والصوت ينطق النص القصير بس */
-let lastVoice='';
-function say(display, voice, act){
-  lastVoice=(voice!=null&&voice!=='')?voice:display;
-  const b=$('#bubbleText'); if(b){ b.textContent=display; const bb=b.closest('.bubble'); if(bb){ bb.classList.remove('pop'); void bb.offsetWidth; bb.classList.add('pop'); } }
-  const l=$('#luluMain'); if(l&&act) luluAct(l,act);
-  speak(lastVoice);
-}
-function luluAct(l,act){ if(!l) return; l.classList.remove('act-jump','act-clap','act-dance','act-wiggle','act-wave');
-  void l.offsetWidth; l.classList.add('act-'+act); }
-
-const anSVG=(id,cls='')=>`<svg class="${cls}"><use href="#an-${id}"/></svg>`;
-const foodSVG=(id,cls='')=>`<svg class="${cls}"><use href="#fd-${id}"/></svg>`;
-function balloonSVG(color){ return `<svg viewBox="0 0 90 124">
-  <ellipse cx="45" cy="42" rx="33" ry="39" fill="${color}"/>
-  <ellipse cx="33" cy="28" rx="9" ry="15" fill="#fff" opacity=".45"/>
-  <path d="M40 80 h10 l-5 9 Z" fill="${color}"/>
-  <path d="M45 88 q-6 15 2 30" fill="none
+function vLearnLetter(st,done){var tk=++vt,L=st.L,p=pz(),nm=LN[L.ch];
+ p.innerHTML='<div class="gh">حَرْف جَديد!</div><div class="lc"><div class="bl2" id="bigL" style="color:'+L.color+'">'+disp(L)+'</div><div class="lw"><b style="color:'+L.color+'">'+L.word[0]+'</b>'+L.word.slice(1)+'</div><div class="la" id="learnAn">'+anSVG(L.thing)+'</div></div><button class="btn bsun bxl" id="btnNext" style="opacity:0;align-self:center">يِلَّا نِكْمُل!</button>';
+ var bl=$('#bigL'),an=$('#learnAn');
+ bl.onclick=function(){SFX.tap();speak(nm)};
+ an.onclick=function(){an.classList.remove('bo');void an.offsetWidth;an.classList.add('bo');thingSound(L.thing)};
+ say('حَرْف '+disp(L)+' — '+nm+'!',nm,'aj');
+ wait(1600).then(function(){if(tk!==vt)return;an.classList.add('bo');thingSound(L.thing);return wait(1400)}).then(function(){if(tk!==vt)return;say(L.word+'!',L.word,'aw');return wait(1400)}).then(function(){if(tk!==vt)return;var b=$('#btnNext');if(b){b.style.opacity=1;b.classList.add('hn')}});
+ $('#btnNext').onclick=function(){if(tk!==vt)return;SFX.tap();if(S.lettersLearned.indexOf(L.ch)<0){S.lettersLearned.push(L.ch);S.today.letters.push(L.ch)}if(S.thingsLearned.indexOf(L.thing)<0)S.thingsLearned.push(L.thing);save();var r=bl.getBoundingClientRect();SFX.star();awardStar(r.left+r.width/2,r.top+r.height/2);say('شاطِر يا '+S.name+'!','شاطِر يا '+S.name+'!','ac');setTimeout(function(){if(tk===vt)done()},1900)}}
+function vPick(st,done){var tk=++vt,Ls=st.letters,p=pz(),rounds=shuffle(Ls).slice(0,3),ri=0,wr=0,lk=false;
+ function ask(){if(tk!==vt)return;if(ri>=rounds.length){done();return}wr=0;lk=false;var T=rounds[ri];var opts=shuffle([T].concat(shuffle(Ls.filter(function(l){return l!==T})).slice(0,2)));
+  p.innerHTML='<div class="gh">فين حَرْف <span style="color:'+T.color+'">'+disp(T)+'</span> يا '+S.name+'؟</div><div class="cr">'+opts.map(function(L){return '<div class="tile ct" data-ch="'+L.ch+'"><div class="bl2" style="font-size:5.5rem">'+disp(L)+'</div></div>'}).join('')+'</div>';
+  say('فين حَرْف '+disp(T)+' يا '+S.name+'؟',LN[T.ch]+'؟');
+  $$('.ct').forEach(function(t){t.onclick=function(){if(lk||tk!==vt)return;
+   if(t.dataset.ch===T.ch){lk=true;correctFX(t,function(){ri++;ask()})}
+   else{wr++;wrongFX(t,'دي حَرْف '+LN[t.dataset.ch]+'! دُور عَلى '+LN[T.ch]+'.');if(wr>=2){$$('.ct').forEach(function(x){if(x.dataset.ch===T.ch)x.classList.add('hn')});say('بُص! حَرْف '+disp(T)+' بيلَمِّع!',LN[T.ch])}}}})}
+ ask()}
+function vBalloons(st,done){var tk=++vt,Ls=st.letters,p=pz(),rounds=shuffle(Ls).slice(0,3),ri=0;
+ function spawn(){if(tk!==vt)return;if(ri>=rounds.length){done();return}var T=rounds[ri];var pool=shuffle(Ls.filter(function(l){return l!==T})).concat([pick(Ls),pick(Ls)]);var uniq=[T],k;for(k=0;k<pool.length&&uniq.length<5;k++){if(uniq.indexOf(pool[k])<0)uniq.push(pool[k])}
+  p.innerHTML='<div class="gh">فَقِّع بَالُونَة حَرْف <span style="color:'+T.color+'">'+disp(T)+'</span>!</div><div class="baz" id="bArea"></div><div class="ga">'+replayBtn()+'</div>';bindReplay();
+  uniq.forEach(function(L,i){var b=el('<div class="bal" data-ch="'+L.ch+'" style="left:'+(4+i*(88/uniq.length))+'%;top:'+(8+rnd(28))+'%;--d:'+(3.4+rnd(3))+'s;--dl:-'+(rnd(30)/10)+'s">'+balSVG(PAL[rnd(PAL.length)])+'<span class="bt">'+disp(L)+'</span></div>');
+   b.onclick=function(){if(tk!==vt||b.classList.contains('po'))return;
+    if(b.dataset.ch===T.ch){b.classList.add('po');SFX.pop();var r=b.getBoundingClientRect();FX.burst(r.left+r.width/2,r.top+r.height/2,22);correctFX(b,function(){ri++;spawn()})}
+    else{b.classList.remove('no');void b.offsetWidth;b.classList.add('no');wrongFX(null,'دي فيها حَرْف '+LN[b.dataset.ch]+'! دُور عَلى '+LN[T.ch]+'.')}};
+   $('#bArea').appendChild(b)});
+  say('فَقِّع بَالُونَة حَرْف '+disp(T)+' يا '+S.name+'!',LN[T.ch]+'!')}
+ spawn()}
+function vTrace(st,done){var tk=++vt,L=st.L,p=pz(),SZ=360,txt=disp(L);
+ p.innerHTML='<div class="gh">لَوِّن حَرْف <span style="color:'+L.color+'">'+txt+'</span> بِصَبْعَك يا '+S.name+'!</div><div class="tw"><canvas id="tcv" width="'+SZ+'" height="'+SZ+'"></canvas><div class="tp"><i id="tf"></i></div></div><div class="ga">'+replayBtn()+'<button class="rb" id="btnClear">'+icon('ic-refresh')+'</button></div>';bindReplay();
+ var cv=$('#tcv'),ctx=cv.getContext('2d'),paint=document.createElement('canvas');paint.width=SZ;paint.height=SZ;var pc=paint.getContext('2d');
+ var pts=[],draw=false,last=null,fin=false;
+ function prep(){var off=document.createElement('canvas');off.width=SZ;off.height=SZ;var o=off.getContext('2d');o.font='700 260px "Baloo Bhaijaan 2",sans-serif';o.textAlign='center';o.textBaseline='middle';o.fillStyle='#000';o.fillText(txt,SZ/2,SZ/2+10);var d=o.getImageData(0,0,SZ,SZ).data;pts=[];for(var y=6;y<SZ;y+=9)for(var x=6;x<SZ;x+=9)if(d[(y*SZ+x)*4+3]>60)pts.push([x,y])}
+ function base(){ctx.clearRect(0,0,SZ,SZ);ctx.font='700 260px "Baloo Bhaijaan 2",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=L.color+'26';ctx.fillText(txt,SZ/2,SZ/2+10)}
+ function redraw(){base();ctx.drawImage(paint,0,0)}
+ function measure(){if(!pts.length)return 0;var d=pc.getImageData(0,0,SZ,SZ).data,hit=0,i;for(i=0;i<pts.length;i++){var x=pts[i][0],y=pts[i][1],ok=false,dirs=[[0,0],[8,0],[-8,0],[0,8],[0,-8]],j;for(j=0;j<5;j++){var xx=x+dirs[j][0],yy=y+dirs[j][1];if(xx>=0&&yy>=0&&xx<SZ&&yy<SZ&&d[(yy*SZ+xx)*4+3]>40){ok=true;break}}if(ok)hit++}var r=hit/pts.length;var f=$('#tf');if(f)f.style.width=Math.min(100,r*130)+'%';return r}
+ function pos(e){var r=cv.getBoundingClientRect();return[(e.clientX-r.left)*(SZ/r.width),(e.clientY-r.top)*(SZ/r.height)]}
+ cv.addEventListener('pointerdown',function(e){if(fin)return;draw=true;cv.setPointerCapture(e.pointerId);var xy=pos(e);last=xy;pc.lineCap='round';pc.lineJoin='round';pc.lineWidth=27;pc.strokeStyle=pick(PAL);pc.beginPath();pc.moveTo(xy[0],xy[1]);pc.lineTo(xy[0]+1.5,xy[1]+1.5);pc.stroke();redraw()});
+ cv.addEventListener('pointermove',function(e){if(!draw||fin)return;var xy=pos(e);pc.beginPath();pc.moveTo(last[0],last[1]);pc.lineTo(xy[0],xy[1]);pc.stroke();last=xy;redraw()});
+ cv.addEventListener('pointerup',function(){if(!draw)return;draw=false;if(fin)return;if(measure()>=.55){fin=true;pc.font='700 260px "Baloo Bhaijaan 2",sans-serif';pc.textAlign='center';pc.textBaseline='middle';pc.fillStyle=L.color;pc.fillText(txt,SZ/2,SZ/2+10);redraw();correctFX(cv,done)}else if(pts.length)say('كَمِّل يا '+S.name+'! باقي شُوَيَّة!','كَمِّل!','aw')});
+ $('#btnClear').onclick=function(){if(fin)return;SFX.tap();pc.clearRect(0,0,SZ,SZ);redraw();var f=$('#tf');if(f)f.style.width='0%'};
+ prep();redraw();if(document.fonts)document.fonts.ready.then(function(){if(tk===vt){prep();redraw()}});
+ say('لَوِّن حَرْف '+disp(L)+'!',LN[L.ch])}
+function vLearnAnimal(st,done){var tk=++vt,a=st.a,info=AN[a]?AN[a]:{name:TH[a]},p=pz();
+ p.innerHTML='<div class="gh">مين ده يا '+S.name+'؟</div><div class="ba" id="bAn">'+anSVG(a)+'</div><div class="anm" id="aName" style="visibility:hidden">'+(AN[a]?AN[a]:TH[a])+'</div><button class="btn bsun bxl" id="btnNext" style="opacity:0;align-self:center">يِلَّا نِكْمُل!</button>';
+ var an=$('#bAn');an.onclick=function(){an.classList.remove('bo');void an.offsetWidth;an.classList.add('bo');thingSound(a)};
+ say('مين ده يا '+S.name+'؟ اضغط عليه!','ميْن ده؟','aw');
+ var met=false;an.addEventListener('click',function(){if(met||tk!==vt)return;met=true;setTimeout(function(){if(tk!==vt)return;$('#aName').style.visibility='visible';if(S.animalsLearned.indexOf(a)<0){S.animalsLearned.push(a);S.today.animals.push(AN[a]||TH[a])}save();say('ده '+(AN[a]||TH[a])+'!',(AN[a]||TH[a]).replace(/^ال/,''));var r=an.getBoundingClientRect();SFX.star();awardStar(r.left+r.width/2,r.top+r.height/2);var b=$('#btnNext');b.style.opacity=1;b.classList.add('hn')},700)});
+ $('#btnNext').onclick=function(){if(tk===vt)done()}}
+function vSound(st,done){var tk=++vt,rounds=st.rounds,p=pz(),ri=0,lk=false,wr=0;
+ function ask(){if(tk!==vt)return;if(ri>=rounds.length){done();return}lk=false;wr=0;var T=rounds[ri];var others=shuffle(Object.keys(AN).filter(function(k){return k!==T})).slice(0,2);var opts=shuffle([T].concat(others));
+  p.innerHTML='<div class="gh">اِسْمَع كُوَيِّس يا '+S.name+'!</div><div class="ga"><button class="rb" id="btnListen" style="width:86px;height:86px">'+icon('ic-speaker')+'</button></div><div class="cr">'+opts.map(function(k){return '<div class="tile ct" data-k="'+k+'">'+anSVG(k)+'</div>'}).join('')+'</div>';
+  function listen(){if(lk&&tk===vt)return;ASFX[T]();luluAct($('#luluMain'),'aw')}
+  $('#btnListen').onclick=listen;
+  $$('.ct').forEach(function(t){t.onclick=function(){if(lk||tk!==vt)return;
+   if(t.dataset.k===T){lk=true;setTimeout(function(){ASFX[T]()},300);correctFX(t,function(){ri++;ask()})}
+   else{wr++;wrongFX(t,'مِشْ ده! جرّب تاني!');if(wr>=2){$$('.ct').forEach(function(x){if(x.dataset.k===T)x.classList.add('hn')});setTimeout(listen,600)}}}});
+  say('مين اللي بيتكلم؟','اِسْمَع!');setTimeout(listen,1100)}
+ ask()}
+function vFeed(st,done){var tk=++vt,rounds=st.rounds,p=pz(),ri=0;
+ function ask(){if(tk!==vt)return;if(ri>=rounds.length){done();return}var R=rounds[ri];var others=shuffle(Object.keys(FD).filter(function(f){return f!==R.f})).slice(0,2);var opts=shuffle([R.f].concat(others));
+  p.innerHTML='<div class="gh">'+(AN[R.a]||'الحيوان')+' جَعْآن! اِدِّيه يا '+S.name+'!</div><div class="fdb"><div class="fa tg" id="feedAn">'+anSVG(R.a)+'</div><div class="fr">'+opts.map(function(f){return '<div class="tile ft" data-f="'+f+'">'+fdSVG(f)+'</div>'}).join('')+'</div></div>';
+  say((AN[R.a]||'')+' جَعْآن! اِدِّيه '+FD[R.f]+'!',FD[R.f]+'؟');
+  var animal=$('#feedAn');
+  function win(tile){var r=tile.getBoundingClientRect(),ar=animal.getBoundingClientRect();var g=el('<div class="ghf">'+fdSVG(R.f)+'</div>');g.style.left=r.left+'px';g.style.top=r.top+'px';document.body.appendChild(g);requestAnimationFrame(function(){requestAnimationFrame(function(){g.style.transform='translate('+(ar.left+ar.width/2-r.left-r.width/2)+'px,'+(ar.top+ar.height/2-r.top-r.height/2)+'px) scale(.5)'})});setTimeout(function(){g.remove();tile.classList.add('hd');SFX.munch();animal.classList.remove('ha');void animal.offsetWidth;animal.classList.add('ha');correctFX(animal,function(){ri++;ask()})},500)}
+  $$('.ft').forEach(function(tile){var gh=null,sp=null,mv=false;
+   tile.addEventListener('pointerdown',function(e){if(tile.classList.contains('hd'))return;e.preventDefault();tile.setPointerCapture(e.pointerId);sp=[e.clientX,e.clientY];mv=false;var r=tile.getBoundingClientRect();gh=el('<div class="ghf">'+fdSVG(tile.dataset.f)+'</div>');gh.style.transition='none';gh.style.left=r.left+'px';gh.style.top=r.top+'px';document.body.appendChild(gh);tile.classList.add('hd')});
+   tile.addEventListener('pointermove',function(e){if(!gh)return;var dx=e.clientX-sp[0],dy=e.clientY-sp[1];if(Math.abs(dx)+Math.abs(dy)>12)mv=true;gh.style.transition='none';gh.style.transform='translate('+dx+'px,'+dy+'px)'});
+   tile.addEventListener('pointerup',function(e){if(!gh)return;var g=gh;gh=null;var ar=animal.getBoundingClientRect();var inside=e.clientX>ar.left-20&&e.clientX<ar.right+20&&e.clientY>ar.top-20&&e.clientY<ar.bottom+20;
+    if(inside&&tile.dataset.f===R.f){g.style.transition='transform .4s cubic-bezier(.34,1.56,.64,1)';g.style.transform='translate('+(ar.left+ar.width/2-g.getBoundingClientRect().left-48)+'px,'+(ar.top+ar.height/2-g.getBoundingClientRect().top-48)+'px) scale(.5)';setTimeout(function(){g.remove();SFX.munch();animal.classList.remove('ha');void animal.offsetWidth;animal.classList.add('ha');correctFX(animal,function(){ri++;ask()})},420)}
+    else if(!mv&&tile.dataset.f===R.f){g.remove();win(tile)}
+    else{if(inside)wrongFX(null,'دي '+FD[tile.dataset.f]+'! جرّب تاني!');else if(mv)say('اِسْحَب '+FD[R.f]+' لِلْحيوان يا '+S.name+'!',FD[R.f]);g.style.transition='left .35s,top .35s,transform .35s';g.style.transform='translate(0,0)';setTimeout(function(){g.remove();tile.classList.remove('hd')},380)}});
+   tile.addEventListener('pointercancel',function(){if(gh){gh.remove();gh=null;tile.classList.remove('hd')}})})}
+ ask()}
+function vGone(st,done){var tk=++vt,p=pz();var shown=shuffle(Object.keys(TH)).slice(0,3),hid=pick(shown);
+ p.innerHTML='<div class="gh">بُصْ كُوَيِّس يا '+S.name+'! اِحْفَظْهُم!</div><div style="position:relative"><div class="wr" id="whoRow">'+shown.map(function(k){return '<div class="tile wcc" data-k="'+k+'">'+anSVG(k)+'</div>'}).join('')+'</div></div><div class="gh" id="whoQ" style="visibility:hidden">مين اِخْتَفى؟</div><div class="cr" id="whoCh" style="visibility:hidden">'+shuffle(shown.slice()).map(function(k){return '<div class="tile ct" data-k="'+k+'">'+anSVG(k)+'</div>'}).join('')+'</div>';
+ say('بُصْ كُوَيِّس! اِحْفَظْهُم!','اِحْفَظْهُم!');
+ wait(2600).then(function(){if(tk!==vt)return;var holder=p.querySelector('div[style]');var cov=el('<div class="cov"><div class="sb">'+icon('ic-star')+icon('ic-star')+icon('ic-star')+'</div><h3>غَطِّي عَيْنِيك!</h3></div>');holder.appendChild(cov);speak('غَطِّي عَيْنِيك!');return wait(1900)}).then(function(){if(tk!==vt)return;var slot=p.querySelector('.wcc[data-k="'+hid+'"]');slot.classList.add('gs');slot.dataset.k='__g';slot.innerHTML='<div class="qm">؟</div>';$('#whoQ').style.visibility='visible';$('#whoCh').style.visibility='visible';say('مين اِخْتَفى يا '+S.name+'؟','ميْن؟');
+  $$('#whoCh .ct').forEach(function(t){t.onclick=function(){if(tk!==vt||slot.dataset.done)return;
+   if(t.dataset.k===hid){slot.dataset.done='1';slot.classList.remove('gs');slot.innerHTML=anSVG(hid);thingSound(hid);correctFX(t,done)}
+   else{wrongFX(t,'دي '+TH[t.dataset.k]+'! مَوْجُود! فين اللي اِخْتَفى؟')}}})})}
+function vFinale(st,done){var tk=++vt,p=pz(),isL=st.world==='letters',Ls=st.letters||[],hd,sb;
+ if(isL){if(st.levelIdx>=6){S.lettersLevel=6;S.lettersLevelDone=7;hd='برافو يا '+S.name+'! عَرِفْت كُلّ الحُروف!';sb='٢٨ حَرْفاً مِن أَلِف لِياء!'}else{S.lettersLevel=st.levelIdx+1;S.lettersLevelDone=Math.max(S.lettersLevelDone,st.levelIdx+1);hd='برافو يا '+S.name+'! خَلَصْت المَرْحَلَة '+(st.levelIdx+1)+' مِن ٧!';sb='اِتَّعَلَّمْت حُروف: '+Ls.map(disp).join(' ')}}
+ else{var first=!S.animalsDone;S.animalsDone=true;hd=first?'برافو يا '+S.name+'! خَلَصْت مَرْحَلَة الحَيَوانات!':'برافو يا '+S.name+'! لَعِبْت تاني وبُطُولَة!';sb='عَرِفْت '+S.animalsLearned.length+' حَيَوانات!'}
+ save();var ns=STK.filter(function(x){return x.cond()&&S.stickers.indexOf(x.id)<0});ns.forEach(function(x){S.stickers.push(x.id)});save();var sk=ns[0];
+ p.innerHTML='<div class="fin"><h1>'+hd+'</h1><div class="sst">'+icon('ic-star')+'<span>'+(S.today.stars||0)+' نَجْمَة النَّهارْده</span></div>'+(sk?'<div class="srv">'+icon('st-'+sk.id)+'</div><div class="sub">ستيكر جديد: '+sk.name+'!</div>':'')+(isL?'<button class="btn bsun" id="btnSong">اِسْمَع أُغْنِيَة الحُروف!</button>':'')+'<div class="fa2"><button class="btn bpri bxl" id="btnWorld">شُوف عالَمي!</button><button class="btn bxl" id="btnEnd">خَلَصْنا النَّهارْده!</button></div></div>';
+ SFX.fanfare();FX.rain(90);giggle();luluAct($('#luluMain'),'ad');
+ say(hd,'برافو يا '+S.name+'!','ac');
+ if($('#btnSong'))$('#btnSong').onclick=function(){SFX.tap();song(Ls)};
+ $('#btnWorld').onclick=function(){SFX.tap();goWorld()};
+ $('#btnEnd').onclick=function(){SFX.tap();endSession(false)}}
+function song(Ls){var tk=++vt,p=pz();p.innerHTML='<div class="sgv"><div class="sgl" id="sgL"></div><div class="sgw" id="sgW"></div><div class="sga" id="sgA"></div><button class="btn bpri" id="btnStop">خَلاص!</button></div>';
+ say('أُغْنِيَة الحُروف!','يِلَّا!');
+ Ls.forEach(function(L,i){setTimeout(function(){if(tk!==vt)return;$('#sgL').textContent=disp(L);$('#sgL').style.color=L.color;$('#sgW').textContent=L.word;$('#sgA').innerHTML=anSVG(L.thing);var a=$('#sgA');a.classList.remove('bo');void a.offsetWidth;a.classList.add('bo');SFX.beat();speak(LN[L.ch]+' '+LN[L.ch]+' '+L.word);setTimeout(function(){if(tk===vt)thingSound(L.thing)},1400)},i*2300)});
+ setTimeout(function(){if(tk===vt){say('برافو! غَنِّينا أُغْنِيَة الحُروف!','برافو!','ad');giggle()}},Ls.length*2300+500);
+ $('#btnStop').onclick=function(){if(tk===vt){if(flow)nextStep();else goHome()}}}
+function startLetters(){var idx=S.lettersLevelDone>=7?rnd(7):Math.min(S.lettersLevel,6);var Ls=LL[idx];
+ runSteps(Ls.map(function(L){return{type:'l',L:L}}).concat([{type:'p',letters:Ls},{type:'b',letters:Ls},{type:'t',L:pick(shuffle(Ls))},{type:'f',world:'letters',levelIdx:idx,letters:Ls}]))}
+function startAnimals(){runSteps([{type:'a',a:'lion'},{type:'a',a:'elephant'},{type:'a',a:'cat'},{type:'s',rounds:['cat','lion','elephant']},{type:'a',a:'cow'},{type:'a',a:'dog'},{type:'a',a:'duck'},{type:'e',rounds:FEED},{type:'g'},{type:'f',world:'animals'}])}
+var VIEWS={l:vLearnLetter,p:vPick,b:vBalloons,t:vTrace,a:vLearnAnimal,s:vSound,e:vFeed,g:vGone,f:vFinale};
+function endSession(early){ensureToday();flow=null;var t=S.today;
+ app.innerHTML='<div class="sc" style="align-items:center;justify-content:center"><div class="fin"><h1>برافو يا '+S.name+'!<br>اِتَّعَلَّمْت النَّهارْده حاجات كَتير!</h1><div class="sst">'+icon('ic-star')+'<span>'+(t.stars||0)+' نَجْمَة</span></div><div class="chp">'+(t.letters||[]).map(function(l){return '<span class="chip">'+l+'</span>'}).join('')+(t.animals||[]).map(function(a){return '<span class="chip">'+a+'</span>'}).join('')+'</div>'+(early?'<div class="sub">النَّهارْده لَعِبْنا كِفاية — الراحة حِلْوة كَمان!</div>':'')+'<div class="en">نِشُوفك بُكْرَة يا '+S.name+'!</div><div style="width:130px">'+luluSVG('av')+'</div><button class="btn bpri bxl" id="btnHome">نِرْجَع لِلْبيت</button></div></div>';
+ SFX.fanfare();FX.rain(70);giggle();speak('برافو يا '+S.name+'!');
+ $('#btnHome').onclick=function(){SFX.tap();goHome()}}
+function goWorld(){flow=null;var tr=S.lettersLevelDone>=1,bs=S.lettersLevelDone>=3,bs2=S.lettersLevelDone>=5,hs=S.stars>=10,bf=S.stars>=5,rb=S.lettersLevelDone>=7&&S.animalsDone,nF=Math.min(S.stickers.length,5),fc=['#F9A8C0','#FF8552','#62B6E7','#A58CE8','#FFC94D'],wa=S.animalsLearned.concat(S.thingsLearned),fl='',i;
+ for(i=0;i<nF;i++)fl+='<svg class="f" style="color:'+fc[i]+'"><use href="#w-flower"/></svg>';
+ app.innerHTML='<div class="sc"><div class="wb2"><button class="rb" id="btnBack">'+icon('ic-back')+'</button><div style="flex:1;text-align:center;font-weight:800;font-size:1.35rem">عالَم '+S.name+'</div>'+baseStars()+'</div>'
+ +'<div class="sce" id="scene"><svg class="sun"><use href="#w-sun"/></svg><svg class="cld a"><use href="#w-cloud"/></svg><svg class="cld b"><use href="#w-cloud"/></svg>'+(rb?'<svg class="sit rbw"><use href="#w-rainbow"/></svg>':'')+'<svg class="hls" viewBox="0 0 400 150" preserveAspectRatio="none"><path d="M0 90 Q100 20 200 70 Q300 115 400 55 V150 H0 Z" fill="#9BDBA1"/><path d="M0 120 Q120 80 260 108 Q340 126 400 100 V150 H0 Z" fill="#7EC97E"/></svg>'+(tr?'<svg class="sit tre"><use href="#w-tree"/></svg>':'<svg class="sit spr"><use href="#w-sprout"/></svg>')+(bs?'<svg class="sit bsh"><use href="#w-bush"/></svg>':'')+(bs2?'<svg class="sit bsh2"><use href="#w-bush"/></svg>':'')+(hs?'<svg class="sit hse"><use href="#w-house"/></svg>':'')+'<div class="san">'+wa.map(function(k){return '<div class="sa" data-k="'+k+'" style="animation-delay:'+(rnd(20)/10)+'s">'+anSVG(k)+'</div>'}).join('')+'</div><div class="lsc" id="luluScene">'+luluSVG('idle')+'</div>'+(bf?'<svg class="bfl"><use href="#w-butterfly"/></svg>':'')+'<div class="flw">'+fl+'</div>'+((!tr&&!wa.length&&!hs)?'<div class="lk">عالَمَك بيكبر! كُلّ ما تِتَعَلَّم، حاجات جَديدة بِتْظَهَر</div>':'')+'</div>'
+ +'<div class="loot"><div class="ltr"><div class="lts">'+icon('ic-star')+icon('ic-star')+'<span>'+S.stars+' نَجْمَة</span></div><div style="flex:1"></div><button class="rb" id="btnReplay" style="width:48px;height:48px">'+icon('ic-speaker')+'</button></div><div class="alb">'+STK.map(function(x){var o=S.stickers.indexOf(x.id)>=0;return '<div class="slot'+(o?'':' lk2')+'">'+(o?icon('st-'+x.id):icon('ic-lock'))+'</div>'}).join('')+'</div></div></div>';
+ bindBack(goHome);bindReplay();
+ $('#luluScene').onclick=function(){luluAct($('#luluScene .lulu'),'aj');SFX.tap();if(Math.random()<.5)speak('شاطِر!');else giggle()};
+ $$('.sa').forEach(function(a){a.onclick=function(){var k=a.dataset.k;a.classList.remove('bo');void a.offsetWidth;a.classList.add('bo');thingSound(k);if(!ASFX[k])setTimeout(function(){speak(TH[k].replace(/^ال/,''))},700);var np=el('<div class="npop">'+TH[k]+'</div>');var r=a.getBoundingClientRect(),sr=$('#scene').getBoundingClientRect();np.style.left=r.left-sr.left+r.width/2+'px';np.style.top=r.top-sr.top-14+'px';$('#scene').appendChild(np);setTimeout(function(){np.remove()},1400)}});
+ $('#btnReplay').onclick=function(){SFX.tap();speak(lastVoice)}}
+function goGate(){var a=rnd(5)+2,b=rnd(5)+2,ans=a+b,opts=shuffle([ans-1,ans,ans+1]);
+ app.innerHTML='<div class="sc"><div class="wb2"><button class="rb" id="btnBack">'+icon('ic-back')+'</button><div style="flex:1;text-align:center;font-weight:800;font-size:1.35rem">قسم الوالدين</div><div style="width:58px"></div></div><div class="gtb"><div class="gq">سؤال سريع للوالدين:<br>'+a+' + '+b+' = ؟</div><div class="go">'+opts.map(function(o){return '<button class="btn" data-v="'+o+'">'+o+'</button>'}).join('')+'</div><div class="pn">الطفل الصغير غالبًا مش بيعرف يحل جمع — فده بيخلي القسم مخصوص للوالدين.</div></div></div>';
+ bindBack(goHome);$$('.go .btn').forEach(function(bt){bt.onclick=function(){if(+bt.dataset.v===ans){SFX.success();goParent()}else{SFX.gentle();bt.classList.add('sk')}}})}
+function goParent(){ensureToday();var mins=Math.round(S.playSeconds/60),ll=S.lettersLearned.filter(function(c){return LMAP[c]});
+ app.innerHTML='<div class="sc"><div class="wb2"><button class="rb" id="btnBack">'+icon('ic-back')+'</button><div style="flex:1;text-align:center;font-weight:800;font-size:1.35rem">قسم الوالدين</div><div style="width:58px"></div></div><div class="psc">'
+ +'<div class="pc"><div class="pst"><div class="psi"><b>'+ll.length+'/28</b><span>حروف</span></div><div class="psi"><b>'+S.lettersLevelDone+'/7</b><span>مراحل</span></div><div class="psi"><b>'+S.stars+'</b><span>نجمة</span></div><div class="psi"><b>'+S.stickers.length+'/'+STK.length+'</b><span>ستيكر</span></div><div class="psi"><b>'+mins+'</b><span>دقيقة لعب</span></div><div class="psi"><b>'+S.animalsLearned.length+'</b><span>حيوانات</span></div></div></div>'
+ +'<div class="pc"><h3>الحروف اللي اتعلمها</h3><div class="pcs">'+(ll.length?ll.map(function(c){return '<span class="chip" style="color:'+LMAP[c].color+'">'+c+' — '+LMAP[c].word+'</span>'}).join(''):'<span class="chip">لسه مبدأش الحروف</span>')+'</div></div>'
+ +'<div class="pc"><h3>اتعلم النهارده ('+(S.today.stars||0)+' نجمة)</h3><div class="pcs">'+(S.today.letters||[]).map(function(l){return '<span class="chip">'+l+'</span>'}).join('')+(S.today.animals||[]).map(function(a){return '<span class="chip">'+a+'</span>'}).join('')+'</div></div>'
+ +'<div class="pc"><h3>صوت لولو</h3><div class="pn">صوت لولو الطفولي بيتولّد جوه التطبيق — بيشتغل على أي جهاز، وبيقول اسم الحرف واسم الكلمة بس، و«شاطر يا سوسو» للإجابة الصح.</div><div class="prw" style="margin:10px 0 6px"><button class="btn bsun" id="pTest" style="font-size:1.05rem">جرّب صوت لولو</button></div><div class="prw" style="margin-top:8px"><button class="btn '+(S.muted?'':'bsun')+'" id="pMute" style="font-size:1.05rem">'+(S.muted?'الصوت مقفول — شغّله':'الصوت شغّال — اقفله')+'</button></div></div>'
+ +'<div class="pc"><h3>اسم الطفل</h3><div class="prw"><input id="pName" value="'+S.name+'" maxlength="12" style="flex:1;min-width:150px;font-family:inherit;font-weight:700;font-size:1.15rem;padding:8px 12px;border:3px solid #4A3428;border-radius:16px;outline:none"><button class="btn bsun" id="pSave" style="font-size:1.1rem">حفظ</button></div></div>'
+ +'<div class="pc"><h3>أنشطة برّه التطبيق</h3><ol class="pls"><li>قولوا اسم حاجات في البيت وخلّوا '+S.name+' يلاقي أول حرف منها.</li><li>العبو «مين اللي بيقول صوت الحيوان؟»</li><li>ارسموا الحروف بإصبع '+S.name+' على عجين أو في الرمل.</li></ol></div>'
+ +'<div class="pc"><h3>تصفير التقدم</h3><button class="btn" id="pReset" style="background:#F26D6D;color:#fff;font-size:1.15rem">امسح كل البيانات وابدأ من جديد</button></div>'
+ +'</div></div>';
+ bindBack(goHome);
+ $('#pTest').onclick=function(){initA();luluSpeak('شاطِر يا سوسو!');setTimeout(function(){luluSpeak('باء، بَطّة')},1700)};
+ $('#pSave').onclick=function(){var v=$('#pName').value.trim();if(v){S.name=v;save();SFX.success();goParent()}};
+ $('#pMute').onclick=function(){S.muted=!S.muted;save();if(!S.muted){initA();SFX.success()}goParent()};
+ $('#pReset').onclick=function(e){var b=e.currentTarget;if(b.dataset.arm){localStorage.removeItem(KEY);S=Object.assign({},DEF);S.flags={};S.thingsLearned=[];S.today={date:'',stars:0,letters:[],animals:[]};save();goWelcome()}else{b.dataset.arm='1';b.textContent='متأكد؟ اضغط تاني';setTimeout(function(){b.dataset.arm='';b.textContent='امسح كل البيانات وابدأ من جديد'},3000)}}}
+function toastSticker(st){var t=el('<div class="tst">'+icon('st-'+st.id)+'<div><b>ستيكر جديد لـ'+S.name+'!</b><span>'+st.name+'</span></div></div>');document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('sh')});SFX.star();setTimeout(function(){t.classList.remove('sh')},3000);setTimeout(function(){t.remove()},3600)}
+(function(){try{var svg='<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" rx="110" fill="#FFC94D"/><circle cx="256" cy="270" r="190" fill="#7ED588"/><path d="M190 105 q34 -60 66 0 Z M290 105 q34 -60 66 0 Z" fill="#FFB84D"/><circle cx="186" cy="240" r="52" fill="#fff"/><circle cx="326" cy="240" r="52" fill="#fff"/><circle cx="194" cy="248" r="26" fill="#3A2A1E"/><circle cx="318" cy="248" r="26" fill="#3A2A1E"/><path d="M196 330 Q256 386 316 330" fill="none" stroke="#4A3428" stroke-width="26" stroke-linecap="round"/><ellipse cx="120" cy="320" rx="38" ry="26" fill="#F9A8C0"/><ellipse cx="392" cy="320" rx="38" ry="26" fill="#F9A8C0"/></svg>';var ic='data:image/svg+xml,'+encodeURIComponent(svg);var base=location.href.split('#')[0];var man={name:'مغامرات سوسو',short_name:'سوسو',start_url:base,scope:base.slice(0,base.lastIndexOf('/')+1),display:'standalone',background_color:'#FFF6E9',theme_color:'#FFC94D',dir:'rtl',lang:'ar',icons:[{src:ic,sizes:'512x512',type:'image/svg+xml',purpose:'any'}]};var l=document.createElement('link');l.rel='manifest';l.href=URL.createObjectURL(new Blob([JSON.stringify(man)],{type:'application/json'}));document.head.appendChild(l);var at=document.createElement('link');at.rel='apple-touch-icon';at.href=ic;document.head.appendChild(at)}catch(e){}})();
+document.addEventListener('pointerdown',function(){initA()},{passive:true});
+FX.init();
+ensureToday();
+goWelcome();
+</script>
+</body>
+</html>
