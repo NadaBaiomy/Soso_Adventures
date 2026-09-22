@@ -11,7 +11,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ============ النظام البصري: أسلوب "قصة أطفال مصورة / ستيكرز" ============ */
 :root{
   --bg:#FFF6E9; --paper:#FFFDF6; --ink:#4A3428; --ink-soft:#8A6D5B; --line:#E9D9C3;
   --coral:#FF8552; --sun:#FFC94D; --mint:#7ED588; --mint-d:#3FA34D; --sky:#62B6E7; --sky-d:#3D8FC4;
@@ -21,51 +20,29 @@
 }
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none}
 html,body{height:100%; margin:0}
-body{
-  font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif;
-  background:#EFE0C6; color:var(--ink); overflow:hidden;
-  overscroll-behavior:none; touch-action:manipulation;
-}
-#app{
-  max-width:540px; height:100dvh; margin:0 auto; position:relative; overflow:hidden;
-  background:var(--bg);
+body{font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,sans-serif; background:#EFE0C6; color:var(--ink); overflow:hidden; overscroll-behavior:none; touch-action:manipulation}
+#app{max-width:540px; height:100dvh; margin:0 auto; position:relative; overflow:hidden; background:var(--bg);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Ccircle cx='24' cy='24' r='3.5' fill='%23F4E3C0'/%3E%3Ccircle cx='92' cy='64' r='4.5' fill='%23F6EBD2'/%3E%3Ccircle cx='46' cy='110' r='3' fill='%23F4E3C0'/%3E%3C/svg%3E");
-  box-shadow:0 0 40px rgba(74,52,40,.25);
-}
+  box-shadow:0 0 40px rgba(74,52,40,.25);}
 #assets{position:absolute; width:0; height:0; overflow:hidden}
 #fx{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:999}
 .screen{position:absolute; inset:0; display:flex; flex-direction:column; padding:12px 16px calc(16px + env(safe-area-inset-bottom)); animation:screenIn .5s var(--pop)}
 @keyframes screenIn{from{opacity:0; transform:translateY(26px) scale(.97)} to{opacity:1; transform:none}}
 
-/* أزرار وقطع مشتركة */
-.btn{
-  font-family:inherit; font-weight:800; font-size:1.45rem; color:var(--ink);
-  background:#fff; border:3.5px solid var(--ink); border-radius:26px; padding:12px 30px; cursor:pointer;
-  box-shadow:0 7px 0 rgba(74,52,40,.22); transition:transform .12s, box-shadow .12s; touch-action:manipulation;
-}
+.btn{font-family:inherit; font-weight:800; font-size:1.45rem; color:var(--ink); background:#fff; border:3.5px solid var(--ink); border-radius:26px; padding:12px 30px; cursor:pointer; box-shadow:0 7px 0 rgba(74,52,40,.22); transition:transform .12s, box-shadow .12s; touch-action:manipulation}
 .btn:active{transform:translateY(5px); box-shadow:0 2px 0 rgba(74,52,40,.22)}
 .btn-primary{background:var(--coral); color:#fff}
 .btn-sun{background:var(--sun)}
 .btn-xl{font-size:1.7rem; padding:16px 40px; border-radius:32px}
-.round-btn{
-  width:58px; height:58px; border-radius:50%; background:#fff; border:3.5px solid var(--ink);
-  display:flex; align-items:center; justify-content:center; cursor:pointer; flex:0 0 auto;
-  box-shadow:0 5px 0 rgba(74,52,40,.2); transition:transform .12s, box-shadow .12s; color:var(--ink);
-}
+.round-btn{width:58px; height:58px; border-radius:50%; background:#fff; border:3.5px solid var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex:0 0 auto; box-shadow:0 5px 0 rgba(74,52,40,.2); transition:transform .12s, box-shadow .12s; color:var(--ink)}
 .round-btn:active{transform:translateY(4px); box-shadow:0 1px 0 rgba(74,52,40,.2)}
 .round-btn .ic{width:28px; height:28px}
 .ic{display:block}
-.stars-pill{
-  display:flex; align-items:center; gap:6px; background:#fff; border:3px solid var(--ink);
-  border-radius:20px; padding:4px 14px 4px 10px; font-weight:800; font-size:1.25rem; box-shadow:var(--card-sh);
-}
+.stars-pill{display:flex; align-items:center; gap:6px; background:#fff; border:3px solid var(--ink); border-radius:20px; padding:4px 14px 4px 10px; font-weight:800; font-size:1.25rem; box-shadow:var(--card-sh)}
 .stars-pill .ic{width:26px; height:26px; color:var(--amber)}
 .stars-pill.bump{animation:bump .5s var(--pop)}
 @keyframes bump{40%{transform:scale(1.25)}}
-.bump .ic{animation:spin1 .5s}
-@keyframes spin1{50%{transform:rotate(24deg) scale(1.3)}}
 
-/* لولو */
 .lulu{display:block; overflow:visible}
 .lulu .pupil-move{transform:translate(var(--lx,0),var(--ly,0)); transition:transform .18s ease-out}
 .lulu .pupil{animation:blink 4.6s infinite}
@@ -88,20 +65,12 @@ body{
 .lulu.act-wave .arm-r{animation:wave .4s ease-in-out 7}
 @keyframes wave{50%{transform:rotate(160deg) translateY(-4px)}}
 
-/* فقاعة الكلام */
-.bubble{
-  position:relative; background:#fff; border:3.5px solid var(--ink); border-radius:24px;
-  padding:10px 18px; font-weight:700; font-size:1.2rem; line-height:1.5; box-shadow:var(--card-sh); min-width:0;
-}
-.bubble:after{
-  content:""; position:absolute; bottom:-16px; right:26px; width:0; height:0;
-  border:10px solid transparent; border-top-color:var(--ink);
-}
+.bubble{position:relative; background:#fff; border:3.5px solid var(--ink); border-radius:24px; padding:10px 18px; font-weight:700; font-size:1.2rem; line-height:1.5; box-shadow:var(--card-sh); min-width:0}
+.bubble:after{content:""; position:absolute; bottom:-16px; right:26px; width:0; height:0; border:10px solid transparent; border-top-color:var(--ink)}
 .bubble:before{content:""; position:absolute; bottom:-11px; right:28px; width:0; height:0; border:8px solid transparent; border-top-color:#fff}
 .bubble.pop{animation:bubblePop .45s var(--pop)}
 @keyframes bubblePop{0%{transform:scale(.85)} 60%{transform:scale(1.05)} 100%{transform:scale(1)}}
 
-/* ==== الترحيب ==== */
 .welcome-screen{align-items:center; justify-content:center; gap:22px; text-align:center}
 .logo-mark{width:74px; height:74px}
 .welcome-hero{display:flex; flex-direction:column; align-items:center; gap:10px}
@@ -111,13 +80,9 @@ body{
 .lulu-hero{width:190px; height:200px}
 .name-box{display:flex; flex-direction:column; gap:6px; width:min(320px,100%)}
 .name-box label{font-weight:800; font-size:1.2rem}
-.name-box input{
-  font-family:inherit; font-weight:800; font-size:1.5rem; text-align:center; padding:10px;
-  border:3.5px solid var(--ink); border-radius:22px; background:#fff; color:var(--ink); outline:none; width:100%;
-}
+.name-box input{font-family:inherit; font-weight:800; font-size:1.5rem; text-align:center; padding:10px; border:3.5px solid var(--ink); border-radius:22px; background:#fff; color:var(--ink); outline:none; width:100%}
 .name-box input:focus{box-shadow:0 0 0 5px rgba(255,197,77,.55)}
 
-/* ==== الرئيسية ==== */
 .topbar{display:flex; align-items:center; gap:10px; padding-bottom:10px}
 .brand{display:flex; align-items:center; gap:8px; flex:1; min-width:0}
 .brand .logo-mark{width:46px; height:46px}
@@ -127,27 +92,17 @@ body{
 .home-lulu .lulu{width:112px; height:118px; flex:0 0 auto}
 .home-lulu .bubble{flex:1; margin-bottom:14px}
 .replay-row{display:flex; align-items:center; gap:10px; flex:1}
-.world-cards{display:flex; flex-direction:column; gap:16px; flex:1; justify-content:center; padding-bottom:6px}
-.world-card{
-  position:relative; display:flex; align-items:center; gap:14px; background:#fff; border:3.5px solid var(--ink);
-  border-radius:30px; padding:14px 18px; min-height:118px; cursor:pointer; box-shadow:var(--card-sh);
-  transition:transform .15s var(--pop), box-shadow .15s; overflow:hidden; text-align:right;
-}
+.world-cards{display:flex; flex-direction:column; gap:14px; flex:1; justify-content:center; padding-bottom:6px}
+.world-card{position:relative; display:flex; align-items:center; gap:14px; background:#fff; border:3.5px solid var(--ink); border-radius:30px; padding:14px 18px; min-height:118px; cursor:pointer; box-shadow:var(--card-sh); transition:transform .15s var(--pop), box-shadow .15s; overflow:hidden; text-align:right}
 .world-card:active{transform:translateY(5px) scale(.99); box-shadow:0 2px 0 rgba(74,52,40,.14)}
 .world-card .wc-art{width:104px; height:104px; flex:0 0 auto; display:flex; align-items:center; justify-content:center}
 .world-card .wc-body{flex:1; min-width:0}
 .world-card h2{margin:0; font-size:1.7rem; font-weight:800}
 .world-card p{margin:2px 0 0; color:var(--ink-soft); font-weight:700; font-size:1.02rem}
-.world-card .wc-badge{
-  position:absolute; top:-12px; left:-8px; background:var(--sun); border:3px solid var(--ink); border-radius:16px;
-  font-weight:800; font-size:.95rem; padding:2px 12px; transform:rotate(-6deg);
-}
+.world-card .wc-badge{position:absolute; top:-12px; left:-8px; background:var(--sun); border:3px solid var(--ink); border-radius:16px; font-weight:800; font-size:.95rem; padding:2px 12px; transform:rotate(-6deg)}
 .wc-letters{background:#FFF3D2}
-.wc-letters .mini-letters{display:flex; gap:5px}
-.wc-letters .mini-letters b{
-  width:32px; height:38px; display:flex; align-items:center; justify-content:center; font-size:1.5rem;
-  border:2.5px solid var(--ink); border-radius:12px; color:#fff;
-}
+.wc-letters .mini-letters{display:flex; gap:4px}
+.wc-letters .mini-letters b{width:27px; height:34px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; border:2.5px solid var(--ink); border-radius:10px; color:#fff}
 .wc-animals{background:#EAF7E4}
 .wc-animals .head-row{display:flex; margin-top:-34px}
 .wc-animals .head-row svg{width:64px; height:64px; margin:0 -7px; filter:drop-shadow(0 2px 0 rgba(74,52,40,.15))}
@@ -155,10 +110,9 @@ body{
 .wc-soso .mini-scene{position:relative; width:104px; height:104px}
 .wc-soso .mini-scene svg{position:absolute}
 
-/* ==== هيكل شاشات العوالم ==== */
 .wbar{display:flex; align-items:center; gap:10px; padding-bottom:8px}
-.wbar .dots{flex:1; display:flex; justify-content:center; gap:7px}
-.dots span{width:14px; height:14px; border-radius:50%; background:#fff; border:2.5px solid var(--ink); opacity:.55}
+.wbar .dots{flex:1; display:flex; justify-content:center; gap:6px; flex-wrap:wrap}
+.dots span{width:13px; height:13px; border-radius:50%; background:#fff; border:2.5px solid var(--ink); opacity:.55}
 .dots span.done{background:var(--mint); opacity:1}
 .dots span.now{background:var(--sun); opacity:1; animation:pulse 1s infinite}
 @keyframes pulse{50%{transform:scale(1.35)}}
@@ -169,12 +123,7 @@ body{
 .playzone{flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; display:flex; flex-direction:column; gap:14px; padding:4px 2px 10px}
 .game-head{font-weight:800; font-size:1.6rem; text-align:center; line-height:1.3}
 
-/* بطاقات عامة للألعاب */
-.tile{
-  background:#fff; border:3.5px solid var(--ink); border-radius:28px; box-shadow:var(--card-sh);
-  cursor:pointer; display:flex; align-items:center; justify-content:center; position:relative;
-  transition:transform .18s var(--pop), background .2s; touch-action:manipulation;
-}
+.tile{background:#fff; border:3.5px solid var(--ink); border-radius:28px; box-shadow:var(--card-sh); cursor:pointer; display:flex; align-items:center; justify-content:center; position:relative; transition:transform .18s var(--pop), background .2s; touch-action:manipulation}
 .tile:active{transform:scale(.95)}
 .tile.shake{animation:shake .45s}
 @keyframes shake{15%,45%,75%{transform:translateX(-9px)} 30%,60%{transform:translateX(9px)}}
@@ -192,7 +141,6 @@ body{
 .animal-name{text-align:center; font-weight:800; font-size:2.2rem}
 .game-actions{display:flex; justify-content:center; gap:14px}
 
-/* ==== تعليم حرف ==== */
 .learn-card{background:#fff; border:3.5px solid var(--ink); border-radius:32px; box-shadow:var(--card-sh); padding:16px; text-align:center}
 .big-letter{font-size:8rem; font-weight:800; line-height:1; cursor:pointer; transition:transform .15s var(--pop)}
 .big-letter:active{transform:scale(1.12)}
@@ -202,7 +150,6 @@ body{
 .learn-animal svg{width:100%; height:auto}
 .learn-animal.bounce svg{animation:animalBounce .8s var(--pop)}
 
-/* ==== بالونات ==== */
 .balloons-area{position:relative; flex:1; min-height:340px; border:3.5px dashed var(--line); border-radius:28px; overflow:hidden; background:#fff}
 .balloon{position:absolute; width:88px; cursor:pointer; animation:floaty var(--dur,4s) ease-in-out var(--delay,0s) infinite alternate; transform:translateY(var(--off,0)); transition:filter .2s}
 .balloon:hover{filter:brightness(1.05)}
@@ -214,13 +161,11 @@ body{
 .balloon.nope{animation:nopeWig .5s}
 @keyframes nopeWig{25%{transform:translateX(-12px) rotate(-8deg)} 75%{transform:translateX(12px) rotate(8deg)}}
 
-/* ==== تتبع الحرف ==== */
 .trace-wrap{display:flex; flex-direction:column; align-items:center; gap:10px}
 #traceCv{width:min(86vw,360px); height:min(86vw,360px); border:3.5px solid var(--ink); border-radius:30px; background:#fff; box-shadow:var(--card-sh); touch-action:none}
 .trace-progress{width:min(86vw,360px); height:18px; border:3px solid var(--ink); border-radius:12px; background:#fff; overflow:hidden}
 .trace-progress i{display:block; height:100%; width:0%; background:var(--mint); transition:width .25s; border-radius:6px}
 
-/* ==== أطعم الحيوان ==== */
 .feed-board{display:flex; flex-direction:column; align-items:center; gap:10px}
 .feed-animal{width:min(56vw,230px); border-radius:32px; border:3.5px dashed var(--ink); padding:8px 14px 4px; background:#FFFDF6; transition:background .2s, transform .2s}
 .feed-animal.target{background:#FFF3D2; border-style:solid; animation:hintPulse 1.2s infinite}
@@ -233,16 +178,12 @@ body{
 .ghost-food svg{width:74%; height:74%}
 .food-tile.hidden{visibility:hidden}
 
-/* ==== مين اختفى ==== */
 .who-row{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
 .who-card{aspect-ratio:1/1.05; padding:6px}
 .who-card svg{width:100%; height:100%}
 .who-card.gone-slot{background:#FFF3D2; border-style:dashed; cursor:default}
 .who-card.gone-slot .qmark{font-size:3.4rem; font-weight:800; color:var(--coral-d)}
-.cover{
-  position:absolute; inset:0; z-index:20; background:rgba(74,52,40,.92); border-radius:28px;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; animation:coverIn .4s var(--pop);
-}
+.cover{position:absolute; inset:0; z-index:20; background:rgba(74,52,40,.92); border-radius:28px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; animation:coverIn .4s var(--pop)}
 @keyframes coverIn{from{opacity:0}}
 .cover .stars-bg{display:flex; gap:10px}
 .cover .stars-bg .ic{width:30px; height:30px; color:var(--sun); animation:twinkle 1s infinite alternate}
@@ -250,13 +191,9 @@ body{
 @keyframes twinkle{from{transform:scale(.7); opacity:.5} to{transform:scale(1.2); opacity:1}}
 .cover h3{color:#fff; margin:0; font-size:1.8rem; font-weight:800}
 
-/* ==== الاحتفال والختام ==== */
 .finale{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; text-align:center}
 .finale h1{margin:0; font-size:2.3rem; font-weight:800; color:var(--coral-d); animation:winPulse .8s var(--pop)}
-.sticker-reveal{
-  width:150px; height:150px; background:#fff; border:4px solid var(--ink); border-radius:36px; box-shadow:var(--card-sh);
-  display:flex; align-items:center; justify-content:center; animation:revealIn .8s var(--pop);
-}
+.sticker-reveal{width:150px; height:150px; background:#fff; border:4px solid var(--ink); border-radius:36px; box-shadow:var(--card-sh); display:flex; align-items:center; justify-content:center; animation:revealIn .8s var(--pop)}
 @keyframes revealIn{0%{transform:scale(0) rotate(-30deg)} 70%{transform:scale(1.15) rotate(6deg)} 100%{transform:scale(1)}}
 .sticker-reveal svg{width:100px; height:110px}
 .finale .sub{font-weight:800; font-size:1.25rem; color:var(--ink-soft)}
@@ -267,13 +204,12 @@ body{
 .chip{background:#fff; border:2.5px solid var(--ink); border-radius:14px; padding:4px 14px; font-weight:800; font-size:1.1rem; box-shadow:0 3px 0 rgba(74,52,40,.12)}
 .end-note{font-size:1.5rem; font-weight:800; color:var(--coral-d)}
 
-/* أغنية الحروف */
 .song-view{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center}
 .song-letter{font-size:6.5rem; font-weight:800; line-height:1}
 .song-word{font-size:2rem; font-weight:800}
 .song-anim{width:min(52vw,210px)} .song-anim svg{width:100%; height:auto}
+.song-anim.bounce svg{animation:animalBounce .8s var(--pop)}
 
-/* ==== عالم سوسو ==== */
 .scene{position:relative; flex:1; min-height:300px; border:3.5px solid var(--ink); border-radius:30px; overflow:hidden; background:#D9EEF9; box-shadow:var(--card-sh)}
 .scene .sun{position:absolute; top:4%; left:4%; width:74px; height:74px; animation:sunFloat 5s ease-in-out infinite}
 @keyframes sunFloat{50%{transform:translateY(-7px)}}
@@ -286,12 +222,15 @@ body{
 .scene .hills{position:absolute; bottom:0; left:0; right:0; width:100%; height:52%}
 .scene-item{position:absolute; cursor:pointer; transition:transform .2s var(--pop)}
 .scene-item:active{transform:scale(1.06)}
-.si-tree{right:4%; bottom:34%; width:118px}
+.si-tree{right:3%; bottom:34%; width:112px}
+.si-bush{right:22%; bottom:31%; width:72px}
+.si-bush2{left:24%; bottom:33%; width:56px}
 .si-house{left:3%; bottom:36%; width:112px}
 .si-sprout{right:14%; bottom:35%; width:54px}
 .si-rainbow{left:50%; transform:translateX(-50%); bottom:40%; width:min(70%,270px); z-index:0}
-.scene-animals{position:absolute; bottom:4%; left:50%; transform:translateX(-50%); display:flex; gap:4px; z-index:3}
-.scene-animal{width:62px; height:64px; background:#fff; border:3px solid var(--ink); border-radius:18px; padding:3px; cursor:pointer; animation:bob 3s ease-in-out infinite; box-shadow:0 4px 0 rgba(74,52,40,.14)}
+.scene-animals{position:absolute; bottom:4%; left:50%; transform:translateX(-50%); display:flex; gap:4px; z-index:3; max-width:94%; overflow-x:auto; padding:4px 2px; scrollbar-width:none}
+.scene-animals::-webkit-scrollbar{display:none}
+.scene-animal{width:62px; height:64px; flex:0 0 auto; background:#fff; border:3px solid var(--ink); border-radius:18px; padding:3px; cursor:pointer; animation:bob 3s ease-in-out infinite; box-shadow:0 4px 0 rgba(74,52,40,.14)}
 .scene-animal svg{width:100%; height:100%}
 .scene-animal.bounce{animation:animalBounce .8s var(--pop)}
 .lulu-scene{position:absolute; bottom:12%; right:50%; transform:translateX(50%); width:104px; height:110px; z-index:2; cursor:pointer}
@@ -320,7 +259,6 @@ body{
 .slot.locked{opacity:.4; background:#F4EBDD}
 .slot.locked svg{width:24px; height:24px}
 
-/* ==== قسم الوالدين ==== */
 .p-scroll{flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:14px; padding:4px 2px 10px}
 .p-title{font-size:1.8rem; font-weight:800; text-align:center}
 .p-card{background:#fff; border:3px solid var(--ink); border-radius:24px; padding:14px 16px; box-shadow:var(--card-sh)}
@@ -331,7 +269,7 @@ body{
 .p-stat span{font-size:.95rem; font-weight:700; color:var(--ink-soft)}
 .p-chips{display:flex; flex-wrap:wrap; gap:8px}
 .p-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.p-row input{flex:1; min-width:140px; font-family:inherit; font-weight:700; font-size:1.15rem; padding:8px 12px; border:3px solid var(--ink); border-radius:16px; outline:none}
+.p-row input, .p-select{flex:1; min-width:150px; font-family:inherit; font-weight:700; font-size:1.05rem; padding:8px 12px; border:3px solid var(--ink); border-radius:16px; outline:none; background:#fff; color:var(--ink)}
 .p-list{margin:0; padding-right:20px; font-weight:700; line-height:1.9; font-size:1rem}
 .p-list li{margin-bottom:4px}
 .btn-danger{background:#F26D6D; color:#fff; font-size:1.15rem}
@@ -341,18 +279,11 @@ body{
 .gate-opts .btn{font-size:1.9rem; width:86px; height:86px; padding:0}
 .p-note{font-weight:700; color:var(--ink-soft); font-size:.95rem; line-height:1.6}
 
-/* ستيكر توست */
-.toast-sticker{
-  position:fixed; top:14px; right:50%; transform:translate(50%,-120px); z-index:1001;
-  display:flex; align-items:center; gap:12px; background:#fff; border:3.5px solid var(--ink); border-radius:24px;
-  padding:10px 18px; box-shadow:0 7px 0 rgba(74,52,40,.2); transition:transform .5s var(--pop);
-}
+.toast-sticker{position:fixed; top:14px; right:50%; transform:translate(50%,-120px); z-index:1001; display:flex; align-items:center; gap:12px; background:#fff; border:3.5px solid var(--ink); border-radius:24px; padding:10px 18px; box-shadow:0 7px 0 rgba(74,52,40,.2); transition:transform .5s var(--pop)}
 .toast-sticker.show{transform:translate(50%,0)}
 .toast-sticker svg{width:44px; height:48px}
 .toast-sticker b{display:block; font-size:1.1rem; color:var(--coral-d)}
 .toast-sticker span{font-weight:700}
-
-/* نجمة طائرة */
 .fly-star{position:fixed; z-index:1000; pointer-events:none; width:40px; height:40px; transition:transform .8s cubic-bezier(.5,-.25,.65,1)}
 .fly-star svg{width:100%; height:100%}
 
@@ -364,9 +295,10 @@ body{
 </head>
 <body>
 
-<!-- ======= كل رسومات التطبيق (SVG مرسومة يدويًا بأسلوب موحد) ======= -->
+<!-- ======= كل رسومات التطبيق (28 كلمة/كائن + عناصر + ستيكرز) ======= -->
 <svg id="assets" aria-hidden="true"><defs>
 
+<!-- حيوانات -->
 <symbol id="an-lion" viewBox="0 0 200 210">
   <ellipse cx="82" cy="197" rx="13" ry="8" fill="#E8A33D"/><ellipse cx="118" cy="197" rx="13" ry="8" fill="#E8A33D"/>
   <path d="M136 148 q26 6 28 -20 q1 -12 -8 -14" fill="none" stroke="#E8A33D" stroke-width="9" stroke-linecap="round"/>
@@ -541,6 +473,276 @@ body{
   <ellipse cx="56" cy="100" rx="8" ry="5.5" fill="#E8A76F" opacity=".9"/><ellipse cx="144" cy="100" rx="8" ry="5.5" fill="#E8A76F" opacity=".9"/>
 </symbol>
 
+<!-- حوت (ح) -->
+<symbol id="an-whale" viewBox="0 0 200 210">
+  <g fill="#A5DCF5"><circle cx="52" cy="34" r="8"/><circle cx="68" cy="22" r="6"/><circle cx="40" cy="20" r="5"/></g>
+  <path d="M148 118 Q182 96 184 62 Q198 96 174 124 Q164 134 152 128 Z" fill="#7EC8F0"/>
+  <ellipse cx="88" cy="132" rx="66" ry="50" fill="#7EC8F0"/>
+  <path d="M26 148 Q88 192 150 146 Q144 174 88 184 Q36 174 26 148 Z" fill="#DFF3FC"/>
+  <path d="M64 178 Q72 202 94 204 Q88 186 84 174 Z" fill="#5BB2DE"/>
+  <circle cx="50" cy="106" r="10" fill="#fff"/><circle cx="52" cy="108" r="5" fill="#3A2A1E"/><circle cx="54" cy="105" r="2" fill="#fff"/>
+  <path d="M30 128 Q48 142 72 136" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="62" cy="122" rx="7" ry="5" fill="#BDE3F5" opacity=".9"/>
+</symbol>
+
+<!-- خروف (خ) -->
+<symbol id="an-sheep" viewBox="0 0 200 210">
+  <rect x="78" y="160" width="13" height="42" rx="6.5" fill="#8A7A88"/>
+  <rect x="110" y="160" width="13" height="42" rx="6.5" fill="#8A7A88"/>
+  <g fill="#F6F1E7">
+    <circle cx="66" cy="146" r="26"/><circle cx="134" cy="146" r="26"/>
+    <circle cx="100" cy="140" r="38"/><circle cx="84" cy="118" r="24"/><circle cx="116" cy="118" r="24"/>
+    <circle cx="100" cy="162" r="28"/>
+  </g>
+  <ellipse cx="100" cy="84" rx="34" ry="31" fill="#9C8D9C"/>
+  <ellipse cx="60" cy="82" rx="17" ry="10" fill="#8A7A88" transform="rotate(-16 60 82)"/>
+  <ellipse cx="140" cy="82" rx="17" ry="10" fill="#8A7A88" transform="rotate(16 140 82)"/>
+  <circle cx="100" cy="50" r="12" fill="#F6F1E7"/><circle cx="84" cy="56" r="9" fill="#F6F1E7"/><circle cx="116" cy="56" r="9" fill="#F6F1E7"/>
+  <circle cx="88" cy="82" r="9.5" fill="#fff"/><circle cx="112" cy="82" r="9.5" fill="#fff"/>
+  <circle cx="90" cy="84" r="4.7" fill="#3A2A1E"/><circle cx="110" cy="84" r="4.7" fill="#3A2A1E"/>
+  <circle cx="92" cy="81.5" r="1.7" fill="#fff"/><circle cx="112" cy="81.5" r="1.7" fill="#fff"/>
+  <ellipse cx="100" cy="100" rx="5" ry="3.5" fill="#6B5D6B"/>
+  <path d="M100 104 v4 M100 108 q-7 6 -12 1 M100 108 q7 6 12 1" fill="none" stroke="#6B5D6B" stroke-width="2.2" stroke-linecap="round"/>
+  <ellipse cx="70" cy="96" rx="7" ry="5" fill="#E8B8C8" opacity=".7"/><ellipse cx="130" cy="96" rx="7" ry="5" fill="#E8B8C8" opacity=".7"/>
+</symbol>
+
+<!-- ذرة (ذ) -->
+<symbol id="an-corn" viewBox="0 0 200 210">
+  <path d="M68 118 Q36 158 58 196 Q92 168 90 128 Z" fill="#7ED588"/>
+  <path d="M132 118 Q164 158 142 196 Q108 168 110 128 Z" fill="#6FBF6F"/>
+  <ellipse cx="100" cy="118" rx="38" ry="74" fill="#FFD34E"/>
+  <g fill="#F2B722">
+    <circle cx="100" cy="56" r="9"/><circle cx="82" cy="76" r="9"/><circle cx="118" cy="76" r="9"/>
+    <circle cx="100" cy="96" r="9"/><circle cx="80" cy="118" r="9"/><circle cx="120" cy="118" r="9"/>
+    <circle cx="100" cy="140" r="9"/><circle cx="84" cy="162" r="9"/><circle cx="116" cy="162" r="9"/>
+    <circle cx="100" cy="182" r="9"/>
+  </g>
+  <path d="M92 46 Q86 24 74 18 M100 44 Q100 20 96 8 M108 46 Q114 24 126 18" fill="none" stroke="#C9955C" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="86" cy="92" r="7" fill="#fff"/><circle cx="114" cy="92" r="7" fill="#fff"/>
+  <circle cx="88" cy="93" r="3.4" fill="#3A2A1E"/><circle cx="112" cy="93" r="3.4" fill="#3A2A1E"/>
+  <path d="M92 108 q8 7 16 0" fill="none" stroke="#B07A2E" stroke-width="2.6" stroke-linecap="round"/>
+  <ellipse cx="72" cy="104" rx="6" ry="4" fill="#FFC197" opacity=".8"/><ellipse cx="128" cy="104" rx="6" ry="4" fill="#FFC197" opacity=".8"/>
+</symbol>
+
+<!-- رمان (ر) -->
+<symbol id="an-pomegranate" viewBox="0 0 200 210">
+  <path d="M84 46 L84 20 L96 34 L100 12 L104 34 L116 20 L116 46 Q100 38 84 46 Z" fill="#C25858"/>
+  <circle cx="100" cy="128" r="62" fill="#E85D5D"/>
+  <path d="M84 46 Q100 38 116 46 L112 60 Q100 54 88 60 Z" fill="#C25858"/>
+  <ellipse cx="72" cy="104" rx="14" ry="20" fill="#F28585" opacity=".8" transform="rotate(-20 72 104)"/>
+  <circle cx="82" cy="122" r="9.5" fill="#fff"/><circle cx="118" cy="122" r="9.5" fill="#fff"/>
+  <circle cx="84" cy="124" r="4.7" fill="#3A2A1E"/><circle cx="116" cy="124" r="4.7" fill="#3A2A1E"/>
+  <circle cx="86" cy="121.5" r="1.7" fill="#fff"/><circle cx="118" cy="121.5" r="1.7" fill="#fff"/>
+  <path d="M92 142 q8 8 16 0" fill="none" stroke="#A63A3A" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="66" cy="140" rx="8" ry="5.5" fill="#FFADAD" opacity=".8"/><ellipse cx="134" cy="140" rx="8" ry="5.5" fill="#FFADAD" opacity=".8"/>
+</symbol>
+
+<!-- زرافة (ز) -->
+<symbol id="an-giraffe" viewBox="0 0 200 210">
+  <rect x="70" y="148" width="13" height="50" rx="6.5" fill="#D9A05B"/>
+  <rect x="118" y="148" width="13" height="50" rx="6.5" fill="#D9A05B"/>
+  <rect x="92" y="150" width="12" height="48" rx="6" fill="#F2C879"/>
+  <path d="M62 128 q-18 -2 -16 -24" fill="none" stroke="#D9A05B" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="96" cy="130" rx="44" ry="28" fill="#F2C879"/>
+  <g fill="#B07A45"><circle cx="82" cy="122" r="7"/><circle cx="108" cy="136" r="8"/><circle cx="98" cy="116" r="6"/><circle cx="118" cy="122" r="6"/></g>
+  <path d="M116 114 Q128 64 122 32 L146 28 Q154 70 142 116 Z" fill="#F2C879"/>
+  <g fill="#B07A45"><circle cx="132" cy="66" r="6"/><circle cx="138" cy="92" r="5"/></g>
+  <ellipse cx="136" cy="26" rx="20" ry="14" fill="#F2C879"/>
+  <path d="M122 18 Q114 4 122 2 M148 18 Q156 4 148 2" fill="none" stroke="#B07A45" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="118" cy="24" rx="7" ry="9" fill="#D9A05B"/>
+  <circle cx="130" cy="22" r="5.5" fill="#fff"/><circle cx="131" cy="23" r="2.8" fill="#3A2A1E"/><circle cx="132.5" cy="21" r="1" fill="#fff"/>
+  <path d="M140 30 q7 4 12 0" fill="none" stroke="#8A5A33" stroke-width="2.2" stroke-linecap="round"/>
+  <ellipse cx="142" cy="14" rx="6" ry="4" fill="#B07A45"/>
+</symbol>
+
+<!-- سمكة (س) -->
+<symbol id="an-fish" viewBox="0 0 200 210">
+  <path d="M138 105 L178 64 Q170 105 178 146 Z" fill="#62B6E7"/>
+  <path d="M76 66 Q94 38 118 48 Q106 66 84 70 Z" fill="#62B6E7"/>
+  <ellipse cx="94" cy="105" rx="62" ry="48" fill="#7EC8F0"/>
+  <ellipse cx="100" cy="128" rx="18" ry="11" fill="#62B6E7" transform="rotate(-20 100 128)"/>
+  <g fill="#BDE3F5"><circle cx="68" cy="102" r="9"/><circle cx="92" cy="120" r="8"/><circle cx="92" cy="88" r="8"/></g>
+  <circle cx="58" cy="94" r="10" fill="#fff"/><circle cx="60" cy="96" r="5" fill="#3A2A1E"/><circle cx="62" cy="93" r="2" fill="#fff"/>
+  <path d="M34 120 Q50 132 70 128" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="70" cy="112" rx="7" ry="5" fill="#BDE3F5" opacity=".9"/>
+  <g fill="#A5DCF5"><circle cx="30" cy="58" r="6"/><circle cx="18" cy="40" r="4.5"/></g>
+</symbol>
+
+<!-- شمس (ش) — نسخة كبيرة -->
+<symbol id="an-sun" viewBox="0 0 120 120"><use href="#w-sun"/></symbol>
+
+<!-- ضفدع (ض) -->
+<symbol id="an-frog" viewBox="0 0 200 210">
+  <ellipse cx="52" cy="188" rx="20" ry="12" fill="#6FBF6F"/>
+  <ellipse cx="148" cy="188" rx="20" ry="12" fill="#6FBF6F"/>
+  <ellipse cx="100" cy="148" rx="66" ry="48" fill="#7ED588"/>
+  <ellipse cx="100" cy="164" rx="40" ry="26" fill="#E4F8D2"/>
+  <circle cx="62" cy="72" r="19" fill="#7ED588"/>
+  <circle cx="138" cy="72" r="19" fill="#7ED588"/>
+  <circle cx="62" cy="70" r="12" fill="#fff"/><circle cx="138" cy="70" r="12" fill="#fff"/>
+  <circle cx="62" cy="72" r="5.5" fill="#3A2A1E"/><circle cx="138" cy="72" r="5.5" fill="#3A2A1E"/>
+  <circle cx="64" cy="69" r="2" fill="#fff"/><circle cx="140" cy="69" r="2" fill="#fff"/>
+  <path d="M58 122 Q100 154 142 122" fill="none" stroke="#4A8A56" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="92" cy="104" rx="2.6" ry="2" fill="#4A8A56"/><ellipse cx="108" cy="104" rx="2.6" ry="2" fill="#4A8A56"/>
+  <ellipse cx="56" cy="128" rx="9" ry="6" fill="#FFC1C8" opacity=".85"/><ellipse cx="144" cy="128" rx="9" ry="6" fill="#FFC1C8" opacity=".85"/>
+  <ellipse cx="78" cy="172" rx="11" ry="7" fill="#6FBF6F"/><ellipse cx="122" cy="172" rx="11" ry="7" fill="#6FBF6F"/>
+</symbol>
+
+<!-- طائرة (ط) -->
+<symbol id="an-plane" viewBox="0 0 200 210">
+  <path d="M144 88 L144 32 Q170 36 178 88 Z" fill="#FF8555"/>
+  <path d="M150 158 Q180 148 184 118 Q190 156 158 170 Z" fill="#FF8555"/>
+  <rect x="20" y="84" width="152" height="56" rx="28" fill="#FFF7EC" stroke="#E3CBA0" stroke-width="3.5"/>
+  <ellipse cx="98" cy="140" rx="44" ry="15" fill="#FFC94D" transform="rotate(4 98 140)"/>
+  <circle cx="92" cy="100" r="7" fill="#BDE3F5"/><circle cx="114" cy="100" r="7" fill="#BDE3F5"/><circle cx="136" cy="100" r="7" fill="#BDE3F5"/>
+  <circle cx="50" cy="110" r="15" fill="#BDE3F5" stroke="#E3CBA0" stroke-width="3.5"/>
+  <circle cx="46" cy="108" r="4.5" fill="#3A2A1E"/><circle cx="47.5" cy="106" r="1.6" fill="#fff"/>
+  <path d="M42 122 q8 7 15 3" fill="none" stroke="#7A4E2B" stroke-width="2.6" stroke-linecap="round"/>
+  <ellipse cx="70" cy="126" rx="6.5" ry="4.5" fill="#FFAD66" opacity=".8"/>
+</symbol>
+
+<!-- ظبي (ظ) -->
+<symbol id="an-gazelle" viewBox="0 0 200 210">
+  <rect x="74" y="148" width="11" height="50" rx="5.5" fill="#C08A4B"/>
+  <rect x="115" y="148" width="11" height="50" rx="5.5" fill="#C08A4B"/>
+  <path d="M58 134 q-16 -2 -14 -22" fill="none" stroke="#C08A4B" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="96" cy="132" rx="42" ry="26" fill="#D9A05B"/>
+  <ellipse cx="100" cy="138" rx="26" ry="15" fill="#F5E3C3"/>
+  <path d="M116 120 Q130 76 126 42 L146 38 Q154 80 142 122 Z" fill="#D9A05B"/>
+  <ellipse cx="138" cy="32" rx="19" ry="14" fill="#D9A05B"/>
+  <path d="M128 24 Q120 6 128 4 M146 22 Q152 4 162 6" fill="none" stroke="#8A5A33" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="122" cy="30" rx="6" ry="9" fill="#C08A4B"/>
+  <circle cx="132" cy="28" r="5.5" fill="#fff"/><circle cx="133" cy="29" r="2.8" fill="#3A2A1E"/><circle cx="134.5" cy="27" r="1" fill="#fff"/>
+  <path d="M136 38 q6 4 11 1" fill="none" stroke="#8A5A33" stroke-width="2.2" stroke-linecap="round"/>
+  <ellipse cx="82" cy="124" rx="6" ry="4" fill="#B07A45"/>
+</symbol>
+
+<!-- عصفور (ع) -->
+<symbol id="an-bird" viewBox="0 0 200 210">
+  <path d="M148 104 L186 84 Q180 106 186 128 Z" fill="#3D8FC4"/>
+  <path d="M94 58 Q88 34 66 34 Q78 50 90 62 Z" fill="#3D8FC4"/>
+  <circle cx="100" cy="112" r="54" fill="#62B6E7"/>
+  <ellipse cx="100" cy="130" rx="34" ry="28" fill="#BDE3F5"/>
+  <ellipse cx="120" cy="122" rx="20" ry="26" fill="#3D8FC4" transform="rotate(14 120 122)"/>
+  <path d="M48 112 Q28 104 30 96 Q44 94 52 102 Q56 108 48 112 Z" fill="#F28A2E"/>
+  <circle cx="64" cy="96" r="9" fill="#fff"/><circle cx="62" cy="97" r="4.5" fill="#3A2A1E"/><circle cx="60" cy="95" r="1.6" fill="#fff"/>
+  <path d="M64 118 q6 6 12 3" fill="none" stroke="#2C5F86" stroke-width="2.4" stroke-linecap="round"/>
+  <ellipse cx="78" cy="114" rx="6" ry="4" fill="#A5D8F0" opacity=".9"/>
+  <rect x="82" y="174" width="8" height="30" rx="4" fill="#E8A23A"/>
+  <rect x="112" y="174" width="8" height="30" rx="4" fill="#E8A23A"/>
+</symbol>
+
+<!-- غيمة (غ) -->
+<symbol id="an-cloudy" viewBox="0 0 200 210">
+  <g fill="#fff" stroke="#DCE9F5" stroke-width="4">
+    <circle cx="58" cy="112" r="28"/><circle cx="100" cy="94" r="38"/><circle cx="146" cy="114" r="26"/>
+    <ellipse cx="100" cy="134" rx="60" ry="34"/>
+  </g>
+  <path d="M78 108 q7 9 14 0 M108 108 q7 9 14 0" fill="none" stroke="#7A96B5" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M90 128 q10 9 20 0" fill="none" stroke="#7A96B5" stroke-width="3.4" stroke-linecap="round"/>
+  <ellipse cx="70" cy="126" rx="7" ry="5" fill="#D8E9F9"/><ellipse cx="130" cy="126" rx="7" ry="5" fill="#D8E9F9"/>
+</symbol>
+
+<!-- قمر (ق) -->
+<symbol id="an-moon" viewBox="0 0 200 210">
+  <path d="M22 46 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="#E8A23A"/>
+  <path d="M170 150 l3.5 8 8 3.5 -8 3.5 -3.5 8 -3.5 -8 -8 -3.5 8 -3.5 Z" fill="#E8A23A"/>
+  <circle cx="100" cy="110" r="66" fill="#FFD97A" stroke="#E8B722" stroke-width="4"/>
+  <circle cx="62" cy="76" r="10" fill="#F2C94E"/><circle cx="140" cy="146" r="8" fill="#F2C94E"/><circle cx="126" cy="72" r="6" fill="#F2C94E"/>
+  <path d="M76 100 q7 9 14 0 M110 100 q7 9 14 0" fill="none" stroke="#B08A2E" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M90 124 q10 10 20 0" fill="none" stroke="#B08A2E" stroke-width="3.4" stroke-linecap="round"/>
+  <ellipse cx="68" cy="122" rx="8" ry="5.5" fill="#FFC197" opacity=".8"/><ellipse cx="132" cy="122" rx="8" ry="5.5" fill="#FFC197" opacity=".8"/>
+</symbol>
+
+<!-- ليمون (ل) -->
+<symbol id="an-lemon" viewBox="0 0 200 210">
+  <path d="M104 52 Q104 32 120 24" fill="none" stroke="#8A5A33" stroke-width="5" stroke-linecap="round"/>
+  <path d="M112 36 Q142 16 164 30 Q148 52 112 44 Z" fill="#7ED588"/>
+  <ellipse cx="100" cy="130" rx="64" ry="52" fill="#FFDE5C"/>
+  <ellipse cx="166" cy="130" rx="11" ry="8" fill="#FFDE5C"/>
+  <ellipse cx="34" cy="130" rx="11" ry="8" fill="#FFDE5C"/>
+  <ellipse cx="66" cy="104" rx="13" ry="18" fill="#FFEB99" opacity=".9" transform="rotate(-18 66 104)"/>
+  <circle cx="80" cy="128" r="9.5" fill="#fff"/><circle cx="120" cy="128" r="9.5" fill="#fff"/>
+  <circle cx="82" cy="130" r="4.7" fill="#3A2A1E"/><circle cx="118" cy="130" r="4.7" fill="#3A2A1E"/>
+  <circle cx="84" cy="127.5" r="1.7" fill="#fff"/><circle cx="120" cy="127.5" r="1.7" fill="#fff"/>
+  <path d="M90 148 q10 9 20 0" fill="none" stroke="#C2A02E" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="62" cy="144" rx="8" ry="5.5" fill="#FFF0B8" opacity=".9"/><ellipse cx="138" cy="144" rx="8" ry="5.5" fill="#FFF0B8" opacity=".9"/>
+</symbol>
+
+<!-- موز (م) -->
+<symbol id="an-banana" viewBox="0 0 200 210">
+  <path d="M38 124 Q100 44 168 128" fill="none" stroke="#FFD34E" stroke-width="38" stroke-linecap="round"/>
+  <path d="M46 118 Q100 54 160 122" fill="none" stroke="#FFE98A" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="36" cy="126" r="9" fill="#B07A45"/><circle cx="170" cy="126" r="9" fill="#B07A45"/>
+  <circle cx="86" cy="94" r="8" fill="#fff"/><circle cx="114" cy="94" r="8" fill="#fff"/>
+  <circle cx="88" cy="95" r="4" fill="#3A2A1E"/><circle cx="112" cy="95" r="4" fill="#3A2A1E"/>
+  <path d="M92 108 q8 8 16 0" fill="none" stroke="#B07A2E" stroke-width="2.8" stroke-linecap="round"/>
+  <ellipse cx="70" cy="102" rx="6" ry="4" fill="#FFC197" opacity=".8"/><ellipse cx="130" cy="102" rx="6" ry="4" fill="#FFC197" opacity=".8"/>
+</symbol>
+
+<!-- نجمة (ن) -->
+<symbol id="an-starf" viewBox="0 0 200 210">
+  <path d="M100 15 L124 78 L190 81 L138 122 L156 187 L100 150 L44 187 L62 122 L10 81 L76 78 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="82" cy="100" r="8" fill="#fff"/><circle cx="118" cy="100" r="8" fill="#fff"/>
+  <circle cx="84" cy="101" r="4" fill="#3A2A1E"/><circle cx="116" cy="101" r="4" fill="#3A2A1E"/>
+  <circle cx="85.5" cy="99" r="1.5" fill="#fff"/><circle cx="117.5" cy="99" r="1.5" fill="#fff"/>
+  <path d="M90 116 q10 9 20 0" fill="none" stroke="#B07A2E" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="64" cy="112" rx="7" ry="5" fill="#FFAD66" opacity=".8"/><ellipse cx="136" cy="112" rx="7" ry="5" fill="#FFAD66" opacity=".8"/>
+</symbol>
+
+<!-- هدية (هـ) -->
+<symbol id="an-gift" viewBox="0 0 200 210">
+  <rect x="44" y="86" width="112" height="100" rx="14" fill="#F9A8C0" stroke="#E885A8" stroke-width="4"/>
+  <rect x="34" y="58" width="132" height="36" rx="13" fill="#F285A8" stroke="#E885A8" stroke-width="4"/>
+  <rect x="90" y="58" width="20" height="128" fill="#FFC94D"/>
+  <path d="M100 56 Q64 22 56 44 Q70 62 98 54 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="3"/>
+  <path d="M100 56 Q136 22 144 44 Q130 62 102 54 Z" fill="#FFC94D" stroke="#E8A23A" stroke-width="3"/>
+  <circle cx="100" cy="55" r="9" fill="#E8A23A"/>
+  <circle cx="72" cy="140" r="9" fill="#fff"/><circle cx="128" cy="140" r="9" fill="#fff"/>
+  <circle cx="74" cy="142" r="4.5" fill="#3A2A1E"/><circle cx="126" cy="142" r="4.5" fill="#3A2A1E"/>
+  <circle cx="75.5" cy="140" r="1.6" fill="#fff"/><circle cx="127.5" cy="140" r="1.6" fill="#fff"/>
+  <path d="M88 158 q12 10 24 0" fill="none" stroke="#A63A5A" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="54" cy="152" rx="7" ry="5" fill="#FFD3E0"/><ellipse cx="146" cy="152" rx="7" ry="5" fill="#FFD3E0"/>
+</symbol>
+
+<!-- وردة (و) -->
+<symbol id="an-flower" viewBox="0 0 200 210">
+  <path d="M100 204 V118" stroke="#6FBF6F" stroke-width="9" stroke-linecap="round"/>
+  <path d="M100 164 Q68 160 60 140 Q90 136 100 164 Z" fill="#8FD08A"/>
+  <path d="M100 164 Q132 160 140 140 Q110 136 100 164 Z" fill="#6FBF6F"/>
+  <g fill="#F9A8C0" transform="translate(100,88)">
+    <ellipse cx="0" cy="-36" rx="17" ry="25"/>
+    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(45)"/>
+    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(90)"/>
+    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(135)"/>
+    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(180)"/>
+    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(225)"/>
+    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(270)"/>
+    <ellipse cx="0" cy="-36" rx="17" ry="25" transform="rotate(315)"/>
+  </g>
+  <circle cx="100" cy="88" r="26" fill="#FFC94D"/>
+  <circle cx="92" cy="84" r="5.5" fill="#3A2A1E"/><circle cx="108" cy="84" r="5.5" fill="#3A2A1E"/>
+  <circle cx="93.5" cy="82" r="1.8" fill="#fff"/><circle cx="109.5" cy="82" r="1.8" fill="#fff"/>
+  <path d="M93 96 q7 7 14 0" fill="none" stroke="#B07A2E" stroke-width="2.8" stroke-linecap="round"/>
+  <ellipse cx="82" cy="94" rx="5.5" ry="4" fill="#FFAD66" opacity=".8"/><ellipse cx="118" cy="94" rx="5.5" ry="4" fill="#FFAD66" opacity=".8"/>
+</symbol>
+
+<!-- يد (ي) -->
+<symbol id="an-hand" viewBox="0 0 200 210">
+  <rect x="50" y="26" width="24" height="62" rx="12" fill="#F2C8A0"/>
+  <rect x="80" y="18" width="24" height="70" rx="12" fill="#F2C8A0"/>
+  <rect x="110" y="22" width="24" height="66" rx="12" fill="#F2C8A0"/>
+  <rect x="138" y="38" width="24" height="52" rx="12" fill="#F2C8A0"/>
+  <ellipse cx="154" cy="118" rx="14" ry="26" fill="#F2C8A0" transform="rotate(28 154 118)"/>
+  <rect x="44" y="76" width="122" height="82" rx="34" fill="#F2C8A0"/>
+  <rect x="40" y="150" width="130" height="30" rx="15" fill="#62B6E7"/>
+  <circle cx="78" cy="114" r="8.5" fill="#fff"/><circle cx="122" cy="114" r="8.5" fill="#fff"/>
+  <circle cx="80" cy="115" r="4.2" fill="#3A2A1E"/><circle cx="120" cy="115" r="4.2" fill="#3A2A1E"/>
+  <circle cx="81.5" cy="113" r="1.5" fill="#fff"/><circle cx="121.5" cy="113" r="1.5" fill="#fff"/>
+  <path d="M92 130 q8 8 16 0" fill="none" stroke="#B07A2E" stroke-width="2.8" stroke-linecap="round"/>
+  <ellipse cx="64" cy="128" rx="6.5" ry="4.5" fill="#FFC197" opacity=".8"/><ellipse cx="136" cy="128" rx="6.5" ry="4.5" fill="#FFC197" opacity=".8"/>
+</symbol>
+
 <!-- عناصر عالم سوسو -->
 <symbol id="w-tree" viewBox="0 0 170 200">
   <ellipse cx="85" cy="192" rx="48" ry="9" fill="#8FD08A"/>
@@ -551,7 +753,12 @@ body{
   <circle cx="62" cy="88" r="8" fill="#F26D6D"/><circle cx="108" cy="60" r="8" fill="#F26D6D"/>
   <circle cx="122" cy="102" r="8" fill="#F26D6D"/><circle cx="90" cy="94" r="8" fill="#F26D6D"/>
 </symbol>
-
+<symbol id="w-bush" viewBox="0 0 120 84">
+  <circle cx="34" cy="52" r="26" fill="#8FD08A"/><circle cx="86" cy="52" r="26" fill="#8FD08A"/>
+  <circle cx="60" cy="36" r="30" fill="#6FBF6F"/>
+  <circle cx="52" cy="30" r="8" fill="#F26D6D"/><circle cx="78" cy="42" r="8" fill="#F26D6D"/>
+  <ellipse cx="60" cy="76" rx="42" ry="7" fill="#7EC97E"/>
+</symbol>
 <symbol id="w-house" viewBox="0 0 200 190">
   <ellipse cx="100" cy="182" rx="72" ry="9" fill="#8FD08A"/>
   <rect x="128" y="34" width="16" height="26" rx="5" fill="#E8853D"/>
@@ -565,7 +772,6 @@ body{
   <path d="M121 112 h26 M134 99 v26" stroke="#E3CBA0" stroke-width="2.5"/>
   <circle cx="28" cy="172" r="12" fill="#6FBF6F"/><circle cx="44" cy="178" r="9" fill="#8FD08A"/>
 </symbol>
-
 <symbol id="w-rainbow" viewBox="0 0 240 130">
   <g fill="none" stroke-linecap="round">
     <path d="M22 120 A98 98 0 0 1 218 120" stroke="#FF8552" stroke-width="15"/>
@@ -579,7 +785,6 @@ body{
     <ellipse cx="214" cy="118" rx="24" ry="13"/><circle cx="230" cy="108" r="10"/><circle cx="196" cy="110" r="12"/>
   </g>
 </symbol>
-
 <symbol id="w-sun" viewBox="0 0 120 120">
   <g class="sun-rays" stroke="#F2B722" stroke-width="8" stroke-linecap="round">
     <path d="M60 6 v14 M60 100 v14 M6 60 h14 M100 60 h14 M22 22 l10 10 M88 88 l10 10 M98 22 l-10 10 M32 88 l-10 10"/>
@@ -588,21 +793,18 @@ body{
   <circle cx="51" cy="55" r="3.5" fill="#4A3428"/><circle cx="69" cy="55" r="3.5" fill="#4A3428"/>
   <path d="M50 66 Q60 74 70 66" fill="none" stroke="#4A3428" stroke-width="3.5" stroke-linecap="round"/>
 </symbol>
-
 <symbol id="w-cloud" viewBox="0 0 140 70">
   <g fill="#FFFFFF">
     <ellipse cx="42" cy="46" rx="30" ry="18"/><circle cx="72" cy="36" r="22"/>
     <circle cx="100" cy="46" r="18"/><rect x="40" y="42" width="66" height="22" rx="11"/>
   </g>
 </symbol>
-
 <symbol id="w-sprout" viewBox="0 0 80 92">
   <path d="M40 84 V46" stroke="#6FBF6F" stroke-width="7" stroke-linecap="round"/>
   <path d="M40 52 Q18 48 14 30 Q36 28 40 52 Z" fill="#8FD08A"/>
   <path d="M40 60 Q62 56 66 38 Q44 36 40 60 Z" fill="#6FBF6F"/>
   <ellipse cx="40" cy="84" rx="16" ry="5" fill="#8FD08A"/>
 </symbol>
-
 <symbol id="w-flower" viewBox="0 0 80 100">
   <path d="M40 96 V52" stroke="#6FBF6F" stroke-width="6" stroke-linecap="round"/>
   <path d="M40 74 Q22 70 18 56 Q36 54 40 74 Z" fill="#8FD08A"/>
@@ -615,7 +817,6 @@ body{
   </g>
   <circle cx="40" cy="40" r="10" fill="#FFC94D"/>
 </symbol>
-
 <symbol id="w-butterfly" viewBox="0 0 100 90">
   <g class="bfly-wing bfly-l" fill="#F9A8C0">
     <ellipse cx="26" cy="30" rx="16" ry="20" transform="rotate(-20 26 30)"/>
@@ -636,7 +837,6 @@ body{
 </symbol>
 <symbol id="st-heart" viewBox="0 0 100 100">
   <path d="M50 88 C22 64 10 44 22 28 C32 15 48 22 50 34 C52 22 68 15 78 28 C90 44 78 64 50 88 Z" fill="#F26D6D" stroke="#D94F4F" stroke-width="4"/>
-  <ellipse cx="34" cy="34" rx="7" ry="5" fill="#fff" opacity=".55" transform="rotate(-30 34 34)"/>
 </symbol>
 <symbol id="st-balloon" viewBox="0 0 100 130">
   <path d="M50 76 q-6 18 4 30 q8 10 -2 20" fill="none" stroke="#8A6D5B" stroke-width="3"/>
@@ -650,11 +850,9 @@ body{
   <circle cx="38" cy="42" r="13" fill="#FFF7EC"/><circle cx="62" cy="40" r="14" fill="#FFF7EC"/><circle cx="50" cy="30" r="13" fill="#FFF7EC"/>
   <path d="M27 52 h46" stroke="#E8B87E" stroke-width="3"/>
   <circle cx="50" cy="16" r="7" fill="#F26D6D"/>
-  <path d="M50 9 q3 -6 8 -5" fill="none" stroke="#7ED588" stroke-width="3" stroke-linecap="round"/>
 </symbol>
 <symbol id="st-rocket" viewBox="0 0 100 120">
   <path d="M44 84 Q50 106 56 84 Q50 92 44 84 Z" fill="#F2B722"/>
-  <path d="M47 84 Q50 98 53 84 Q50 89 47 84 Z" fill="#F26D6D"/>
   <path d="M30 60 Q12 70 16 90 L30 78 Z" fill="#FFC94D"/>
   <path d="M70 60 Q88 70 84 90 L70 78 Z" fill="#FFC94D"/>
   <path d="M50 4 Q68 28 68 62 H32 Q32 28 50 4 Z" fill="#FFF7EC" stroke="#E3CBA0" stroke-width="2.5"/>
@@ -672,9 +870,7 @@ body{
 </symbol>
 <symbol id="fd-fish" viewBox="0 0 120 120">
   <path d="M88 60 L112 40 Q108 60 112 80 Z" fill="#62B6E7"/>
-  <path d="M52 36 Q60 20 74 26 Q64 36 52 38 Z" fill="#62B6E7"/>
   <path d="M20 44 Q66 22 86 60 Q66 98 20 76 Q32 60 20 44 Z" fill="#7EC8F0"/>
-  <path d="M34 50 Q38 60 34 70" fill="none" stroke="#62B6E7" stroke-width="3"/>
   <circle cx="40" cy="54" r="6" fill="#fff"/><circle cx="41" cy="55" r="3" fill="#2C5F86"/>
 </symbol>
 <symbol id="fd-bone" viewBox="0 0 120 120">
@@ -693,9 +889,7 @@ body{
   <path d="M60 106 V64" stroke="#6FBF6F" stroke-width="6" stroke-linecap="round"/>
   <path d="M60 78 Q36 74 30 54 Q52 54 60 78 Z" fill="#8FD08A"/>
   <path d="M60 88 Q86 84 92 64 Q70 64 60 88 Z" fill="#6FBF6F"/>
-  <ellipse cx="60" cy="52" rx="8" ry="7" fill="#A8D88A"/>
-  <ellipse cx="60" cy="40" rx="7" ry="6" fill="#A8D88A"/>
-  <ellipse cx="60" cy="30" rx="6" ry="5" fill="#A8D88A"/>
+  <ellipse cx="60" cy="52" rx="8" ry="7" fill="#A8D88A"/><ellipse cx="60" cy="40" rx="7" ry="6" fill="#A8D88A"/><ellipse cx="60" cy="30" rx="6" ry="5" fill="#A8D88A"/>
 </symbol>
 <symbol id="fd-burger" viewBox="0 0 120 120">
   <path d="M26 52 Q26 22 60 22 Q94 22 94 52 Z" fill="#F2CFA0"/>
@@ -705,7 +899,7 @@ body{
   <path d="M26 71 h68 v6 q0 22 -34 22 q-34 0 -34 -22 Z" fill="#F2CFA0"/>
 </symbol>
 
-<!-- أيقونات الواجهة -->
+<!-- أيقونات -->
 <symbol id="ic-back" viewBox="0 0 32 32"><path d="M12 6 L22 16 L12 26" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="ic-speaker" viewBox="0 0 32 32"><path d="M5 12 h6 l8 -7 v22 l-8 -7 H5 Z" fill="currentColor"/><path d="M23 11 q5 5 0 10 M26 7 q8 9 0 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
 <symbol id="ic-parent" viewBox="0 0 32 32"><circle cx="11" cy="10" r="5" fill="currentColor"/><path d="M3 27 q1 -9 8 -9 q7 0 8 9 Z" fill="currentColor"/><circle cx="23" cy="12" r="4" fill="currentColor"/><path d="M18 27 q0 -7 5 -8 q5 1 5 8 Z" fill="currentColor" opacity=".6"/></symbol>
@@ -718,9 +912,6 @@ body{
 <canvas id="fx"></canvas>
 
 <script>
-/* =========================================================
-   مغامرات سوسو — تطبيق تعليمي تفاعلي (ملف واحد)
-   ========================================================= */
 'use strict';
 const $  = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -733,54 +924,65 @@ const icon = id => `<svg class="ic"><use href="#${id}"/></svg>`;
 
 const PALETTE=['#FF8552','#FFC94D','#7ED588','#62B6E7','#F9A8C0','#A58CE8'];
 
-/* ---------- البيانات ---------- */
+/* ============ كل الحروف العربية ٢٨ (٧ مراحل × ٤ حروف) ============ */
 const LETTER_LEVELS=[
-  [ {ch:'أ',word:'أَسَد',animal:'lion',color:'#E8703A'},
-    {ch:'ب',word:'بَطّة',animal:'duck',color:'#3D8FC4'},
-    {ch:'ت',word:'تِمْساح',animal:'croc',color:'#3FA34D'} ],
-  [ {ch:'ث',word:'ثُعبان',animal:'snake',color:'#8A5FB8'},
-    {ch:'ج',word:'جَمَل',animal:'camel',color:'#E8A23A'},
-    {ch:'د',word:'دُبّ',animal:'bear',color:'#5A7AD1'} ],
+  [ {ch:'أ',word:'أَسَد',thing:'lion'},   {ch:'ب',word:'بَطّة',thing:'duck'},      {ch:'ت',word:'تِمساح',thing:'croc'},    {ch:'ث',word:'ثُعبان',thing:'snake'} ],
+  [ {ch:'ج',word:'جَمَل',thing:'camel'},   {ch:'ح',word:'حوت',thing:'whale'},      {ch:'خ',word:'خَروف',thing:'sheep'},    {ch:'د',word:'دُبّ',thing:'bear'} ],
+  [ {ch:'ذ',word:'ذُرَة',thing:'corn'},    {ch:'ر',word:'رُمّان',thing:'pomegranate'},{ch:'ز',word:'زَرافة',thing:'giraffe'},{ch:'س',word:'سَمَكة',thing:'fish'} ],
+  [ {ch:'ش',word:'شَمس',thing:'sun'},      {ch:'ص',word:'صاروخ',thing:'rocket'},   {ch:'ض',word:'ضِفدَع',thing:'frog'},     {ch:'ط',word:'طائرة',thing:'plane'} ],
+  [ {ch:'ظ',word:'ظَبي',thing:'gazelle'},  {ch:'ع',word:'عُصفور',thing:'bird'},    {ch:'غ',word:'غَيمة',thing:'cloudy'},   {ch:'ف',word:'فيل',thing:'elephant'} ],
+  [ {ch:'ق',word:'قَمَر',thing:'moon'},    {ch:'ك',word:'كَلب',thing:'dog'},       {ch:'ل',word:'لَيمون',thing:'lemon'},   {ch:'م',word:'مَوز',thing:'banana'} ],
+  [ {ch:'ن',word:'نَجمة',thing:'starf'},   {ch:'ه',word:'هَديّة',thing:'gift',disp:'هـ'}, {ch:'و',word:'وَردة',thing:'flower'},  {ch:'ي',word:'يَد',thing:'hand'} ],
 ];
-const ANIMALS={
-  lion:{name:'الأسد',   voice:'راااار'},
-  elephant:{name:'الفيل', voice:'بررر بررر'},
-  cat:{name:'القط',     voice:'مياااو'},
-  cow:{name:'البقرة',   voice:'ممووو'},
-  dog:{name:'الكلب',    voice:'هوف هوف'},
-  duck:{name:'البطة',   voice:'كواك كواك'},
+/* أسماء الحروف للنطق الصحيح (ألِف، باء، تاء…) */
+const LETTER_NAMES={'أ':'ألِف','ب':'باء','ت':'تاء','ث':'ثاء','ج':'جيم','ح':'حاء','خ':'خاء','د':'دال','ذ':'ذال','ر':'راء','ز':'زاي','س':'سين','ش':'شين','ص':'صاد','ض':'ضاد','ط':'طاء','ظ':'ظاء','ع':'عين','غ':'غين','ف':'فاء','ق':'قاف','ك':'كاف','ل':'لام','م':'ميم','ن':'نون','ه':'هاء','و':'واو','ي':'ياء'};
+const LCOLORS=['#E8703A','#3D8FC4','#3FA34D','#8A5FB8','#E8A23A','#5A7AD1','#D6548A','#2E9E8F','#C25858','#7B8A2E','#B05BB5','#4E8AC2','#C87A2E','#4E7A9E'];
+let _gi=0; LETTER_LEVELS.forEach(lv=>lv.forEach(L=>{ L.color=L.color||LCOLORS[_gi++%LCOLORS.length]; }));
+const ALL_LETTERS=LETTER_LEVELS.flat();
+const LMAP={}; ALL_LETTERS.forEach(L=>LMAP[L.ch]=L);
+const disp = L => L.disp||L.ch;
+
+/* أسماء كل الكائنات */
+const THINGS={
+  lion:{name:'الأسد'}, duck:{name:'البطة'}, croc:{name:'التمساح'}, snake:{name:'الثعبان'},
+  camel:{name:'الجمل'}, whale:{name:'الحوت'}, sheep:{name:'الخروف'}, bear:{name:'الدُبّ'},
+  corn:{name:'الذُرَة'}, pomegranate:{name:'الرُمّان'}, giraffe:{name:'الزَرافة'}, fish:{name:'السَمَكة'},
+  sun:{name:'الشَمس'}, rocket:{name:'الصاروخ'}, frog:{name:'الضِفدَع'}, plane:{name:'الطائرة'},
+  gazelle:{name:'الظَبي'}, bird:{name:'العُصفور'}, cloudy:{name:'الغَيمة'}, elephant:{name:'الفيل'},
+  moon:{name:'القَمَر'}, dog:{name:'الكَلب'}, lemon:{name:'اللَيمون'}, banana:{name:'المَوز'},
+  starf:{name:'النَجمة'}, gift:{name:'الهَديّة'}, flower:{name:'الوَردة'}, hand:{name:'اليَد'},
 };
-const FOODS={
-  fish:{name:'سَمَكة'}, bone:{name:'عظمة'}, apple:{name:'تفاحة'}, bread:{name:'خبزة'}, grass:{name:'عشب'}, burger:{name:'همبرغر'}
-};
+const ANIMALS={ lion:{name:'الأسد',voice:'راااار'}, elephant:{name:'الفيل',voice:'بررر بررر'},
+  cat:{name:'القط',voice:'مياااو'}, cow:{name:'البقرة',voice:'ممووو'}, dog:{name:'الكلب',voice:'هوف هوف'}, duck:{name:'البطة',voice:'كواك كواك'} };
+const FOODS={ fish:{name:'سَمَكة'}, bone:{name:'عظمة'}, apple:{name:'تفاحة'}, bread:{name:'خبزة'}, grass:{name:'عشب'}, burger:{name:'همبرغر'} };
 const FEED_ROUNDS=[ {animal:'cat',food:'fish'}, {animal:'dog',food:'bone'}, {animal:'elephant',food:'apple'} ];
 const CHEERS=['صح يا {n}!','شاطر يا {n}!','برافو عليك يا {n}!','ممتاز يا {n}!','واااو! عرفت الإجابة يا {n}!','رائع يا {n}!'];
 const TRIES=['قربت يا {n}! جرب تاني.','مش دي يا {n}! نجرب مرة كمان؟','اوك يا {n}! خد بالك وجرب تاني.'];
 const STICKERS=[
-  {id:'balloon',name:'بالونة', hint:'خلّص عالم الحروف', cond:()=>S.lettersLevelDone>=1},
-  {id:'heart',  name:'قلب',    hint:'خلّص عالم الحيوانات', cond:()=>S.animalsDone},
-  {id:'star',   name:'نجمة ذهبية', hint:'اجمع 15 نجمة', cond:()=>S.stars>=15},
-  {id:'cupcake',name:'كوب كيك',   hint:'اجمع 25 نجمة', cond:()=>S.stars>=25},
-  {id:'rocket', name:'صاروخ',     hint:'اجمع 40 نجمة', cond:()=>S.stars>=40},
+  {id:'balloon',name:'بالونة',    hint:'خلّص أول مرحلة حروف', cond:()=>S.lettersLevelDone>=1},
+  {id:'heart',  name:'قلب',       hint:'خلّص عالم الحيوانات',  cond:()=>S.animalsDone},
+  {id:'star',   name:'نجمة ذهبية', hint:'اجمع 15 نجمة',       cond:()=>S.stars>=15},
+  {id:'cupcake',name:'كوب كيك',   hint:'اجمع 30 نجمة',        cond:()=>S.stars>=30},
+  {id:'rocket', name:'صاروخ',     hint:'اجمع 50 نجمة',        cond:()=>S.stars>=50},
 ];
 
-/* ---------- الحالة والتخزين ---------- */
-const KEY='soso-adventures-v1';
-const DEFAULTS={name:'سوسو',named:false,stars:0,stickers:[],lettersLearned:[],animalsLearned:[],lettersLevel:0,lettersLevelDone:0,animalsDone:false,playSeconds:0,flags:{},today:{date:'',stars:0,letters:[],animals:[]},muted:false};
+/* ---------- الحالة ---------- */
+const KEY='soso-adventures-v2';
+const DEFAULTS={name:'سوسو',named:false,stars:0,stickers:[],lettersLearned:[],thingsLearned:[],animalsLearned:[],lettersLevel:0,lettersLevelDone:0,animalsDone:false,playSeconds:0,flags:{},today:{date:'',stars:0,letters:[],animals:[]},muted:false,voiceName:''};
 let S;
 try{ S=Object.assign({},DEFAULTS,JSON.parse(localStorage.getItem(KEY)||'{}')); }catch(e){ S={...DEFAULTS}; }
-S.flags=S.flags||{}; S.today=S.today||{date:'',stars:0,letters:[],animals:[]};
+S.flags=S.flags||{}; S.thingsLearned=S.thingsLearned||[]; S.today=S.today||{date:'',stars:0,letters:[],animals:[]};
 const save=()=>{ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} };
 function ensureToday(){ const d=new Date().toDateString(); if(S.today.date!==d){ S.today={date:d,stars:0,letters:[],animals:[]}; save(); } }
 
-/* ---------- الصوت: مولّد + نطق ---------- */
+/* ---------- الصوت المولّد + النطق الطفولي ---------- */
 const A={ctx:null,
   init(){ if(!this.ctx){ const C=window.AudioContext||window.webkitAudioContext; if(!C) return;
       this.ctx=new C(); this.master=this.ctx.createGain(); this.master.gain.value=.9; this.master.connect(this.ctx.destination); }
     if(this.ctx.state==='suspended') this.ctx.resume(); },
   t(){ return this.ctx?this.ctx.currentTime:0; }
 };
-function tone(o){ // نغمة واحدة مرنة
+function tone(o){
   if(!A.ctx||S.muted) return;
   const c=A.ctx, t=A.t()+(o.t||0), dur=o.dur||.2;
   const osc=c.createOscillator(); osc.type=o.type||'sine';
@@ -792,14 +994,14 @@ function tone(o){ // نغمة واحدة مرنة
   g.gain.linearRampToValueAtTime(o.vol||.3,t+(o.attack||.02));
   g.gain.exponentialRampToValueAtTime(.001,t+dur);
   let node=osc;
-  if(o.lp){ const f=c.createFilter?null:null; const fl=c.createBiquadFilter(); fl.type='lowpass'; fl.frequency.value=o.lp; osc.connect(fl); node=fl; }
+  if(o.lp){ const fl=c.createBiquadFilter(); fl.type='lowpass'; fl.frequency.value=o.lp; osc.connect(fl); node=fl; }
   node.connect(g); g.connect(A.master);
   osc.start(t); osc.stop(t+dur+.1);
 }
-function noise(o){ // نفخة ضجيج مفلترة
+function noise(o){
   if(!A.ctx||S.muted) return;
   const c=A.ctx, t=A.t()+(o.t||0), dur=o.dur||.2;
-  const buf=c.createBuffer(1,c.sampleRate*dur,c.sampleRate), d=buf.getChannelData(0);
+  const buf=c.createBuffer(1,Math.max(1,c.sampleRate*dur|0),c.sampleRate), d=buf.getChannelData(0);
   for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
   const src=c.createBufferSource(); src.buffer=buf;
   const fl=c.createBiquadFilter(); fl.type=o.type||'lowpass'; fl.frequency.value=o.f||1000;
@@ -820,29 +1022,57 @@ const SFX={
   gentle:()=>{ tone({f:392,f2:330,dur:.32,type:'sine',vol:.24}); tone({f:330,f2:294,t:.28,dur:.34,type:'sine',vol:.2}); },
   munch:()=>{ noise({dur:.12,f:420,vol:.4}); noise({t:.16,dur:.12,f:360,vol:.35}); },
   beat:()=>tone({f:1000,f2:600,dur:.06,type:'square',vol:.14}),
+  sparkle:()=>[1046,1318,1568].forEach((f,i)=>tone({f,t:i*.07,dur:.14,type:'triangle',vol:.22})),
 };
-/* أصوات الحيوانات — مولّدة بالكامل */
+/* أصوات الحيوانات والكائنات — كلها مولّدة */
 const ANIMAL_SFX={
   cat(){ tone({f:640,f2:880,dur:.28,type:'sine',vol:.42,attack:.05,lp:2500}); tone({f:830,f2:390,t:.3,dur:.5,type:'sine',vol:.42,attack:.04,lp:2200}); },
   lion(){ noise({dur:1.2,f:240,vol:.5}); tone({f:95,f2:70,dur:1.2,type:'sawtooth',vol:.4,lp:280,wob:[7,12]}); tone({f:190,f2:130,dur:1.1,type:'sawtooth',vol:.15,lp:400}); },
   elephant(){ tone({f:230,f2:400,dur:.35,type:'sawtooth',vol:.4,lp:1100,wob:[16,25]}); tone({f:380,f2:180,t:.36,dur:.55,type:'sawtooth',vol:.38,lp:900,wob:[14,30]}); },
-  duck(){ [0,.22,.44].forEach((d,i)=>tone({f:300-(i*18),f2:230,dur:.16,t:d,type:'sawtooth',vol:.4,lp:1100,attack:.01})); },
+  duck(){ [0,.22,.44].forEach((d,i)=>tone({f:300-(i*18),f2:230,dur:.16,t:d,type:'sawtooth',vol:.4,lp:1100})); },
   dog(){ [0,.28].forEach(d=>{ tone({f:200,f2:90,dur:.16,t:d,type:'sawtooth',vol:.45,lp:700}); noise({dur:.14,t:d,f:900,f2:300,vol:.3}); }); },
   cow(){ tone({f:130,f2:170,dur:.4,type:'sawtooth',vol:.42,lp:320,attack:.1}); tone({f:160,f2:75,t:.4,dur:.8,type:'sawtooth',vol:.42,lp:280}); },
   snake(){ noise({dur:.7,f:4000,f2:7000,type:'bandpass',vol:.16}); },
   camel(){ tone({f:160,f2:120,dur:.5,type:'sawtooth',vol:.3,lp:600,wob:[5,8]}); },
   bear(){ tone({f:110,f2:80,dur:.5,type:'sawtooth',vol:.38,lp:350,wob:[6,10]}); },
+  sheep(){ tone({f:230,f2:180,dur:.55,type:'sawtooth',vol:.32,lp:900,wob:[9,12],attack:.08}); },
+  whale(){ tone({f:75,f2:130,dur:.7,type:'sine',vol:.4,lp:400,attack:.12}); tone({f:130,f2:60,t:.7,dur:.8,type:'sine',vol:.35,lp:400}); noise({t:.05,dur:.5,f:1200,f2:3000,type:'bandpass',vol:.1}); },
+  frog(){ [0,.3].forEach(t=>tone({f:120,f2:85,dur:.14,t,type:'square',vol:.28,lp:500})); },
+  bird(){ [0,.18,.36].forEach((t,i)=>tone({f:1500+(i*100),f2:1900,dur:.1,t,type:'sine',vol:.24})); },
+  fish(){ [0,.22].forEach(t=>tone({f:300,f2:120,dur:.12,t,type:'sine',vol:.3})); },
+  plane(){ noise({dur:1.4,f:400,f2:1600,type:'bandpass',vol:.28}); },
+  rocket(){ noise({dur:1.2,f:300,f2:2500,type:'bandpass',vol:.3}); tone({f:120,f2:380,dur:1.2,type:'sawtooth',vol:.14,lp:800}); },
+  croc(){ noise({dur:.5,f:500,f2:900,type:'bandpass',vol:.15}); },
 };
-/* النطق العربي عبر محرك الجهاز */
+function thingSound(thing){
+  const fn=ANIMAL_SFX[thing];
+  if(fn) fn(); else SFX.sparkle();
+}
+
+/* ---------- النطق العربي: اختيار صوت طفولي + نبرة عالية + إيقاع أبطأ ---------- */
 let arVoice=null;
-function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); arVoice=vs.find(v=>/^ar/i.test(v.lang))||null; }catch(e){} }
-if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
-function speak(txt){
+const FEMALE_HINTS=['zariyah','zariya','hoda','هدى','salma','سالما','laila','ليلى','hala','هالة','maryam','maryam','sana','google','female','انثى'];
+function pickVoice(){
+  try{
+    const vs=speechSynthesis.getVoices();
+    const ar=vs.filter(v=>/^ar/i.test(v.lang));
+    if(!ar.length){ arVoice=null; return; }
+    if(S.voiceName){ const f=ar.find(v=>v.name===S.voiceName); if(f){ arVoice=f; return; } }
+    for(const p of FEMALE_HINTS){ const f=ar.find(v=>(v.name||'').toLowerCase().includes(p)); if(f){ arVoice=f; return; } }
+    arVoice=ar[0];
+  }catch(e){}
+}
+if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged=()=>{ pickVoice(); if($('#pVoice')) fillVoiceSelect(); }; }
+function speak(txt,opts={}){
   if(S.muted) return;
-  try{ speechSynthesis.cancel();
+  try{
+    speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(txt);
-    u.lang='ar-SA'; if(!arVoice) pickVoice(); if(arVoice) u.voice=arVoice;
-    u.rate=.92; u.pitch=1.2; u.volume=1; speechSynthesis.speak(u);
+    u.lang='ar-SA';
+    if(!arVoice) pickVoice(); if(arVoice) u.voice=arVoice;
+    /* نبرة عالية + كلام أبطأ قليلًا = صوت طفولي ونطق واضح وصح */
+    u.rate=opts.rate||0.88; u.pitch=opts.pitch||1.45; u.volume=1;
+    speechSynthesis.speak(u);
   }catch(e){}
 }
 const hasArabicVoice=()=>{ pickVoice(); return !!arVoice; };
@@ -897,7 +1127,6 @@ const logoMark=`<svg viewBox="0 0 64 64" class="logo-mark">
   <path d="M25 41 Q33 49 41 41" fill="none" stroke="#4A3428" stroke-width="3.5" stroke-linecap="round"/>
   <ellipse cx="16" cy="40" rx="5" ry="3.5" fill="#F9A8C0"/><ellipse cx="50" cy="40" rx="5" ry="3.5" fill="#F9A8C0"/>
 </svg>`;
-/* عيون لولو تتبع إصبع الطفل */
 let _eyeRaf=false;
 document.addEventListener('pointermove',e=>{ if(_eyeRaf) return; _eyeRaf=true;
   requestAnimationFrame(()=>{ _eyeRaf=false;
@@ -919,7 +1148,6 @@ function say(text,act){
 function luluAct(l,act){ if(!l) return; l.classList.remove('act-jump','act-clap','act-dance','act-wiggle','act-wave');
   void l.offsetWidth; l.classList.add('act-'+act); }
 
-/* ---------- مساعدات SVG ---------- */
 const anSVG=(id,cls='')=>`<svg class="${cls}"><use href="#an-${id}"/></svg>`;
 const foodSVG=(id,cls='')=>`<svg class="${cls}"><use href="#fd-${id}"/></svg>`;
 function balloonSVG(color){ return `<svg viewBox="0 0 90 124">
@@ -929,7 +1157,7 @@ function balloonSVG(color){ return `<svg viewBox="0 0 90 124">
   <path d="M45 88 q-6 15 2 30" fill="none" stroke="#B0987E" stroke-width="2.5"/>
 </svg>`; }
 
-/* ---------- مسار التطبيق ---------- */
+/* ---------- المسار ---------- */
 const app=$('#app');
 let flow=null, viewToken=0;
 function baseStars(){ return `<div class="stars-pill" id="starsPill">${icon('ic-star')}<b id="starCount">${S.stars}</b></div>`; }
@@ -937,14 +1165,14 @@ function replayBtn(){ return `<button class="round-btn" id="btnReplay" aria-labe
 function bindReplay(){ const b=$('#btnReplay'); if(b) b.onclick=()=>{ SFX.tap(); speak(lastSay); }; }
 function bindBack(fn){ const b=$('#btnBack'); if(b) b.onclick=()=>{ SFX.tap(); speechSynthesis&&speechSynthesis.cancel(); fn(); }; }
 
-/* ====== شاشة الترحيب ====== */
+/* ====== الترحيب ====== */
 function goWelcome(){
   flow=null;
   app.innerHTML=`<div class="screen welcome-screen">
     <div class="welcome-hero">
       ${logoMark}
       <div class="logo-title">مغامرات <b>سوسو</b></div>
-      <div class="logo-sub">لعب وتعلّم للصغار من ٢ لـ ٤ سنين</div>
+      <div class="logo-sub">كل الحروف العربية والحيوانات — لعب وتعلّم للصغار</div>
       ${luluSVG('lulu-hero idle')}
     </div>
     ${S.named?'':`<div class="name-box">
@@ -961,11 +1189,11 @@ function goWelcome(){
   };
 }
 
-/* ====== الشاشة الرئيسية ====== */
-function goHome(){
+/* ====== الرئيسية ====== */
+function renderHome(){
   flow=null; ensureToday();
-  const lvl=LETTER_LEVELS[Math.min(S.lettersLevel,LETTER_LEVELS.length-1)];
-  const lvlDone=S.lettersLevelDone>=LETTER_LEVELS.length;
+  const lv=LETTER_LEVELS[Math.min(S.lettersLevel,6)];
+  const allDone=S.lettersLevelDone>=7;
   const nAnim=S.animalsLearned.length;
   app.innerHTML=`<div class="screen">
     <div class="topbar">
@@ -982,16 +1210,14 @@ function goHome(){
     </div>
     <div class="world-cards">
       <div class="world-card wc-letters" id="goLetters">
-        <div class="wc-art"><div class="mini-letters">${lvl.map(L=>`<b style="background:${L.color}">${L.ch}</b>`).join('')}</div></div>
-        <div class="wc-body"><h2>عالم الحروف</h2><p>${lvlDone?'نتلعب بالحروف تاني!':`نتعلّم: ${lvl.map(L=>L.ch).join(' · ')}`}</p></div>
-        ${S.lettersLevelDone>=1?'<span class="wc-badge">نجمه ذهبيه</span>':''}
+        <div class="wc-art"><div class="mini-letters">${lv.map(L=>`<b style="background:${L.color}">${disp(L)}</b>`).join('')}</div></div>
+        <div class="wc-body"><h2>عالم الحروف</h2><p>${allDone?'برافو! عرفت كل الـ٢٨ حرف! نراجعهم؟':`المرحلة ${Math.min(S.lettersLevel,6)+1} من ٧ — نتعلّم: ${lv.map(L=>disp(L)).join(' · ')}`}</p></div>
+        ${allDone?'<span class="wc-badge">بطل الحروف!</span>':S.lettersLevelDone>0?`<span class="wc-badge">${S.lettersLevelDone}/٧ مراحل</span>`:''}
       </div>
       <div class="world-card wc-animals" id="goAnimals">
-        <div class="wc-art"><div class="head-row">
-          ${anSVG('lion')}${anSVG('elephant')}${anSVG('cat')}
-        </div></div>
+        <div class="wc-art"><div class="head-row">${anSVG('lion')}${anSVG('elephant')}${anSVG('cat')}</div></div>
         <div class="wc-body"><h2>عالم الحيوانات</h2><p>${nAnim?`عرفت ${nAnim} حيوانات!`:'نتعرّف على الحيوانات وأصواتها'}</p></div>
-        ${S.animalsDone?'<span class="wc-badge">نجمه ذهبيه</span>':''}
+        ${S.animalsDone?'<span class="wc-badge">بطل الحيوانات!</span>':''}
       </div>
       <div class="world-card wc-soso" id="goWorld">
         <div class="wc-art"><div class="mini-scene">
@@ -1008,8 +1234,11 @@ function goHome(){
   $('#goAnimals').onclick=()=>{ SFX.tap(); startAnimals(); };
   $('#goWorld').onclick=()=>{ SFX.tap(); goWorldScene(); };
   bindReplay();
-  $('#goWorld').querySelector('.wc-art svg').style.pointerEvents='none';
 }
+let goHome=()=>{ renderHome();
+  setTimeout(()=>{ const news=STICKERS.filter(st=>st.cond()&&!S.stickers.includes(st.id));
+    if(news.length){ news.forEach(st=>S.stickers.push(st.id)); save(); toastSticker(news[0]); } },600);
+};
 
 /* ====== هيكل شاشة العوالم ====== */
 function worldShell(){
@@ -1021,7 +1250,7 @@ function worldShell(){
     </div>
     <div class="stage">
       <div class="stage-lulu">
-        <div id="luluMain">${luluSVG('idle')}</div>
+        <div>${luluSVG('idle')}</div>
         <div class="replay-row">
           <div class="bubble"><span id="bubbleText"></span></div>
           ${replayBtn()}
@@ -1030,18 +1259,13 @@ function worldShell(){
       <div class="playzone" id="playzone"></div>
     </div>
   </div>`;
-  $('#luluMain').id='luluMain';
-  const wrapper=$('#luluMain');
-  wrapper.id='';
-  const l=wrapper.querySelector('.lulu'); l.id='luluMain';
+  const l=app.querySelector('.lulu'); l.id='luluMain';
   bindBack(goHome); bindReplay();
-  return $('#playzone');
 }
 const playzone=()=>$('#playzone');
 function updateDots(i,total){ const d=$('#dots'); if(!d) return;
   d.innerHTML=Array.from({length:total},(_,k)=>`<span class="${k<i?'done':k===i?'now':''}"></span>`).join(''); }
 
-/* ---------- مكافآت ---------- */
 function awardStar(x,y){
   S.stars++; S.today.stars=(S.today.stars||0)+1; save();
   const st=el(`<div class="fly-star">${icon('st-star')}</div>`);
@@ -1075,9 +1299,8 @@ function wrongFX(elm,msg){
 /* ====== محرّك الخطوات ====== */
 const MAX_SESSION=10*60*1000;
 function runSteps(world,steps){
-  flow={steps,i:0,world,start:Date.now(),stars:0};
-  worldShell();
-  nextStep();
+  flow={steps,i:0,world,start:Date.now()};
+  worldShell(); nextStep();
 }
 function nextStep(){
   if(!flow) return;
@@ -1089,106 +1312,113 @@ function nextStep(){
 }
 setInterval(()=>{ if(flow && !document.hidden){ S.playSeconds++; if(S.playSeconds%10===0) save(); } },1000);
 
-/* ================= (١) تعليم حرف ================= */
+/* ================= تعليم حرف ================= */
 function viewLearnLetter(step,done){
   const tok=++viewToken, L=step.L, pz=playzone();
+  const nm=LETTER_NAMES[L.ch];
   pz.innerHTML=`<div class="game-head">حرف جديد!</div>
     <div class="learn-card">
-      <div class="big-letter" id="bigL" style="color:${L.color}">${L.ch}</div>
+      <div class="big-letter" id="bigL" style="color:${L.color}">${disp(L)}</div>
       <div class="learn-word"><b style="color:${L.color}">${L.word[0]}</b>${L.word.slice(1)}</div>
-      <div class="learn-animal" id="learnAn">${anSVG(L.animal)}</div>
+      <div class="learn-animal" id="learnAn">${anSVG(L.thing)}</div>
     </div>
     <button class="btn btn-sun btn-xl" id="btnNext" style="opacity:0; align-self:center">يلا نكمل!</button>`;
   const bl=$('#bigL'), an=$('#learnAn');
-  bl.onclick=()=>{ SFX.tap(); bl.animate([{transform:'scale(1)'},{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:300}); speak(L.ch); };
-  an.onclick=()=>{ an.classList.remove('bounce'); void an.offsetWidth; an.classList.add('bounce'); ANIMAL_SFX[L.animal](); };
-  say(`بص يا ${S.name}! ده حرف ${L.ch}`,'jump');
-  (async()=>{ await wait(1700); if(tok!==viewToken) return; speak(L.ch); bl.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:400});
-    await wait(1500); if(tok!==viewToken) return;
-    say(`${L.ch}... ${L.word}!`,'wiggle'); an.classList.add('bounce'); ANIMAL_SFX[L.animal]();
-    await wait(2000); if(tok!==viewToken) return;
+  bl.onclick=()=>{ SFX.tap(); bl.animate([{transform:'scale(1)'},{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:300}); speak(nm,{rate:.8,pitch:1.5}); };
+  an.onclick=()=>{ an.classList.remove('bounce'); void an.offsetWidth; an.classList.add('bounce'); thingSound(L.thing);
+    if(!ANIMAL_SFX[L.thing]) setTimeout(()=>speak(L.word),520); };
+  say(`بص يا ${S.name}! ده حرف ${nm}`,'jump');
+  (async()=>{
+    await wait(1800); if(tok!==viewToken) return;
+    speak(nm,{rate:.8,pitch:1.5}); bl.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:400});
+    await wait(1600); if(tok!==viewToken) return;
+    say(`${nm}... ${L.word}!`,'wiggle'); an.classList.add('bounce'); thingSound(L.thing);
+    await wait(2100); if(tok!==viewToken) return;
     const b=$('#btnNext'); if(b){ b.style.opacity=1; b.classList.add('hint'); }
   })();
   $('#btnNext').onclick=()=>{ if(tok!==viewToken) return;
     SFX.tap();
     if(!S.lettersLearned.includes(L.ch)){ S.lettersLearned.push(L.ch); S.today.letters.push(L.ch); }
+    if(!S.thingsLearned.includes(L.thing)) S.thingsLearned.push(L.thing);
     save();
     const r=bl.getBoundingClientRect(); SFX.star();
     awardStar(r.left+r.width/2,r.top+r.height/2);
-    say(`شاطر يا ${S.name}! اتعلمت حرف ${L.ch}!`,'clap');
+    say(`شاطر يا ${S.name}! اتعلمت حرف ${nm}!`,'clap');
     setTimeout(()=>{ if(tok===viewToken) done(); },1400);
   };
 }
 
-/* ================= (٢) فين الحرف؟ ================= */
+/* ================= فين الحرف؟ ================= */
 function viewPickLetter(step,done){
   const tok=++viewToken, letters=step.letters, pz=playzone();
+  const rounds=shuffle(letters).slice(0,3);
   let round=0, wrongCount=0, locked=false;
   function ask(){
     if(tok!==viewToken) return;
-    if(round>=letters.length){ done(); return; }
+    if(round>=rounds.length){ done(); return; }
     wrongCount=0; locked=false;
-    const target=letters[round];
-    const opts=shuffle(letters);
-    pz.innerHTML=`<div class="game-head">فين حرف <span style="color:${target.color}">${target.ch}</span> يا ${S.name}؟</div>
-      <div class="choices-row">${opts.map(L=>`<div class="tile choice-tile" data-ch="${L.ch}"><div class="big-letter" style="font-size:5.5rem">${L.ch}</div></div>`).join('')}</div>`;
-    say(`فين حرف ${target.ch} يا ${S.name}؟`);
+    const T=rounds[round];
+    const others=shuffle(letters.filter(l=>l!==T)).slice(0,2);
+    const opts=shuffle([T,...others]);
+    pz.innerHTML=`<div class="game-head">فين حرف <span style="color:${T.color}">${disp(T)}</span> يا ${S.name}؟</div>
+      <div class="choices-row">${opts.map(L=>`<div class="tile choice-tile" data-ch="${L.ch}"><div class="big-letter" style="font-size:5.5rem">${disp(L)}</div></div>`).join('')}</div>`;
+    say(`فين حرف ${LETTER_NAMES[T.ch]} يا ${S.name}؟`);
     $$('.choice-tile').forEach(t=>t.onclick=()=>{
       if(locked||tok!==viewToken) return;
-      if(t.dataset.ch===target.ch){
-        locked=true;
-        correctFX(t,()=>{ round++; ask(); });
+      if(t.dataset.ch===T.ch){
+        locked=true; correctFX(t,()=>{ round++; ask(); });
       }else{
         wrongCount++;
-        wrongFX(t,`دي حرف ${t.dataset.ch} يا ${S.name}! دور على حرف ${target.ch}.`);
-        if(wrongCount>=2){ $$('.choice-tile').forEach(x=>{ if(x.dataset.ch===target.ch) x.classList.add('hint'); }); say(`بص! حرف ${target.ch} بيلمع!`); }
+        wrongFX(t,`دي حرف ${LETTER_NAMES[t.dataset.ch]}! دور على حرف ${LETTER_NAMES[T.ch]}.`);
+        if(wrongCount>=2){ $$('.choice-tile').forEach(x=>{ if(x.dataset.ch===T.ch) x.classList.add('hint'); }); say(`بص! حرف ${disp(T)} بيلمع!`); }
       }
     });
   }
   ask();
 }
 
-/* ================= (٣) فقّع البالونة ================= */
+/* ================= فقّع البالونة ================= */
 function viewBalloons(step,done){
   const tok=++viewToken, letters=step.letters, pz=playzone();
+  const rounds=shuffle(letters).slice(0,3);
   let round=0;
   function spawn(){
     if(tok!==viewToken) return;
-    if(round>=letters.length){ done(); return; }
-    const target=letters[round];
-    const pool=[target,...shuffle(letters.filter(l=>l!==target)),pick(letters),pick(letters)];
-    const uniq=[...new Set(pool)].slice(0,5);
-    pz.innerHTML=`<div class="game-head">فقّع البالونة اللي فيها حرف <span style="color:${target.color}">${target.ch}</span>!</div>
+    if(round>=rounds.length){ done(); return; }
+    const T=rounds[round];
+    const pool=[...shuffle(letters).filter(l=>l!==T),pick(letters),pick(letters)];
+    const uniq=[T,...new Set(pool)].slice(0,5);
+    pz.innerHTML=`<div class="game-head">فقّع البالونة اللي فيها حرف <span style="color:${T.color}">${disp(T)}</span>!</div>
       <div class="balloons-area" id="bArea"></div>
       <div class="game-actions">${replayBtn()}</div>`;
     bindReplay();
     const area=$('#bArea');
-    uniq.forEach((ch,i)=>{
-      const b=el(`<div class="balloon" data-ch="${ch}" style="left:${5+ i*(90/uniq.length)}%; top:${8+rnd(30)}%; --dur:${3.4+rnd(3)}s; --delay:-${rnd(30)/10}s; --off:${10+rnd(20)}px">
-        ${balloonSVG(PALETTE[rnd(PALETTE.length)])}<span class="bl">${ch}</span></div>`);
+    uniq.forEach((L,i)=>{
+      const b=el(`<div class="balloon" data-ch="${L.ch}" style="left:${4+i*(88/uniq.length)}%; top:${8+rnd(28)}%; --dur:${3.4+rnd(3)}s; --delay:-${rnd(30)/10}s; --off:${10+rnd(20)}px">
+        ${balloonSVG(PALETTE[rnd(PALETTE.length)])}<span class="bl">${disp(L)}</span></div>`);
       b.onclick=()=>{ if(tok!==viewToken) return;
         if(b.classList.contains('popped')) return;
-        if(b.dataset.ch===target.ch){
+        if(b.dataset.ch===T.ch){
           b.classList.add('popped'); SFX.pop();
           const r=b.getBoundingClientRect(); FX.burst(r.left+r.width/2,r.top+r.height/2,22);
           correctFX(b,()=>{ round++; spawn(); });
         }else{
           b.classList.remove('nope'); void b.offsetWidth; b.classList.add('nope');
-          wrongFX(null,`دي فيها حرف ${b.dataset.ch}! دور على حرف ${target.ch} يا ${S.name}.`);
+          wrongFX(null,`دي فيها حرف ${LETTER_NAMES[b.dataset.ch]}! دور على حرف ${LETTER_NAMES[T.ch]}.`);
         }
       };
       area.appendChild(b);
     });
-    say(`فقّع البالونة اللي فيها حرف ${target.ch} يا ${S.name}!`);
+    say(`فقّع البالونة اللي فيها حرف ${LETTER_NAMES[T.ch]} يا ${S.name}!`);
   }
   spawn();
 }
 
-/* ================= (٤) لوّن الحرف بإصبعك ================= */
+/* ================= لوّن الحرف بإصبعك ================= */
 function viewTrace(step,done){
   const tok=++viewToken, L=step.L, pz=playzone();
-  const SZ=360;
-  pz.innerHTML=`<div class="game-head">لوّن حرف <span style="color:${L.color}">${L.ch}</span> بإصبعك يا ${S.name}!</div>
+  const SZ=360, txt=disp(L);
+  pz.innerHTML=`<div class="game-head">لوّن حرف <span style="color:${L.color}">${txt}</span> بإصبعك يا ${S.name}!</div>
     <div class="trace-wrap">
       <canvas id="traceCv" width="${SZ}" height="${SZ}"></canvas>
       <div class="trace-progress"><i id="traceFill"></i></div>
@@ -1203,18 +1433,16 @@ function viewTrace(step,done){
     const off=document.createElement('canvas'); off.width=SZ; off.height=SZ;
     const o=off.getContext('2d');
     o.font='700 260px "Baloo Bhaijaan 2", sans-serif'; o.textAlign='center'; o.textBaseline='middle';
-    o.fillStyle='#000'; o.fillText(L.ch,SZ/2,SZ/2+10);
+    o.fillStyle='#000'; o.fillText(txt,SZ/2,SZ/2+10);
     const d=o.getImageData(0,0,SZ,SZ).data;
     pts=[]; for(let y=6;y<SZ;y+=9) for(let x=6;x<SZ;x+=9){ if(d[(y*SZ+x)*4+3]>60) pts.push([x,y]); }
   }
   function drawBase(){
     ctx.clearRect(0,0,SZ,SZ);
     ctx.font='700 260px "Baloo Bhaijaan 2", sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.fillStyle=L.color+'26'; ctx.fillText(L.ch,SZ/2,SZ/2+10);
+    ctx.fillStyle=L.color+'26'; ctx.fillText(txt,SZ/2,SZ/2+10);
   }
   function redraw(){ drawBase(); ctx.drawImage(paint,0,0); }
-  function strokeStyle(){ pctx.lineCap='round'; pctx.lineJoin='round'; pctx.lineWidth=27;
-    pctx.strokeStyle=pick(PALETTE); }
   function measure(){
     if(!pts.length) return 0;
     const d=pctx.getImageData(0,0,SZ,SZ).data;
@@ -1235,7 +1463,8 @@ function viewTrace(step,done){
   cv.addEventListener('pointerdown',e=>{
     if(finished) return; drawing=true; cv.setPointerCapture(e.pointerId);
     const [x,y]=pos(e); last=[x,y];
-    strokeStyle(); pctx.beginPath(); pctx.moveTo(x,y); pctx.lineTo(x+1.5,y+1.5); pctx.stroke(); redraw();
+    pctx.lineCap='round'; pctx.lineJoin='round'; pctx.lineWidth=27; pctx.strokeStyle=pick(PALETTE);
+    pctx.beginPath(); pctx.moveTo(x,y); pctx.lineTo(x+1.5,y+1.5); pctx.stroke(); redraw();
   });
   cv.addEventListener('pointermove',e=>{
     if(!drawing||finished) return;
@@ -1248,19 +1477,18 @@ function viewTrace(step,done){
     if(finished) return;
     if(measure()>=.55){
       finished=true;
-      /* نكمل الحرف كله بلونه لما ينجح */
       pctx.font='700 260px "Baloo Bhaijaan 2", sans-serif'; pctx.textAlign='center'; pctx.textBaseline='middle';
-      pctx.fillStyle=L.color; pctx.fillText(L.ch,SZ/2,SZ/2+10); redraw();
+      pctx.fillStyle=L.color; pctx.fillText(txt,SZ/2,SZ/2+10); redraw();
       correctFX(cv,done);
     }else if(pts.length){ say(`كمّل يا ${S.name}! باقي شوية!`,'wiggle'); }
   });
   $('#btnClear').onclick=()=>{ if(finished) return; SFX.tap(); pctx.clearRect(0,0,SZ,SZ); redraw(); const f=$('#traceFill'); if(f) f.style.width='0%'; };
   prepare(); redraw();
   document.fonts&&document.fonts.ready.then(()=>{ if(tok===viewToken){ prepare(); redraw(); } });
-  say(`امسك صباعك ولوّن حرف ${L.ch} يا ${S.name}!`);
+  say(`امسك صباعك ولوّن حرف ${LETTER_NAMES[L.ch]} يا ${S.name}!`);
 }
 
-/* ================= (٥) تعليم حيوان ================= */
+/* ================= تعليم حيوان ================= */
 function viewLearnAnimal(step,done){
   const tok=++viewToken, a=step.a, info=ANIMALS[a], pz=playzone();
   pz.innerHTML=`<div class="game-head">مين ده يا ${S.name}؟</div>
@@ -1287,7 +1515,7 @@ function viewLearnAnimal(step,done){
   $('#btnNext').onclick=()=>{ if(tok===viewToken) done(); };
 }
 
-/* ================= (٦) اسمع واختار ================= */
+/* ================= اسمع واختار ================= */
 function viewSoundGuess(step,done){
   const tok=++viewToken, rounds=step.rounds, pz=playzone();
   let round=0, locked=false, wrongCount=0;
@@ -1296,7 +1524,7 @@ function viewSoundGuess(step,done){
     if(round>=rounds.length){ done(); return; }
     locked=false; wrongCount=0;
     const target=rounds[round];
-    const others=shuffle(Object.keys(ANIMALS).filter(k=>k!==target&&!rounds.slice(0,round).includes(k))).slice(0,2);
+    const others=shuffle(Object.keys(ANIMALS).filter(k=>k!==target)).slice(0,2);
     const opts=shuffle([target,...others]);
     pz.innerHTML=`<div class="game-head">اسمع كويس يا ${S.name}! مين اللي بيتكلم؟</div>
       <div class="game-actions"><button class="round-btn" id="btnListen" style="width:86px;height:86px" aria-label="اسمع">${icon('ic-speaker')}</button></div>
@@ -1321,7 +1549,7 @@ function viewSoundGuess(step,done){
   ask();
 }
 
-/* ================= (٧) أطعم الحيوان ================= */
+/* ================= أطعم الحيوان ================= */
 function viewFeed(step,done){
   const tok=++viewToken, rounds=step.rounds, pz=playzone();
   let round=0;
@@ -1341,7 +1569,7 @@ function viewFeed(step,done){
     function winFood(tile){
       const r=tile.getBoundingClientRect(), ar=animal.getBoundingClientRect();
       const g=el(`<div class="ghost-food">${foodSVG(R.food)}</div>`);
-      g.style.left=(r.left+r.width/2-48)+'px'; g.style.top=(r.top+r.height/2-48)+'px';
+      g.style.left=(r.left)+'px'; g.style.top=(r.top)+'px';
       document.body.appendChild(g);
       requestAnimationFrame(()=>requestAnimationFrame(()=>{
         g.style.transform=`translate(${ar.left+ar.width/2-(r.left+r.width/2)}px,${ar.top+ar.height/2-(r.top+r.height/2)}px) scale(.5)`;
@@ -1377,7 +1605,7 @@ function viewFeed(step,done){
         const g=ghost; ghost=null;
         const ar=animal.getBoundingClientRect();
         const inside=e.clientX>ar.left-20&&e.clientX<ar.right+20&&e.clientY>ar.top-20&&e.clientY<ar.bottom+20;
-        if(inside&&tile.dataset.f===R.food){ /* سحب صحيح */
+        if(inside&&tile.dataset.f===R.food){
           g.style.transition='transform .4s var(--pop)';
           g.style.transform=`translate(${ar.left+ar.width/2-g.getBoundingClientRect().left-48}px,${ar.top+ar.height/2-g.getBoundingClientRect().top-48}px) scale(.5)`;
           setTimeout(()=>{ g.remove(); SFX.munch();
@@ -1385,7 +1613,7 @@ function viewFeed(step,done){
             correctFX(animal,()=>{ round++; ask(); });
             setTimeout(()=>say(`لذيذ! شكراً يا ${S.name}!`,'dance'),1500);
           },420);
-        }else if(!moved&&tile.dataset.f===R.food){ /* ضغطة بسيطة → نطير له تلقائيًا */
+        }else if(!moved&&tile.dataset.f===R.food){
           g.remove(); winFood(tile);
         }else{
           if(inside) wrongFX(null,`دي ${FOODS[tile.dataset.f].name}! ${ANIMALS[R.animal].name} بيحب ${FOODS[R.food].name}!`);
@@ -1401,18 +1629,18 @@ function viewFeed(step,done){
   ask();
 }
 
-/* ================= (٨) مين اختفى؟ ================= */
+/* ================= مين اختفى؟ (من كل كائنات الحروف) ================= */
 function viewWhoGone(step,done){
   const tok=++viewToken, pz=playzone();
-  const shown=shuffle(Object.keys(ANIMALS)).slice(0,3);
+  const shown=shuffle(Object.keys(THINGS)).slice(0,3);
   const hidden=pick(shown);
-  pz.innerHTML=`<div class="game-head">بص كويس يا ${S.name}! احفظ الحيوانات!</div>
+  pz.innerHTML=`<div class="game-head">بص كويس يا ${S.name}! احفظ الكائنات!</div>
     <div style="position:relative">
       <div class="who-row" id="whoRow">${shown.map(k=>`<div class="tile who-card" data-k="${k}">${anSVG(k)}</div>`).join('')}</div>
     </div>
     <div class="game-head" id="whoQ" style="visibility:hidden">مين اختفى؟</div>
     <div class="choices-row" id="whoChoices" style="visibility:hidden">${shuffle([...shown]).map(k=>`<div class="tile choice-tile" data-k="${k}">${anSVG(k)}</div>`).join('')}</div>`;
-  say(`بص كويس يا ${S.name}! احفظ الحيوانات!`);
+  say(`بص كويس يا ${S.name}! احفظهم كويس!`);
   (async()=>{
     await wait(2600); if(tok!==viewToken) return;
     const cover=el(`<div class="cover"><div class="stars-bg">${icon('ic-star')}${icon('ic-star')}${icon('ic-star')}</div><h3>غطّي عينيك!</h3></div>`);
@@ -1432,10 +1660,10 @@ function viewWhoGone(step,done){
         slot.classList.remove('gone-slot');
         slot.innerHTML=anSVG(hidden); slot.dataset.k=hidden;
         slot.animate([{transform:'scale(.2)'},{transform:'scale(1.2)'},{transform:'scale(1)'}],{duration:600,easing:'cubic-bezier(.34,1.56,.64,1)'});
-        ANIMAL_SFX[hidden]();
+        thingSound(hidden);
         correctFX(t,done);
       }else{
-        wrongFX(t,`دي ${ANIMALS[t.dataset.k].name}! موجود وشايفه! فين اللي اختفى؟`);
+        wrongFX(t,`دي ${THINGS[t.dataset.k].name}! موجود وشايفه! فين اللي اختفى؟`);
         const orig=pz.querySelector(`#whoRow .who-card[data-k="${t.dataset.k}"]`);
         if(orig){ orig.classList.remove('bounce'); void orig.offsetWidth; orig.classList.add('bounce'); }
       }
@@ -1443,34 +1671,37 @@ function viewWhoGone(step,done){
   })();
 }
 
-/* ================= (٩) الاحتفال + أغنية الحروف ================= */
+/* ================= الاحتفال + أغنية ================= */
 function viewFinale(step,done){
   const tok=++viewToken, pz=playzone();
   const isLetters=step.world==='letters';
+  const letters=step.letters||[];
   let headline, sub;
   if(isLetters){
-    if(step.levelIdx===0){ S.lettersLevel=1; S.lettersLevelDone=Math.max(S.lettersLevelDone,1);
-      headline=`برافو يا ${S.name}! خلصت مرحلة الحروف!`; sub='اتعلمت حروف: أ ب ت';
-    }else{ S.lettersLevelDone=Math.max(S.lettersLevelDone,2);
-      headline=`برافو يا ${S.name}! بطل حروف!`; sub='اتعلمت حروف: ث ج د';
+    if(step.levelIdx>=6){
+      S.lettersLevel=6; S.lettersLevelDone=7;
+      headline=`برافو يا ${S.name}! عرفت كل الحروف!`; sub='٢٨ حرفًا من ألِف لياء!';
+    }else{
+      S.lettersLevel=step.levelIdx+1; S.lettersLevelDone=Math.max(S.lettersLevelDone,step.levelIdx+1);
+      headline=`برافو يا ${S.name}! خلصت المرحلة ${step.levelIdx+1} من ٧!`;
+      sub=`اتعلمت حروف: ${letters.map(L=>disp(L)).join(' ')}`;
     }
   }else{
     const first=!S.animalsDone; S.animalsDone=true;
     headline=first?`برافو يا ${S.name}! خلصت مرحلة الحيوانات!`:`برافو يا ${S.name}! لعبت تاني وبطولة!`;
-    sub=`${S.animalsLearned.length? 'عرفت '+S.animalsLearned.length+' حيوانات':'حانة حيوانات كاملة!'}`;
+    sub=`عرفت ${S.animalsLearned.length} حيوانات!`;
   }
   save();
-  /* ستيكرز جديدة */
   const newStickers=STICKERS.filter(st=>st.cond()&&!S.stickers.includes(st.id));
   newStickers.forEach(st=>S.stickers.push(st.id)); save();
   const st=newStickers[0];
-  /* إعلان عناصر العالم الجديدة */
   const news=[];
   if(isLetters&&!S.flags.tree){ S.flags.tree=1; news.push('شجرة جديدة ظهرت في عالمك!'); }
+  if(isLetters&&step.levelIdx>=2&&!S.flags.bush){ S.flags.bush=1; news.push('شجيرات وردية ظهرت في عالمك!'); }
   if(!isLetters&&!S.flags.animals){ S.flags.animals=1; news.push('الحيوانات رجعت تعيش في عالمك!'); }
   if(S.stars>=10&&!S.flags.house){ S.flags.house=1; news.push('بنيت بيت في عالمك!'); }
   if(S.stars>=5&&!S.flags.bfly){ S.flags.bfly=1; news.push('فراشة ملونة جت تزورك!'); }
-  if(isLetters&&S.lettersLevelDone>=1&&S.animalsDone&&!S.flags.rainbow){ S.flags.rainbow=1; news.push('قوس قزح طلع في عالمك!'); }
+  if(S.lettersLevelDone>=7&&S.animalsDone&&!S.flags.rainbow){ S.flags.rainbow=1; news.push('قوس قزح طلع في عالمك!'); }
   save();
 
   pz.innerHTML=`<div class="finale">
@@ -1488,13 +1719,13 @@ function viewFinale(step,done){
   luluAct($('#luluMain'),'dance');
   say(`برافو يا ${S.name}! أنت ${isLetters?'بطل الحروف':'صاحب الحيوانات'}!`,'clap');
   if(st) setTimeout(()=>{ const r=$('.sticker-reveal').getBoundingClientRect(); FX.burst(r.left+r.width/2,r.top+r.height/2,26); },800);
-  if($('#btnSong')) $('#btnSong').onclick=()=>{ SFX.tap(); letterSong(isLetters?0:0); };
+  if($('#btnSong')) $('#btnSong').onclick=()=>{ SFX.tap(); letterSong(letters); };
   $('#btnWorld').onclick=()=>{ SFX.tap(); goWorldScene(); };
   $('#btnEnd').onclick=()=>{ SFX.tap(); endSession(false); };
 }
 
-function letterSong(levelIdx){
-  const tok=++viewToken, letters=LETTER_LEVELS[levelIdx], pz=playzone();
+function letterSong(letters){
+  const tok=++viewToken, pz=playzone();
   pz.innerHTML=`<div class="song-view">
     <div class="song-letter" id="sgL"></div>
     <div class="song-word" id="sgW"></div>
@@ -1505,34 +1736,31 @@ function letterSong(levelIdx){
   letters.forEach((L,i)=>{
     setTimeout(()=>{
       if(tok!==viewToken) return;
-      $('#sgL').textContent=L.ch; $('#sgL').style.color=L.color;
+      $('#sgL').textContent=disp(L); $('#sgL').style.color=L.color;
       $('#sgW').textContent=L.word;
-      $('#sgA').innerHTML=anSVG(L.animal);
-      $('#sgA').classList.remove('bounce'); void $('#sgA').offsetWidth; $('#sgA').classList.add('bounce');
+      $('#sgA').innerHTML=anSVG(L.thing);
+      const a=$('#sgA'); a.classList.remove('bounce'); void a.offsetWidth; a.classList.add('bounce');
       $('#sgL').animate([{transform:'scale(.5)'},{transform:'scale(1.2)'},{transform:'scale(1)'}],{duration:500});
       SFX.beat();
-      speak(`${L.ch} ${L.ch} ${L.word}`);
-      setTimeout(()=>{ if(tok===viewToken){ ANIMAL_SFX[L.animal](); } },1300);
-    },i*2000);
+      speak(`${LETTER_NAMES[L.ch]} ${LETTER_NAMES[L.ch]} ${L.word}`,{rate:.85,pitch:1.4});
+      setTimeout(()=>{ if(tok===viewToken) thingSound(L.thing); },1300);
+    },i*2100);
   });
-  setTimeout(()=>{ if(tok===viewToken) say('برافو! غنّينا أغنية الحروف!','dance'); },letters.length*2000+500);
-  $('#btnStop').onclick=()=>{ if(tok===viewToken) flow? nextStep():goHome(); };
+  setTimeout(()=>{ if(tok===viewToken) say('برافو! غنّينا أغنية الحروف!','dance'); },letters.length*2100+500);
+  $('#btnStop').onclick=()=>{ if(tok===viewToken){ if(flow) nextStep(); else goHome(); } };
 }
 
 /* ---------- بدء العوالم ---------- */
 function startLetters(){
-  const levelIdx=Math.min(S.lettersLevel,LETTER_LEVELS.length-1);
+  const levelIdx = S.lettersLevelDone>=7 ? rnd(7) : Math.min(S.lettersLevel,6);
   const letters=LETTER_LEVELS[levelIdx];
   const steps=[
     ...letters.map(L=>({type:'learnL',L})),
-    {type:'pickL',letters:letters.map(L=>L.ch).map(ch=>letters.find(L=>L.ch===ch))},
-    {type:'balloons',letters:letters.map(L=>L.ch).map(ch=>letters.find(L=>L.ch===ch))},
-    {type:'trace',L:letters[0]},
-    {type:'finale',world:'letters',levelIdx},
+    {type:'pickL',letters},
+    {type:'balloons',letters},
+    {type:'trace',L:pick(shuffle(letters))},
+    {type:'finale',world:'letters',levelIdx,letters},
   ];
-  /* الحروف في الألعاب كعناصر بيانات كاملة */
-  steps.find(s=>s.type==='pickL').letters=letters.map(L=>L);
-  steps.find(s=>s.type==='balloons').letters=letters.map(L=>L);
   runSteps('letters',steps);
 }
 function startAnimals(){
@@ -1552,8 +1780,8 @@ const VIEWS={ learnL:viewLearnLetter, pickL:viewPickLetter, balloons:viewBalloon
 /* ---------- نهاية الجلسة ---------- */
 function endSession(early){
   ensureToday();
-  const t=S.today;
   flow=null;
+  const t=S.today;
   app.innerHTML=`<div class="screen" style="align-items:center; justify-content:center; gap:18px; text-align:center">
     <div class="finale">
       <h1>برافو يا ${S.name}!<br>اتعلمت النهارده حاجات كتير!</h1>
@@ -1577,11 +1805,12 @@ function endSession(early){
 /* ---------- عالم سوسو ---------- */
 function goWorldScene(){
   flow=null;
-  const hasTree=S.lettersLevelDone>=1, hasHouse=S.stars>=10, hasBfly=S.stars>=5;
-  const hasRainbow=S.lettersLevelDone>=1&&S.animalsDone;
+  const hasTree=S.lettersLevelDone>=1, hasBush=S.lettersLevelDone>=3, hasBush2=S.lettersLevelDone>=5;
+  const hasHouse=S.stars>=10, hasBfly=S.stars>=5;
+  const hasRainbow=S.lettersLevelDone>=7&&S.animalsDone;
   const nFlowers=Math.min(S.stickers.length,5);
   const flowerColors=['#F9A8C0','#FF8552','#62B6E7','#A58CE8','#FFC94D'];
-  const worldAnimals=S.animalsLearned;
+  const worldAnimals=[...S.animalsLearned, ...S.thingsLearned];
   app.innerHTML=`<div class="screen">
     <div class="wbar">
       <button class="round-btn" id="btnBack" aria-label="رجوع">${icon('ic-back')}</button>
@@ -1597,14 +1826,15 @@ function goWorldScene(){
         <path d="M0 90 Q100 20 200 70 Q300 115 400 55 V150 H0 Z" fill="#9BDBA1"/>
         <path d="M0 120 Q120 80 260 108 Q340 126 400 100 V150 H0 Z" fill="#7EC97E"/>
       </svg>
-      ${hasTree?`<svg class="scene-item si-tree"><use href="#w-tree"/></svg>`
-        :`<svg class="scene-item si-sprout"><use href="#w-sprout"/></svg>`}
+      ${hasTree?`<svg class="scene-item si-tree"><use href="#w-tree"/></svg>`:`<svg class="scene-item si-sprout"><use href="#w-sprout"/></svg>`}
+      ${hasBush?`<svg class="scene-item si-bush"><use href="#w-bush"/></svg>`:''}
+      ${hasBush2?`<svg class="scene-item si-bush2"><use href="#w-bush"/></svg>`:''}
       ${hasHouse?`<svg class="scene-item si-house"><use href="#w-house"/></svg>`:''}
       <div class="scene-animals">${worldAnimals.map(k=>`<div class="scene-animal" data-k="${k}" style="animation-delay:${rnd(20)/10}s">${anSVG(k)}</div>`).join('')}</div>
       <div class="lulu-scene" id="luluScene">${luluSVG('idle')}</div>
       ${hasBfly?`<svg class="scene-item si-butterfly"><use href="#w-butterfly"/></svg>`:''}
       <div class="flowers">${Array.from({length:nFlowers},(_,i)=>`<svg class="fl" style="color:${flowerColors[i]}"><use href="#w-flower"/></svg>`).join('')}</div>
-      ${(!hasTree&&!hasHouse&&!worldAnimals.length)?`<div class="locked-note">World بيكبر! اتعلم حروف وحيوانات واجمع نجوم…</div>`:''}
+      ${(!hasTree&&!worldAnimals.length&&!hasHouse)?`<div class="locked-note">عالمك بيكبر! كل ما تتعلم حرفًا جديدًا أو تجمع نجوم، حاجات جديدة بتظهر</div>`:''}
     </div>
     <div class="loot">
       <div class="loot-row">
@@ -1619,23 +1849,22 @@ function goWorldScene(){
     </div>
   </div>`;
   bindBack(goHome); bindReplay();
-  const sayWorld=txt=>say(txt,'wiggle');
   $('#luluScene').onclick=()=>{ luluAct($('#luluScene .lulu'),'jump'); SFX.tap(); speak('شاطر!'); };
   $$('.scene-animal').forEach(a=>a.onclick=()=>{
     const k=a.dataset.k;
     a.classList.remove('bounce'); void a.offsetWidth; a.classList.add('bounce');
-    ANIMAL_SFX[k]();
-    const np=el(`<div class="name-pop">${ANIMALS[k].name}</div>`);
+    thingSound(k);
+    const np=el(`<div class="name-pop">${THINGS[k].name}</div>`);
     const r=a.getBoundingClientRect(), sr=$('#scene').getBoundingClientRect();
     np.style.left=(r.left-sr.left+r.width/2)+'px'; np.style.top=(r.top-sr.top-14)+'px';
     $('#scene').appendChild(np); setTimeout(()=>np.remove(),1400);
   });
-  $$('.scene-item.si-tree, .scene-item.si-house').forEach(t=>t.onclick=()=>{ SFX.tap(); t.animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:300}); });
-  $('#btnReplay').onclick=()=>{ SFX.tap(); sayWorld(`ده عالمك يا ${S.name}! كل ما تتعلم وتجمع نجوم، العالم ده بيكبر!`); };
-  setTimeout(()=>sayWorld(`أهلاً في عالمك يا ${S.name}! اضغط على الحيوانات اسمع صوتها!`),300);
+  $$('.scene-item.si-tree, .scene-item.si-house, .scene-item.si-bush, .scene-item.si-bush2').forEach(t=>t.onclick=()=>{ SFX.tap(); t.animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:300}); });
+  $('#btnReplay').onclick=()=>{ SFX.tap(); say(`ده عالمك يا ${S.name}! كل ما تتعلم وتجمع نجوم، العالم ده بيكبر!`); };
+  setTimeout(()=>say(`أهلاً في عالمك يا ${S.name}! اضغط على الحيوانات اسمع صوتها!`),300);
 }
 
-/* ---------- قسم الوالدين (محمي بسؤال حساب) ---------- */
+/* ---------- قسم الوالدين ---------- */
 function goParentGate(){
   const a=rnd(5)+2, b=rnd(5)+2, ans=a+b;
   const opts=shuffle([ans-1,ans,ans+1]);
@@ -1646,7 +1875,7 @@ function goParentGate(){
     <div class="gate-box">
       <div class="gq">سؤال سريع للوالدين:<br>${a} + ${b} = ؟</div>
       <div class="gate-opts">${opts.map(o=>`<button class="btn" data-v="${o}">${o}</button>`).join('')}</div>
-      <div class="p-note">الطفل في السن الصغير غالبًا مش بيعرف يحل عملية جمع — فده يخلّي القسم لهCUíODEه بالوالدين.</div>
+      <div class="p-note">الطفل في السن الصغير غالبًا مش بيعرف يحل عملية جمع — فده بيخلي القسم مخصوص للوالدين.</div>
     </div>
   </div>`;
   bindBack(goHome);
@@ -1655,12 +1884,17 @@ function goParentGate(){
     else{ SFX.gentle(); bt.classList.add('shake'); setTimeout(()=>bt.classList.remove('shake'),450); }
   });
 }
+function fillVoiceSelect(){
+  const sel=$('#pVoice'); if(!sel) return;
+  const vs=('speechSynthesis' in window)?speechSynthesis.getVoices().filter(v=>/^ar/i.test(v.lang)):[];
+  sel.innerHTML = vs.length
+    ? vs.map(v=>`<option value="${v.name}" ${v.name===S.voiceName?'selected':''}>${v.name}</option>`).join('')
+    : `<option value="">مفيش صوت عربي متاح دلوقتي</option>`;
+}
 function goParent(){
   ensureToday();
-  const learnedLetters=S.lettersLearned.map(ch=>{
-    for(const lv of LETTER_LEVELS){ const L=lv.find(l=>l.ch===ch); if(L) return L; }
-  }).filter(Boolean);
   const mins=Math.round(S.playSeconds/60);
+  const learnedLetters=S.lettersLearned.filter(ch=>LMAP[ch]);
   const suggestions=[
     `قولوا اسم حاجات في البيت وخلّوا ${S.name} يلاقي أول حرف منها.`,
     `العبو "مين اللي بيقول صوت الحيوان؟" — ${S.name} بيحبها أوي!`,
@@ -1674,14 +1908,16 @@ function goParent(){
     <div class="p-scroll">
       <div class="p-card">
         <div class="p-stats">
+          <div class="p-stat"><b>${learnedLetters.length}/28</b><span>حروف</span></div>
+          <div class="p-stat"><b>${S.lettersLevelDone}/7</b><span>مراحل حروف</span></div>
           <div class="p-stat"><b>${S.stars}</b><span>نجمة</span></div>
           <div class="p-stat"><b>${S.stickers.length}/${STICKERS.length}</b><span>ستيكر</span></div>
           <div class="p-stat"><b>${mins}</b><span>دقيقة لعب</span></div>
           <div class="p-stat"><b>${S.animalsLearned.length}</b><span>حيوانات</span></div>
         </div>
       </div>
-      <div class="p-card"><h3>الحروف اللي اتعلمها</h3>
-        <div class="p-chips">${learnedLetters.length?learnedLetters.map(L=>`<span class="chip" style="color:${L.color}">${L.ch} — ${L.word}</span>`).join(''):'<span class="chip">لسه مبدأش الحروف</span>'}</div>
+      <div class="p-card"><h3>الحروف اللي اتعلمها (${learnedLetters.length} من ٢٨)</h3>
+        <div class="p-chips">${learnedLetters.length?learnedLetters.map(ch=>`<span class="chip" style="color:${LMAP[ch].color}">${ch} — ${LMAP[ch].word}</span>`).join(''):'<span class="chip">لسه مبدأش الحروف</span>'}</div>
       </div>
       <div class="p-card"><h3>الحيوانات اللي عرفها</h3>
         <div class="p-chips">${S.animalsLearned.length?S.animalsLearned.map(k=>`<span class="chip">${ANIMALS[k].name}</span>`).join(''):'<span class="chip">لسه مبدأش الحيوانات</span>'}</div>
@@ -1693,14 +1929,19 @@ function goParent(){
           ${(!S.today.letters?.length&&!S.today.animals?.length)?'<span class="chip">مفيش تعلّم النهارده لسه</span>':''}
         </div>
       </div>
-      <div class="p-card"><h3>اسم الطفل</h3>
-        <div class="p-row"><input id="pName" value="${S.name}" maxlength="12"><button class="btn btn-sun" id="pSave" style="font-size:1.1rem">حفظ</button></div>
-      </div>
-      <div class="p-card"><h3>الصوت</h3>
-        <div class="p-row">
+      <div class="p-card"><h3>صوت لولو</h3>
+        <div class="p-note">التطبيق بيختار تلقائيًا أوضح صوت عربي على الجهاز، وبيفضّل الأصوات النسائية/الطفولية (Zariyah، Google العربية، Hoda، Salma…) مع نبرة عالية وإيقاع أبطأ عشان النطق يطلع واضح. تقدرو كمان تختاروا صوت بنفسكم من هنا:</div>
+        <div class="p-row" style="margin-top:10px">
+          <select class="p-select" id="pVoice"></select>
+          <button class="btn btn-sun" id="pTest" style="font-size:1.05rem">جرّب الصوت</button>
+        </div>
+        ${!hasArabicVoice()?'<div class="p-note" style="margin-top:8px">مفيش صوت عربي على الجهاز ده! ثبّتوا محرك نطق عربي (Google TTS من متجر التطبيقات أو من إعدادات اللغة والإدخال) وبعدين ارجعوا للصفحة دي واختاروه.</div>':''}
+        <div class="p-row" style="margin-top:10px">
           <button class="btn ${S.muted?'':'btn-sun'}" id="pMute" style="font-size:1.05rem">${S.muted?'الصوت مقفول — شغّله':'الصوت شغّال — اقفله'}</button>
         </div>
-        ${!hasArabicVoice()?'<div class="p-note">ملحوظة: محرك النطق العربي مش متاح على الجهاز ده، فالعبارات هتظهر مكتوبة بس. أصوات الحيوانات والمؤثرات شغّالة عادي.</div>':''}
+      </div>
+      <div class="p-card"><h3>اسم الطفل</h3>
+        <div class="p-row"><input id="pName" value="${S.name}" maxlength="12"><button class="btn btn-sun" id="pSave" style="font-size:1.1rem">حفظ</button></div>
       </div>
       <div class="p-card"><h3>أنشطة تعملوها مع بعض برّه التطبيق</h3>
         <ol class="p-list">${suggestions.map(s=>`<li>${s}</li>`).join('')}</ol>
@@ -1715,16 +1956,19 @@ function goParent(){
     </div>
   </div>`;
   bindBack(goHome);
+  fillVoiceSelect();
+  $('#pTest').onclick=()=>{ A.init(); speak('أنا لولو! صاحبتك في اللعب! يلا نلعب يا '+S.name+'!'); };
+  $('#pVoice').onchange=e=>{ S.voiceName=e.target.value; save(); pickVoice(); speak('أهلاً! أنا لولو الجديدة!'); };
   $('#pSave').onclick=()=>{ const v=$('#pName').value.trim(); if(v){ S.name=v; save(); SFX.success(); goParent(); } };
   $('#pMute').onclick=()=>{ S.muted=!S.muted; save(); if(!S.muted){A.init(); SFX.success();} goParent(); };
   $('#pReset').onclick=e=>{
     const b=e.currentTarget;
-    if(b.dataset.arm){ localStorage.removeItem(KEY); S={...DEFAULTS,flags:{},today:{date:'',stars:0,letters:[],animals:[]}}; save(); goWelcome(); }
-    else{ b.dataset.arm=1; b.textContent='متأكر؟ اضغط تاني للتأكيد'; setTimeout(()=>{ b.dataset.arm=''; b.textContent='امسح كل البيانات وابدأ من جديد'; },3000); }
+    if(b.dataset.arm){ localStorage.removeItem(KEY); S={...DEFAULTS,flags:{},thingsLearned:[],today:{date:'',stars:0,letters:[],animals:[]}}; save(); goWelcome(); }
+    else{ b.dataset.arm=1; b.textContent='متأكد؟ اضغط تاني للتأكيد'; setTimeout(()=>{ b.dataset.arm=''; b.textContent='امسح كل البيانات وابدأ من جديد'; },3000); }
   };
   $('#pInstall').onclick=()=>{
     if(window.__deferredPrompt){ window.__deferredPrompt.prompt(); }
-    else{ say&&0; const nb=$('#pInstall'); nb.textContent='من قائمة المتصفح: ⋮ ← إضافة للشاشة'; setTimeout(()=>nb.textContent='إضافة للتطبيقات',4000); }
+    else{ const nb=$('#pInstall'); nb.textContent='من قائمة المتصفح: ⋮ ← إضافة للشاشة'; setTimeout(()=>nb.textContent='إضافة للتطبيقات',4000); }
   };
 }
 window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); window.__deferredPrompt=e; });
@@ -1738,20 +1982,14 @@ function toastSticker(st){
   setTimeout(()=>t.classList.remove('show'),3000);
   setTimeout(()=>t.remove(),3600);
 }
-/* فحص ستيكرز في الخلفية عند العودة للبيت */
-const _goHome=goHome;
-goHome=function(){ _goHome();
-  setTimeout(()=>{ const news=STICKERS.filter(st=>st.cond()&&!S.stickers.includes(st.id));
-    if(news.length){ news.forEach(st=>S.stickers.push(st.id)); save(); toastSticker(news[0]); } },600);
-};
 
-/* ---------- إضافة التطبيق للشاشة الرئيسية (Manifest) ---------- */
+/* ---------- Manifest ---------- */
 (function makeManifest(){
   try{
     const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" rx="110" fill="#FFC94D"/><circle cx="256" cy="270" r="190" fill="#7ED588"/><path d="M190 105 q34 -60 66 0 Z M290 105 q34 -60 66 0 Z" fill="#FFB84D"/><circle cx="186" cy="240" r="52" fill="#fff"/><circle cx="326" cy="240" r="52" fill="#fff"/><circle cx="194" cy="248" r="26" fill="#3A2A1E"/><circle cx="318" cy="248" r="26" fill="#3A2A1E"/><path d="M196 330 Q256 386 316 330" fill="none" stroke="#4A3428" stroke-width="26" stroke-linecap="round"/><ellipse cx="120" cy="320" rx="38" ry="26" fill="#F9A8C0"/><ellipse cx="392" cy="320" rx="38" ry="26" fill="#F9A8C0"/></svg>`;
     const iconUri='data:image/svg+xml,'+encodeURIComponent(svg);
     const base=location.href.split('#')[0];
-    const man={ name:'مغامرات سوسو', short_name:'سوسو', description:'تطبيق تعليمي تفاعلي للأطفال من 2 إلى 4 سنين',
+    const man={ name:'مغامرات سوسو', short_name:'سوسو', description:'تطبيق تعليمي تفاعلي للأطفال — كل الحروف العربية والحيوانات',
       start_url:base, scope:base.slice(0,base.lastIndexOf('/')+1), display:'standalone',
       background_color:'#FFF6E9', theme_color:'#FFC94D', dir:'rtl', lang:'ar',
       icons:[{src:iconUri, sizes:'512x512', type:'image/svg+xml', purpose:'any'}] };
@@ -1760,7 +1998,7 @@ goHome=function(){ _goHome();
     document.head.appendChild(link);
     const at=document.createElement('link'); at.rel='apple-touch-icon'; at.href=iconUri; document.head.appendChild(at);
   }catch(e){}
-})();
+});
 
 /* ---------- تشغيل ---------- */
 document.addEventListener('pointerdown',()=>A.init(),{passive:true});
