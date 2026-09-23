@@ -1422,6 +1422,106 @@ function renderParent(){
 
 go('sc-splash');
 document.addEventListener('visibilitychange',function(){if(document.hidden){stopSpeak()}});
+/* ============================================================
+   🔊 أصوات الحيوانات
+   ============================================================ */
+var _AC=null,_MX=null;
+function kactx(){
+  try{
+    if(!_AC){
+      var C=window.AudioContext||window.webkitAudioContext;
+      if(!C)return null;
+      _AC=new C();
+      _MX=_AC.createGain();_MX.gain.value=.85;_MX.connect(_AC.destination);
+    }
+    if(_AC.state==='suspended')_AC.resume();
+    return _AC;
+  }catch(e){return null}
+}
+function _nbuf(d){var n=Math.floor(_AC.sampleRate*d),b=_AC.createBuffer(1,n,_AC.sampleRate),c=b.getChannelData(0);for(var i=0;i<n;i++)c[i]=Math.random()*2-1;return b}
+function _t(o){
+  var ac=kactx();if(!ac)return;
+  var t=ac.currentTime+(o.at||0);
+  var os=ac.createOscillator();os.type=o.w||'sawtooth';
+  os.frequency.setValueAtTime(o.f0,t);
+  os.frequency.exponentialRampToValueAtTime(Math.max(20,o.f1||o.f0),t+o.d);
+  if(o.vib){var lf=ac.createOscillator(),lg=ac.createGain();lf.frequency.value=o.vib;lg.gain.value=o.vibD||10;lf.connect(lg);lg.connect(os.frequency);lf.start(t);lf.stop(t+o.d+.05)}
+  var g=ac.createGain();
+  g.gain.setValueAtTime(.0001,t);
+  g.gain.exponentialRampToValueAtTime(o.v||.25,t+(o.a||.04));
+  g.gain.setValueAtTime(o.v||.25,t+o.d*.55);
+  g.gain.exponentialRampToValueAtTime(.0001,t+o.d);
+  var nd=os;
+  if(o.lp){var f=ac.createBiquadFilter();f.type='lowpass';f.frequency.value=o.lp;nd.connect(f);nd=f}
+  nd.connect(g);g.connect(_MX);
+  os.start(t);os.stop(t+o.d+.1);
+}
+function _n(o){
+  var ac=kactx();if(!ac)return;
+  var t=ac.currentTime+(o.at||0);
+  var s=ac.createBufferSource();s.buffer=_nbuf(o.d+.15);s.loop=true;
+  var f=ac.createBiquadFilter();f.type=o.ft||'bandpass';
+  f.frequency.setValueAtTime(o.f||1000,t);
+  if(o.f1)f.frequency.exponentialRampToValueAtTime(o.f1,t+o.d);
+  f.Q.value=o.q||1;
+  var g=ac.createGain();
+  g.gain.setValueAtTime(.0001,t);
+  g.gain.exponentialRampToValueAtTime(o.v||.2,t+(o.a||.03));
+  g.gain.setValueAtTime(o.v||.2,t+o.d*.6);
+  g.gain.exponentialRampToValueAtTime(.0001,t+o.d);
+  s.connect(f);f.connect(g);g.connect(_MX);
+  s.start(t);s.stop(t+o.d+.2);
+}
+const ANIMAL_SOUNDS={
+  lion(){_t({f0:95,f1:48,d:1.5,v:.4,lp:420,vib:9,vibD:12,a:.15});_n({d:1.5,v:.22,ft:'lowpass',f:280,a:.15});return 1.6},
+  elephant(){_t({f0:190,f1:300,d:.28,v:.3,lp:2600});_t({at:.26,f0:300,f1:620,d:.55,v:.3,lp:2600,vib:11,vibD:26});_t({at:.78,f0:620,f1:330,d:.45,v:.3,lp:2200,vib:11,vibD:26});return 1.35},
+  cat(){_t({f0:640,f1:880,d:.16,v:.22,lp:1600});_t({at:.15,f0:880,f1:330,d:.5,v:.22,lp:1400,vib:13,vibD:28});return .8},
+  dog(){for(var i=0;i<2;i++){_t({at:i*.28,f0:190,f1:95,d:.14,v:.35,lp:900});_n({at:i*.28,d:.13,v:.22,f:750,q:.8})}return .65},
+  duck(){for(var i=0;i<3;i++){_t({at:i*.24,f0:330,f1:210,d:.17,v:.24,lp:1900,vib:26,vibD:40});_n({at:i*.24,d:.15,v:.1,f:1400,q:.7})}return .8},
+  cow(){_t({f0:170,f1:105,d:.7,v:.33,lp:500,vib:5,vibD:5,a:.08});_t({at:.62,f0:105,f1:78,d:.6,v:.3,lp:450,vib:5,vibD:5});return 1.35},
+  croc(){_t({f0:72,f1:46,d:1.1,v:.4,lp:260,vib:7,vibD:8,a:.12});_n({at:.1,d:.6,v:.12,ft:'highpass',f:2600});return 1.25},
+  camel(){for(var i=0;i<2;i++){_t({at:i*.42,f0:150,f1:82,d:.28,v:.32,lp:620});_n({at:i*.42,d:.24,v:.18,ft:'lowpass',f:520})}return 1.0},
+  bear(){_t({f0:100,f1:68,d:1.3,v:.36,lp:320,vib:7,vibD:10,a:.12});_n({d:1.3,v:.18,ft:'lowpass',f:240,a:.12});return 1.4},
+  snake(){_n({d:1.5,v:.24,f:5200,q:.6,a:.18});return 1.6},
+  horse(){_t({f0:360,f1:200,d:.85,v:.26,lp:1600,vib:19,vibD:42,a:.05});_n({d:.85,v:.16,f:950,q:.7});_n({at:.86,d:.28,v:.3,ft:'lowpass',f:420});return 1.25},
+  sheep(){for(var i=0;i<3;i++){_t({at:i*.26,f0:520-i*70,f1:470-i*70,d:.2,v:.16,lp:1800,vib:22,vibD:26})}return .95},
+  wolf(){_t({f0:250,f1:430,d:.75,v:.3,lp:1300,a:.15});_t({at:.72,f0:430,f1:290,d:1,v:.3,lp:1300,vib:6,vibD:9});return 1.85},
+  giraffe(){_t({w:'sine',f0:190,f1:130,d:.9,v:.2,vib:5,vibD:5,a:.1});return 1.0},
+  fish(){for(var i=0;i<3;i++){_t({w:'sine',at:i*.2,f0:850-i*180,f1:380-i*60,d:.12,v:.16})}return .7},
+  frog(){for(var i=0;i<2;i++){_t({w:'square',at:i*.4,f0:150,f1:96,d:.24,v:.16,lp:750,vib:30,vibD:34})}return .8},
+  gazelle(){for(var i=0;i<2;i++){_t({at:i*.3,f0:230,f1:120,d:.16,v:.22,lp:800});_n({at:i*.3,d:.14,v:.2,f:850,q:.8})}return .65}
+};
+function playAnimalSound(key){
+  /* لو حابة زرار الصوت يسكتيها: ضيفي هنا  if(!S.sound)return 0;  (باسم المتغير عندكم) */
+  var f=ANIMAL_SOUNDS[key];if(!f)return 0;
+  try{return f()||0}catch(e){return 0}
+}
+/* دالة مساعدة لو حابة تتحكمي يدويًا في مكان معين */
+function sayAnimal(key,name){
+  var d=playAnimalSound(key);
+  setTimeout(function(){
+    if(typeof say==='function')say(name);
+    else if(typeof speak==='function')speak(name);
+  },d*1000+150);
+}
+/* ---- تلقائي: أول ما التطبيق ينطق اسم حيوان → الصوت الأول وبعده الاسم ---- */
+(function(){
+  if(!window.speechSynthesis)return;
+  var M={'اسد':'lion','فيل':'elephant','قطه':'cat','كلب':'dog','بطه':'duck','بقره':'cow','تمساح':'croc','جمل':'camel','دب':'bear','حيه':'snake','ثعبان':'snake','افعي':'snake','حصان':'horse','فرس':'horse','خروف':'sheep','خروف':'sheep','ذئب':'wolf','ذيب':'wolf','زرافه':'giraffe','سمكه':'fish','ضفدع':'frog','غزال':'gazelle'};
+  function norm(s){
+    return (s||'').replace(/[\u064B-\u0652\u0640]/g,'')
+      .replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي')
+      .replace(/[^\u0621-\u064A]/g,'').replace(/^ال/,'');
+  }
+  var orig=speechSynthesis.speak.bind(speechSynthesis);
+  speechSynthesis.speak=function(u){
+    try{
+      var k=M[norm(u&&u.text)];
+      if(k){var d=playAnimalSound(k);if(d>0){setTimeout(function(){orig(u)},d*1000+150);return}}
+    }catch(e){}
+    orig(u);
+  };
+})();
 </script>
 </body>
 </html>
