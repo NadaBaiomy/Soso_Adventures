@@ -258,7 +258,7 @@ svg{display:block}
     <div class="t1">اللعبة مش شغالة على الجهاز ده</div>
     <div class="t2">ده معناه إن الملف اتحفظ ناقص أو بيتفتح ببرنامج مش متصفح.<br>
     انسخي الكود <b>من أول سطر لآخر سطر</b>، افتحي «المفكرة» (Notepad)، الصقيه،<br>
-    واحفظيه باسم <b>soly2.html</b> مع «Encoding: UTF-8»،<br>
+    واحفظيه باسم <b>soly3.html</b> مع «Encoding: UTF-8»،<br>
     وبعدين افتحي الملف بـ <b>Google Chrome</b>.</div>
   </div>
 
@@ -277,7 +277,7 @@ svg{display:block}
       </div>
       <button class="btn btn-blue btn-xl" id="btnStart">يلا نلعب!</button>
       <p class="tiny-note">للوالدين: اكتبوا اسم طفلكم — والتطبيق سيناديه به طوال الرحلة</p>
-      <p class="ver-badge">نسخة سولي ٢</p>
+      <p class="ver-badge">نسخة سولي ٣</p>
     </div>
   </section>
 
@@ -375,11 +375,15 @@ svg{display:block}
     <div id="parentView" style="display:none;text-align:right">
       <div class="p-time" id="pTime"></div>
       <div class="p-sec"><h4>الصوت (اختاروا الأنضف)</h4><div id="pVoices"></div></div>
+      <div class="p-sec"><h4>أصوات الحيوانات (اختبروها هنا)</h4>
+        <div class="row"><button class="btn btn-line" id="pSndTest">شغّلي أصوات الحيوانات</button></div>
+        <p class="p-note" style="margin-top:8px">لو مش سامعين الأصوات دي: اتأكدوا إن صوت الموبايل مفتوح وإن الجهاز مش على وضع صامت — وجرّبوا تفتحوا اللعبة وتدوسوا أي زرار الأول.</p>
+      </div>
       <div class="p-sec"><h4>الحروف اللي اتعلمت</h4><div class="p-grid" id="pLetters"></div></div>
       <div class="p-sec"><h4>الحيوانات اللي اتعرّفت</h4><div class="p-grid" id="pAnimals"></div></div>
       <div class="p-sec"><h4>أنشطة من البيت</h4>
         <ul>
-          <li>قولوا في الشارع: «ب زي البطة!» وخلّوه يلاقي حروف اسمه.</li>
+          <li>قولوا في الشارط: «ب زي البطة!» وخلّوه يلاقي حروف اسمه.</li>
           <li>العبوا «مين ده الصوت؟» بأصوات الحيوانات في البيت.</li>
           <li>ارسموا الحروف بإصبعه على طبقة دقيق أو رمل.</li>
           <li>راجعوا ستيكرزاته معاه قبل النوم واحتفلوا بيه.</li>
@@ -668,7 +672,7 @@ function speak(t,cb){
 }
 function setTalk(on){document.querySelectorAll('.lolo').forEach(function(l){l.classList.toggle('talk',on)})}
 
-/* ====== أصوات المؤثرات ====== */
+/* ====== أصوات المؤثرات — أعلى وأوضح ====== */
 const AU={
   ctx:null,master:null,noiseBuf:null,
   ensure(){
@@ -676,7 +680,7 @@ const AU={
       const C=window.AudioContext||window.webkitAudioContext;
       if(!C)return;
       this.ctx=new C();
-      this.master=this.ctx.createGain();this.master.gain.value=.55;this.master.connect(this.ctx.destination);
+      this.master=this.ctx.createGain();this.master.gain.value=.9;this.master.connect(this.ctx.destination);
       const len=this.ctx.sampleRate*2,buf=this.ctx.createBuffer(1,len,this.ctx.sampleRate),d=buf.getChannelData(0);
       for(var i=0;i<len;i++)d[i]=Math.random()*2-1;
       this.noiseBuf=buf;
@@ -706,50 +710,56 @@ const AU={
     g.gain.linearRampToValueAtTime(vol,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
     s.connect(f);f.connect(g);g.connect(this.master);s.start(t);s.stop(t+dur+.05);
   },
-  tap(){this.tone(520,520,.06,'sine',.22)},
-  star(){this.tone(880,880,.09,'sine',.3);this.tone(1175,1175,.14,'sine',.3,.09)},
-  success(){var self=this;[523,659,784,1046].forEach(function(f,i){self.tone(f,f,.16,'triangle',.34,i*.09)})},
-  level(){var self=this;[392,523,659,784,988,1319].forEach(function(f,i){self.tone(f,f,i==5?.5:.14,'triangle',.34,i*.11)})},
-  retry(){this.tone(320,240,.3,'sine',.22)},
-  pop(){this.noiseB(.08,1800,600,.5);this.tone(300,80,.07,'square',.28)},
-  eat(){this.noiseB(.16,900,300,.45,0,'lowpass')},
-  whoosh(){this.noiseB(.4,300,1400,.18)},
-  chord(dl){var self=this;[523,659,784].forEach(function(f){self.tone(f,f,.5,'triangle',.22,dl||0)})},
+  tap(){this.tone(520,520,.06,'sine',.25)},
+  star(){this.tone(880,880,.09,'sine',.32);this.tone(1175,1175,.14,'sine',.32,.09)},
+  success(){var self=this;[523,659,784,1046].forEach(function(f,i){self.tone(f,f,.16,'triangle',.38,i*.09)})},
+  level(){var self=this;[392,523,659,784,988,1319].forEach(function(f,i){self.tone(f,f,i==5?.5:.14,'triangle',.38,i*.11)})},
+  retry(){this.tone(320,240,.3,'sine',.24)},
+  pop(){this.noiseB(.08,1800,600,.6);this.tone(300,80,.07,'square',.32)},
+  eat(){this.noiseB(.16,900,300,.5,0,'lowpass')},
+  whoosh(){this.noiseB(.4,300,1400,.22)},
+  chord(dl){var self=this;[523,659,784].forEach(function(f){self.tone(f,f,.5,'triangle',.25,dl||0)})},
   cue(id){
     if(muted)return;this.ensure();if(!this.ctx)return;
     switch(id){
-      case 'lion':this.tone(110,64,1,'sawtooth',.5,0,300);this.tone(55,50,1,'sine',.3);this.noiseB(1,400,150,.12,0,'lowpass');break;
-      case 'elephant':this.noiseB(1.3,1100,220,.5);this.tone(60,50,1.3,'sine',.35);break;
-      case 'cat':this.tone(760,400,.16,'sine',.5);this.tone(400,880,.25,'sine',.5,.16);break;
-      case 'dog':var self=this;[0,.16,.32].forEach(function(d){self.tone(190,120,.12,'square',.3,d,500)});break;
-      case 'duck':var s2=this;[0,.14].forEach(function(d){s2.tone(500,330,.1,'square',.28,d)});break;
-      case 'cow':this.tone(150,95,.9,'sine',.5);this.tone(75,60,.9,'sine',.25);break;
-      case 'croc':this.noiseB(.45,2500,3500,.22,0,'highpass');this.tone(200,80,.06,'square',.35,.5);break;
-      case 'camel':this.tone(115,95,.6,'sawtooth',.3,0,250);break;
-      case 'bear':this.tone(95,70,.8,'sawtooth',.4,0,200);this.tone(140,110,.8,'sine',.22);break;
-      case 'horse':this.tone(620,480,.14,'sawtooth',.3,0,600);this.tone(560,610,.12,'sawtooth',.28,.15,600);this.tone(640,460,.16,'sawtooth',.3,.28,600);break;
-      case 'sheep':var s3=this;[0,.2,.4].forEach(function(d,i){s3.tone(i%2?520:470,i%2?470:520,.16,'square',.25,d,700)});break;
-      case 'wolf':this.tone(260,360,.5,'sine',.35);this.tone(360,360,.4,'sine',.3,.5);this.tone(340,210,.55,'sine',.3,.9);break;
-      case 'snake':this.noiseB(.55,2500,3500,.25,0,'highpass');break;
-      case 'frog':this.tone(150,230,.12,'square',.3,0,600);this.tone(160,240,.12,'square',.3,.18,600);break;
-      case 'bee':this.tone(190,190,.9,'sawtooth',.3,0,500);this.tone(255,255,.9,'sawtooth',.14,0,600);break;
-      case 'rocket':this.noiseB(.7,200,1600,.4);break;
-      case 'plane':this.noiseB(.9,250,900,.35);break;
-      default:this.tone(1046,1318,.3,'triangle',.3);this.tone(1568,1568,.25,'sine',.25,.14);
+      case 'lion':this.tone(110,60,1.2,'sawtooth',.72,0,350);this.tone(55,46,1.2,'sine',.5);this.noiseB(1.2,500,110,.3,0,'lowpass');break;
+      case 'elephant':this.noiseB(1.4,1300,160,.7);this.tone(65,42,1.4,'sine',.55);break;
+      case 'cat':this.tone(790,410,.18,'sine',.7);this.tone(410,930,.3,'sine',.7,.18);break;
+      case 'dog':var self=this;[0,.18,.36].forEach(function(d){self.tone(190,115,.13,'square',.45,d,600)});break;
+      case 'duck':var s2=this;[0,.15].forEach(function(d){s2.tone(520,320,.11,'square',.42,d)});break;
+      case 'cow':this.tone(155,92,1,'sine',.7);this.tone(78,58,1,'sine',.42);break;
+      case 'croc':this.noiseB(.5,2400,3600,.32,0,'highpass');this.tone(210,75,.07,'square',.5,.55);break;
+      case 'camel':this.tone(118,92,.65,'sawtooth',.45,0,300);break;
+      case 'bear':this.tone(95,66,.9,'sawtooth',.55,0,250);this.tone(142,108,.9,'sine',.32);break;
+      case 'horse':this.tone(640,470,.15,'sawtooth',.45,0,700);this.tone(570,625,.13,'sawtooth',.42,.16,700);this.tone(655,455,.18,'sawtooth',.45,.3,700);break;
+      case 'sheep':var s3=this;[0,.22,.44].forEach(function(d,i){s3.tone(i%2?530:470,i%2?470:530,.18,'square',.4,d,800)});break;
+      case 'wolf':this.tone(255,370,.55,'sine',.5);this.tone(370,370,.45,'sine',.45,.55);this.tone(345,200,.6,'sine',.45,.95);break;
+      case 'snake':this.noiseB(.6,2400,3600,.35,0,'highpass');break;
+      case 'frog':this.tone(148,235,.13,'square',.45,0,700);this.tone(158,245,.13,'square',.45,.2,700);break;
+      case 'bee':this.tone(185,185,1,'sawtooth',.45,0,600);this.tone(250,250,1,'sawtooth',.22,0,700);break;
+      case 'rocket':this.noiseB(.75,180,1700,.5);break;
+      case 'plane':this.noiseB(1,230,950,.5);break;
+      default:this.tone(1046,1318,.3,'triangle',.4);this.tone(1568,1568,.25,'sine',.32,.14);
     }
   }
 };
+/* فتح محرك الصوت مع أول لمسة — مهم جداً للموبايل */
+(function(){
+  function unlock(){try{AU.ensure()}catch(e){}}
+  document.addEventListener('pointerdown',unlock,true);
+  document.addEventListener('touchstart',unlock,true);
+})();
 
 /* ====== العبارات ====== */
 const PHR={
  b:{praises:['صح يا {n}!','شاطر يا {n}!','برافو عليك يا {n}!','ممتاز يا {n}!','واااو! عرفتها يا {n}!'],
     retries:['قربت يا {n}! جرب تاني','مش دي يا {n}! نجرب مرة كمان','حاول تاني يا {n}! انت قريب'],
     look:'بص',draw:'ارسم',smart:'شاطر',done:'خلصت',again:'برافو عليك تاني!',see:'شوف',tapIt:'دوس عليه!',
-    hear:'اسمع',close:'غمّض عيونك!',colorIt:'لوّنه بأي لون تحبه!'},
+    hear:'اسمع',close:'غمّض عيونك!',colorIt:'لوّنه بأي لون تحبه!',open:'تفتح'},
  g:{praises:['صح يا {n}!','شاطرة يا {n}!','برافو عليكي يا {n}!','ممتازة يا {n}!','واااو! عرفتيها يا {n}!'],
     retries:['قربتي يا {n}! جربي تاني','مش دي يا {n}! نجرب مرة كمان','حاولي تاني يا {n}! انتي قريبة'],
     look:'بصي',draw:'ارسمي',smart:'شاطرة',done:'خلصتي',again:'برافو عليكي تاني!',see:'شوفي',tapIt:'دوسي عليه!',
-    hear:'اسمعي',close:'غمّضي عيونك!',colorIt:'لوّنيه بأي لون تحبيه!'}
+    hear:'اسمعي',close:'غمّضي عيونك!',colorIt:'لوّنيه بأي لون تحبيه!',open:'تفتحي'}
 };
 const P=function(){return S.gender==='g'?PHR.g:PHR.b};
 
@@ -853,13 +863,17 @@ function pulse(el){try{el.classList.add('tapped');setTimeout(function(){el.class
   try{AU.whoosh()}catch(e){}
   try{enterRewards()}catch(e){showErrorBar(e.message)}
 });
-function say(loloEl,bubbleEl,text,opts){
+/* say بياخد onDone — عشان نعرف امتى الكلام خلص ونشغل صوت الحيوان بعده لوحده */
+function say(loloEl,bubbleEl,text,opts,onDone){
   try{
     lastSay=text;
     bubbleEl.textContent=text;
     bubbleEl.classList.remove('pop');void bubbleEl.offsetWidth;bubbleEl.classList.add('pop');
     if(opts&&opts.happy){loloEl.classList.add('happy')}
-    speak(text,function(){if(opts&&opts.happy){setTimeout(function(){loloEl.classList.remove('happy')},900)}});
+    speak(text,function(){
+      if(opts&&opts.happy){setTimeout(function(){loloEl.classList.remove('happy')},900)}
+      if(onDone){onDone()}
+    });
   }catch(e){}
 }
 function refreshTopbar(){
@@ -974,27 +988,32 @@ function animalsFlow(ids){
     function(){pickAnimalGame(ids)},function(){soundGame(ids)},function(){missingGame(ids)},function(){feedGame(ids)}
   ];
 }
-/* درس الحيوان: أول ما يظهر → صوته بيشغل → "مين ده؟ اسمع صوته!" */
+/* درس الحيوان: السؤال الأول → لولو تسكت → صوت الحيوان لوحده بصوت عالي → وبعدين التلميح */
 function teachAnimal(id){
   const an=ANIMALS[id];
   area.innerHTML='<div class="teach-stage"><button class="big-animal" id="tA">'+artSVG(id)+'</button><div class="q-title">مين ده؟</div></div>';
-  sayPlay(fillName(P().look+' يا {n}! مين ده؟ اسمع صوته!'));
   let once=false;
   const btn=area.querySelector('#tA');
-  /* صوت الحيوان بيشغل لوحده بعد ثانية من ظهوره */
-  later(1100,function(){
-    if(!once){try{AU.cue(id)}catch(e){}}
-  });
-  later(4800,function(){
-    if(!once){sayPlay(fillName(P().tapIt));btn.classList.add('hint')}
+  say($('loloPlay'),$('playBubble'),fillName(P().look+' يا {n}! مين ده؟ اسمع صوته!'),{},function(){
+    if(once)return;
+    later(400,function(){
+      if(once)return;
+      btn.classList.remove('excited');void btn.offsetWidth;btn.classList.add('excited');
+      try{AU.cue(id)}catch(e){}          /* صوت الحيوان لوحده — من غير كلام فوقه */
+      later(1600,function(){
+        if(!once){sayPlay(fillName(P().tapIt));btn.classList.add('hint')}
+      });
+    });
   });
   btn.addEventListener('click',function(){
     try{AU.cue(id)}catch(e){}
     btn.classList.remove('excited','hint');void btn.offsetWidth;btn.classList.add('excited');
     if(once)return;once=true;
     markAnimal(id);
-    sayPlay('ده '+an.name+'! '+P().smart+' يا '+S.name+'!',{happy:true});
-    later(2100,nextStep);
+    later(1300,function(){
+      sayPlay('ده '+an.name+'! '+P().smart+' يا '+S.name+'!',{happy:true});
+      later(2300,nextStep);
+    });
   });
 }
 function pickAnimalGame(ids){
@@ -1007,12 +1026,15 @@ function pickAnimalGame(ids){
     c.addEventListener('click',function(){
       if(c.getAttribute('data-id')===target){
         markAnimal(target);
-        try{AU.cue(target)}catch(e){}   /* صوت الحيوان مع صح */
-        celebrate(nextStep,'صح يا '+S.name+'! ده '+an.name+'!');
+        try{AU.cue(target)}catch(e){}    /* صوته الأول لوحده */
+        later(1200,function(){
+          celebrate(nextStep,'صح يا '+S.name+'! ده '+an.name+'!');
+        });
       }
       else retrySay(c,true,function(){
         const ok=cards.filter(function(x){return x.getAttribute('data-id')===target})[0];
-        ok.classList.add('hint');AU.cue(target);speak(an.name);
+        ok.classList.add('hint');AU.cue(target);
+        later(900,function(){speak(an.name)});
       });
     });
   });
@@ -1020,7 +1042,7 @@ function pickAnimalGame(ids){
 function soundGame(ids){
   const target=pick(ids),an=ANIMALS[target];
   const opts=shuffle(ids);
-  area.innerHTML='<div class="q-row"><div class="q-title">'+P().look+' كويس!</div><button class="tool-btn" id="sndBtn" style="font-size:22px;padding:12px 26px">'+I_SND+'<span>شغّل الصوت</span></button><div class="opts">'+opts.map(function(id){return '<button class="opt" data-id="'+id+'" style="--rot:'+(Math.random()*6-3).toFixed(1)+'deg">'+artSVG(id)+'</button>'}).join('')+'</div></div>';
+  area.innerHTML='<div class="q-row"><div class="q-title">'+P().hear+' كويس!</div><button class="tool-btn" id="sndBtn" style="font-size:22px;padding:12px 26px">'+I_SND+'<span>شغّل الصوت</span></button><div class="opts">'+opts.map(function(id){return '<button class="opt" data-id="'+id+'" style="--rot:'+(Math.random()*6-3).toFixed(1)+'deg">'+artSVG(id)+'</button>'}).join('')+'</div></div>';
   sayPlay(fillName('مين اللي عمل الصوت ده يا {n}؟'));
   later(1400,function(){AU.cue(target)});
   area.querySelector('#sndBtn').addEventListener('click',function(){AU.tap();AU.cue(target)});
@@ -1030,7 +1052,9 @@ function soundGame(ids){
       if(c.getAttribute('data-id')===target){
         markAnimal(target);
         try{AU.cue(target)}catch(e){}
-        celebrate(nextStep,'صح يا '+S.name+'! ده '+an.name+'!');
+        later(1200,function(){
+          celebrate(nextStep,'صح يا '+S.name+'! ده '+an.name+'!');
+        });
       }else retrySay(c,true,function(){AU.cue(target);const ok=cards.filter(function(x){return x.getAttribute('data-id')===target})[0];ok.classList.add('hint')});
     });
   });
@@ -1056,7 +1080,9 @@ function missingGame(ids){
             const sp=area.querySelector('.spot[data-id="'+hidden+'"]');
             sp.classList.remove('gone');AU.cue(hidden);
             markAnimal(hidden);
-            celebrate(nextStep,'صح يا '+S.name+'! ده '+ANIMALS[hidden].name+'!');
+            later(1200,function(){
+              celebrate(nextStep,'صح يا '+S.name+'! ده '+ANIMALS[hidden].name+'!');
+            });
           }else retrySay(c,true,function(){const ok=area.querySelector('#msOpts .opt[data-id="'+hidden+'"]');ok.classList.add('hint')});
         });
       });
@@ -1079,10 +1105,10 @@ function feedGame(ids){
       c.addEventListener('click',function(){
         if(c.getAttribute('data-f')===an.food){
           try{AU.cue(id)}catch(e){}         /* الحيوان بيقول صوته وهو مبسوط */
-          later(500,function(){AU.eat()});
+          later(800,function(){AU.eat()});
           area.querySelector('#fA').classList.add('excited');
           markAnimal(id);
-          celebrate(function(){p++;renderPair()});
+          later(1900,function(){celebrate(function(){p++;renderPair()})});
         }else retrySay(c,true,function(){area.querySelector('.opt.food[data-f="'+an.food+'"]').classList.add('hint')});
       });
     });
@@ -1096,32 +1122,40 @@ function lettersFlow(idxs){
     function(){pickLetterGame(idxs)},function(){balloonsGame(idxs)},function(){traceGame(idxs)},function(){songGame(idxs)}
   ]);
 }
-/* درس الحرف: بعد اسم الحرف → صوت الحيوان بيشغل → "وده الأسد!" */
+/* درس الحرف: اسم الحرف → صوت الحيوان لوحده → وبعدين "وده الأسد!" */
 function teachLetter(i){
   const L=LETTERS[i];
   area.innerHTML='<div class="teach-stage"><button class="letter-card" id="tL" style="border-color:'+L.col+'"><b style="color:'+L.col+'">'+L.ch+'</b><span class="mini">'+artSVG(L.img)+'</span></button><div class="teach-tools"><button class="tool-btn" id="tHear">'+I_SND+'<span>'+P().hear+'</span></button><button class="tool-btn" id="tNext" style="display:none;border-color:var(--leaf);color:var(--leaf-d)">يلا نلعب!</button></div></div>';
-  sayPlay(fillName(P().look+' يا {n}! ده حرف '+L.name));
   const card=area.querySelector('#tL');
   let revealed=false,interacted=false;
   function revealNext(){
     if(revealed)return;revealed=true;
     const nb=area.querySelector('#tNext');if(nb)nb.style.display='inline-flex';
   }
-  later(3000,revealNext);
-  /* صوت الحيوان بيشغل لوحده وبعدين لولو بتقول اسمه */
-  later(2500,function(){
+  later(3500,revealNext);
+  say($('loloPlay'),$('playBubble'),fillName(P().look+' يا {n}! ده حرف '+L.name),{},function(){
     if(interacted)return;
-    try{AU.cue(L.img)}catch(e){}
-    later(500,function(){
-      if(!interacted){speak('وده '+L.word+'!')}
+    later(400,function(){
+      if(interacted)return;
+      card.classList.remove('excited');void card.offsetWidth;card.classList.add('excited');
+      try{AU.cue(L.img)}catch(e){}          /* صوت الحيوان لوحده */
+      later(1500,function(){
+        if(!interacted){
+          speak('وده '+L.word+'!');
+          later(700,revealNext);
+        }
+      });
     });
   });
   function heard(){
     interacted=true;
-    speak(L.name+'. '+L.name+' '+L.word+'.');AU.cue(L.img);
+    AU.cue(L.img);                            /* الصوت الأول */
     card.classList.remove('excited');void card.offsetWidth;card.classList.add('excited');
     markLetter(i);
-    later(600,revealNext);
+    later(1300,function(){
+      speak(L.name+'. '+L.name+' '+L.word+'.');
+    });
+    later(700,revealNext);
   }
   card.addEventListener('click',heard);
   area.querySelector('#tHear').addEventListener('click',function(){AU.tap();heard()});
@@ -1214,8 +1248,9 @@ function songGame(idxs){
       later(300+k*2100,function(){
         const L=LETTERS[j];
         cards[k].classList.add('lit');AU.chord();
-        speak(L.name+'، '+L.name+'، '+L.word+'!');
-        later(1400,function(){AU.cue(L.img)});
+        speak(L.name+'، '+L.name+'، '+L.word+'!',function(){
+          later(250,function(){AU.cue(L.img)});   /* صوت الحيوان بعد الكلمة */
+        });
         later(2050,function(){cards[k].classList.remove('lit')});
       });
     });
@@ -1304,13 +1339,15 @@ function enterRewards(){
     $('garden').querySelectorAll('.g-item').forEach(function(g){
       g.addEventListener('click',function(){
         const fn=g.getAttribute('data-fn');
-        if(fn&&ANIMALS[fn]){AU.cue(fn)}
         g.classList.remove('g-bob');void g.offsetWidth;g.classList.add('g-bob');
-        if(fn==='tree'){gToast('شجرة!')}
+        if(fn&&ANIMALS[fn]){
+          AU.cue(fn);                        /* صوته الأول */
+          later(1100,function(){gToast('ده '+ANIMALS[fn].name+'!')});
+        }
+        else if(fn==='tree'){gToast('شجرة!')}
         else if(fn==='house'){gToast('ده بيت سولي!')}
         else if(fn==='flower'){gToast('زهرة!')}
         else if(fn==='rainbow'){gToast('قوس قزح!')}
-        else if(fn&&ANIMALS[fn]){gToast('ده '+ANIMALS[fn].name+'!')}
       });
     });
     setTimeout(function(){speak(fillName(P().see+' عالمك يا {n}! كل ما تلعب، العالم ده يكبر!'))},300);
@@ -1371,6 +1408,14 @@ function openParents(){
   $('gateView').style.display='block';$('parentView').style.display='none';
   $('mParent').classList.add('on');
 }
+/* اختبار أصوات الحيوانات */
+ $('pSndTest').addEventListener('click',function(){
+  try{AU.ensure()}catch(e){}
+  const ids=['lion','cat','cow','dog','elephant','duck'];
+  ids.forEach(function(id,k){
+    setTimeout(function(){try{AU.cue(id)}catch(e){}},k*1600);
+  });
+});
 function renderVoices(){
   loadVoices();
   const box=$('pVoices');
